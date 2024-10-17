@@ -1,0 +1,9 @@
+---
+- name: sample copy module
+  hosts: core-infra-services
+  remote_user: root
+  tasks:
+    - name: copy a file
+      copy:
+        src: /opt/ansible/kartikay/anti.yml
+        dest: /root

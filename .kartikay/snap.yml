@@ -1,0 +1,14 @@
+---
+- name: Create a snapshot
+  tasks:
+      - name:
+        vmware_guest_snapshot:
+          hostname: 10.113.53.62
+          username: adm.kdwivedi
+          password:  
+          datacenter: prme-vgrid
+          name: vgrid-admin-06
+          state: present
+          snapshot_name: snap1kd
+          description: snap1_description
+        delegate_to: localhost

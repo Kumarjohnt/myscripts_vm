@@ -1,0 +1,15 @@
+---
+- name: Create DRS Anti-Affinity Rule for VM-VM
+  vmware_vm_vm_drs_rule:
+    hostname: sc9-sb-vc.vmware.com
+    username: adm.kdwivedi
+    password: 
+    cluster_name: SC9-Sandbox
+    validate_certs: no
+    vms:
+      - kartikay1
+      - kartikay2
+    drs_rule_name: vm1-vm2-affinity-rule-001
+    enabled: True
+    mandatory: True
+    affinity_rule: False

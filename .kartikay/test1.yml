@@ -1,0 +1,31 @@
+---
+- hosts: all
+  gather_facts: false
+  connection: local
+  vars_prompt:
+    - name: "vc_hostname"
+      promt: "Enter VC"
+      private: no
+
+    - name: "vc_user"
+      promt: "Enter VC user"
+      private: no
+
+    - name: "vc_pwd"
+      prompt: "Enter user pwd"
+      private: yes
+    
+    - name: "vm_name"
+      prompt: "enter VM name"
+      private: no
+
+  tasks:
+    - name: shutdown
+      vmware_guest:
+        hostname: "{{ vc_hostname }}"
+        username: "{{ vc_user }}"
+        password: "{{ vc_pwd }}"
+        validate_certs: False
+        datacenter: "WDC"
+        name: "{{ vm_name }}"
+        state: shutdownguest

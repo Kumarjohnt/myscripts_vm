@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+######################################################################
+"""
+Script Name   :- export-ova-np.py
+Written in    :- Python3
+Project name  :- VM Migration to Oracle Cloud
+Description   :- Export the VM to NFS using cli 
+Author        :- Manmohan Maniyar
+Creation Date :- 28-August-2024
+
+"""
+## Find The path of VM using ovf:- 
+#https://www.vmwarearena.com/export-vm-to-ova-or-ovf-using-ovf-tool/
+######################################################################
+
+
+import ssl,getpass , sys , getopt , os
+
+def main(argv):
+    helpout = '''Example:
+    export-vm-np --vm <VMname> --vc <VCName> --user adm.maniyarm --dc <DC name> --dest </itops_share/oci_vmdk_upload> --pw <password of user>
+    Parameters to passed : "--vm" : VM name ,"--vc" : vcname,"--user" : username to connect VC , "--dc" : Datacenter name , "--dest": Destination Directory, "--pw": Password of user 
+              '''
+    try:
+        opts, args = getopt.getopt(argv,'h',['help','vc=','vm=','dc=','user=','dest=','pw='])
+    except getopt.GetoptError:
+        print('export-vm -h')
+        sys.exit(2)
+    print(opts)
+
+    if len(opts) == 0:
+        print("export-vm -h")
+        sys.exit(2)
+    else:
+        for opt,arg in opts:
+            if opt in ('-h','--help'):
+                print(helpout)
+                sys.exit(2)
+            elif opt in ("--vm"):
+                server = arg
+            elif opt in ("--vc"):
+                vc = arg
+            elif opt == "--dc":
+                dc = arg
+            elif opt in ("--user"):
+                username = arg
+            elif opt in ("--dest"):
+                d_dir = arg
+            elif opt in ("--pw"):
+                password = arg
+            else:
+                print("export-ova.py -h")
+                sys.exit(2)
+
+#    password = getpass.getpass(prompt='Enter password:-')
+
+    prepare_cmd = "sudo /usr/bin/ovftool --noSSLVerify vi://" + username + ":" + password + "@" + vc + "/" + dc + "/vm" + "/" + server + " " + d_dir
+    print(prepare_cmd)
+
+    os.system(prepare_cmd)    
+        
+
+#if __name__ == "__main__":
+main(sys.argv[1:])

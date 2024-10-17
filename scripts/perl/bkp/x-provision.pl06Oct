@@ -1,0 +1,495 @@
+#!/usr/bin/perl -w
+use strict;
+use warnings;
+use VMware::VILib;
+use VMware::VIRuntime;
+use Term::ANSIColor;
+use VMware::VICredStore;
+use Term::ReadKey; # install libterm-readkey-perl on Ubuntu
+#
+# migrate and clone ANY vm between ANY VCs. 
+# Written by: Zaigui Wang, June 2016.
+# Inspired by William Lam: http://www.virtuallyghetto.com/2016/05/automating-cross-vcenter-vmotion-xvc-vmotion-between-the-same-different-sso-domain.html
+#
+# vm with indepedent disks, PR: https://bugzilla.vmware.com/show_bug.cgi?id=1680601
+# cross-version provisioning, PR: https://bugzilla.eng.vmware.com/show_bug.cgi?id=1821397
+# 10/5/2017: enabling skipdisk for cloning. There is a bug where disk size accounting is incorrectly done resulting in "insufficient space" errors
+# 8/01/2018: removed oneds and default to collapse all datastores to one if only one datastore is provided.
+# 8/10/2018: the spurious "NoDiskSpace" faults - PR: https://bugzilla.eng.vmware.com/show_bug.cgi?id=2173869
+# 9/22/2018: adding the provisioning checker to pre-check feasibility of vmotion.
+# 9/23/2018: Added snapshot reminder.
+# 10/02/2018: added -nostamp to skip timing stats as VM annotation after a successful operation.
+#
+my %opts = ( op => {type=> "=s", help => "Operation type: move vs. clone.", required => 1},
+	vm => { type => "=s", help => "Source Virtual Machine", required => 1},
+	host => { type => "=s", help => "Target ESXi host", required => 1},
+	cluster => { type => "=s", help => "Target cluster. Ignored if host provided. Not implemented yet", required => 0},
+	rp => { type => "=s", help => "Optional: Target resource pool. Host/Cluster information can be derived from it", required => 0, default => 'Resources'},
+	newvm => { type => "=s", help => "Target Virtual Machine Name. For clone operation only", required => 0},
+	server2 => { type => "=s", help => "Target VC. Assume same vc when omitted.", required => 0},
+	ds => { type => "=s", help => "Target datastores. Default is current. comma to separate multiples AND unique datastores. Same placement applies", required=>0},
+	folder => { type => "=s", help => "Target folder name. Use the -folderID option to narrow down if multiple folders exist", required => 0, default => 'vm'},
+	folderID => { type => "=s", help => "Target folder object ID in case there are multiple folders with same name.", required => 0},
+	network => { type => "=s", help => "Target networks. One per NIC. Comma to specify multiples.  Default same networks",required=>0},
+	snapshot => { type => "=s", help => "Optional: Snapshot to clone from. First match when multiple of same name found.", required => 0},
+	skipdisk => { type => "=s", help => "Optional: Disks to exclude in the clone. For example 0:0. Use comma to delimit multiples", required => 0},
+	nowait => { type => "", help => "Not wait for task to complete (a task cannot be canceled from this UI).", required => 0},
+	dryrun => { type => "", help => "dryrun/whatif to verify whether the proposed move can occur without issue", required => 0},
+	nostamp => { type => "", help => "Do not append operation stats to vm annotation", required => 0},
+);
+delete $ENV{'https_proxy'};
+Opts::add_options(%opts);
+Opts::parse();
+Opts::validate();
+##
+my $op = Opts::get_option('op'); die "Invalid Operation type specified!" unless ($op eq 'move' || $op eq 'clone');
+my $vmname = Opts::get_option('vm');
+my $newVM = Opts::get_option('newvm'); $newVM = ($op eq 'move')?'':(! $newVM)?$vmname.'-clone':$newVM;
+my $cloneto = ($newVM)?"as $newVM":'';
+my $host = Opts::get_option('host'); 
+my $cluster = Opts::get_option('cluster'); $host .= '.vmware.com' unless ($host =~ /\.vmware\.com/ || !$host || $host =~ /\d+\.\d+\.\d+\.\d+/); 
+die ("Need target host/cluster!") unless ($host || $cluster);
+my $srcVC = Opts::get_option('server');
+my $dstVC = Opts::get_option('server2');
+my $ds_string = Opts::get_option('ds'); my @dss = split(',', $ds_string) if ($ds_string);
+my $pg_string = Opts::get_option('network'); my @pgs = split(',', $pg_string) if ($pg_string);
+my $rp = Opts::get_option('rp');
+my $folder = Opts::get_option('folder');
+my $folderID = Opts::get_option('folderID');
+my $username = Opts::get_option('username');
+my $password = Opts::get_option('password');
+my $skipdisk_string = Opts::get_option('skipdisk');
+my %skipdisk = map {$_ => 1} split(',', $skipdisk_string) if ($skipdisk_string);
+print color("red")."Skipdisk applicable to cloning only. Ignored here...\n".color('reset') if (%skipdisk && $op eq 'move');
+my $nowait = Opts::option_is_set('nowait');
+my $dryrun = Opts::option_is_set('dryrun');
+my $nostamp = Opts::option_is_set('nostamp');
+my $snapshotName = Opts::get_option('snapshot');
+
+###
+my ($event, $srcVIM, $dstVIM, $vm_view, $host_view, $ds_view, $rp_view, $fd_view);
+my @endpoint = (); #only need if cross-vc.
+$srcVC .= '.vmware.com' unless ($srcVC =~ /\.vmware\.com/ || $srcVC =~ /\d+\.\d+\.\d+\.\d+/);
+$srcVIM = Vim->new(service_url => "https://$srcVC/sdk");
+print "Establishing source VC connection -  ";
+$srcVIM->login(user_name => $username, password => $password);
+print "UUID: " . ${$srcVIM->get_service_content()}{'about'}->{'instanceUuid'} . "\n";
+
+# if no Target VC specificed, or specificed the same VC sans the domain name. Set Target to source
+if (!$dstVC || $srcVC eq $dstVC) {
+	$event = ucfirst(substr($op,0,-1)) ."ing $vmname to $host $cloneto in $srcVC";
+	$dstVC = $srcVC;
+	$dstVIM = $srcVIM;
+} else { # different VC in play
+	my ($user2,$pass2);
+	VMware::VICredStore::init() or &cleanUp("ERROR: Failed to initialize the credential store.\n");
+	my @username = VMware::VICredStore::get_usernames (server => $dstVC);
+
+	# if no user name is obtained, that means we did not find the cred in credstore. Ask for it.
+	if (@username) {
+		#print "Retrieving [$dstVC] credential from credstore...";
+		$user2 = $username[0]; # will read only the first entry as there is no way to know which entry you wanted.
+		$pass2 = VMware::VICredStore::get_password(server => $dstVC, username => $user2);
+		#print "Got it!\n";
+	} else {
+		print "Need credential for [$dstVC]\n";
+		print "$dstVC Username: "; ($user2 = ReadLine(0)) =~ s/[\r\n]+//g;
+		print "$dstVC Password: "; ReadMode 2; ($pass2 = ReadLine(0)) =~ s/[\r\n]+//g; ReadMode 0; print "\n";
+	}
+	$dstVC .= '.vmware.com' unless ($dstVC =~ /\.vmware\.com/ || $dstVC =~ /\d+\.\d+\.\d+\.\d+/);
+	$dstVIM = Vim->new(service_url => "https://$dstVC/sdk");
+	print "Establishing Target VC connection - "; 
+	$dstVIM->login(user_name => $user2, password => $pass2);
+	print "UUID: " . ${$dstVIM->get_service_content()}{'about'}->{'instanceUuid'} . "\n";
+	$event = ucfirst(substr($op,0,-1)) ."ing $vmname in $srcVC to $host $cloneto in $dstVC";
+	
+	# build up the service locator, with ssl thumbprint, etc
+	use Net::SSLeay qw(get_https3);
+	my ($page, $response, $headers, $cert) = get_https3($dstVC, 443, '/');
+	my $fingerprint = Net::SSLeay::X509_get_fingerprint($cert, "sha1");
+	my $cred = ServiceLocatorNamePassword->new(username=>$user2, password=>$pass2);
+	my $url="https://$dstVC";
+	my $uuid = ${$dstVIM->get_service_content()}{'about'}->{'instanceUuid'};
+	my $service = ServiceLocator->new(credential=>$cred, sslThumbprint=>$fingerprint, instanceUuid=>$uuid , url=>$url);
+	@endpoint = (service => $service);
+}
+
+# SOURCE: VM and its whereabout
+my @vmproperty = (properties=>['name','config.files.vmPathName','config.hardware.device','config.annotation','runtime.host','runtime.powerState', 'snapshot']);
+$vm_view = $srcVIM->find_entity_view(view_type=>'VirtualMachine', filter=>{'name'=>qr/^$vmname$/i}, @vmproperty);
+&cleanUp("Unable to find VM $vmname in $srcVC") unless $vm_view;
+
+# CLONE only: figure out snapshot. If requested, confirm snapshot exist; Otherwise, set snapshot parameter to null for virtualmachineclonespec;
+# If multiple snapshot of the same name found, we only care about the first match. Rename snapshot with unique names
+my @snap = ();
+if ($snapshotName && $op eq 'clone') {
+	if (defined $vm_view->snapshot) {
+		my $rootsnap = $vm_view->snapshot->rootSnapshotList;
+		if (${$rootsnap}[0]->name eq $snapshotName) {
+			@snap = (snapshot => ${$rootsnap}[0]->snapshot);
+		}
+		elsif (defined ${$rootsnap}[0]->childSnapshotList) {
+			my $childlist = ${$rootsnap}[0]->childSnapshotList;
+			while ($childlist) {
+				if (${$childlist}[0]->name eq $snapshotName) { @snap = (snapshot => ${$childlist}[0]->snapshot); last; }
+				elsif (defined ${$childlist}[0]->childSnapshotList) { $childlist = ${$childlist}[0]->childSnapshotList; }
+				else { undef $childlist; print "\n"; }
+			}
+		}
+	}
+	&cleanUp("snapshot $snapshotName not found") unless @snap;
+}
+
+my $power = $vm_view->{'runtime.powerState'}->val;
+my $h = $srcVIM->get_view(mo_ref=>$vm_view->{'runtime.host'}, properties => ['name']);
+&cleanUp("Already on host. Exiting...") if ($h->name eq $host && $op eq 'move');
+
+# modify the event to add the source host
+$event =~ s/\bto\b/from $h->{'name'} to/;
+$event =~ s/\.vmware\.com//g;
+
+# SOURCE: Collect NIC/vmdk info. Controller numbers have to be calculated, while the unit # is readily available
+my (@nics, @vmdks, @vmdkToKeep, @vmdkChangeSpec, $ctrl, %ctrls);
+my $devs = $vm_view->{'config.hardware.device'};
+foreach (sort {$a->key cmp $b->key} @{$devs}) {
+	if ($_->isa('VirtualEthernetCard')) {push (@nics, $_);}
+	if ($_->isa('VirtualSCSIController')) { ($ctrl = $_->deviceInfo->label) =~ s/\D//g; $ctrls{$_->key} = $ctrl; }
+	if ($_->isa('VirtualDisk')) { push(@vmdks, $_);}
+}
+
+# For clone, we skip independent disks and any other disks as requested. 
+# For move, all disks will need to go along
+if ($op eq 'clone') {
+	foreach (sort {$a->key cmp $b->key} @vmdks) {
+		my ($diskBus, $diskUnit) = ($ctrls{$_->controllerKey}, $_->unitNumber);
+		my $slot = $diskBus . ":" . $diskUnit;
+
+		# skip only if they are independent persistent disks, have been requested, AND vm is powered on 
+		if ($_->backing->diskMode eq 'independent_persistent' && $power eq 'poweredOn') {
+			print "\tSkipping independent disk " . $_->deviceInfo->label.": ".$_->backing->fileName . "\n";
+			push(@vmdkChangeSpec, VirtualDeviceConfigSpec->new(device=>$_, operation=>VirtualDeviceConfigSpecOperation->new('remove')));
+		} elsif ($skipdisk{$slot}) {
+			print "\tSkipping per request " . $_->deviceInfo->label.": ".$_->backing->fileName . "\n";
+			push(@vmdkChangeSpec, VirtualDeviceConfigSpec->new(device=>$_, operation=>VirtualDeviceConfigSpecOperation->new('remove')));
+		} else { push(@vmdkToKeep,$_);}
+	}
+} else { @vmdkToKeep = @vmdks;}
+
+# Target host (or cluster) 
+$host_view = $dstVIM->find_entity_view(view_type => 'HostSystem', filter=>{'name' => $host}, properties => ['name','parent','datastore','runtime.inMaintenanceMode','network']);
+&cleanUp("ESX host $host in $dstVC not found!") if (!$host_view);
+&cleanUp("ESX host in maintenance mode!") if ($host_view->{'runtime.inMaintenanceMode'} =~ /^true$/i);
+print "Target host: $host (" . $host_view->{'mo_ref'}->{'value'}.")\n";
+
+# backtracking to the target DC. Will use the DC as the begin_entity for folder search, to avoid confusion in case of multiple DCs in the VC.
+my $dc = $dstVIM->get_view(mo_ref => $host_view->parent, properties => ['name','parent']);
+while (ref($dc) ne 'Datacenter') { $dc = $dstVIM->get_view(mo_ref => $dc->parent);}
+print "Target DC: ". $dc->name ." (". $dc->{'mo_ref'}->{'value'} . ")\n";
+
+# Target datastores
+#my @disk=();
+my @diskLocator;
+my $dstDsCount=0;
+my %seen=();
+my %dssMap=();# this maps srcDsName to dstDS
+my $dstDsView; #temporary variable for diskLocator
+my $cfgDs; # relospec need 'datastore' information. This is the config location. defaulting the first ds, or the current vmx location.
+print "Target datastore placement:\n";
+
+# sort disks by label in order of "hard disk #1, #2, etc..."
+foreach my $vmdk (sort {(split(/ /, $a->deviceInfo->label))[2] <=> (split(/ /, $b->deviceInfo->label))[2]} @vmdkToKeep) {
+	my $srcDsName = $vmdk->backing->fileName =~ s/\[(.*?)\].*/$1/r;
+
+	# datastore placement: if ds provided on command line, use that DS; 
+	# if ds not provided on command line, use previous DS; if previous ds does not exist, use ds of same name.
+	if (!$seen{$srcDsName}++) { # requiring a new datastore
+
+		# destination not provided.
+		if (! $dss[$dstDsCount]) {
+			if ($dstDsCount) { $dss[$dstDsCount] = $dss[$dstDsCount-1];}# use previous one if exists
+			else { $dss[$dstDsCount] = $srcDsName; } # assume the same as source. only happens if the first DS is not even provided
+		}
+
+		# now look to see if it exist on Target side
+		my $ds_view;
+		foreach (@{$host_view->datastore}) { 
+			if (${$dstVIM->get_view(mo_ref=>$_, properties=>['name'])}{name} eq $dss[$dstDsCount]){
+				$ds_view = $_;
+			}
+		}
+
+		if (!$ds_view) { &cleanUp("ERROR: Unable to find datastore $dss[$dstDsCount] on host $host");}
+
+		# OK we found the dstination ds ($ds_view)
+		$dstDsView = $ds_view;
+		$dssMap{$srcDsName} = $ds_view;
+
+		# use the 1st datastore as the cfg ds
+		$cfgDs = $ds_view if ($dstDsCount == 0); 
+		$dstDsCount++;
+	} else { $dstDsView = $dssMap{$srcDsName};} # otherwise, we've seen this ds before and know which dstDs it goes to
+
+	print "\t*". $vmdk->deviceInfo->label . ": ". ${$dstVIM->get_view(mo_ref=>$dstDsView, properties=>['name'])}{name}. " (". $dstDsView->value . ")\n";
+	push @diskLocator, VirtualMachineRelocateSpecDiskLocator->new(diskId=>$vmdk->key, datastore=>$dstDsView);
+}
+
+#@disk = (disk => [@diskLocator]);
+#&cleanUp("Debugging break");
+
+# Target resource pool (should be in the cluster)
+$rp_view = $dstVIM->find_entity_view(view_type => 'ResourcePool', filter=>{'name'=>$rp}, begin_entity => $host_view->parent);
+&cleanUp("ERROR: Unable to find the resource pool $rp on $host") unless $rp_view;
+print "Target resource pool: $rp (". $rp_view->summary->config->entity->value. ")\n";
+
+# Target folder (should be in the DC). Note that this parameter does not have to be set. We could set @folder = () unless folder is specified.
+# When folder is specified and verified, we can set @folder = (folder => fd_view).
+# Folders with the same name are allowed, even when on the same tree level.
+my $fd_views = $dstVIM->find_entity_views(view_type => 'Folder', filter=>{'name' => qr/^$folder$/i}, begin_entity => $dc);
+&cleanUp("ERROR: Unable to find the folder $folder in " . $dc->name) unless @$fd_views;
+if (scalar(@{$fd_views} gt 1)) {
+	my $chosen;
+
+	if ($folderID) { $chosen = $folderID;}
+	else {
+		print color("red") . "Following folders found in the target DC:" . color("reset") . "\n";
+		foreach (@$fd_views) { 
+			my $path = Util::get_inventory_path($_, $dstVIM->get_vim());
+			print "\t" . $_->{'mo_ref'}->value . ":\t$path\n";
+		}
+		print "Type folder ID from above (for example: group-vXXXX): ";
+		($chosen = ReadLine(0)) =~ s/[\r\n]+//g;
+	}
+
+	foreach (@$fd_views) { if ($_->{'mo_ref'}->value eq $chosen) {$fd_view = $_; last;}}
+	&cleanUp("$chosen is invalid in " . $dc->name) unless $fd_view;
+
+} else {$fd_view = ${$fd_views}[0];}
+print "Target folder: $folder (". $fd_view->{'mo_ref'}->{'value'}. ")\n";
+
+# Target network details. For vss, pg name is all is required as pgs are unique; for vds, switch uuid and pg key are needed.
+my (@devspec, $pgFound, $nicbacking);
+my $num = 0;
+foreach my $nic (@nics) { 
+	# Needs some more complex logic here: Does it matter if source is opaque network?
+	# vds: 'VirtualEthernetCardDistributedVirtualPortBackingInfo'
+	# vss: 'VirtualEthernetCardNetworkBackingInfo'
+	# nsx: 'VirtualEthernetCardOpaqueNetworkBackingInfo' (nsx.logicalswitch)
+	my $srcIsVds = (ref($nic->backing) ne 'VirtualEthernetCardNetworkBackingInfo')?1:0;
+
+	#determine which pg to connect to (existing or specified). From existing pgname if necessary
+	if (! defined $pgs[$num]) {
+		my $srcPG;
+		if ($srcIsVds) { $srcPG = ${$srcVIM->find_entity_view(view_type=>"DistributedVirtualPortgroup",properties=>['name','key'],
+					filter=>{key=>$nic->backing->port->portgroupKey})}{'name'};} 
+		else { $srcPG = $nic->backing->deviceName; }
+		$pgs[$num] = $srcPG =~ s;%2f;/;gr;
+	}
+
+	# now that we have a pgname, let's see if we can locate it on the Target host. If so, we are good. Otherwise, get out
+	$pgFound = 0;
+	foreach my $net (@{$host_view->network}) {
+		my $nv = $dstVIM->get_view(mo_ref=>$net);
+		(my $dstPG = $nv->name)  =~ s;%2f;/;g;;
+
+		# DistributedVirtualPortgroup for vDS, Network for vSS, OpaqueNetwork for nsx-t port. Others for the future?
+		#my $dstIsVds = ($nv->summary->network->type eq 'DistributedVirtualPortgroup')?1:0;
+		my $netType = ($nv->summary->network->type eq 'DistributedVirtualPortgroup')?'vDS':($nv->summary->network->type eq 'Network')?
+			'vSS':($nv->summary->network->type eq 'OpaqueNetwork')?'nsxT':$nv->summary->network->type;
+
+		# found something!
+		if ($dstPG eq $pgs[$num]) {
+			# case #1: to vDS. There is no restriction
+			if ($netType eq 'vDS') { 
+				my $switchUuid = ${$dstVIM->get_view(mo_ref => $nv->config->distributedVirtualSwitch, properties => ['uuid'])}{'uuid'};
+				my $pgkey = $nv->key;
+				my $port = DistributedVirtualSwitchPortConnection->new(switchUuid=>$switchUuid, portgroupKey=>$pgkey);
+				$nicbacking = VirtualEthernetCardDistributedVirtualPortBackingInfo->new(port=>$port);
+				$pgFound = 1;
+
+				#this nifty substitution operator: /r will copy the input, massage it and return the result, without changing the original.
+				print "Target distributed swtich for " . $nic->deviceInfo->label =~ s/Network adapter /NIC #/r.": $dstPG ($pgkey)\n";
+			}
+			# case #2: to vSS. Live migration won't work from vDS to vSS. Otherwise fine. Within VC, work around it by re-assign the PG
+			elsif ($netType eq 'vSS') { 
+				print "Target vSS for " . $nic->deviceInfo->label =~ s/Network adapter /NIC #/r.": $dstPG\n";
+				$nicbacking = VirtualEthernetCardNetworkBackingInfo->new(deviceName=>$dstPG);
+				$pgFound = 1;
+
+				# If vDS -> vSS, and VM powered on, LIVE move does not work. Clone is OK on the other hand.
+				if ($srcIsVds && $power eq 'poweredOn' && $op eq 'move') {
+					&cleanUp("LIVE migration from vDS to vSS not currently supported. Try to re-assign this vm to a vSS and then retry");
+				}
+			}
+			# NSX-T in play: https://bugzilla.vmware.com/show_bug.cgi?id=2075744
+			elsif ($netType eq 'nsxT') {
+				my $ID = $nv->summary->opaqueNetworkId;
+				my $type = $nv->summary->opaqueNetworkType;
+				print "Target ".$nv->summary->opaqueNetworkType.": " . $nv->summary->name . " ($ID)\n";
+				$nicbacking = VirtualEthernetCardOpaqueNetworkBackingInfo->new(opaqueNetworkId=>$ID, opaqueNetworkType=>$type);
+				$pgFound = 1;
+			}
+			# Future proofing - Who knows what this is...
+			else { print "Not sure what type of switch this is: $netType\n";}
+			last;
+		}
+	}
+
+	# if portgroup found. 
+	if ($pgFound) {
+		$nic->backing($nicbacking);
+		push(@devspec, VirtualDeviceConfigSpec->new(operation => VirtualDeviceConfigSpecOperation->new('edit'), device => $nic));
+	} else { &cleanUp("ERROR: Network $pgs[$num] for ". $nic->deviceInfo->label . " not found on target host");}
+	$num++;
+}
+
+# RelocateSpec: datastore, deviceChange, disk, diskMoveType, folder, host, pool, profile, service (if not provided, the current VC used)
+# Should provide a cluster or resource pool here for DRS to pick a host...
+my $migrationPriority = VirtualMachineMovePriority->new('defaultPriority');
+my $reloSpec = VirtualMachineRelocateSpec->new( datastore => $cfgDs, host => $host_view, folder => $fd_view, pool => $rp_view, deviceChange => [@devspec], disk=>[@diskLocator], @endpoint,);
+
+# Unfortunately disk remove still has to happen within 'config' spec, not 'location'. Not checking the size of @vmdkToDlete hoping null is OK.
+my $vmconfig = VirtualMachineConfigSpec->new( deviceChange => [@vmdkChangeSpec],);
+my $cloSpec = VirtualMachineCloneSpec->new( config => $vmconfig, location => $reloSpec, template => 0, powerOn => 0, @snap);
+
+# this could be either clone or move
+$event = ($dryrun)?"DRYRUN - $event":$event;
+my $taskRef;
+if ($op eq 'move') { 
+	if ($dryrun) {
+		# OK let's catch snapshot...
+		if (defined $vm_view->snapshot) {
+			print color('red')."##### Snapshots found. Your might want to clear them before migration!" . color('reset')."\n";
+                        my $rootsnap = $vm_view->snapshot->rootSnapshotList;
+                        print ${$rootsnap}[0]->name .' ('. ${$rootsnap}[0]->snapshot->value.') ['. ${$rootsnap}[0]->createTime.'] ';
+                        if (defined ${$rootsnap}[0]->childSnapshotList) {
+                                my $childlist = ${$rootsnap}[0]->childSnapshotList;
+                                while ($childlist) {
+                                        print " => ". ${$childlist}[0]->name .' ('.${$childlist}[0]->snapshot->value .')['. ${$childlist}[0]->createTime.'] ';
+                                        if (defined ${$childlist}[0]->childSnapshotList) {
+                                                $childlist = ${$childlist}[0]->childSnapshotList;
+                                        } else {
+                                                undef $childlist;
+                                        }
+                                }
+                        }
+			print "\n";
+		}
+		
+		#CheckRelocate_Task(vm, spec, testtype). When testtype is not specified, all tests will be run
+		my $checker = $srcVIM->get_view(mo_ref=>${$srcVIM->get_service_content()}{'vmProvisioningChecker'});
+		eval {$taskRef = $checker->CheckRelocate_Task(vm=>$vm_view, spec => $reloSpec);};
+	}
+	else {
+		eval {$taskRef = $vm_view->RelocateVM_Task(spec => $reloSpec, priority => $migrationPriority);}
+	}
+} else {
+	my $existVM = $dstVIM->find_entity_view(view_type=>'VirtualMachine', filter=>{'name'=>$newVM}, properties=>['name']);
+	&cleanUp("ERROR: VM with name $newVM exists!") if $existVM;
+	eval {$taskRef = $vm_view->CloneVM_Task(spec => $cloSpec, name => $newVM, folder=>$fd_view);}
+}
+
+###### Monitoring and cleanup
+print $@ . "\n" if $@;
+if ($taskRef) { &taskMonitor($taskRef, $srcVIM);}
+&cleanUp("DONE! Clean up VIM sessions...");
+
+###### SUBS
+sub cleanUp() {
+	$dstVIM->logout();
+	$srcVIM->logout();
+	print "@_\n";
+	exit 0;
+}
+sub taskMonitor() {
+	print color('blue'). "### $event" .color('reset') . "\n";
+	if ($nowait) {
+		print "Not tracking the task as requested.\n";
+		return 1;
+	}
+	my $taskRef = shift;
+	my $srcVIM = shift;
+	my $task = $srcVIM->get_view(mo_ref => $taskRef, properties => ['info']);
+	my $lastmessage = '';
+	print localtime(). "\n";
+	print "Enter".color('red')." STOP ".color('reset'). "to cancel any time...\n" unless ($dryrun);
+
+	# non-blocking wait input
+	use IO::Select;
+	my $input = IO::Select->new();
+	$input->add(\*STDIN);
+
+	$|=1; # autoflush
+	while (($task->info->state->val eq 'running') or ($task->info->state->val eq 'queued')) {
+		$task->update_view_data();
+		if (defined $task->info->progress) {
+			if (defined $task->info->description) {
+				my $message = $task->info->description->message;
+				if ($message && ($message ne $lastmessage)) {
+					$lastmessage = $message; 
+					print "\n";
+				}
+				print "\r\e[J". $task->info->progress ."% $message " if $message;
+			}
+		}
+		sleep 3;
+		if ($input->can_read(.5)) { #timeout is half a second
+			chomp(my $ask = <STDIN>);
+			if ($ask eq 'STOP') {
+				print "Cancellation requested!\n";
+				if ($task->info->cancelable) { eval {$task->CancelTask();}}
+				else {print "Task cannot be canceled at this moment.\n";}
+			}
+		}
+	}
+
+	# note that for CheckReloate_task(), it will return "success" regardless of the check result. 
+	# the actual validation result is in task->info->result;
+	my $state = $task->info->state->val;
+	my $color = ($state =~ m/success/i)?'bold green':'bold red';
+	print ">> " . color($color).uc($state).color('reset');
+	if (defined $task->info->error) {
+		print ": " . $task->info->error->localizedMessage . "\n";
+	} else {print "\n\n";}
+	
+	# task->info->result:
+	# clone - result holds the moref for the cloned vm
+	# move - there is NO result data
+	# dryrun - result holds the validation info
+	if ($dryrun && defined ($task->info->{'result'})) {
+		my $result = $task->info->{'result'};
+
+		foreach my $item (@{$result}) {
+			if (defined $item->{'error'}) {
+				print color('red')."#### ERROR ####". color('reset')."\n";
+				foreach (@{$item->{'error'}}) {
+					print $_->{'localizedMessage'} . "\n";
+				}
+			}
+		}
+	}
+	
+	#let's figure out how long it took to finish this
+	my $current = localtime();
+	my $elapsed = time - $^T;
+	my ($h, $m, $s) = ($elapsed/3600%24, $elapsed/60%60, $elapsed%60);
+
+	# only provide timing information if the operation was successful and not a dryrun
+	if ($state =~ m/success/i && !$dryrun) {
+		$event =~ s/ing\b/ed/;
+		my $record = "$event on $current. Time taken: $h:$m:$s";
+		print color('green')."### $record\n".color('reset');
+
+		# unless it was requested to exclude the timing information in the annotation.
+		if (! $nostamp) {
+			print color('blue')."### Stamping the VM with operation stats...\n".color('reset');
+			my $vm = ($op eq 'move')?
+				$dstVIM->find_entity_view(view_type=>'VirtualMachine', filter=>{'name'=>qr/^$vmname$/i}, properties=>['config.annotation']):
+				$dstVIM->get_view(mo_ref=> $task->info->result, properties=>['config.annotation']);
+			if ($vm) {
+				my $anno =  $vm->{'config.annotation'} . "\n* $record";
+				my $vmConfigSpec = VirtualMachineConfigSpec->new (annotation => $anno);
+				$vm->ReconfigVM(spec => $vmConfigSpec);
+			} else { print "Failed to find the target VM to annotate.\n";}
+		}
+	}
+}
