@@ -1,0 +1,5 @@
+[centos]
+linux-repo-prod-1-standby.vmware.com
+
+[oracle]
+cilt-prd-repo1.vmware.com

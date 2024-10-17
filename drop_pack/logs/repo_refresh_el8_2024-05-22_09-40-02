@@ -1,0 +1,20 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2024-05-22_09-40-02
+
+============================================
+
+Replacing VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm in lpsx-utils-el8
+Spawning worker 0 with 53 pkgs
+Spawning worker 1 with 52 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm 

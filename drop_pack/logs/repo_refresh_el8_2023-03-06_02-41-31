@@ -1,0 +1,22 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-03-06_02-41-31
+
+============================================
+
+
+Copying file ansible-2.6.9-1.el7.ans.noarch.rpm to /miscrepos/lpsx-utils-el8/ansible-2.6.9-1.el7.ans.noarch.rpm
+'/opt/drop_pack/el8/ansible-2.6.9-1.el7.ans.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/ansible-2.6.9-1.el7.ans.noarch.rpm'
+Spawning worker 0 with 1 pkgs
+Spawning worker 1 with 0 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/ansible-2.6.9-1.el7.ans.noarch.rpm 

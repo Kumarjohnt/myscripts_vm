@@ -1,0 +1,10 @@
+#IMPORTANT NOTE
+#CHECK for release and replace photon_release_2.0_x86_64 with that release to get latest packages
+
+[hashicorp]
+name=Hashicorp Stable - $basearch
+baseurl=https://rpm.releases.hashicorp.com/RHEL/$releasever/$basearch/stable
+enabled=1
+gpgcheck=1
+#gpgkey=https://rpm.releases.hashicorp.com/gpg
+gpgkey=file:///etc/pki/rpm-gpg/hashicorp-gpg

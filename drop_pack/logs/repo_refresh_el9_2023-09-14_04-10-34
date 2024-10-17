@@ -1,0 +1,57 @@
+
+============================================
+
+Refreshing lpsx-utils-el9 Repo at 2023-09-14_04-10-34
+
+============================================
+
+
+Copying file salt-syndic-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-syndic-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-syndic-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-syndic-3006.3-0.x86_64.rpm'
+
+Copying file salt-ssh-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-ssh-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-ssh-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-ssh-3006.3-0.x86_64.rpm'
+
+Copying file salt-master-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-master-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-master-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-master-3006.3-0.x86_64.rpm'
+
+Copying file salt-debuginfo-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-debuginfo-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-debuginfo-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-debuginfo-3006.3-0.x86_64.rpm'
+
+Copying file salt-cloud-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-cloud-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-cloud-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-cloud-3006.3-0.x86_64.rpm'
+
+Copying file salt-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-3006.3-0.x86_64.rpm'
+
+Copying file salt-minion-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-minion-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-minion-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-minion-3006.3-0.x86_64.rpm'
+
+Copying file salt-api-3006.3-0.x86_64.rpm to /miscrepos/lpsx-utils-el9/salt-api-3006.3-0.x86_64.rpm
+'/opt/drop_pack/el9/salt-api-3006.3-0.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/salt-api-3006.3-0.x86_64.rpm'
+Spawning worker 0 with 17 pkgs
+Spawning worker 1 with 17 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el9 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el9/salt-syndic-3006.3-0.x86_64.rpm 
+
+Removed /opt/drop_pack/el9/salt-ssh-3006.3-0.x86_64.rpm 
+
+Removed /opt/drop_pack/el9/salt-master-3006.3-0.x86_64.rpm 
+
+Removed /opt/drop_pack/el9/salt-debuginfo-3006.3-0.x86_64.rpm 
+
+Removed /opt/drop_pack/el9/salt-cloud-3006.3-0.x86_64.rpm 
+
+Removed /opt/drop_pack/el9/salt-3006.3-0.x86_64.rpm 
+
+Removed /opt/drop_pack/el9/salt-minion-3006.3-0.x86_64.rpm 
+
+Removed /opt/drop_pack/el9/salt-api-3006.3-0.x86_64.rpm 

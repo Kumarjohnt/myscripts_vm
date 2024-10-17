@@ -1,0 +1,11 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2024-05-27_09-20-26
+
+============================================
+
+Skipping VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm
+Skipping vim-icinga2-2.13.5-1.el8.x86_64.rpm
+Removing /opt/drop_pack/el8/VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm
+Removing /opt/drop_pack/el8/vim-icinga2-2.13.5-1.el8.x86_64.rpm

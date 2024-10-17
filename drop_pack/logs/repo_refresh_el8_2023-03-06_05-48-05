@@ -1,0 +1,112 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-03-06_05-48-05
+
+============================================
+
+
+Copying file haproxy-2.4.17-0.el8.slz.x86_64.rpm to /miscrepos/lpsx-utils-el8/haproxy-2.4.17-0.el8.slz.x86_64.rpm
+'/opt/drop_pack/el8/haproxy-2.4.17-0.el8.slz.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/haproxy-2.4.17-0.el8.slz.x86_64.rpm'
+
+Copying file openresty-zlib-devel-1.2.12-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-zlib-devel-1.2.12-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-zlib-devel-1.2.12-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-zlib-devel-1.2.12-1.el8.x86_64.rpm'
+
+Copying file openresty-zlib-debuginfo-1.2.12-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-zlib-debuginfo-1.2.12-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-zlib-debuginfo-1.2.12-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-zlib-debuginfo-1.2.12-1.el8.x86_64.rpm'
+
+Copying file openresty-zlib-1.2.12-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-zlib-1.2.12-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-zlib-1.2.12-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-zlib-1.2.12-1.el8.x86_64.rpm'
+
+Copying file openresty-pcre-devel-8.45-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-pcre-devel-8.45-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-pcre-devel-8.45-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-pcre-devel-8.45-1.el8.x86_64.rpm'
+
+Copying file openresty-pcre-debuginfo-8.45-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-pcre-debuginfo-8.45-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-pcre-debuginfo-8.45-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-pcre-debuginfo-8.45-1.el8.x86_64.rpm'
+
+Copying file openresty-pcre-8.45-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-pcre-8.45-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-pcre-8.45-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-pcre-8.45-1.el8.x86_64.rpm'
+
+Copying file openresty-openssl111-1.1.1n-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-openssl111-1.1.1n-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-openssl111-1.1.1n-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-openssl111-1.1.1n-1.el8.x86_64.rpm'
+
+Copying file openresty-openssl111-devel-1.1.1n-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-openssl111-devel-1.1.1n-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-openssl111-devel-1.1.1n-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-openssl111-devel-1.1.1n-1.el8.x86_64.rpm'
+
+Copying file openresty-resty-1.21.4.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/openresty-resty-1.21.4.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/openresty-resty-1.21.4.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-resty-1.21.4.1-1.el8.noarch.rpm'
+
+Copying file openresty-1.21.4.1-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-1.21.4.1-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-1.21.4.1-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-1.21.4.1-1.el8.x86_64.rpm'
+
+Copying file openresty-opm-1.21.4.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/openresty-opm-1.21.4.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/openresty-opm-1.21.4.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-opm-1.21.4.1-1.el8.noarch.rpm'
+
+Copying file openresty-doc-1.21.4.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/openresty-doc-1.21.4.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/openresty-doc-1.21.4.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-doc-1.21.4.1-1.el8.noarch.rpm'
+
+Copying file openresty-debuginfo-1.21.4.1-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/openresty-debuginfo-1.21.4.1-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/openresty-debuginfo-1.21.4.1-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/openresty-debuginfo-1.21.4.1-1.el8.x86_64.rpm'
+
+Copying file trafficserver-perl-9.1.2-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/trafficserver-perl-9.1.2-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/trafficserver-perl-9.1.2-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/trafficserver-perl-9.1.2-1.el8.x86_64.rpm'
+
+Copying file trafficserver-devel-9.1.2-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/trafficserver-devel-9.1.2-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/trafficserver-devel-9.1.2-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/trafficserver-devel-9.1.2-1.el8.x86_64.rpm'
+
+Copying file trafficserver-9.1.2-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/trafficserver-9.1.2-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/trafficserver-9.1.2-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/trafficserver-9.1.2-1.el8.x86_64.rpm'
+
+Copying file trafficserver-debugsource-9.1.2-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/trafficserver-debugsource-9.1.2-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/trafficserver-debugsource-9.1.2-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/trafficserver-debugsource-9.1.2-1.el8.x86_64.rpm'
+
+Copying file trafficserver-debuginfo-9.1.2-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/trafficserver-debuginfo-9.1.2-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/trafficserver-debuginfo-9.1.2-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/trafficserver-debuginfo-9.1.2-1.el8.x86_64.rpm'
+Spawning worker 0 with 10 pkgs
+Spawning worker 1 with 9 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/haproxy-2.4.17-0.el8.slz.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-zlib-devel-1.2.12-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-zlib-debuginfo-1.2.12-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-zlib-1.2.12-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-pcre-devel-8.45-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-pcre-debuginfo-8.45-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-pcre-8.45-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-openssl111-1.1.1n-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-openssl111-devel-1.1.1n-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-resty-1.21.4.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/openresty-1.21.4.1-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/openresty-opm-1.21.4.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/openresty-doc-1.21.4.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/openresty-debuginfo-1.21.4.1-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/trafficserver-perl-9.1.2-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/trafficserver-devel-9.1.2-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/trafficserver-9.1.2-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/trafficserver-debugsource-9.1.2-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/trafficserver-debuginfo-9.1.2-1.el8.x86_64.rpm 

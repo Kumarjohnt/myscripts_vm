@@ -1,0 +1,20 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2024-05-27_08-08-39
+
+============================================
+
+Replacing vim-icinga2-2.13.5-1.el8.x86_64.rpm in lpsx-utils-el8
+Spawning worker 0 with 53 pkgs
+Spawning worker 1 with 52 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/vim-icinga2-2.13.5-1.el8.x86_64.rpm 

@@ -1,0 +1,20 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-03-06_02-43-01
+
+============================================
+You have choosed to replace the files
+Replacing splunkforwarder-8.0.4-767223ac207f-linux-2.6-x86_64.rpm in lpsx-utils-el8
+Spawning worker 0 with 1 pkgs
+Spawning worker 1 with 1 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/splunkforwarder-8.0.4-767223ac207f-linux-2.6-x86_64.rpm 

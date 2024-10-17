@@ -1,0 +1,9 @@
+#IMPORTANT NOTE
+#CHECK for release and replace photon_release_2.0_x86_64 with that release to get latest packages
+
+[docker]
+name=VMware Docker Repo
+baseurl=https://vcode-scm-docker.artifactory.eng.vmware.com/download.docker.com/linux/centos/7/x86_64/stable
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True

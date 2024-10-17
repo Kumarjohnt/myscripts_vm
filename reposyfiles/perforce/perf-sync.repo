@@ -1,0 +1,9 @@
+#IMPORTANT NOTE
+#CHECK for release and replace photon_release_2.0_x86_64 with that release to get latest packages
+
+[perforce-rhel7]
+name=VMware Perforce Repo
+baseurl=https://package.perforce.com/yum/rhel/7/x86_64/
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True

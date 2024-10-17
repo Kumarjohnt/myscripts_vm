@@ -1,0 +1,22 @@
+
+============================================
+
+Refreshing lpsx-utils-el9 Repo at 2023-04-06_05-30-06
+
+============================================
+
+
+Copying file carbonapi-0.16.0-1.x86_64.rpm to /miscrepos/lpsx-utils-el9/carbonapi-0.16.0-1.x86_64.rpm
+'/opt/drop_pack/el9/carbonapi-0.16.0-1.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/carbonapi-0.16.0-1.x86_64.rpm'
+Spawning worker 0 with 5 pkgs
+Spawning worker 1 with 4 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el9 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el9/carbonapi-0.16.0-1.x86_64.rpm 

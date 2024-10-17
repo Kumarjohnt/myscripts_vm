@@ -1,0 +1,42 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-03-08_04-53-17
+
+============================================
+
+
+Copying file atftp-0.7.5-2.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/atftp-0.7.5-2.el8.x86_64.rpm
+'/opt/drop_pack/el8/atftp-0.7.5-2.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/atftp-0.7.5-2.el8.x86_64.rpm'
+
+Copying file atftp-debuginfo-0.7.5-2.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/atftp-debuginfo-0.7.5-2.el8.x86_64.rpm
+'/opt/drop_pack/el8/atftp-debuginfo-0.7.5-2.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/atftp-debuginfo-0.7.5-2.el8.x86_64.rpm'
+
+Copying file atftp-debugsource-0.7.5-2.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/atftp-debugsource-0.7.5-2.el8.x86_64.rpm
+'/opt/drop_pack/el8/atftp-debugsource-0.7.5-2.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/atftp-debugsource-0.7.5-2.el8.x86_64.rpm'
+
+Copying file atftp-server-0.7.5-2.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/atftp-server-0.7.5-2.el8.x86_64.rpm
+'/opt/drop_pack/el8/atftp-server-0.7.5-2.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/atftp-server-0.7.5-2.el8.x86_64.rpm'
+
+Copying file atftp-server-debuginfo-0.7.5-2.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/atftp-server-debuginfo-0.7.5-2.el8.x86_64.rpm
+'/opt/drop_pack/el8/atftp-server-debuginfo-0.7.5-2.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/atftp-server-debuginfo-0.7.5-2.el8.x86_64.rpm'
+Spawning worker 0 with 12 pkgs
+Spawning worker 1 with 12 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/atftp-0.7.5-2.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/atftp-debuginfo-0.7.5-2.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/atftp-debugsource-0.7.5-2.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/atftp-server-0.7.5-2.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/atftp-server-debuginfo-0.7.5-2.el8.x86_64.rpm 

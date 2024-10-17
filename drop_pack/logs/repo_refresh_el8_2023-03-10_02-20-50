@@ -1,0 +1,20 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-03-10_02-20-50
+
+============================================
+
+Replacing atftp-debuginfo-0.7.5-2.el8.x86_64.rpm in lpsx-utils-el8
+Spawning worker 0 with 12 pkgs
+Spawning worker 1 with 12 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/atftp-debuginfo-0.7.5-2.el8.x86_64.rpm 

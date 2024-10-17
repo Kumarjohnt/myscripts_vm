@@ -1,0 +1,22 @@
+
+============================================
+
+Refreshing lpsx-utils-el9 Repo at 2023-11-10_05-18-29
+
+============================================
+
+
+Copying file nix-multi-user-2.17.1.rpm to /miscrepos/lpsx-utils-el9/nix-multi-user-2.17.1.rpm
+'/opt/drop_pack/el9/nix-multi-user-2.17.1.rpm' -> '/miscrepos/lpsx-utils-el9/nix-multi-user-2.17.1.rpm'
+Spawning worker 0 with 18 pkgs
+Spawning worker 1 with 17 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el9 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el9/nix-multi-user-2.17.1.rpm 

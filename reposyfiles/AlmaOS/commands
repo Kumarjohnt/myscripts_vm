@@ -1,0 +1,47 @@
+274  2020-06-02 05:23:13 vi c7-sync.repo
+  280  2020-06-02 05:27:41 vi c7-sync.repo
+  287  2020-06-02 05:32:45 mv yum.conf yum.conf c7yum.conf
+  288  2020-06-02 05:32:52 mv yum.conf  c7yum.conf
+  290  2020-06-02 05:32:59 vi c7yum.conf
+  295  2020-06-02 05:37:43 #reposync -g -l -d -m --repoid=c7base  --download-metadata --download_path=/opt/photon
+  297  2020-06-02 05:38:21 #reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7base  --download-metadata --download_path=/opt/photon
+  305  2020-06-02 05:39:21 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7base  --download-metadata --download_path=/miscrepos/SCMREPO/
+  308  2020-06-02 06:02:50 cd c7base/
+  313  2020-06-02 06:03:46 #reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7base  --download-metadata --download_path=/miscrepos/SCMREPO/
+  314  2020-06-02 06:03:54 cat /opt/sbin/c7yum.conf
+  315  2020-06-02 06:04:05 cat /opt/sbin/c7-sync.repo
+  316  2020-06-02 06:04:24 reposync -g -l -d -m --config=/opt/sbin/c7updates.conf --repoid=c7base  --download-metadata --download_path=/miscrepos/SCMREPO/
+  317  2020-06-02 06:04:52 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7updates  --download-metadata --download_path=/miscrepos/SCMREPO/
+  318  2020-06-02 06:43:57 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7extras  --download-metadata --download_path=/miscrepos/SCMREPO/
+  324  2020-06-02 06:46:23 mv c7 * CentOS-7-x86_64
+  329  2020-06-02 06:48:27 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7extras  --download-metadata --download_path=/miscrepos/SCMREPO/CentOS-7-x86_64
+  330  2020-06-02 06:51:07 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7base  --download-metadata --download_path=/miscrepos/SCMREPO/CentOS-7-x86_64
+  334  2020-06-02 05:41:08 cd c7base/
+  370  2020-06-02 07:47:47 rm -rf c7base/
+  371  2020-06-02 07:52:15 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7base  --download-metadata --download_path=/miscrepos/SCMREPO/CentOS-7-x86_64
+  372  2020-06-02 08:05:19 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7updates  --download-metadata --download_path=/miscrepos/SCMREPO/
+  386  2020-06-02 08:20:41 ln -s /miscrepos/SCMREPO/CentOS-7-x86_64/c7base/Packages/ Packages
+  389  2020-06-02 08:21:20 ln -s /miscrepos/SCMREPO/CentOS-7-x86_64/c7extras/Packages/ Extras
+  391  2020-06-02 08:22:40 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7updates --download-metadata --download_path=/miscrepos/SCMREPO/CentOS-7-x86_64
+  392  2020-06-02 08:40:32 createrepo -g comps.xml  /miscrepos/SCMREPO/CentOS-7-x86_64/c7base/
+  393  2020-06-02 08:44:59 createrepo -g comps.xml  /miscrepos/SCMREPO/CentOS-7-x86_64/c7updates/
+  396  2020-06-02 08:45:32 cd c7updates/
+  404  2020-06-02 08:45:54 cd c7e
+  405  2020-06-02 08:45:58 cd c7extras/
+  411  2020-06-02 08:48:42 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7updates --download-metadata --download_path=/miscrepos/SCMREPO/CentOS-7-x86_64
+  413  2020-06-02 08:49:50 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7base  --download-metadata --download_path=/miscrepos/SCMREPO/CentOS-7-x86_64
+  422  2020-06-02 08:24:09 rm -rf c7updates
+  440  2020-06-02 08:50:07 cd c7base/
+  444  2020-06-02 08:50:14 cd c7updates/
+  448  2020-06-02 08:52:10 cat /opt/sbin/c7-sync.repo
+  464  2020-06-02 11:27:22 reposync -g -l -d -m --config=/opt/sbin/c7yum.conf --repoid=c7extras  --download-metadata --download_path=/miscrepos/SCMREPO/CentOS-7-x86_64
+  494  2020-06-02 13:15:08 ln -s /miscrepos/SCMREPO/CentOS-7-x86_64/c7base/ base
+  524  2020-06-02 13:07:02 createrepo -g comps.xml /miscrepos/SCMREPO/CentOS-7-x86_64/c7base/
+  530  2020-06-02 13:18:27 ln -s /miscrepos/SCMREPO/CentOS-7-x86_64/c7extras/ extras
+  531  2020-06-02 13:18:37 ln -s /miscrepos/SCMREPO/CentOS-7-x86_64/c7updates/ updates
+  536  2020-06-02 13:24:13 createrepo -v -s sha /miscrepos/SCMREPO/CentOS-7-x86_64/c7updates/
+  537  2020-06-02 13:25:32 createrepo -v -s sha /miscrepos/SCMREPO/CentOS-7-x86_64/c7extras/
+ 1006  2020-07-29 10:51:20 cat c7yum.conf
+ 1007  2020-07-29 10:51:36 cat c7-sync.repo
+ 1009  2020-07-29 10:51:50 history | gfrep c7
+ 1010  2020-07-29 10:51:53 history | grep c7

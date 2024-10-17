@@ -1,0 +1,237 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-04-13_02-38-17
+
+============================================
+
+
+Copying file php-Icinga-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/php-Icinga-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/php-Icinga-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/php-Icinga-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-vendor-zf1-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-vendor-zf1-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-vendor-zf1-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-vendor-zf1-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-vendor-Parsedown-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-vendor-Parsedown-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-vendor-Parsedown-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-vendor-Parsedown-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-vendor-lessphp-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-vendor-lessphp-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-vendor-lessphp-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-vendor-lessphp-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-vendor-JShrink-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-vendor-JShrink-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-vendor-JShrink-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-vendor-JShrink-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-vendor-HTMLPurifier-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-vendor-HTMLPurifier-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-vendor-HTMLPurifier-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-vendor-HTMLPurifier-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-vendor-dompdf-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-vendor-dompdf-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-vendor-dompdf-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-vendor-dompdf-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-selinux-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-selinux-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-selinux-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-selinux-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-common-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-common-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-common-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-common-2.11.1-1.el8.noarch.rpm'
+
+Copying file icingaweb2-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingaweb2-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingaweb2-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingaweb2-2.11.1-1.el8.noarch.rpm'
+
+Copying file icinga-l10n-1.2.0-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-l10n-1.2.0-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-l10n-1.2.0-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-l10n-1.2.0-1.el8.noarch.rpm'
+
+Copying file icingacli-2.11.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingacli-2.11.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingacli-2.11.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingacli-2.11.1-1.el8.noarch.rpm'
+
+Copying file icinga-php-thirdparty-0.11.0-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-php-thirdparty-0.11.0-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-php-thirdparty-0.11.0-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-php-thirdparty-0.11.0-1.el8.noarch.rpm'
+
+Copying file icinga-php-incubator-0.19.0-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-php-incubator-0.19.0-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-php-incubator-0.19.0-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-php-incubator-0.19.0-1.el8.noarch.rpm'
+
+Copying file icinga-director-web-1.10.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-director-web-1.10.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-director-web-1.10.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-director-web-1.10.1-1.el8.noarch.rpm'
+
+Copying file icinga-director-php-1.10.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-director-php-1.10.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-director-php-1.10.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-director-php-1.10.1-1.el8.noarch.rpm'
+
+Copying file icinga-director-daemon-1.10.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-director-daemon-1.10.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-director-daemon-1.10.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-director-daemon-1.10.1-1.el8.noarch.rpm'
+
+Copying file icinga-director-1.10.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-director-1.10.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-director-1.10.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-director-1.10.1-1.el8.noarch.rpm'
+
+Copying file icinga-cube-web-1.2.2-2.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-cube-web-1.2.2-2.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-cube-web-1.2.2-2.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-cube-web-1.2.2-2.el8.noarch.rpm'
+
+Copying file icinga-cube-1.2.2-2.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-cube-1.2.2-2.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-cube-1.2.2-2.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-cube-1.2.2-2.el8.noarch.rpm'
+
+Copying file vim-icinga2-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/vim-icinga2-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/vim-icinga2-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/vim-icinga2-2.13.5-1.el8.x86_64.rpm'
+
+Copying file nano-icinga2-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/nano-icinga2-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/nano-icinga2-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/nano-icinga2-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga-php-common-1.0.0-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-php-common-1.0.0-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-php-common-1.0.0-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-php-common-1.0.0-1.el8.noarch.rpm'
+
+Copying file icinga2-selinux-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-selinux-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-selinux-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-selinux-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-ido-pgsql-debuginfo-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-ido-pgsql-debuginfo-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-ido-pgsql-debuginfo-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-ido-pgsql-debuginfo-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-ido-pgsql-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-ido-pgsql-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-ido-pgsql-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-ido-pgsql-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-ido-mysql-debuginfo-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-ido-mysql-debuginfo-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-ido-mysql-debuginfo-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-ido-mysql-debuginfo-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-ido-mysql-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-ido-mysql-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-ido-mysql-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-ido-mysql-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-doc-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-doc-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-doc-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-doc-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-debugsource-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-debugsource-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-debugsource-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-debugsource-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-debuginfo-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-debuginfo-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-debuginfo-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-debuginfo-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-common-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-common-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-common-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-common-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-bin-debuginfo-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-bin-debuginfo-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-bin-debuginfo-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-bin-debuginfo-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-bin-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-bin-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-bin-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-bin-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icinga2-2.13.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icinga2-2.13.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icinga2-2.13.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icinga2-2.13.5-1.el8.x86_64.rpm'
+
+Copying file icingadb-web-1.0.1-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingadb-web-1.0.1-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingadb-web-1.0.1-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingadb-web-1.0.1-1.el8.noarch.rpm'
+
+Copying file icingadb-1.0.0-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icingadb-1.0.0-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icingadb-1.0.0-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icingadb-1.0.0-1.el8.x86_64.rpm'
+
+Copying file icinga-selinux-common-1.0.0-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-selinux-common-1.0.0-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-selinux-common-1.0.0-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-selinux-common-1.0.0-1.el8.noarch.rpm'
+
+Copying file icingadb-redis-doc-7.0.5-1.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icingadb-redis-doc-7.0.5-1.el8.noarch.rpm
+'/opt/drop_pack/el8/icingadb-redis-doc-7.0.5-1.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icingadb-redis-doc-7.0.5-1.el8.noarch.rpm'
+
+Copying file icingadb-redis-devel-7.0.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icingadb-redis-devel-7.0.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icingadb-redis-devel-7.0.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icingadb-redis-devel-7.0.5-1.el8.x86_64.rpm'
+
+Copying file icingadb-redis-debugsource-7.0.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icingadb-redis-debugsource-7.0.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icingadb-redis-debugsource-7.0.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icingadb-redis-debugsource-7.0.5-1.el8.x86_64.rpm'
+
+Copying file icingadb-redis-debuginfo-7.0.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icingadb-redis-debuginfo-7.0.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icingadb-redis-debuginfo-7.0.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icingadb-redis-debuginfo-7.0.5-1.el8.x86_64.rpm'
+
+Copying file icingadb-redis-7.0.5-1.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/icingadb-redis-7.0.5-1.el8.x86_64.rpm
+'/opt/drop_pack/el8/icingadb-redis-7.0.5-1.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/icingadb-redis-7.0.5-1.el8.x86_64.rpm'
+
+Copying file icinga-php-library-0.10.0-2.el8.noarch.rpm to /miscrepos/lpsx-utils-el8/icinga-php-library-0.10.0-2.el8.noarch.rpm
+'/opt/drop_pack/el8/icinga-php-library-0.10.0-2.el8.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/icinga-php-library-0.10.0-2.el8.noarch.rpm'
+Spawning worker 0 with 47 pkgs
+Spawning worker 1 with 46 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/php-Icinga-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-vendor-zf1-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-vendor-Parsedown-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-vendor-lessphp-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-vendor-JShrink-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-vendor-HTMLPurifier-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-vendor-dompdf-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-selinux-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-common-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingaweb2-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-l10n-1.2.0-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingacli-2.11.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-php-thirdparty-0.11.0-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-php-incubator-0.19.0-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-director-web-1.10.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-director-php-1.10.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-director-daemon-1.10.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-director-1.10.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-cube-web-1.2.2-2.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga-cube-1.2.2-2.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/vim-icinga2-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/nano-icinga2-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga-php-common-1.0.0-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-selinux-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-ido-pgsql-debuginfo-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-ido-pgsql-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-ido-mysql-debuginfo-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-ido-mysql-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-doc-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-debugsource-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-debuginfo-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-common-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-bin-debuginfo-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-bin-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga2-2.13.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icingadb-web-1.0.1-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingadb-1.0.0-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga-selinux-common-1.0.0-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingadb-redis-doc-7.0.5-1.el8.noarch.rpm 
+
+Removed /opt/drop_pack/el8/icingadb-redis-devel-7.0.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icingadb-redis-debugsource-7.0.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icingadb-redis-debuginfo-7.0.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icingadb-redis-7.0.5-1.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/icinga-php-library-0.10.0-2.el8.noarch.rpm 

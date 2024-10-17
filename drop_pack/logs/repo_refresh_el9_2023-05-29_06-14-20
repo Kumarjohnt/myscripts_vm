@@ -1,0 +1,22 @@
+
+============================================
+
+Refreshing lpsx-utils-el9 Repo at 2023-05-29_06-14-20
+
+============================================
+
+
+Copying file lgtoclnt-19.5.0.5-1.x86_64.rpm to /miscrepos/lpsx-utils-el9/lgtoclnt-19.5.0.5-1.x86_64.rpm
+'/opt/drop_pack/el9/lgtoclnt-19.5.0.5-1.x86_64.rpm' -> '/miscrepos/lpsx-utils-el9/lgtoclnt-19.5.0.5-1.x86_64.rpm'
+Spawning worker 0 with 13 pkgs
+Spawning worker 1 with 12 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el9 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el9/lgtoclnt-19.5.0.5-1.x86_64.rpm 

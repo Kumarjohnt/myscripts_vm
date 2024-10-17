@@ -1,0 +1,15 @@
+#IMPORTANT NOTE
+
+[swarm-deps-safe-rhel7]
+name=VMware SwarmDeps Safe Repo
+baseurl=http://rpms.remirepo.net/enterprise/7/safe/x86_64/
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True
+
+[swarm-deps-php-rhel7]
+name=VMware SwarmDeps PHP Repo
+baseurl=http://rpms.remirepo.net/enterprise/7/php74/x86_64/
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True

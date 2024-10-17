@@ -1,0 +1,31 @@
+#IMPORTANT NOTE
+#CHECK for release and replace photon_release_2.0_x86_64 with that release to get latest packages
+
+[photon]
+name=VMware Photon Linux 2.0(x86_64)
+baseurl=https://packages.vmware.com/photon/2.0/photon_release_2.0_x86_64/
+gpgkey=file:///etc/pki/rpm-gpg/VMWARE-RPM-GPG-KEY
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True
+[photon-extras]
+name=VMware Photon Extras 2.0(x86_64)
+baseurl=https://packages.vmware.com/photon/2.0/photon_extras_2.0_x86_64/
+gpgkey=file:///etc/pki/rpm-gpg/VMWARE-RPM-GPG-KEY
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True
+[photon-updates]
+name=VMware Photon Linux 2.0(x86_64) Updates
+baseurl=https://packages.vmware.com/photon/2.0/photon_updates_2.0_x86_64/
+gpgkey=file:///etc/pki/rpm-gpg/VMWARE-RPM-GPG-KEY
+gpgcheck=0
+enabled=1
+skip_if_unavailable=True
+
+#[lightwave]
+#name=VMware Lightwave for Photon 2.0(x86_64)
+#baseurl=https://vmware.bintray.com/lightwave-dev/photon_2.0/master
+#gpgcheck=0
+#enabled=0
+#skip_if_unavailable=True

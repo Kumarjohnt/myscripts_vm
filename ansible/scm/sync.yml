@@ -1,0 +1,6 @@
+---
+- name: sync centos 7
+  hosts: centos
+  tasks:
+    - name: centos sync
+      command: /usr/bin/mrepo -c /etc/mrepo2.conf -ug CentOS-7-x86_64

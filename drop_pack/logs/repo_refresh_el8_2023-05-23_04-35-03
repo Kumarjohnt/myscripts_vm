@@ -1,0 +1,27 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-05-23_04-35-03
+
+============================================
+
+
+Copying file lgtoclnt-19.2.0.1-1.x86_64.rpm to /miscrepos/lpsx-utils-el8/lgtoclnt-19.2.0.1-1.x86_64.rpm
+'/opt/drop_pack/el8/lgtoclnt-19.2.0.1-1.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/lgtoclnt-19.2.0.1-1.x86_64.rpm'
+
+Copying file lgtoman-19.2.0.1-1.x86_64.rpm to /miscrepos/lpsx-utils-el8/lgtoman-19.2.0.1-1.x86_64.rpm
+'/opt/drop_pack/el8/lgtoman-19.2.0.1-1.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/lgtoman-19.2.0.1-1.x86_64.rpm'
+Spawning worker 0 with 48 pkgs
+Spawning worker 1 with 47 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/lgtoclnt-19.2.0.1-1.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/lgtoman-19.2.0.1-1.x86_64.rpm 

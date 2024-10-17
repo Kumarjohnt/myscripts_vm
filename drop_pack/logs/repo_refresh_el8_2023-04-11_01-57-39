@@ -1,0 +1,82 @@
+
+============================================
+
+Refreshing lpsx-utils-el8 Repo at 2023-04-11_01-57-39
+
+============================================
+
+
+Copying file AvamarClient-linux-sles11-x86_64-7.5.101-101.rpm to /miscrepos/lpsx-utils-el8/AvamarClient-linux-sles11-x86_64-7.5.101-101.rpm
+'/opt/drop_pack/el8/AvamarClient-linux-sles11-x86_64-7.5.101-101.rpm' -> '/miscrepos/lpsx-utils-el8/AvamarClient-linux-sles11-x86_64-7.5.101-101.rpm'
+
+Copying file AvamarClient-linux-sles11-x86_64-19.2.100-155.rpm to /miscrepos/lpsx-utils-el8/AvamarClient-linux-sles11-x86_64-19.2.100-155.rpm
+'/opt/drop_pack/el8/AvamarClient-linux-sles11-x86_64-19.2.100-155.rpm' -> '/miscrepos/lpsx-utils-el8/AvamarClient-linux-sles11-x86_64-19.2.100-155.rpm'
+
+Copying file AvamarClient-linux-sles11-x86_64-19.4.100-116.rpm to /miscrepos/lpsx-utils-el8/AvamarClient-linux-sles11-x86_64-19.4.100-116.rpm
+'/opt/drop_pack/el8/AvamarClient-linux-sles11-x86_64-19.4.100-116.rpm' -> '/miscrepos/lpsx-utils-el8/AvamarClient-linux-sles11-x86_64-19.4.100-116.rpm'
+
+Copying file grafana-8.3.6-1.x86_64.rpm to /miscrepos/lpsx-utils-el8/grafana-8.3.6-1.x86_64.rpm
+'/opt/drop_pack/el8/grafana-8.3.6-1.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/grafana-8.3.6-1.x86_64.rpm'
+
+Copying file VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm to /miscrepos/lpsx-utils-el8/VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm
+'/opt/drop_pack/el8/VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm' -> '/miscrepos/lpsx-utils-el8/VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm'
+
+Copying file telegraf-1.22.4-1.x86_64.rpm to /miscrepos/lpsx-utils-el8/telegraf-1.22.4-1.x86_64.rpm
+'/opt/drop_pack/el8/telegraf-1.22.4-1.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/telegraf-1.22.4-1.x86_64.rpm'
+
+Copying file salt-syndic-3005.1-4.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/salt-syndic-3005.1-4.el8.x86_64.rpm
+'/opt/drop_pack/el8/salt-syndic-3005.1-4.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/salt-syndic-3005.1-4.el8.x86_64.rpm'
+
+Copying file salt-ssh-3005.1-4.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/salt-ssh-3005.1-4.el8.x86_64.rpm
+'/opt/drop_pack/el8/salt-ssh-3005.1-4.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/salt-ssh-3005.1-4.el8.x86_64.rpm'
+
+Copying file salt-minion-3005.1-4.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/salt-minion-3005.1-4.el8.x86_64.rpm
+'/opt/drop_pack/el8/salt-minion-3005.1-4.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/salt-minion-3005.1-4.el8.x86_64.rpm'
+
+Copying file salt-master-3005.1-4.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/salt-master-3005.1-4.el8.x86_64.rpm
+'/opt/drop_pack/el8/salt-master-3005.1-4.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/salt-master-3005.1-4.el8.x86_64.rpm'
+
+Copying file salt-cloud-3005.1-4.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/salt-cloud-3005.1-4.el8.x86_64.rpm
+'/opt/drop_pack/el8/salt-cloud-3005.1-4.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/salt-cloud-3005.1-4.el8.x86_64.rpm'
+
+Copying file salt-api-3005.1-4.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/salt-api-3005.1-4.el8.x86_64.rpm
+'/opt/drop_pack/el8/salt-api-3005.1-4.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/salt-api-3005.1-4.el8.x86_64.rpm'
+
+Copying file salt-3005.1-4.el8.x86_64.rpm to /miscrepos/lpsx-utils-el8/salt-3005.1-4.el8.x86_64.rpm
+'/opt/drop_pack/el8/salt-3005.1-4.el8.x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/salt-3005.1-4.el8.x86_64.rpm'
+Spawning worker 0 with 25 pkgs
+Spawning worker 1 with 24 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+
+Removed /opt/drop_pack/el8/AvamarClient-linux-sles11-x86_64-7.5.101-101.rpm 
+
+Removed /opt/drop_pack/el8/AvamarClient-linux-sles11-x86_64-19.2.100-155.rpm 
+
+Removed /opt/drop_pack/el8/AvamarClient-linux-sles11-x86_64-19.4.100-116.rpm 
+
+Removed /opt/drop_pack/el8/grafana-8.3.6-1.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/VMware-Log-Insight-Agent-8.6.2-19075480.noarch.rpm 
+
+Removed /opt/drop_pack/el8/telegraf-1.22.4-1.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/salt-syndic-3005.1-4.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/salt-ssh-3005.1-4.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/salt-minion-3005.1-4.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/salt-master-3005.1-4.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/salt-cloud-3005.1-4.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/salt-api-3005.1-4.el8.x86_64.rpm 
+
+Removed /opt/drop_pack/el8/salt-3005.1-4.el8.x86_64.rpm 

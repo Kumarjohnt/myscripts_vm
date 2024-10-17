@@ -1,0 +1,16 @@
+============================================
+Refreshing lpsx-utils-el8 Repo at 2023-03-03_07-08-55
+============================================
+
+Copying file splunkforwarder-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm to /miscrepos/lpsx-utils-el8/splunkforwarder-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm
+'/opt/drop_pack/el8/splunkforwarder-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm' -> '/miscrepos/lpsx-utils-el8/splunkforwarder-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm'
+Spawning worker 0 with 1 pkgs
+Spawning worker 1 with 0 pkgs
+Workers Finished
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+Generating sqlite DBs
+Sqlite DBs complete
+lpsx-utils-el8 repo refreshed succesfully, removing the files from the source dir
+Removed /opt/drop_pack/el8/splunkforwarder-8.2.7-2e1fca123028-linux-2.6-x86_64.rpm 
