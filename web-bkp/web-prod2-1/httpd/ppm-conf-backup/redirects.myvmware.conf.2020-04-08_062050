@@ -1,0 +1,358 @@
+
+# Redirect to login page
+RewriteRule ^($|/$)         /web/vmware/home [R]
+
+
+# Static Assets, should keep in sync with related rules in static_assets.conf 
+RewriteRule ^/static/(.*)       /www/assets/static/$1 [L]
+RewriteRule ^/vmf/(.*)          /www/assets/vmf/$1 [L]
+RewriteRule ^/lbweb             /www/assets/lbweb/index.html [L]
+RewriteRule ^/ui/(.*) /www/assets/ui/$1 [L]
+#RewriteRule ^/files$            /files/
+#RewriteRule ^/files/(.*)$       /www/assets/files/$1 [L]
+
+# /app/template now is in scraper.conf
+##RewriteRule ^/app/template$        /app/template/
+##RewriteRule ^/app/template(.*)$    http://wwwa.vmware.com/template_redesign$1 [P,L]
+
+# Used by my.vmware.com/go/get-free-esxi
+RewriteRule ^/go/(.*)$             http://wwwa.vmware.com/go/$1 [P,L]
+
+
+#Firewall is not opened for gsa and communities. Hence going through sso servers!
+RewriteRule ^/gsa$                        /gsa/     [R]
+RewriteRule ^/gsa/(.*)$                   http://search.vmware.com/$1 [QSA,L,P]
+RewriteRule ^/communities_rest_api/(.*)$  http://communities.vmware.com/rpc/rest/$1 [L,P]
+
+#MyVMware Refresh Default redirection for locale
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)($|/$) /$1/web/vmware/home [R]
+
+#My Vmware eppregister navigate to Maintenance page
+
+RewriteRule ^/web/vmware/eppRegister$  https://www.vmware.com/page-not-found.html [R=301,L]
+
+RewriteRule ^/group/vmware/eppRegister$  https://www.vmware.com/page-not-found.html [R=301,L]
+
+RewriteRule ^/web/vmware/partnerenroll$  https://www.vmware.com/page-not-found.html [R=301,L]
+
+#TKT2956804
+RewriteCond %{QUERY_STRING} p=vmc-aws-19-new-hol
+RewriteRule /en/web/vmware/evalcenter   /en/web/vmware/evalcenter?p=vmc-on-aws-lightning-20-hol [R=301,L]
+	
+RewriteCond %{QUERY_STRING} p=vmc-aws-19-new-hol
+RewriteRule /de/web/vmware/evalcenter   /en/web/vmware/evalcenter?p=vmc-on-aws-lightning-20-hol [R=301,L]
+
+
+RewriteCond %{QUERY_STRING} p=vmc-aws-19-new-hol
+RewriteRule /fr/web/vmware/evalcenter   /en/web/vmware/evalcenter?p=vmc-on-aws-lightning-20-hol [R=301,L]
+
+
+RewriteCond %{QUERY_STRING} p=vmc-aws-19-new-hol
+RewriteRule /jp/web/vmware/evalcenter   /en/web/vmware/evalcenter?p=vmc-on-aws-lightning-20-hol [R=301,L]
+
+#========= Rewrite Rules for MyVMware IDP begin ===============
+RewriteCond %{REQUEST_URI} ^/group/vmware/idp/auth/reply?$
+RewriteCond %{HTTP_COOKIE} ObSSOCookie [NC]
+RewriteCond %{HTTP_COOKIE} !ObSSOCookie=loggedoutcontinue [NC]
+RewriteRule ^/group/vmware/idp/auth/reply(.*)$	https://svcgw.vmware.com/services/idp/SAML/POST$1 [R,L]
+#========= Rewrite Rules for MyVMware IDP end ===============
+
+#TKT2491416
+RewriteRule ^/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/1_0$ /en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/4_0 [R=301,NE,NC,L]
+
+#TKT2424166
+RewriteRule ^/en/web/vmware/info/slug/datacenter_cloud_infrastructure/vmware_vcloud_director/5_5   https://my.vmware.com/web/vmware/info?slug=datacenter_cloud_infrastructure/vmware_vcloud_director/9_0  [R=301,NE,NC,L]
+
+RewriteCond %{QUERY_STRING} slug=datacenter_cloud_infrastructure/vmware_vcloud_director/8_0
+RewriteRule /web/vmware/info  https://my.vmware.com/web/vmware/info?slug=datacenter_cloud_infrastructure/vmware_vcloud_director/9_0 [R=301,L]
+
+
+RewriteCond %{QUERY_STRING}  productId=356&downloadGroup=VCD_556
+RewriteRule /web/vmware/details  https://my.vmware.com/web/vmware/info?slug=datacenter_cloud_infrastructure/vmware_vcloud_director/9_0 [R=301,L]
+
+
+#TKT2649119
+RewriteRule ^/en/web/vmware/info/slug/datacenter_cloud_infrastructure/vmware_vsphere_with_operations_management/6_7$ /en/web/vmware/evalcenter?p=vsphere-eval&src=WWW_us_VMW_XfK4FDRuqSPE01Y7isJw [R=301,NE,NC,L]
+
+
+#TKT2677731
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_12$   https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_11$   https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_10$   https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_9$    https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_8$    https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_7$    https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_6$    https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_5$    https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+RewriteRule ^/en/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_flex/1_0$    https://www.vmware.com/products/horizon.html [R=301,NE,NC,L]
+
+
+#TKT2640844
+RewriteCond %{QUERY_STRING} p=vsom-adv-18-hol&pvendorapp=zift&pid=ff808181560b36d401562da8d4c5517f&cid=70180000000wLR2&pwid=ff8081815bb5aecf015bca05263e4c40&cm_mmc=Vanity-_-Retail-_-NA-_-N&cm_mmc=Vanity-_-Publications-_-Menu-_-All&get=THE-NEW-MICROSOFT-OFFICE-2013&url=search/Networking-Products/Network-Optimization-Appliances/%252525252525253Fw=NB=&zPage=Products-Detail-e6e40132&zContent=VMware-Integrated-OpenStack---EN-ec6c40ca
+RewriteRule ^/web/vmware/evalcenter$   https://www.vmware.com/go/try-vsphere-hol  [R=301,L,QSD]
+
+
+
+#Ticket18694284901
+RewriteRule ^/(en|de|fr|zh|ja|ko)/group/vmware/info/slug/infrastructure_operations_management/vmware_vrealize_operations/6_0    /$1/group/vmware/info/slug/infrastructure_operations_management/vmware_vrealize_operations/6_6 [R=301,L]
+RewriteRule ^/group/vmware/info/slug/infrastructure_operations_management/vmware_vrealize_operations/6_0    /group/vmware/info/slug/infrastructure_operations_management/vmware_vrealize_operations/6_6 [R=301,L]
+
+#===================== Rewrite Rules for downloads begin========================
+RewriteRule ^/(web|group)/vmware/info/slug/(.*)$     /$1/vmware/info?slug=$2
+RewriteRule ^/(web|group)/vmware/details/(.*)/(.*)$  /$1/vmware/details?dlg=$2&baseCode=$3
+RewriteRule ^/downloads.*$    /web/vmware/downloads [R=301,L]
+RewriteRule ^/download.*$     /web/vmware/downloads [R=301,L]
+RewriteRule ^/(en|de|fr|zh|ja|ko)/downloads.*$       $1/web/vmware/downloads [R=301,L]
+RewriteRule ^/(en|de|fr|zh|ja|ko)/download.*$        $1/web/vmware/downloads [R=301,L]
+	
+#Allow only reconginised locales by myvmware
+RewriteCond %{REQUEST_URI}  !^/(en|de|fr|cn|zh|ja|jp|ko|kr)/(web|group)/vmware/.*$
+RewriteRule ^/(.*)/(web|group)/vmware/(.*)$     /$2/vmware/$3 [R=301,L]
+
+
+#===================== Rewrite Rules for downloads end========================
+
+#TKT2053309#RFC#231344
+RewriteRule ^/en/web/vmware/info/slug/application_platform/vmware_vfabric_data_director/2_0$    https://www.vmware.com/products/vfabric-data-director.html [R=301,L]
+
+#TKT2055745
+RewriteCond %{QUERY_STRING} downloadGroup=VFDD_101&productId=244&rPId=2223
+RewriteRule /web/vmware/details  https://www.vmware.com/products/vfabric-data-director.html? [R=301,L]
+
+RewriteCond %{QUERY_STRING} slug=application_platform/vmware_vfabric_data_director/1_0
+RewriteRule /web/vmware/info  https://www.vmware.com/products/vfabric-data-director.html? [R=301,L]
+
+
+#7/15/2016 Zeus Launch
+#==================Rewrite rules for AEM forwards=====================================
+RewriteRule ^/content/dam/(.*)$                     http://www-cms-prod.vmware.com/content/dam/$1 [L,P]
+RewriteRule ^/bin/vmware/template/(.*)$             http://www-cms-prod.vmware.com/bin/vmware/template/$1 [L,P]
+RewriteRule ^/etc/clientlibs/vmwaredevapp/(.*)$     http://www-cms-prod.vmware.com/etc/clientlibs/vmwaredevapp/$1 [L,P]
+
+
+# HZ1461383
+
+RewriteRule ^/jp/web/vmware/web/vmware/downloads(/?|\.html)$    /jp/web/vmware/downloads [R=301,L]
+
+RewriteRule ^(/(ap|ar|at|au|be\/fr|be\/nl|br|ca\/en|ca\/fr|ch|cl|cn|co|cz|de|es|eu|fr|hu|il|in|it|jp|kr|latam|me|mena|mx|nl|nz|pe|pl|se|ru|tr|tw|uk|ve))?/web/vmware/free%23desktop_end_user_computing/vmware_player/5_0(/?|\.html)$        $1/web/vmware/free#desktop_end_user_computing/vmware_player/5_0  [R=301,L]
+
+
+#DMR-3275
+
+RewriteRule ^(/(fr|de|cn|jp|kr))?/googlef66707900cef5be9.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlef66707900cef5be9.html [L,P]
+
+#TKT2039904
+RewriteRule ^/google1e2f6d16c45e6a16.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google1e2f6d16c45e6a16.html [L,P]
+RewriteRule ^/google3af1b44afff7e0ac.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google3af1b44afff7e0ac.html [L,P]
+RewriteRule ^/google5c491a1c527ac4ad.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google5c491a1c527ac4ad.html [L,P]
+RewriteRule ^/google6dbcc7364418703b.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google6dbcc7364418703b.html [L,P]
+RewriteRule ^/google7fb2acdae2b48b93.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google7fb2acdae2b48b93.html [L,P]
+RewriteRule ^/google9c7ce657c2981098.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google9c7ce657c2981098.html [L,P]
+RewriteRule ^/google48bb18397736f515.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google48bb18397736f515.html [L,P]
+RewriteRule ^/google96d73a0d78a72337.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google96d73a0d78a72337.html [L,P]
+RewriteRule ^/google00616f68b2a5ce2a.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google00616f68b2a5ce2a.html [L,P]
+RewriteRule ^/google925dbb0cc46d131c.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google925dbb0cc46d131c.html [L,P]
+RewriteRule ^/google6822cd6c4e6e416b.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google6822cd6c4e6e416b.html [L,P]
+RewriteRule ^/google868567abd94da14b.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google868567abd94da14b.html [L,P]
+RewriteRule ^/google453234389386a14a.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google453234389386a14a.html [L,P]
+RewriteRule ^/googlea679ae8c24a0af03.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlea679ae8c24a0af03.html [L,P]
+RewriteRule ^/googled4ea4333560c817e.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googled4ea4333560c817e.html [L,P]
+RewriteRule ^/googlee0be4c0f16e627bc.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlee0be4c0f16e627bc.html [L,P]
+RewriteRule ^/googlee02b554e288045cc.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlee02b554e288045cc.html [L,P]
+RewriteRule ^/googlee671c49271c6ee74.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlee671c49271c6ee74.html [L,P]
+RewriteRule ^/googlef37b02c3af304100.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlef37b02c3af304100.html [L,P]
+RewriteRule ^/googlef529d8509ff0a48a.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlef529d8509ff0a48a.html [L,P]
+RewriteRule ^/googlef4102b4d0cb1ffc5.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/googlef4102b4d0cb1ffc5.html [L,P]
+RewriteRule ^/google97debc0716c26fe8.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google97debc0716c26fe8.html [L,P]
+RewriteRule ^/google744a6ac821966187.html$  http://www-cms-prod.vmware.com/content/dam/digitalmarketing/vmware/en/files/templates/inc/google744a6ac821966187.html [L,P]
+
+
+#TKT2395273
+RewriteCond %{QUERY_STRING} p=vmware-vsphere5-ent
+RewriteRule ^/web/vmware/evalcenter$   https://my.vmware.com/en/web/vmware/evalcenter?p=vsphere-eval&src=WWW_vSphere_BM_Try_Eval_US_PLP_TNT_ExpB_DownloadNow&cid=70134000001K1bH  [R=301,L,QSD]
+
+###Liferay Upgrade
+RewriteRule ^/eppenroll.*$    /web/vmware/eppenroll [R=301,L]
+RewriteRule ^/elaib.*$    /web/vmware/elaib [R=301,L]
+
+## ASD-456 Fix
+RewriteRule ^/c/portal/login    https://my.vmware.com/web/vmware/login [R=301,L]
+
+#========== Support Hub =======#
+
+#SupportHub Proxy Pass
+<LocationMatch "^/supporthub(.*)" >
+ProxyErrorOverride off
+ProxyPreserveHost off
+</LocationMatch>
+RewriteRule ^/supporthub(.*) https://supporthub.apps.itcna.vmware.com$1 [NC,L,P]
+
+##########MSM Changes - Start##############
+<LocationMatch "^/channel/" >
+ProxyPreserveHost Off
+ProxyErrorOverride off
+</LocationMatch>
+RewriteRule ^/channel(.*)$ https://apigateway-myvmware.apps.itcna.vmware.com/vmw$1 [NC,L,P]
+
+<LocationMatch "^/vmwauth/" >
+ProxyPreserveHost Off
+ProxyErrorOverride off
+</LocationMatch>
+RewriteRule ^/vmwauth(.*)$ https://oauth-server-basic.apps.itcna.vmware.com$1 [NC,L,P]
+
+<LocationMatch "^/captcha/" >
+ProxyPreserveHost Off
+ProxyErrorOverride off
+</LocationMatch>
+RewriteRule ^/captcha$ /captcha/ [R]
+RewriteRule ^/captcha/(.*)$ https://apigateway-myvmware.apps.itcna.vmware.com/captcha/$1 [QSA,L,P]
+
+<LocationMatch "^/support/" >
+ProxyPreserveHost Off
+ProxyErrorOverride off
+</LocationMatch>
+RewriteRule ^/support(.*)$ https://apigateway-myvmware.apps.itcna.vmware.com/support$1 [NC,L,P]
+
+#============================= MyVMware Terms of use =================================#
+RewriteCond %{REQUEST_URI} ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/terms-of-use
+RewriteCond %{HTTP_COOKIE}   !TERMS_OF_USE
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/terms-of-use(.*)  https://my.vmware.com/channel/$1/auth/login$2 [NC,L]
+ 
+RewriteCond %{REQUEST_URI} ^/group/vmware/terms-of-use
+RewriteCond %{HTTP_COOKIE}   !TERMS_OF_USE
+RewriteRule   ^/group/vmware/terms-of-use(.*)  https://my.vmware.com/channel/auth/login$1 [NC,L]
+#=================================================================================#
+ 
+#====== Rewrite rules to check Access Token Cookie and redirect to login if not present ======================#
+
+RewriteCond %{REQUEST_URI} ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/(home|profile|support-entitlement|my-licenses)
+RewriteCond %{QUERY_STRING} ^(.*)
+RewriteCond %{HTTP_COOKIE} !access_token
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/(home|profile|support-entitlement|my-licenses)(.*)  https://my.vmware.com/channel/$1/auth/login?resource_url=%{REQUEST_SCHEME}://%{HTTP_HOST}%{REQUEST_URI}?%1 [B,NC,L]
+
+RewriteCond %{REQUEST_URI} ^/group/vmware/(home|profile|support-entitlement|my-licenses)
+RewriteCond %{QUERY_STRING} ^(.*)
+RewriteCond %{HTTP_COOKIE}  !access_token
+RewriteRule ^/group/vmware/(home|profile|support-entitlement|my-licenses)(.*)  https://my.vmware.com/channel/auth/login?resource_url=%{REQUEST_SCHEME}://%{HTTP_HOST}%{REQUEST_URI}?%1 [B,NC,L]
+#==============================================================================================================#
+
+RewriteRule ^/web/vmware/api/(.*)   /www/assets/ui/api/$1 [NC,L]
+
+
+#==================== Browser Caching suppression & OAMAuthnCookie_GBL Cookie Generation =================#
+
+<LocationMatch "^(/(en|de|fr|zh|ja|jp|cn))?/group/vmware/(home|profile|support-entitlement|my-licenses)" >
+  Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+</LocationMatch>
+
+<LocationMatch "^(/(en|de|fr|zh|ja|jp|cn))?/group/vmware/(home|profile|support-entitlement|my-licenses)" >
+  SetEnvIf Cookie "OAMAuthnCookie=([^;]+)" OAMAuthnCookieValue=$1
+  Header add Set-Cookie "OAMAuthnCookie_GBL=%{OAMAuthnCookieValue}e;domain=.vmware.com;path=/;secure;HttpOnly"
+</LocationMatch>
+
+#==============================================================================================================#
+
+#==================== Rewrite rule for localization Based on pszGeoPref Cookie =================#
+
+##### /group/vmware/** pages ######
+RewriteCond %{HTTP_COOKIE} pszGeoPref=([^;]+)
+RewriteCond %{HTTP_COOKIE} !pszGeoPref=(us|en)
+RewriteRule ^/group/vmware/(profile|terms-of-use|home|support-entitlement|my-licenses)(.*)   /%1/group/vmware/$1$2 [R=302,L]
+
+##### /web/vmware/** pages ######
+RewriteCond %{HTTP_COOKIE} pszGeoPref=([^;]+)
+RewriteCond %{HTTP_COOKIE} !pszGeoPref=(us|en)
+RewriteRule ^/web/vmware/(login|forgot-password|resetpassword|home|activationbeforeauth|activation|mfa|troubleshoot-mfa|resetemailaddress|registration)(.*)   /%1/web/vmware/$1$2 [R=301,L]
+#==============================================================================================#
+
+#======================== Rewrite rules for Support Entitlement Redirect ===============================#
+RewriteCond %{REQUEST_URI} ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/support-contract-history
+RewriteCond %{QUERY_STRING} (_VM_contractHistory|_contractHistoryPortlet_WAR_iceportal_contractHistory) [NC]
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/support-contract-history(.*)  https://my.vmware.com/$1/group/vmware/support-entitlement?contractHistory=true [NC,L]
+ 
+RewriteCond %{REQUEST_URI} ^/group/vmware/support-contract-history
+RewriteCond %{QUERY_STRING} (_VM_contractHistory|_contractHistoryPortlet_WAR_iceportal_contractHistory) [NC]
+RewriteRule ^/group/vmware/support-contract-history(.*)  https://my.vmware.com/group/vmware/support-entitlement?contractHistory=true [NC,L]
+ 
+RewriteCond %{REQUEST_URI} ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/support-contract-history
+RewriteCond %{QUERY_STRING} _VM_contractID [NC]
+RewriteCond %{QUERY_STRING} _VM_contractStatus [NC]
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/support-contract-history(.*)  https://my.vmware.com/$1/group/vmware/support-entitlement/view-contract-details [QSA,NC,L]
+ 
+RewriteCond %{REQUEST_URI} ^/group/vmware/support-contract-history
+RewriteCond %{QUERY_STRING} _VM_contractID [NC]
+RewriteCond %{QUERY_STRING} _VM_contractStatus [NC]
+RewriteRule ^/group/vmware/support-contract-history(.*)  https://my.vmware.com/group/vmware/support-entitlement/view-contract-details [QSA,NC,L]
+
+RewriteCond %{REQUEST_URI} ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/support-contracts
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/support-contracts(.*)  https://my.vmware.com/$1/group/vmware/support-entitlement [QSA,L]
+ 
+RewriteCond %{REQUEST_URI} ^/group/vmware/support-contracts
+RewriteRule ^/group/vmware/support-contracts(.*)  https://my.vmware.com/group/vmware/support-entitlement [QSA,L]
+
+# Fix for MSM-2325 defect
+#RewriteCond %{REQUEST_URI} ^/(de|fr|zh|ja|jp|cn)support-contract-history
+#RewriteCond %{QUERY_STRING} _VM_action [NC]
+#RewriteCond %{QUERY_STRING} _VM_contractID [NC]
+#RewriteCond %{QUERY_STRING} _VM_contractStatus [NC]
+#RewriteCond %{QUERY_STRING} _VM_selectedEANumber [NC]
+#RewriteRule ^/(de|fr|zh|ja|jp|cn)support-contract-history(.*)  https://my.vmware.com/$1/group/vmware/support-entitlement/view-contract-details [QSA,NC,L]
+#=========================================================================================================#
+
+
+
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/group/vmware/home   /www/assets/ui/home/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/group/vmware/terms-of-use   /www/assets/ui/home/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/group/vmware/support-entitlement   /www/assets/ui/home/index.html [NC,L]
+RewriteRule ^/group/vmware/i18n(.*)    /www/assets/ui/home/i18n/$1 [NC,L]
+RewriteRule ^/group/vmware/assets(.*)  /www/assets/ui/home/assets/$1 [NC,L]
+RewriteRule ^/group/vmware/(.*)\.js$   /www/assets/ui/home/$1.js [NC,L]
+RewriteRule ^/group/vmware/(.*)\.css$  /www/assets/ui/home/$1.css [NC,L]
+RewriteRule ^/group/vmware/(.*)\.map$  /www/assets/ui/home/$1.map [NC,L]
+RewriteRule ^/group/vmware/favicon.ico https://my.vmware.com/files/templates/images/favicon.ico [R=301,L]
+
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/home   /www/assets/ui/login/index.html [NC,L]
+RewriteCond %{QUERY_STRING} !(p_p_resource_id)
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/login  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/forgot-password  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/resetpassword  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/mfa  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/troubleshoot-mfa  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/invalid-action  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/registration  /www/assets/ui/login/index.html [NC,L]
+
+##Profile
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/group/vmware/profile   /www/assets/ui/home/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/resetemailaddress   /www/assets/ui/login/index.html [NC,L]
+
+##Activation
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/inactiveaccount  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/activationbeforeauth  /www/assets/ui/login/index.html [NC,L]
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/web/vmware/activation  /www/assets/ui/login/index.html [NC,L]
+
+#Licenses
+RewriteRule ^(/(en|de|fr|zh|ja|jp|cn))?/group/vmware/my-licenses   /www/assets/ui/home/index.html [NC,L]
+
+##Login
+RewriteRule ^/web/vmware/i18n(.*)  /www/assets/ui/login/i18n/$1 [NC,L]
+RewriteRule ^/web/vmware/(.*)\.js$ /www/assets/ui/login/$1.js [NC,L]
+RewriteRule ^/web/vmware/(.*)\.css$ /www/assets/ui/login/$1.css [NC,L]
+RewriteRule ^/web/vmware/(.*)\.map$ /www/assets/ui/login/$1.map [NC,L]
+RewriteRule ^/web/vmware/favicon.ico https://my.vmware.com/files/templates/images/favicon.ico [R=301,L]
+RewriteRule ^/web/vmware/assets/(.*) /www/assets/ui/login/assets/$1 [NC,L]
+
+##########MSM Changes - End#####################
+
+##CSP
+RewriteRule ^/web/csp/login  /web/csp/invalid-action [R=301,L]
+
+RewriteRule ^/web/csp/payment  /www/assets/ui/csp/payment.html [NC,L]
+RewriteRule ^/web/csp/addEditCard(.*)  /www/assets/ui/csp/addEditCard.html$1 [NC,L]
+RewriteRule ^/web/csp/i18n(.*)  /www/assets/ui/csp/i18n/$1 [NC,L]
+RewriteRule ^/web/csp/(.*)\.js$ /www/assets/ui/csp/$1.js [NC,L]
+RewriteRule ^/web/csp/(.*)\.css$ /www/assets/ui/csp/$1.css [NC,L]
+RewriteRule ^/web/csp/(.*)\.map$ /www/assets/ui/csp/$1.map [NC,L]
+RewriteRule ^/web/csp(.*)  /www/assets/ui/csp/index.html [NC,L]
+

@@ -1,0 +1,19 @@
+#!/bin/ruby
+
+# Tells which DC currently my.vmware.com is being served 
+# sharmasachin@vmware.com 
+# 10/19/2017
+
+require 'net/https'
+require 'uri'
+
+
+  url = URI.parse("https://107.154.106.19/web/csp/")
+  headers = { "host" => 'my-stage.vmware.com' }
+  http = Net::HTTP.new(url.host, url.port)
+ # http.set_debug_output $stderr
+   http.use_ssl = true
+   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+   resp = http.get(url.path, headers)
+   puts resp["DC-Instance"]
+

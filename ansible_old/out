@@ -1,0 +1,701 @@
+10.106.0.121,NO DNS Record,Linux,dev,"Ubuntu 16.04.1 LTS",NO history to login
+10.106.0.182,NO DNS Record,Linux,dev,"Ubuntu 16.04.1 LTS",NO history to login
+10.107.46.188,blr7-7th-dhcp-46-188.eng.vmware.com.,PASSWORD:NON_MATCH
+10.108.160.129,NO DNS Record,Linux,localhost.localdom,"Ubuntu 14.04.1 LTS",NO history to login
+10.108.160.130,NO DNS Record,Linux,prome-mdt-dhcp412,"Ubuntu 14.04 LTS",root     pts/2        10.113.82.123    Wed Jan 11 19:51 - 19:52  (00:00)    
+10.108.160.16,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.160.193,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.160.194,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.160.215,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.160.233,NO DNS Record,Linux,PBVpnGw2,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.160.60,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.156,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.183,NO DNS Record,Linux,Ubuntu1804Server,"Ubuntu 18.04 LTS",NO history to login
+10.108.161.190,NO DNS Record,Linux,LinuxRouter,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.220,NO DNS Record,Linux,RBVpnGw2,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.226,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.40,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.49,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.93,NO DNS Record,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.161.98,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.162.119,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.162.235,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.162.25,NO DNS Record,Linux,RBVpnGw1,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.162.29,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.162.8,NO DNS Record,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO history to login
+10.108.53.55,NO DNS Record,Linux,lin-1-ubuntu-16,"Ubuntu 16.04.5 LTS",reboot   system boot  4.4.0-131-generi Tue Jan 31 10:54   still running
+10.108.55.225,NO DNS Record,Linux,nimbus-nfsserver,"Ubuntu 14.04.2 LTS",NO history to login
+10.108.55.226,NO DNS Record,Linux,nimbus-nfsserver,"Ubuntu 14.04.2 LTS",NO history to login
+10.110.113.124,colo-vshield7-dhcp-113-124.eng.vmware.com.,Linux,nimbus-iscsitemplate,"Ubuntu precise (12.04.5 LTS)",NO history to login
+10.110.113.169,colo-vshield7-dhcp-113-169.eng.vmware.com.,Linux,nimbus-iscsitemplate,"Ubuntu precise (12.04.5 LTS)",NO history to login
+10.110.120.167,bjstlab2-esxi3-ilo.eng.vmware.com.,Dell iDRAC
+10.110.120.236,yanchaozhang-ilo01.eng.vmware.com.,Dell iDRAC
+10.110.121.19,bjstlab2-esxi2-ilo.eng.vmware.com.,Dell iDRAC
+10.110.165.242,,PASSWORD:NON_MATCH
+10.110.166.196,sha1-hs1-r0716-ilo.eng.vmware.com.,Dell iDRAC
+10.110.83.104,NO DNS Record,Linux,systest-runner,"Ubuntu 18.04.6 LTS",root     pts/0        10.104.45.0      Mon Mar 21 07:08 - 07:08  (00:00)
+10.110.9.2,blrcolo-vshield4-dhcp-2.eng.vmware.com.,Linux,dev,"Ubuntu 14.04.1 LTS",NO history to login
+10.111.216.147,sin2-eeiopek26-ilo.eng.vmware.com.,Dell iDRAC
+10.114.10.140,prmh-nsx-mgmt-dhcp-10-140.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO history to login
+10.114.10.141,prmh-nsx-mgmt-dhcp-10-141.eng.vmware.com.,Linux,vdnet-shaolan,"Ubuntu 14.04.1 LTS",NO history to login
+10.114.10.162,prmh-nsx-mgmt-dhcp-10-162.eng.vmware.com.,Linux,vd-enr2,"Ubuntu 14.04.1 LTS",reboot   system boot  3.13.0-36-generi Mon Jul 19 23:39 - 13:17 (560+13:37) 
+10.114.10.181,prmh-nsx-mgmt-dhcp-10-181.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",root     pts/0        10.188.147.113   Tue Jul  6 15:49 - 15:51  (00:01)    
+10.114.10.199,prmh-nsx-mgmt-dhcp-10-199.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO history to login
+10.114.11.167,prmh-nsx-mgmt-dhcp-11-167.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO history to login
+10.114.11.208,prmh-nsx-mgmt-dhcp-11-208.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO history to login
+10.114.11.212,prmh-nsx-mgmt-dhcp-11-212.eng.vmware.com.,Linux,loki,"Ubuntu 18.04.2 LTS",root     pts/0        10.166.131.161   Wed Jul 21 10:38    gone - no logout
+10.114.11.221,prmh-nsx-mgmt-dhcp-11-221.eng.vmware.com.,Linux,perf,"Ubuntu 18.04.4 LTS",NO history to login
+10.114.11.7,prmh-nsx-tor-mg-7.eng.vmware.com.,Linux,odin,"Ubuntu 16.04.2 LTS",NO history to login
+10.114.43.184,DEAD
+10.114.43.185,DEAD
+10.115.40.48,prme-hs2-m0506.eng.vmware.com.,PASSWORD:NON_MATCH
+10.115.41.163,prme-hs2-l1107.eng.vmware.com.,HOST:ESXi Server
+10.115.93.41,prmb-evc2-dhcp-93-41.eng.vmware.com.,PASSWORD:NON_MATCH
+10.117.13.182,,Dell iDRAC
+10.117.161.10,hol-10-117-161-10.eng.vmware.com.,Dell iDRAC
+10.117.161.63,scanci-client18.eng.vmware.com.,Dell iDRAC
+10.117.162.118,,Dell iDRAC
+10.117.163.103,,Dell iDRAC
+10.117.163.55,,Dell iDRAC
+10.117.169.126,pek2-office-9th-10-117-169-126.eng.vmware.com.,Dell iDRAC
+10.117.169.235,pek2-office-9th-10-117-169-235.eng.vmware.com.,Dell iDRAC
+10.117.206.126,,Dell iDRAC
+10.117.206.41,,Dell iDRAC
+10.117.24.98,remote-experience-dev.eng.vmware.com.,PASSWORD:NON_MATCH
+10.117.4.205,pek2-office-04-dhcp205.eng.vmware.com.,Linux,dev,"Ubuntu 16.04.1 LTS",root     pts/0        10.117.4.175     Tue Jan 31 01:09   still logged in
+10.117.6.126,edgeqe-bj-03.eng.vmware.com.,Dell iDRAC
+10.117.81.176,DEAD
+10.118.144.158,vmb-mon-skl2-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.26,goggine-test-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.39,mbisson-dev-idrac01.eng.vmware.com.,Dell iDRAC
+10.118.144.65,etwietmeyer-devs-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.67,isokolinski-devs-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.69,jeffwong-devs-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.73,mduggan-devs-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.76,ndutko-devs-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.93,nephele2-devs-ilo.eng.vmware.com.,Dell iDRAC
+10.118.144.97,vvatnikov-devs-ilo.eng.vmware.com.,Dell iDRAC
+10.118.149.21,x86-tester0-ilo.eng.vmware.com.,Dell iDRAC
+10.118.149.53,bos3-floor2-dhcp-149-53.eng.vmware.com.,Dell iDRAC
+10.118.151.149,bos3-floor2-dhcp-151-149.eng.vmware.com.,Dell iDRAC
+10.118.75.157,,PASSWORD:NON_MATCH
+10.118.78.54,,PASSWORD:NON_MATCH
+10.118.78.58,NO DNS Record,Linux,bootstrapper,"VMware Photon OS/Linux",root     pts/0        10.117.183.26    Mon Oct 10 06:28 - 06:35  (00:06)
+10.126.120.11,DEAD
+10.126.120.12,DEAD
+10.128.164.18,w3-nsxt-bitw-esxi2-ilo.net.vmware.com.,Dell iDRAC
+10.128.164.19,w3-nsxt-bitw-esxi3-ilo.net.vmware.com.,Dell iDRAC
+10.128.166.11,wdc-prod-mgr1-idr.vmware.com.,Dell iDRAC
+10.128.166.12,wdc-prod-mgr2-idr.vmware.com.,Dell iDRAC
+10.128.166.13,wdc-prod-mgr3-idr.vmware.com.,Dell iDRAC
+10.128.166.14,wdc-prod-mgr4-idr.vmware.com.,Dell iDRAC
+10.128.166.16,wdc-prod-edge2-idr.vmware.com.,Dell iDRAC
+10.134.214.206,DEAD
+10.143.17.183,DEAD
+10.143.17.235,wdc-vpg-vlan1-dhcp235.eng.vmware.com.,PASSWORD:NON_MATCH
+10.144.117.160,w2-haas01-esx1160.eng.vmware.com.,HOST:ESXi Server
+10.144.117.161,w2-haas01-esx1161.eng.vmware.com.,HOST:ESXi Server
+10.144.137.208,wdc-vsphere-cf-fvt-137-dhcp208.eng.vmware.com.,Linux,wdc-vsphere-cf-fvt-137-dhcp208.eng.vmware.com,"Ubuntu 20.04.2 LTS",root     pts/0        10.201.49.253    Wed Sep 21 17:55 - 20:23  (02:28)
+10.148.143.97,NO DNS Record,Linux,base-linux,"Ubuntu 16.04.5 LTS",NO history to login
+10.148.214.240,vcst-vcloud-240.eng.vmware.com.,PASSWORD:NON_MATCH
+10.148.216.4,DEAD
+10.148.216.6,eve-standalone.eng.vmware.com.,HOST:NON_RETURN
+10.148.216.8,eve.eng.vmware.com.,HOST:NON_RETURN
+10.148.219.102,DEAD
+10.152.188.235,DEAD
+10.152.191.2,DEAD
+10.152.191.5,DEAD
+10.152.59.32,,PASSWORD:NON_MATCH
+10.152.8.69,vcac152-008-069.eng.vmware.com.,HOST:NON_RETURN
+10.153.134.13,NO DNS Record,Linux,RedHatEnter-001,,NO history to login
+10.155.183.131,wdc-pod3-perf-esxi-dhcp-10-155-183-131.eng.vmware.com.,PASSWORD:NON_MATCH
+10.156.216.203,wdc-pod2-nsbust-vm-dhcp-216-203.eng.vmware.com.,Linux,no,"Red Hat Enterprise Linux Server 7.1 (Maipo)",root     pts/2        10.128.202.150   Thu Jun 18 09:03 - 09:03  (00:00)    
+10.156.223.102,wdc-pod2-nsbust-vm-dhcp-223-102.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",root     pts/1        10.104.0.61      Wed Oct  6 03:44    gone - no logout 
+10.157.0.85,DEAD
+10.157.46.166,NO DNS Record,Linux,euc-ubuntu-64a,"Ubuntu 16.04.4 LTS",reboot   system boot  4.4.0-116-generi Fri Apr 29 15:33   still running
+10.158.130.183,goat183.eng.vmware.com.,Linux,template,"CentOS Linux 7 (Core)",root     pts/0        10.84.200.161    Fri Apr 15 15:26 - 15:28  (00:01)    
+10.158.140.229,,HOST:NON_RETURN
+10.159.13.231,w1-perf-h01-ilo.eng.vmware.com.,Dell iDRAC
+10.17.109.200,ib-aus-office-200.eng.vmware.com.,Dell iDRAC
+10.17.131.186,serial-prmb-ras-g04.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.103.240,sc2-haas01-general--103-240.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.123.104,sc2-nsbu-dfw-dhcp-123-104.eng.vmware.com.,HOST:ESXi Server
+10.172.149.251,NO DNS Record,Linux,10.172.149.251,"Ubuntu 18.04.2 LTS",NO history to login
+10.172.149.254,NO DNS Record,Linux,10.172.149.254,"Ubuntu 18.04.2 LTS",NO history to login
+10.172.150.117,NO DNS Record,Linux,10.172.150.117,"Ubuntu 18.04.2 LTS",NO history to login
+10.172.150.132,NO DNS Record,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO history to login
+10.172.150.31,NO DNS Record,Linux,10.172.150.31,"Ubuntu 18.04.2 LTS",NO history to login
+10.172.150.34,NO DNS Record,Linux,10.172.150.34,"Ubuntu 18.04.2 LTS",NO history to login
+10.172.150.38,NO DNS Record,Linux,10.172.150.38,"Ubuntu 18.04.2 LTS",NO history to login
+10.172.150.85,NO DNS Record,Linux,10.172.150.85,"Ubuntu 18.04.2 LTS",NO history to login
+10.172.151.197,DEAD
+10.172.177.167,sc2-nsbu-dfw-dhcp-177-167.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.179.79,DEAD
+10.172.191.239,DEAD
+10.172.20.27,NO DNS Record,Linux,w1-st-dhcp-18-125.eng.vmware.com,"Ubuntu 14.04.1 LTS",NO history to login
+10.172.20.63,,PASSWORD:NON_MATCH
+10.172.208.60,sc2-hs2-b2120.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.213.125,sc2-hs2-gfx-dhcp-125.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.50.27,sc2-nsbu-cqe-dhcp-50-027.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.50.73,sc2-nsbu-cqe-dhcp-50-073.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.51.135,sc2-nsbu-cqe-dhcp-51-135.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.51.184,sc2-nsbu-cqe-dhcp-51-184.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.51.204,sc2-nsbu-cqe-dhcp-51-204.eng.vmware.com.,Linux,jolt-runner,"Ubuntu 18.04.2 LTS",root     pts/1        10.104.53.164    Thu Apr  7 08:31    gone - no logout
+10.172.51.33,sc2-nsbu-cqe-dhcp-51-33.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.51.50,sc2-nsbu-cqe-dhcp-51-50.eng.vmware.com.,Linux,no,"Ubuntu 16.04 LTS",root     pts/0        10.203.75.47     Mon Sep 26 20:38 - 21:39 (4+01:01)
+10.172.51.51,sc2-nsbu-cqe-dhcp-51-51.eng.vmware.com.,PASSWORD:NON_MATCH
+10.17.26.5,eng26-dhcp5.eng.vmware.com.,PASSWORD:NON_MATCH
+10.172.66.45,,PASSWORD:NON_MATCH
+10.172.90.142,NO DNS Record,Linux,Maas-DBServer02,"CentOS Linux 7 (Core)",root     :0           :0               Sat Jan 15 17:32   still logged in   
+10.172.90.60,,PASSWORD:NON_MATCH
+10.173.177.197,,PASSWORD:NON_MATCH
+10.173.177.216,NO DNS Record,Linux,ubuntu18dev1,"Ubuntu 18.04.4 LTS",NO history to login
+10.173.183.197,sc2-hs2-183-197.eng.vmware.com.,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO history to login
+10.173.211.227,sc2-nsbu-cqe-1248-dhcp-211-227.eng.vmware.com.,PASSWORD:NON_MATCH
+10.173.217.165,sc2-hs2-dfw-dhcp-217-165.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",abrao    pts/1        :pts/0:S.0       Fri Apr  8 17:12 - 19:24  (02:12)
+10.173.236.237,sc2-hs2-nsbu-pune-02-237.eng.vmware.com.,Linux,sc2-hs2-nsbu-pune-02-237,"Ubuntu 18.04.2 LTS",NO history to login
+10.173.236.238,sc2-hs2-nsbu-pune-02-238.eng.vmware.com.,Linux,sc2-hs2-nsbu-pune-02-238,"Ubuntu 18.04.2 LTS",NO history to login
+10.173.249.181,DEAD
+10.173.45.189,sc2-nsbu-cqe-dhcp-45-189.eng.vmware.com.,PASSWORD:NON_MATCH
+10.173.70.32,sc2-hs2b-dhcp-70-32.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",zhengy   pts/0        10.173.70.20     Fri Nov 11 07:56 - 22:49 (6+14:52)
+10.173.71.78,sc2-hs2b-dhcp-71-78.eng.vmware.com.,Linux,sc2-hs2b-dhcp-71-78.eng.vmware.com,"Ubuntu 14.04.1 LTS",reboot   system boot  3.13.0-36-generi Tue Nov  1 14:29 - 14:04 (90+23:34)  
+10.173.72.125,DEAD
+10.174.120.10,,PASSWORD:NON_MATCH
+10.174.120.17,,PASSWORD:NON_MATCH
+10.174.120.37,,PASSWORD:NON_MATCH
+10.174.120.53,,PASSWORD:NON_MATCH
+10.174.120.73,,PASSWORD:NON_MATCH
+10.174.120.8,,PASSWORD:NON_MATCH
+10.174.120.81,,PASSWORD:NON_MATCH
+10.174.121.39,,PASSWORD:NON_MATCH
+10.174.122.131,,PASSWORD:NON_MATCH
+10.174.122.153,,PASSWORD:NON_MATCH
+10.174.122.177,,PASSWORD:NON_MATCH
+10.174.122.188,,PASSWORD:NON_MATCH
+10.174.122.189,,PASSWORD:NON_MATCH
+10.174.122.204,,PASSWORD:NON_MATCH
+10.174.122.35,,PASSWORD:NON_MATCH
+10.174.123.10,,PASSWORD:NON_MATCH
+10.174.123.37,,PASSWORD:NON_MATCH
+10.174.131.127,DEAD
+10.174.138.201,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",kbhalgat pts/0        10.104.52.158    Thu Oct  6 05:10 - 05:32  (00:22)
+10.174.26.115,NO DNS Record,Linux,10.174.26.115,"Ubuntu 18.04.2 LTS",NO history to login
+10.174.26.118,NO DNS Record,Linux,10.174.26.118,"Ubuntu 18.04.2 LTS",NO history to login
+10.174.26.127,DEAD
+10.174.26.219,DEAD
+10.174.27.145,NO DNS Record,Linux,10.174.27.145,"Ubuntu 18.04.2 LTS",NO history to login
+10.174.27.148,NO DNS Record,Linux,10.174.27.148,"Ubuntu 18.04.2 LTS",NO history to login
+10.174.27.179,NO DNS Record,Linux,10.174.27.179,"Ubuntu 18.04.2 LTS",NO history to login
+10.174.27.181,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",kajjarap pts/2        :pts/4:S.0       Wed Oct 19 13:10 - 13:10  (00:00)
+10.174.27.211,NO DNS Record,Linux,TrffFOwIdwfKf,"Ubuntu 18.04.4 LTS",NO history to login
+10.174.27.212,NO DNS Record,Linux,s8M6ACWevuiPN,"Ubuntu 18.04.4 LTS",NO history to login
+10.174.27.213,DEAD
+10.174.27.214,NO DNS Record,Linux,V3M629s8UUSL0,"Ubuntu 18.04.4 LTS",NO history to login
+10.174.27.217,DEAD
+10.174.27.219,DEAD
+10.174.27.220,DEAD
+10.174.27.221,DEAD
+10.174.27.56,NO DNS Record,Linux,10.174.27.56,"Ubuntu 18.04.2 LTS",NO history to login
+10.175.26.33,sc2-srx345-a27-1.eng.vmware.com.,Juniper Device
+10.175.26.35,sc2-qfx5120-a27-1.eng.vmware.com.,PASSWORD:NON_MATCH
+10.175.26.36,sc2-qfx5120-a27-2.eng.vmware.com.,PASSWORD:NON_MATCH
+10.176.108.235,sc2-hs3-nsbu-rd-vm03-108-235.eng.vmware.com.,PASSWORD:NON_MATCH
+10.176.108.246,sc2-hs3-nsbu-rd-vm03-108-246.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",root     tty1                          Mon Oct 17 12:26   still logged in
+10.176.109.159,sc2-hs3-nsbu-rd-vm03-109-159.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",swp      pts/1        :pts/0:S.0       Wed Jul 20 19:46 - 20:15  (00:28)
+10.176.109.235,sc2-hs3-nsbu-rd-vm03-109-235.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",swp      pts/0        10.104.71.12     Wed Sep  7 20:08 - 20:45  (00:37)
+10.176.118.145,DEAD
+10.176.130.132,DEAD
+10.176.134.122,scdc2-vm-dhcp-134-122.eng.vmware.com.,Linux,scdc2-vm-dhcp-134-122.eng.vmware.com,"Ubuntu 20.04.2 LTS",root     pts/0        10.104.86.229    Wed Nov 23 05:26 - 05:28  (00:01)
+10.176.135.150,scdc2-vm-dhcp-135-150.eng.vmware.com.,PASSWORD:NON_MATCH
+10.176.135.153,scdc2-vm-dhcp-135-153.eng.vmware.com.,PASSWORD:NON_MATCH
+10.176.137.67,DEAD
+10.176.138.79,sc2-hs3-edge-l2l3-138-79.eng.vmware.com.,PASSWORD:NON_MATCH
+10.176.139.42,DEAD
+10.176.177.219,stut-sc2-177-219.vmware.com.,PASSWORD:NON_MATCH
+10.176.179.116,DEAD
+10.176.179.117,DEAD
+10.176.181.105,
+10.176.183.128,stut-sc2-183-128.vmware.com.,Linux,prome-mdt-dhcp412,"Ubuntu 14.04 LTS",root     pts/0        stut-sc2-180-198 Tue Jan 31 05:09 - 05:09  (00:00)    
+10.176.183.145,DEAD
+10.176.183.83,DEAD
+10.176.198.148,stlcm-198-148.eng.vmware.com.,PASSWORD:NON_MATCH
+10.176.199.210,stlcm-199-210.eng.vmware.com.,PASSWORD:NON_MATCH
+10.176.210.1,sc2-hs3-nsbu-ncp-dhcp--10-176-210-1.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",zhengshe pts/0        10.117.234.198   Tue Dec 13 10:49 - 11:51  (01:01)
+10.176.211.78,sc2-hs3-nsbu-ncp-dhcp--10-176-211-78.eng.vmware.com.,Linux,sc2-hs3-nsbu-ncp-dhcp--10-176-211-78,"Ubuntu 16.04.3 LTS",NO history to login
+10.176.25.159,sc2-hs3-nsbu-ncp-dhcp--25-159.eng.vmware.com.,Linux,sc2-hs3-nsbu-ncp-dhcp--25-159,"Ubuntu 20.04.1 LTS",root     pts/0        10.4.141.190     Tue Jun 29 10:29 - 10:31  (00:02)
+10.176.25.53,sc2-hs3-nsbu-ncp-dhcp--25-53.eng.vmware.com.,Linux,sc2-hs3-nsbu-ncp-dhcp--25-53,"Ubuntu 16.04.3 LTS",NO history to login
+10.17.70.94,,Dell iDRAC 
+10.188.4.192,sc2-prod-mgr2-idr.vmware.com.,Dell iDRAC 
+10.188.4.193,sc2-prod-mgr3-idr.vmware.com.,Dell iDRAC 
+10.196.1.124,DEAD
+10.196.112.53,w1-vvd-dhcp-53.eng.vmware.com.,Linux,guestos,,reboot   system boot  2.6.32-279.el6.x Fri Feb 26 03:41 - 05:49 (704+02:07) 
+10.196.140.156,w1-hs2-d2512-ilo.eng.vmware.com.,Dell iDRAC
+10.196.145.181,w1-hs2-b1602.eng.vmware.com.,PASSWORD:NON_MATCH
+10.196.145.183,w1-hs2-b1604.eng.vmware.com.,PASSWORD:NON_MATCH
+10.196.145.33,DEAD
+10.196.159.112,DEAD
+10.196.159.114,DEAD
+10.196.159.218,DEAD
+10.196.159.219,DEAD
+10.196.159.65,wdc-vsanqe-vlan1081-dhcp320.eng.vmware.com.,Linux,vsanperf-worker,"Ubuntu 18.04 LTS",root     pts/0        10.104.42.150    Wed Jul 13 11:10 - 11:18  (00:07)
+10.196.162.104,wdc-pod1-hs2-vcqabed-vm-dhcp-104.eng.vmware.com.,HOST:NON_RETURN
+10.196.162.185,NO DNS Record,Linux,bharat-jenkins-slave1.vcpdpwdc.com,,root     pts/3        ravi-jenkins-sla Thu May 30 06:40 - 06:40  (00:00)    
+10.196.179.232,wdc-pod-nsbust-vm1-dhcp-179-232.eng.vmware.com.,PASSWORD:NON_MATCH
+10.196.179.233,wdc-pod-nsbust-vm1-dhcp-179-233.eng.vmware.com.,PASSWORD:NON_MATCH
+10.196.184.69,DEAD
+10.104.55.192,DEAD,Linux,,"Ubuntu 14.04.1 LTS"
+10.196.240.104,w1-hs1-vlan1134-240-104.eng.vmware.com.,PASSWORD:NON_MATCH
+10.196.34.118,DEAD
+10.196.34.125,DEAD
+10.196.34.126,DEAD
+10.196.40.104,DEAD
+10.196.48.116,,PASSWORD:NON_MATCH
+10.196.53.44,w1-hs1-cmbu-53-44.eng.vmware.com.,HOST:NON_RETURN
+10.196.62.1,stsds-wd3.eng.vmware.com.,Linux,stsds-wd3,"CentOS Linux 7 (Core)",root     pts/0        10.200.194.83    Sat Jan 28 00:15 - 00:15  (00:00)    
+10.196.92.43,DEAD
+10.196.93.91,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",reboot   system boot  5.4.0-73-generic Tue Nov 15 11:02   still running
+10.197.10.235,cms-devops.eng.vmware.com.,HOST:NON_RETURN
+10.197.103.116,DEAD
+10.197.103.193,,HOST:NON_RETURN
+10.197.103.224,DEAD
+10.197.11.250,DEAD
+10.197.162.131,,PASSWORD:NON_MATCH
+10.197.163.65,,PASSWORD:NON_MATCH
+10.197.163.67,,PASSWORD:NON_MATCH
+10.197.170.225,,PASSWORD:NON_MATCH
+10.197.185.114,,PASSWORD:NON_MATCH
+10.197.70.198,,HOST:NON_RETURN
+10.197.99.13,,PASSWORD:NON_MATCH
+10.197.99.21,NO DNS Record,Linux,kube-3,"Ubuntu 18.04 LTS",root     tty1                          Sun Jan 29 22:12   still logged in
+10.197.99.23,NO DNS Record,Linux,kube-2,"Ubuntu 18.04 LTS",root     tty1                          Sun Jan 29 22:09 - 22:09  (00:00)
+10.197.99.27,DEAD
+10.198.127.10,wdc-p3-hs2-hcx23-vm1-127-10.eng.vmware.com.,PASSWORD:NON_MATCH
+10.198.212.146,DEAD
+10.198.212.192,DEAD
+10.198.212.194,DEAD
+10.198.214.176,w3-vcd-sp-dhcp-214-176.eng.vmware.com.,PASSWORD:NON_MATCH
+10.198.214.191,w3-vcd-sp-dhcp-214-191.eng.vmware.com.,PASSWORD:NON_MATCH
+10.198.214.255,w3-vcd-sp-dhcp-214-255.eng.vmware.com.,PASSWORD:NON_MATCH
+10.199.112.190,DEAD
+10.199.30.202,w1-corestorage-vm-202.eng.vmware.com.,PASSWORD:NON_MATCH
+10.199.30.248,w1-corestorage-vm-248.eng.vmware.com.,PASSWORD:NON_MATCH
+10.199.8.197,NO DNS Record,Linux,w2-stvsandpqe-dhcp199,"Ubuntu 14.04.6 LTS",reboot   system boot  3.16.0-30-generi Sun Dec  4 21:30 - 05:56 (57+08:25)  
+10.199.95.139,,PASSWORD:NON_MATCH
+10.199.95.143,DEAD
+10.199.95.144,DEAD
+10.199.95.145,NO DNS Record,Linux,localhost.localdomain,"Red Hat Enterprise Linux 8.1 (Ootpa)",reboot   system boot  4.18.0-147.8.1.e Tue Jan 31 08:03   still running
+10.199.95.146,DEAD
+10.199.95.147,DEAD
+10.199.95.149,DEAD
+10.199.95.150,DEAD
+10.199.95.152,NO DNS Record,Linux,localhost.localdomain,"Red Hat Enterprise Linux 8.1 (Ootpa)",reboot   system boot  4.18.0-147.8.1.e Tue Jan 31 08:02   still running
+10.199.95.154,DEAD
+10.199.95.156,NO DNS Record,Linux,localhost.localdomain,"Red Hat Enterprise Linux 8.1 (Ootpa)",reboot   system boot  4.18.0-147.8.1.e Tue Jan 31 08:00   still running
+10.199.95.159,DEAD
+10.199.95.160,DEAD
+10.199.95.184,DEAD
+10.199.95.239,NO DNS Record,Linux,localhost.localdomain,"Red Hat Enterprise Linux 8.1 (Ootpa)",reboot   system boot  4.18.0-147.8.1.e Tue Jan 31 08:05   still running
+10.20.104.252,promc-2n-dhcp252.eng.vmware.com.,Dell iDRAC
+10.20.108.189,promc-2s-dhcp189.eng.vmware.com.,Linux,promc-2s-109-dhcp174,"Ubuntu precise (12.04.5 LTS)",root     pts/1        puppetmaster.vmw Mon Jan 30 12:41 - 12:41  (00:00)    
+10.20.109.71,promc-2s-109-dhcp71.eng.vmware.com.,Linux,promc-2s-109-dhcp174,"Ubuntu precise (12.04.4 LTS)",root     pts/0        puppetmaster.vmw Mon Jan 30 12:40 - 12:40  (00:00)    
+10.20.110.15,ilo-kchowksey.eng.vmware.com.,Dell iDRAC
+10.20.112.106,smurali-esx.vmware.com.,Dell iDRAC
+10.20.112.109,choj-esx2-sp.eng.vmware.com.,Dell iDRAC
+10.20.112.112,heoj-nsx-server-001-ilo.eng.vmware.com.,Dell iDRAC
+10.20.112.68,llouis-esx.eng.vmware.com.,Dell iDRAC
+10.20.113.1,idrac-jl189n2.prom.eng.vmware.com.,Dell iDRAC
+10.20.113.202,,Dell iDRAC
+10.20.114.107,kristoff-idrac.prom.eng.vmware.com.,Dell iDRAC
+10.20.114.198,idrac-11rvbm2.prom.eng.vmware.com.,Dell iDRAC
+10.20.114.249,rmrobert-perf-ilo.prom.eng.vmware.com.,Dell iDRAC
+10.20.114.89,idrac-gwzsgb2.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.117,idrac-6kyvfk2.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.142,choj-esx1-sp.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.160,idrac-9jyfcp2.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.192,,Dell iDRAC
+10.20.115.53,jiangw-idrac.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.70,idrac-11sxbm2.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.71,idrac-hjtrhk2.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.72,idrac-hjw0jk2.prom.eng.vmware.com.,Dell iDRAC
+10.20.115.76,idrac-jp9pxm2.prom.eng.vmware.com.,Dell iDRAC
+10.20.118.255,,Dell iDRAC
+10.20.118.34,NO DNS Record,Linux,dev,"Ubuntu 18.04.6 LTS",NO history to login
+10.20.127.206,anirudhv-ipmi.eng.vmware.com.,Dell iDRAC
+10.20.153.175,cloud-city-vc.eng.vmware.com.,PASSWORD:NON_MATCH
+10.202.125.222,,PASSWORD:NON_MATCH
+10.202.125.226,,PASSWORD:NON_MATCH
+10.202.137.51,,PASSWORD:NON_MATCH
+10.202.207.242,DEAD
+10.202.211.245,tmc-568-211-245.eng.vmware.com.,Linux,tmc-568-244.eng.vmware.com,"Ubuntu 14.04.1 LTS",NO history to login
+10.202.213.228,edgel2l3-213-228.eng.vmware.com.,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO history to login
+10.202.231.59,mapbu-infra-231-59.eng.vmware.com.,Linux,vmfork-child-20220223194257530816992,"Ubuntu 18.04.4 LTS",root     pts/0        10.129.216.40    Tue Mar  1 13:10 - 14:50  (01:39)
+10.202.231.90,mapbu-infra-231-90.eng.vmware.com.,Linux,natserver-virtual-machine,"Ubuntu 18.04.4 LTS",NO history to login
+10.202.242.100,cmbu-dhcp-hs8-100.eng.vmware.com.,Linux,oZJZ4cSp0njRI,"Ubuntu 20.04.3 LTS",root     pts/0        10.30.104.110    Sun Feb 20 13:43 - 13:44  (00:00)
+10.202.62.104,,PASSWORD:NON_MATCH
+10.202.62.81,,PASSWORD:NON_MATCH
+10.202.70.140,,PASSWORD:NON_MATCH
+10.202.70.142,,PASSWORD:NON_MATCH
+10.202.70.154,,PASSWORD:NON_MATCH
+10.202.70.155,,PASSWORD:NON_MATCH
+10.202.70.189,,PASSWORD:NON_MATCH
+10.202.70.190,,PASSWORD:NON_MATCH
+10.202.70.191,,PASSWORD:NON_MATCH
+10.202.70.201,,PASSWORD:NON_MATCH
+10.202.70.204,,PASSWORD:NON_MATCH
+10.202.70.229,,PASSWORD:NON_MATCH
+10.203.24.95,DEAD
+10.203.26.38,DEAD
+10.203.30.163,DEAD
+10.203.31.100,DEAD
+10.203.31.102,fvt120-31-102.eng.vmware.com.,PASSWORD:NON_MATCH
+10.203.31.245,fvt120-31-245.eng.vmware.com.,PASSWORD:NON_MATCH
+10.203.31.80,DEAD
+10.203.31.87,DEAD
+10.203.36.97,,PASSWORD:NON_MATCH
+10.203.38.137,DEAD
+10.203.38.176,DEAD
+10.203.39.242,,PASSWORD:NON_MATCH
+10.203.65.40,NO DNS Record,Linux,spk-runner,"Ubuntu 18.04.2 LTS",NO history to login
+10.203.74.234,,PASSWORD:NON_MATCH
+10.20.52.230,DEAD
+10.20.68.32,proma-1s-dhcp32.eng.vmware.com.,Dell iDRAC
+10.20.72.29,idrac-9k0bcp2.prom.eng.vmware.com.,Dell iDRAC
+10.20.72.54,idrac-pradyumnaa.prom.eng.vmware.com.,Dell iDRAC
+10.20.72.59,proma-2n-dhcp59.eng.vmware.com.,Dell iDRAC
+10.20.77.59,hborah-idrac.prom.eng.vmware.com.,Dell iDRAC
+10.208.139.245,w1-s2sparc-11-qe.spring.vmware.com.,PASSWORD:NON_MATCH
+10.208.143.238,DEAD
+10.208.143.239,DEAD
+10.208.143.48,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",zyaqian  pts/1        10.117.234.253   Tue Aug 23 02:16 - 05:28  (03:12)
+10.208.143.61,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",wjinghua pts/0        10.117.180.99    Mon Sep 19 07:42 - 07:42  (00:00)
+10.208.145.105,,PASSWORD:NON_MATCH
+10.208.145.106,,PASSWORD:NON_MATCH
+10.208.145.107,,PASSWORD:NON_MATCH
+10.208.145.109,,PASSWORD:NON_MATCH
+10.208.145.110,,PASSWORD:NON_MATCH
+10.208.145.111,,PASSWORD:NON_MATCH
+10.208.145.114,,PASSWORD:NON_MATCH
+10.208.145.118,,PASSWORD:NON_MATCH
+10.208.145.119,,PASSWORD:NON_MATCH
+10.208.145.120,,PASSWORD:NON_MATCH
+10.208.145.121,,PASSWORD:NON_MATCH
+10.208.145.127,,PASSWORD:NON_MATCH
+10.208.145.128,,PASSWORD:NON_MATCH
+10.208.145.140,,PASSWORD:NON_MATCH
+10.208.145.141,,PASSWORD:NON_MATCH
+10.208.145.142,,PASSWORD:NON_MATCH
+10.208.153.230,DEAD
+10.208.153.42,DEAD
+10.208.154.223,DEAD
+10.208.154.52,DEAD
+10.208.155.73,DEAD
+10.208.155.97,DEAD
+10.208.159.29,DEAD
+10.208.171.120,DEAD
+10.208.171.99,DEAD
+10.208.172.93,DEAD
+10.208.173.111,DEAD
+10.208.173.126,DEAD
+10.208.174.184,DEAD
+10.208.174.231,DEAD
+10.208.175.145,DEAD
+10.208.175.166,DEAD
+10.208.32.250,sherpa-portal.eng.vmware.com.,Linux,sherpa-portal.eng.vmware.com,"Ubuntu 18.04 LTS",root     pts/0        10.104.44.12     Thu Mar 11 00:47 - 00:52  (00:04)
+10.208.64.187,w2-hs6-h1405-ilo.eng.vmware.com.,Dell iDRAC
+10.208.70.148,,PASSWORD:NON_MATCH
+10.208.70.150,,PASSWORD:NON_MATCH
+10.208.70.87,DEAD
+10.208.71.73,vm-w2-hs6-10-208-71-73.eng.vmware.com.,PASSWORD:NON_MATCH
+10.208.71.85,vm-w2-hs6-10-208-71-85.eng.vmware.com.,PASSWORD:NON_MATCH
+10.208.79.117,,PASSWORD:NON_MATCH
+10.216.242.2,,PASSWORD:NON_MATCH
+10.216.242.9,,PASSWORD:NON_MATCH
+10.216.93.250,,PASSWORD:NON_MATCH
+10.217.68.215,blr12-vin-09.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.115.236,w4-nsbu-cqe-dhcp-236.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.13.166,DEAD
+10.221.13.230,,PASSWORD:NON_MATCH
+10.221.133.18,w4-vcd-static-133-18.eng.vmware.com.,Linux,postgres,"CentOS Linux 7 (Core)",reboot   system boot  3.10.0-514.10.2. Fri Sep  2 18:21 - 13:11 (150+18:49) 
+10.221.165.231,DEAD
+10.221.165.232,DEAD
+10.221.165.235,DEAD
+10.221.165.236,DEAD
+10.221.165.237,DEAD
+10.221.165.238,DEAD
+10.221.165.239,DEAD
+10.221.165.240,DEAD
+10.221.165.241,DEAD
+10.221.165.242,DEAD
+10.221.165.243,DEAD
+10.221.165.244,DEAD
+10.221.165.245,DEAD
+10.221.165.246,DEAD
+10.221.165.247,DEAD
+10.221.165.248,DEAD
+10.221.26.231,DEAD
+10.221.37.111,DEAD
+10.221.37.128,DEAD
+10.221.37.147,DEAD
+10.221.37.149,civt675-37-149.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.37.187,DEAD
+10.221.37.203,DEAD
+10.221.37.207,DEAD
+10.221.37.244,DEAD
+10.221.37.94,DEAD
+10.221.38.0,DEAD
+10.221.38.136,DEAD
+10.221.38.15,civt675-38-15.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.38.202,DEAD
+10.221.38.239,DEAD
+10.221.38.38,DEAD
+10.221.39.148,DEAD
+10.221.39.217,DEAD
+10.221.39.25,DEAD
+10.221.39.63,DEAD
+10.221.39.7,civt675-39-7.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.45.180,NO DNS Record,Linux,nimbus-iscsitemplate,"Ubuntu precise (12.04.5 LTS)",root     pts/0        puppetmaster.vmw Mon Jan 30 13:46 - 13:47  (00:00)    
+10.221.51.210,w4-hs9-tecbu-tca-677-978.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.104.25,wdc-10-225-104-25.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.110.105,wdc-10-225-110-105.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.111.14,wdc-10-225-111-14.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.111.23,wdc-10-225-111-23.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.23.204.37,tlv-172809-ilo.eng.vmware.com.,Dell iDRAC
+10.23.204.72,tlv-172739-ilo.eng.vmware.com.,Dell iDRAC
+10.23.204.86,tlv-172771-ilo.eng.vmware.com.,Dell iDRAC
+10.23.204.89,tlv-172859-ilo.eng.vmware.com.,Dell iDRAC
+10.236.240.93,blr14-hs1-e0510-ilo.eng.vmware.com.,Dell iDRAC
+10.236.241.211,blr14-esxpdp-e1211-ilo.eng.vmware.com.,Dell iDRAC
+10.23.80.190,DEAD
+10.23.82.175,DEAD
+10.24.32.119,hp-skl-ep-dl360-004-ilo.eng.vmware.com.,Dell iDRAC
+10.24.32.134,hp-skl-ep-dl380-003-ilo.eng.vmware.com.,Dell iDRAC
+10.24.32.136,hp-skl-ep-dl380-004-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.135,prmb-hwe135-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.136,prmb-hwe136-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.137,prmb-hwe137-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.169,prmb-hwe169-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.173,prmb-hwe173-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.174,prmb-hwe174-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.20,prmb-hwe020-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.208,prmb-hwe208-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.212,prmb-hwe212-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.213,prmb-hwe213-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.33,prmb-hwe033-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.6,prmb-hwe006-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.75,prmb-hwe075-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.82,prmb-hwe082-ilo.eng.vmware.com.,Dell iDRAC
+10.24.41.63,hpe-spr2-dl380-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.42.124,hp-skl-ex-dl560-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.101,hp-clx-sp4-dl560-003-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.103,hp-clx-sp2-dl380-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.105,hp-clx-sp4-dl580-002-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.109,hp-clx-sp2-dl380-005-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.113,hp-clx-sp2-dl360-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.123,hp-clx-sp2-dl360-005-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.151,hp-icx-sp2-dl360-003-ilo.eng.vmware.com.,Dell iDRAC
+10.24.49.7,prmb-hwe002-ilo.eng.vmware.com.,HP ILO
+10.24.50.13,ILO7CE724P44J.eng.vmware.com.,HP ILO
+10.24.6.53,prmb-esxst-pmem-01-ilo.eng.vmware.com.,HP ILO
+10.24.88.196,hp-clx-sp4-dl560-004-ilo.eng.vmware.com.,HP ILO
+10.24.88.214,hp-clx-sp2-dl360-002-ilo.eng.vmware.com.,HP ILO
+10.24.90.51,DEAD
+10.24.90.56,DEAD
+10.24.90.60,DEAD
+10.25.110.27,,Dell iDRAC
+10.25.180.145,,Dell iDRAC
+10.26.236.94,sof2-vchs-dhcp-236-94.eng.vmware.com.,Linux,sof2-vchs-dhcp-236-94.eng.vmware.com,"CentOS Linux 8 (Core)",reboot   system boot  4.18.0-80.el8.x8 Tue Jan 10 08:07   still running
+10.28.219.200,DEAD
+10.28.221.107,prme-vsan-hol-vm-dhcp-221-107.eng.vmware.com.,Linux,RackStation,,NO history to login
+10.28.222.188,prme-vsan-hol-vm-dhcp-222-188.eng.vmware.com.,Linux,localhost,,root     pts/0        puppetmaster.vmw Mon Jan 30 12:40 - 12:40  (00:00)    
+10.28.240.61,prme-stsao-nas-1.eng.vmware.com.,Linux,RackStation,,NO history to login
+10.28.9.223,NO DNS Record,Linux,helper-elba-d0212,"Ubuntu 20.04.2 LTS",root     pts/0        10.117.181.5     Thu Mar 10 02:39 - 02:39  (00:00)
+10.30.221.121,DEAD
+10.33.102.172,,Dell iDRAC
+10.33.107.170,,PASSWORD:NON_MATCH
+10.33.107.93,,PASSWORD:NON_MATCH
+10.33.74.122,,Dell iDRAC
+10.40.152.104,prma-vdasa-esx-1-ilo.eng.vmware.com.,Dell iDRAC
+10.40.152.106,prma-vdasa-esx-2-ilo.eng.vmware.com.,Dell iDRAC
+10.40.152.66,mon-bdw-ep-01-ilo.eng.vmware.com.,Dell iDRAC
+10.40.195.58,,PASSWORD:NON_MATCH
+10.40.26.1,prmb-hs1-h0601-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.2,prmb-hs1-h0602-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.3,prmb-hs1-h0603-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.42,hp-icx-sp2-dl380-001-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.43,hp-icx-sp2-dl380-002-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.44,hp-icx-sp2-dl380-003-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.45,hp-icx-sp2-dl380-004-ilo.eng.vmware.com.,Dell iDRAC
+10.40.50.211,opvcstqe-50-211.eng.vmware.com.,Linux,vmware-uwsim2,"Ubuntu 16.04.1 LTS",NO history to login
+10.40.68.235,fvt1500-68-235.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.69.140,fvt1500-69-140.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.69.155,fvt1500-69-155.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.69.180,DEAD
+10.40.69.19,DEAD
+10.40.69.203,DEAD
+10.40.69.239,DEAD
+10.40.69.77,fvt1500-69-77.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.70.176,DEAD
+10.40.70.215,fvt1500-70-215.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.148,DEAD
+10.40.71.153,fvt1500-71-153.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.161,fvt1500-71-161.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.199,fvt1500-71-199.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.34,DEAD
+10.40.71.87,fvt1500-71-87.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.95,DEAD
+10.40.72.0,fvt1500-72-0.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.100,fvt1500-72-100.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.148,DEAD
+10.40.72.150,fvt1500-72-150.eng.vmware.com.,HOST:ESXi Server
+10.40.72.157,fvt1500-72-157.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.160,DEAD
+10.40.72.181,fvt1500-72-181.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.234,fvt1500-72-234.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.71,fvt1500-72-71.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.2,DEAD
+10.40.73.214,DEAD
+10.40.73.217,DEAD
+10.40.73.220,DEAD
+10.40.73.222,fvt1500-73-222.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.224,DEAD
+10.40.73.231,fvt1500-73-231.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.27,fvt1500-73-27.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.72,fvt1500-73-72.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.1,DEAD
+10.40.74.103,DEAD
+10.40.74.110,fvt1500-74-110.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.186,DEAD
+10.40.74.187,DEAD
+10.40.74.21,DEAD
+10.40.74.245,DEAD
+10.40.74.39,DEAD
+10.40.74.46,fvt1500-74-46.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.57,fvt1500-74-57.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.58,DEAD
+10.40.74.65,DEAD
+10.40.74.69,DEAD
+10.40.74.86,fvt1500-74-86.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.90,DEAD
+10.40.74.97,fvt1500-74-97.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.99,fvt1500-74-99.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.75.151,DEAD
+10.40.75.154,fvt1500-75-154.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.75.201,DEAD
+10.40.75.205,DEAD
+10.40.75.209,DEAD
+10.40.75.216,DEAD
+10.40.75.252,DEAD
+10.40.75.54,DEAD
+10.40.75.61,DEAD
+10.40.75.67,fvt1500-75-67.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.102,fvt1500-76-102.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.105,DEAD
+10.40.76.107,DEAD
+10.40.76.108,DEAD
+10.40.76.113,DEAD
+10.40.76.118,fvt1500-76-118.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.124,fvt1500-76-124.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.130,DEAD
+10.40.76.135,fvt1500-76-135.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.158,DEAD
+10.40.76.16,DEAD
+10.40.76.19,DEAD
+10.40.76.197,DEAD
+10.40.76.200,DEAD
+10.40.76.201,DEAD
+10.40.76.202,fvt1500-76-202.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.209,fvt1500-76-209.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.212,DEAD
+10.40.76.228,fvt1500-76-228.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.77.14,fvt1500-77-14.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.77.206,DEAD
+10.40.77.55,DEAD
+10.40.77.58,DEAD
+10.40.77.59,DEAD
+10.40.78.157,fvt1500-78-157.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.78.193,DEAD
+10.40.78.41,fvt1500-78-41.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.78.46,fvt1500-78-46.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.11,fvt1500-79-11.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.110,DEAD
+10.40.79.111,DEAD
+10.40.79.159,fvt1500-79-159.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.193,fvt1500-79-193.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.92,DEAD
+10.40.90.12,hwe-cim-2.eng.vmware.com.,Linux,hwe-cim-2.eng.vmware.com,,NO history to login
+10.49.14.21,DEAD
+10.49.14.25,DEAD
+10.49.17.233,DEAD
+10.49.18.21,DEAD
+10.49.18.43,DEAD
+10.49.2.104,,PASSWORD:NON_MATCH
+10.49.21.122,,PASSWORD:NON_MATCH
+10.49.2.136,,PASSWORD:NON_MATCH
+10.49.2.148,,PASSWORD:NON_MATCH
+10.49.2.156,,PASSWORD:NON_MATCH
+10.49.2.161,,PASSWORD:NON_MATCH
+10.49.2.209,,PASSWORD:NON_MATCH
+10.49.2.217,,PASSWORD:NON_MATCH
+10.49.23.135,,PASSWORD:NON_MATCH
+10.49.23.141,,PASSWORD:NON_MATCH
+10.49.2.34,,PASSWORD:NON_MATCH
+10.49.30.225,,PASSWORD:NON_MATCH
+10.49.30.229,,PASSWORD:NON_MATCH
+10.49.30.230,,PASSWORD:NON_MATCH
+10.49.30.232,,PASSWORD:NON_MATCH
+10.49.30.233,,PASSWORD:NON_MATCH
+10.49.30.236,,PASSWORD:NON_MATCH
+10.49.30.237,,PASSWORD:NON_MATCH
+10.49.30.240,,PASSWORD:NON_MATCH
+10.49.30.243,,PASSWORD:NON_MATCH
+10.50.5.93,NO DNS Record,Linux,W2-VCF-R10-LinJump1,"CentOS Linux 7 (Core)",root     pts/0        10.50.5.92       Thu Jan 19 09:02 - 09:02  (00:00)    
+10.50.91.228,DEAD
+10.50.91.229,DEAD
+10.50.91.239,DEAD
+10.50.91.244,DEAD
+10.62.35.243,cniz-idrac01.eng.vmware.com.,Dell iDRAC
+10.62.40.176,,Dell iDRAC
+10.62.40.225,,Dell iDRAC
+10.62.40.32,,Dell iDRAC
+10.62.40.34,,Dell iDRAC
+10.62.40.84,DEAD
+10.71.216.164,s2-vcav-216-164.eng.vmware.com.,Linux,vcda-st-ftp-kms-srv,"CentOS Linux 7 (Core)",root     pts/0        puppetmaster.vmw Mon Jan 30 15:45 - 15:45  (00:00)    
+10.71.217.103,s2-vcav-217-103.eng.vmware.com.,Linux,s2-vcav-217-103.eng.vmware.com,"CentOS Linux 7 (Core)",root     pts/0        s2-vcav-v1248-24 Mon Jul 25 06:31 - 10:54  (04:23)    
+10.71.221.114,s2-vcav-221-114.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.221.120,s2-vcav-221-120.eng.vmware.com.,Linux,s2-vcav-221-120.eng.vmware.com,"CentOS Linux 7 (Core)",root     pts/0        puppetmaster.vmw Mon Jan 30 21:45 - 21:45  (00:00)    
+10.71.221.189,s2-vcav-221-189.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.221.190,s2-vcav-221-190.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.221.192,s2-vcav-221-192.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.222.15,s2-vcav-222-15.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.222.18,s2-vcav-222-18.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.222.72,s2-vcav-222-72.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.223.228,NO DNS Record,Linux,localhost.localdomains2-vcav-223-228s2-vcav-223-228.eng.vmware.c,"CentOS Linux 7 (Core)",root     pts/0        10.93.40.23      Mon Oct 18 08:59 - 09:05  (00:06)    
+10.71.249.102,s2-vcav-v1248-249-102.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.249.30,s2-vcav-v1248-249-030.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.249.31,s2-vcav-v1248-249-031.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.249.35,s2-vcav-v1248-249-035.eng.vmware.com.,PASSWORD:NON_MATCH
+10.72.0.3,DEAD
+10.72.218.7,,PASSWORD:NON_MATCH
+10.75.33.101,,Dell iDRAC
+10.75.33.102,,Dell iDRAC
+10.75.33.103,,Dell iDRAC
+10.75.33.104,,Dell iDRAC
+10.75.33.105,,Dell iDRAC
+10.78.31.69,NO DNS Record,Linux,rocky-dev-vm,"Ubuntu 16.04.7 LTS",root     pts/21       10.113.60.223    Mon Jan 30 12:42 - 12:42  (00:00)
+10.89.116.23,DEAD
+10.89.118.2,DEAD
+10.89.118.25,DEAD
+10.89.118.31,DEAD
+10.89.128.199,atl1-vcd-static-128-199.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.128.220,atl1-vcd-static-128-220.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.128.225,atl1-vcd-static-128-225.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.128.69,atl1-vcd-static-128-69.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.192,atl1-vcd-static-149-192.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.196,atl1-vcd-static-149-196.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.199,atl1-vcd-static-149-199.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.217,atl1-vcd-static-149-217.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.82.132,atl1-hs2-l0732-ilo.eng.vmware.com.,Dell iDRAC
+10.89.89.10,atl1-infra-backup-server.eng.vmware.com.,allows sftp connections only
+10.89.99.106,DEAD
+10.89.99.107,DEAD
+10.89.99.61,DEAD

@@ -1,0 +1,21 @@
+# Block Bots that unlikely to have false postiive
+
+if ($http_Akamai_Bot ~* 'Headless Browser') {
+    set $bot_type "BadBot";
+}
+
+if ($http_Akamai_Bot ~* 'ADD_IDENTIFIED_BAD_BOT_HERE') {
+    set $bot_type "BadBot";
+}
+
+if ($http_Akamai_Bot ~* 'ADD_MORE_IDENTIFIED_BAD_BOT_HERE') {
+    set $bot_type "BadBot";
+}
+
+# If any of the above if statement is true, the $bot_type
+# variable will have value 'BadBot'
+
+if ($bot_type ~ 'BadBot') {
+    return 303 https://maintenance.vmware.com/info10.html;
+}
+

@@ -1,0 +1,19 @@
+---
+- name: Display multiple sar outputs 
+  hosts: boomi
+  gather_facts: true
+  become: yes
+  vars:
+     
+
+  tasks:
+    - name: Collect sar output 
+      ansible.builtin.command: /usr/bin/sar -n NFS -f /var/log/sa/sa19
+      register: sar_output
+#      with_items:
+#        - /var/log/sa/sa19
+#        - /var/log/sa/sa20 
+
+    - debug: msg="{{ sar_output.stdout_lines }}" 
+#      with_items: "{{ sar_output.stdout }}"
+

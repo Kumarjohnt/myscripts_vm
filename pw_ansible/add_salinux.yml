@@ -1,0 +1,55 @@
+---
+- name: Add Salinux User if NOT exist 
+  hosts: java
+  become: yes
+  vars:
+    SSH_DIR: /home/salinux/.ssh
+    USER: salinux
+
+  tasks:
+    - name: Get the user info 
+      getent:
+        database: passwd
+        key: salinux
+      failed_when: false
+      no_log: True
+      ignore_errors: yes 
+
+    - name: Create user salinx
+      block:
+        - name: Create salinux group
+          ansible.builtin.group:
+            name=salinux gid=911 state=present
+
+        - name: Create salinux User
+          ansible.builtin.user:
+            name: salinux
+            password: "$6$SaUUpcK2$VX/bl.OwLyIlZSbtcvVHx2of8dIn.Ab/Dn.tZqJg6q2DYYpgeCs1sT9YX52qVJURSd27d9o1if43uorK09a4A1"
+            uid: 911
+            group: salinux
+            groups: wheel
+            home: "/home/salinux"
+            comment: "LPS group"
+            shell: /bin/bash
+
+        - name: add it into sudo access
+          community.general.sudoers:
+            name: salinux
+            user: salinux
+            state: present
+            commands: ALL
+            nopassword: true
+      when: ansible_facts.getent_passwd[salinux] is not defined
+
+    - name: Crate Priv/Pub Key
+      block:
+        - name: Create .ssh directory
+          ansible.builtin.file:
+            path='{{ SSH_DIR }}' state=directory owner=salinux group=salinux mode='0700'
+
+        - name: Generate key paris
+          ansible.builtin.template:
+            src={{ item }}.j2 dest={{ SSH_DIR }}/authorized_keys owner=salinux group=salinux mode=0600
+          with_items:
+            - /home/peterw1/ansible/authorized_keys
+      when: ansible_facts.getent_passwd[salinux] is not defined

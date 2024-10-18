@@ -1,0 +1,319 @@
+server {
+        listen 80;
+        server_name api.vmware.com;
+	proxy_hide_header Via;
+	proxy_hide_header Server;
+        resolver 10.128.242.1 10.128.242.2 ipv6=off valid=5s;
+				#deprecated
+                location  /auth { 
+                proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar/auth;
+                proxy_http_version 1.1;
+                 }
+
+                location  /CustomerScreeningServices {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m1/service/customerscreening;
+                proxy_http_version 1.1;
+                 }
+
+                location  /ARAsyncPartnerService {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/api/arasyncpartnerservice;
+                proxy_http_version 1.1;
+                 }
+
+                location  /vmwareuser/authenticate {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/legacyauthentication;
+                proxy_http_version 1.1;
+                 }
+
+                location  /dcpnbugzillaservice/bug {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m1/api/dcpnbugzillaservice;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/getDealsByUserId {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/DealMonitor;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/getQuote {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/DealMonitor;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/search {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/DealMonitor;
+                proxy_http_version 1.1;
+                 }
+
+                location  /distributorservice {
+                proxy_pass https://apigw.vmware.com/v2/m1/api/distributor;
+                proxy_http_version 1.1;
+                 }
+
+                location  /getContractDetails {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m1/service/OnlineRenewalService;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v2/getSocialCastDetails {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/socialcastdetails;
+                proxy_http_version 1.1;
+                 }
+
+                location  /token {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/token/mashery/application;
+                proxy_http_version 1.1;
+                 }
+
+                location  /MobileEntitlementService {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/mobileentitlement;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /confroomlocator/services/crl/data {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/confroomlocator/services/crl/data;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /ldapconnector/users {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/peoplesearch/services/ldapconnector/users;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /mobileflash/reports {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/mobileflash/reports;
+                proxy_http_version 1.1;
+                 }
+
+                location  /v1/customers/ {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/vmwsupport/services;
+                proxy_http_version 1.1;
+                 }
+
+                location  /v1/metadata {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/vmwsupport/services;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /AlertService {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/AlertService;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /EntitlementAccountService {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/EntitlementAccountService;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /EntitlementUserService {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/EntitlementUserService;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /GetCustomers {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/default/GetCustomer;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /GetServiceRequests {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/GetServiceRequests;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /SendActivationLinkEmail {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/SendActivationLinkEmailProcess;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /SendResetPwdLink {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/SendResetPwdLinkProcess;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /UpdateCustomer {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/myvmwaremobile/UpdateCustomer;
+                proxy_http_version 1.1;
+                 }
+
+                location  /onlineRenewalService {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m1/service/OnlineRenewalService;
+                proxy_http_version 1.1;
+                 }
+
+                location  /vchs_sdp/ea{
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/vchs/ea;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/scheduleAppointment{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/myAppointments{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/mockAuth{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/locations{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/getUserSysId{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/availability{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar;
+                proxy_http_version 1.1;
+                 }
+				#deprecated
+                location  /v1/appointment{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/vbar;
+                proxy_http_version 1.1;
+                 }
+                location  /ValidateContract{
+                        proxy_pass https://apikong-gtm.vmware.com/v1/m1/api/validatecontract;
+                proxy_http_version 1.1;
+                 }
+                location  /updatePartnerLanguagePref {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/updatePartnerLanguagePref;
+                proxy_http_version 1.1;
+                 }
+
+                location  /SolrSearchService{
+                proxy_pass https://apikong-gtm.vmware.com/v1/m3/api/solrsearch/;
+                                proxy_http_version 1.1;
+                 }
+                location  /RenewalsService{
+                proxy_pass https://apikong-gtm.vmware.com/v1/m2/service/RenewalsService;
+                                proxy_http_version 1.1;
+                 }
+                location  /QuoteService{
+                proxy_pass https://apikong-gtm.vmware.com/v2/m2/service/quoteprocess;
+                                proxy_http_version 1.1;
+                 }
+                location  /pushRateCard{
+                proxy_pass https://apikong-gtm.vmware.com/v1/m1/service/SDP/PushRateCard;
+                                proxy_http_version 1.1;
+                 }
+
+                location /v1/edubrite/proxy {
+                proxy_pass https://apikong-gtm.vmware.com/v1/edubrite/proxy;
+                proxy_http_version 1.1;
+                }
+
+                
+                location /v1/pvuSsoHandler {
+                proxy_pass https://apikong-gtm.vmware.com/v1/pvuSsoHandler;
+                proxy_http_version 1.1;
+                }
+
+                
+                location /v1/workday_push/jobrole {
+                proxy_pass https://apikong-gtm.vmware.com/v1/workday_push/jobrole;
+                proxy_http_version 1.1;
+                }
+
+                location /v1/m0/api/workorderintegration {
+                proxy_pass https://apikong-gtm.vmware.com/v1/m0/api/workorderintegration;
+                proxy_http_version 1.1;
+                }
+
+                location /v1/workday_push/employeePush {
+                proxy_pass https://apikong-gtm.vmware.com/v1/workday_push/employeePush;
+                proxy_http_version 1.1;
+                }
+
+        }
+
+server {
+        listen 80;
+        server_name apigw.vmware.com;
+        proxy_hide_header Via;
+        proxy_hide_header Server;
+        client_max_body_size 16M;
+        proxy_buffer_size          16k;
+        proxy_buffers              4 16k;
+        proxy_busy_buffers_size    16k;
+
+        resolver 10.128.242.1 10.128.242.2 ipv6=off valid=5s;
+
+        location / {
+        proxy_pass https://apikong-gtm.vmware.com;
+        proxy_http_version 1.1;
+        }
+
+
+        location /services/sts{
+        proxy_pass https://apikong-gtm.vmware.com/sts;
+        proxy_http_version 1.1;
+        }
+
+        location /v1/m4/api/cspservices{
+        proxy_pass https://vconnect.vmware.com/v1/m4/api/cspservices;
+        proxy_http_version 1.1;
+        }
+		#deprecated
+        location /v1/m4/api/ph/api/v1/bundle {
+        proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/ph/api/v1/bundle/;
+        proxy_http_version 1.1;
+        }
+		#deprecated
+        location /v1/m4/api/ph/get_file {
+        proxy_pass https://apikong-gtm.vmware.com/v1/m4/api/ph/get_file;
+        proxy_http_version 1.1;
+        }
+
+
+        location /config{
+        proxy_pass https://apikong-gtm.vmware.com/config;
+        proxy_http_version 1.1;
+        }
+
+location /v1/lms/chatbot/orchestrator/learningzone  {
+
+        proxy_hide_header Access-Control-Allow-Origin;
+ set $cors '';
+ if ($http_origin ~ '^https?://(vmwarelearningzone\.vmware\.com|localhost)') {
+        set $cors 'true';
+        }
+
+if ($cors = 'true') {
+
+        add_header 'Access-Control-Allow-Origin' "$http_origin" always;
+        add_header 'Access-Control-Allow-Credentials' 'true' always;
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'Accept,Authorization,Cache-Control,Content-Type,chatbotauthorization' always;
+        # required to be able to read Authorization header in frontend
+        #add_header 'Access-Control-Expose-Headers' 'Authorization' always;
+}
+ if ($request_method = 'OPTIONS') {
+          set $cors  "${cors}O";
+}
+
+ if ($cors = 'trueO') {
+
+       add_header 'Access-Control-Allow-Origin' "$http_origin" always;
+        add_header 'Access-Control-Allow-Credentials' 'true' always;
+        add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS' always;
+        add_header 'Access-Control-Allow-Headers' 'Accept,Authorization,Cache-Control,Content-Type,chatbotauthorization' always;
+        #add_header 'Access-Control-Max-Age' 1728000;
+        add_header 'Content-Type' 'text/plain charset=UTF-8' always;
+        add_header 'Content-Length' 0;
+        return 204;
+ }
+
+        proxy_pass https://apikong-gtm.vmware.com/v1/lms/chatbot/orchestrator/learningzone;
+        proxy_http_version 1.1;
+  }
+
+}
+

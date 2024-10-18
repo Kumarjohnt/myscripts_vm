@@ -1,0 +1,17 @@
+---
+- name: Check package version
+  hosts: splunk-release
+  gather_facts: true
+  become: yes
+  vars:
+    PKG_NAME: splunkforwarder
+
+  tasks: 
+    - name: Gather the package facts
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Display the version of installed package
+      ansible.builtin.debug:
+        msg: "{{ ansible_facts.packages['splunkforwarder'][0].version }} versions of splunkforwarder are installed!"
+      when: "'splunkforwarder' in ansible_facts.packages"

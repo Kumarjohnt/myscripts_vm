@@ -1,0 +1,6 @@
+server {
+        listen 80;
+        server_name         vmw.com.ar;
+        include             /etc/nginx/allow_GET_POST_only.conf;
+        return 301          https://www.vmware.com/ar.html;
+}

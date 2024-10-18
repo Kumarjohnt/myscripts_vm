@@ -1,0 +1,197 @@
+# vCenter Support Assistant Phonehome 2.0 Project
+server {
+   listen 80;
+   server_name vcsa.vmware.com;
+#   include /etc/nginx/allow_GET_POST_only.conf;
+   include /etc/nginx/allow_vcsa_method_only.conf;
+
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+    add_header 'Access-Control-Allow-Headers' 'Cookie';
+#    add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+
+   access_log /var/log/nginx/vcsa_access.log proxylog;
+   error_log  /var/log/nginx/vcsa_error.log  warn;
+   root /var/nginx/vcsa;
+
+   keepalive_timeout 30;
+   client_max_body_size 150m;
+
+#Added below as per RFC235385
+   proxy_connect_timeout  180;
+   proxy_read_timeout 180;
+
+
+   location ~ ^/ph/tl/stg/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      rewrite ^/ph/tl/stg/(.*)$   /$1 break;
+      proxy_pass     http://ph-stg-ts-vip.vmware.com:1080;
+   }
+
+location ~ ^/ph/tl/prd/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      rewrite ^/ph/tl/prd/(.*)$   /$1 break;
+      proxy_pass     http://ph-prd-ts-vip.vmware.com:1080;
+   }
+
+# Forward requests for /ph/tl/* to backend server
+   location ~ ^/ph/tl/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+      #proxy_pass_header  Authorization;
+      #proxy_pass_header  WWW-Authenticate;
+
+      rewrite ^/ph/tl/(.*)$   /$1 break;
+      proxy_pass     http://ph-dev-ts-a1.vmware.com:1080;
+   }
+
+
+   location  /ph-dev/api/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      # rewrite ^/ph-dev/api/(.*)$   /$1 break;
+     # proxy_pass       http://ph-dev-ts-a2.vmware.com:1081/api/;
+        # Below change made as per RFC#243229
+      proxy_pass        http://ph-tst-rts-lb.vac.vmware.com:1081/api/;
+      proxy_redirect default;
+   }
+
+
+### RFC 242715 ###
+#location  /ph-stg/api/v1/results {
+#      proxy_set_header  Host               $http_host;
+#      proxy_set_header  X-Forwarded-Host   $http_host;
+#      proxy_set_header  X-Forwarded-Server $http_host;
+#      proxy_set_header  X-Real-IP          $remote_addr;
+#      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+
+#     proxy_pass http://ph-prd-rts-vip.vmware.com:1081/api/v1/results;
+#     proxy_redirect default;
+#   }
+
+###
+
+location  /ph-stg/api/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      # rewrite ^/ph-stg/api/(.*)$   /$1 break;
+      proxy_pass http://ph-stg-ts-vip.vmware.com:1081/api/;
+      proxy_redirect default;
+   }
+
+# RFC 233163
+   location /skyline/ {
+
+      #proxy_set_header  Host               $http_host;
+      #proxy_set_header  X-Forwarded-Host   $http_host;
+      #proxy_set_header  X-Forwarded-Server $http_host;
+      #proxy_set_header  X-Real-IP          $remote_addr;
+      #proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      #rewrite ^/skyline/(.*)$   https://skyline-api-gw.itcna.vmware.com/$1 break;
+      #proxy_pass     https://skyline-api-gw.itcna.vmware.com/;
+      #proxy_pass     https://skyline-api-gw.apps.wdc1.itcna.vmware.com/;
+      #proxy_pass     https://skyline-api-gw.apps.scdc1.itcna.vmware.com/; #Commented this line as PCF stopped accepting TLS 1.0 or lower versions.
+      #Below entry is added to reslove TLS lower version issue and will be permannent change.
+      proxy_pass        https://skyline.vmware.com/;
+      #proxy_redirect default;
+   }
+
+##
+### RFC 242715 ###
+location  /ph/api/v1/results {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+
+     proxy_pass http://ph-prd-rts-vip.vmware.com:1081/api/v1/results;
+     proxy_redirect default;
+   }
+
+##
+
+location  /ph/api/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+     #if ($request_method = HEAD) {
+     #  return 200;
+     #  }
+     # rewrite ^/ph/tl/prd/(.*)$   /$1 break;
+     proxy_pass http://ph-prd-ts-vip.vmware.com:1081/api/;
+     proxy_redirect default;
+   }
+
+   #Deny all other requests
+   location / {
+      return 403;
+   }
+}
+
+###RFC 240985 ####
+server {
+   listen 80;
+   server_name scapi.vmware.com ;
+   include /etc/nginx/allow_vcsa_method_only.conf;
+
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+    add_header 'Access-Control-Allow-Headers' 'Cookie';
+
+
+   access_log /var/log/nginx/scapi_access.log proxylog;
+   error_log  /var/log/nginx/scapi_error.log  warn;
+   root /var/nginx/scapi;
+
+   keepalive_timeout 30;
+   client_max_body_size 150m;
+
+   proxy_connect_timeout  180;
+   proxy_read_timeout 180;
+
+location  /sc/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+
+      proxy_pass http://ph-prd-ts-vip.vmware.com:1081/sc/;
+      proxy_redirect default;
+   }
+
+}
+

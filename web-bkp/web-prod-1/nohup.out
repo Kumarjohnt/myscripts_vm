@@ -1,0 +1,36 @@
+#----------------------------------------------------------------
+
+Fast Access Commands:
+
+cdap = cd /etc/httpd/conf
+cdal = cd /www/logs
+
+BE VERY CAREFUL When copy/paste any config file into
+editor then checking in Perforce especially using editors in Windows.
+
+The line ending charactor may lost and cause lines to move
+up and merge. THIS CAN CAUSE CATASTROPHIC ERROR. !!!!!!!
+
+Always compare the number of lines on server by using 'wc -l virtual.conf'
+and the number of lines in your editor and Perforce after tranporting file.
+
+They MUST BE THE SAME !!!!!!!
+
+If you are assisiting a release where release team will push config
+file out using release tool.
+
+Deployment Backups are in below path
+
+/etc/httpd/ppm-conf-backup
+
+
+Using the following command to watch live traffic during the release push:
+
+tail -f /etc/httpd/logs/my_log
+
+If the traffic stops flowing after release, then a catastrophic error
+has occrred. Immediately roll back to earlier version.
+
+#----------------------------------------------------------------
+
+/tmp/web-bkp-mann/web-prod-1/: Permission denied

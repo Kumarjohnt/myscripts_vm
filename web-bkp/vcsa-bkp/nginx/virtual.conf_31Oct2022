@@ -1,0 +1,122 @@
+server {
+   listen 80;
+   server_name vcsa.vmware.com;
+   include /etc/nginx/allow_vcsa_method_only.conf;
+   add_header 'Access-Control-Allow-Credentials' 'true';
+   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+   add_header 'Access-Control-Allow-Headers' 'Cookie';
+   access_log /var/log/nginx/vcsa_access.log debuglog;
+   error_log  /var/log/nginx/vcsa_error.log  error;
+   #resolver 10.128.242.1 10.128.242.2 ipv6=off valid=30s;
+   root /var/nginx/vcsa;
+   keepalive_timeout 30;
+   client_max_body_size 150m;
+   proxy_connect_timeout  180;
+   proxy_read_timeout 180;
+   proxy_set_header  Host               $http_host;
+   proxy_set_header  X-Forwarded-Host   $http_host;
+   proxy_set_header  X-Forwarded-Server $http_host;
+   proxy_set_header  X-Real-IP          $remote_addr;
+   proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+   set $target_prod "http://wdc-vcd01-vac-t-prd-vip01.supercollider.vmware.com:1081/api/hyper/send?$query_string";
+   set $target_stg "http://wdc-vcd01-vac-t-stg-vip01.supercollider.vmware.com:1081/api/hyper/send?$query_string";
+
+   if ($http_x_sky__collector) {
+	set $target_prod "http://127.0.0.1/skyline/data/raw/v1/";
+	set $target_stg "http://127.0.0.1/skyline-stg/data/raw/v1/";
+   }
+
+   location = /ph/api/hyper/send {
+	proxy_pass $target_prod;
+   }
+
+   location = /ph-stg/api/hyper/send {
+	proxy_pass $target_stg;
+   }
+
+   location  /ph-tst/api/ {
+	proxy_pass        http://wdc-vcd01-vac-dev-t-tst-vip01.supercollider.vmware.com:1081/api/;
+       	proxy_redirect default;
+   }
+
+   location  /ph-stg/api/ {
+      	proxy_pass http://wdc-vcd01-vac-t-stg-vip01.supercollider.vmware.com:1081/api/;
+      	proxy_redirect default;
+   }
+
+## Changes ending here for TKT5136253 ##
+   location /skyline/ {
+     	# SPOOFED in /etc/hosts  to 10.165.147.5 to avoid the hair pin traffic i.e VMWARE ===> CDN ====> VMWARE
+     	proxy_set_header  Host    "skyline.vmware.com";
+        proxy_pass        https://skyline-vcsa.vmware.com/;
+        #proxy_pass        https://skyline.vmware.com/;
+        #proxy_pass        https://w-prod-scdc-int-vip.vmware.com/;
+        # 10.165.147.5
+   }
+##### for testing  ##
+   location /skyline1/ {
+     	# SPOOFED in /etc/hosts  to 10.165.147.5 to avoid the hair pin traffic i.e VMWARE ===> CDN ====> VMWARE
+     	proxy_set_header  Host    "skyline.vmware.com";
+	resolver 10.128.242.1 10.128.242.2 valid=30s ipv6=off;
+	set $BACKEND https://skyline-vcsa.vmware.com/;
+        proxy_pass	$BACKEND;
+#	proxy_pass https://skyline-vcsa.vmware.com/;
+        #proxy_pass        https://w-prod-scdc-int-vip.vmware.com/;
+        # 10.165.147.5
+   }
+#####TKT3408127
+   location  /ph/api/v1/manifest {
+      	proxy_pass http://wdc-vcd01-sc-k8s-t-manifest.prd.supercollider.vmware.com:8080/api/v1/manifest;
+      	proxy_redirect default;
+   }
+    
+   location  /ph-stg/api/v1/manifest {
+      	proxy_pass http://wdc-vcd01-sc-k8s-t-manifest.stg.supercollider.vmware.com:8080/api/v1/manifest;
+      	proxy_redirect default;
+   }
+##########
+
+######TKT5136253
+
+#TKT5177396  ITCM-30694
+location  /ph/api/v1/results {
+        proxy_pass http://wdc-vcd01-sc-k8s-t-result.supercollider.vmware.com:8080/api/v1/results;
+        proxy_redirect default;
+   }
+
+location  /ph-stg/api/v1/results {
+        proxy_pass http://wdc-vcd01-sc-k8s-t-result.stg.supercollider.vmware.com:8080/api/v1/results;
+        proxy_redirect default;
+   }
+
+## Changes ending here for TKT5136253 ##
+   location  /ph/api/ {
+     	proxy_pass http://wdc-vcd01-vac-t-prd-vip01.supercollider.vmware.com:1081/api/;
+     	proxy_redirect default;
+   }
+
+#Change Start - TKT5342265
+   location  /skyline/data/raw/v1/ {
+        resolver 10.128.242.1 10.128.242.2 ipv6=off valid=30s;
+        set $BACKEND "https://data.mgmt.cloud.vmware.com";
+   	proxy_set_header Authorization 'Bearer B92QIDAisU1HIvryf1aJjg79g66wai1b';
+	proxy_set_header Content-Type 'application/octet-stream';
+   	proxy_pass $BACKEND/le-mans/v1/streams/skyline-topology;
+        proxy_redirect $BACKEND/le-mans/v1/streams/skyline-topology/ /skyline/data/raw/v1/;
+   }
+#Change End - TKT5342265
+   location /skyline-stg/data/raw/v1/ {
+	resolver 10.128.242.1 10.128.242.2 valid=30s ipv6=off;
+	set $BACKEND "https://data.staging.symphony-dev.com";
+	proxy_set_header Authorization 'Bearer yPaUMUmTEpxe39A4QxcCsfRiC5aa2fbf';
+	proxy_set_header Content-Type 'application/octet-stream';
+	proxy_pass $BACKEND/le-mans/v1/streams/skyline-topology;
+	proxy_redirect $BACKEND/le-mans/v1/streams/skyline-topology/ /skyline-stg/data/raw/v1/;
+   }   
+
+   location / {
+      	return 403;
+   }
+}
+
+

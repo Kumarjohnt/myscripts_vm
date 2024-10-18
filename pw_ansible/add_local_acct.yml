@@ -1,0 +1,14 @@
+---
+- name: "Add user local account (no ldap)" 
+  hosts: sc9-mailhost
+  gather_facts: true
+  become: yes
+
+  tasks: 
+    - name: Create a local user account
+      ansible.builtin.user:
+        name: hatchs
+        password: "$6$wGkfTUTe$y3RGiMFXoHqJ1faLsGCG8ElFdTPIvRFb8ZDJ0WKoUxTBhqWtjXQkMALqhKFnA/aKIT/cuGxrK1X7VNLfqOlmC0"
+        home: "/home/hatchs"
+        comment: "Stephen Hatch"
+        shell: /bin/bash

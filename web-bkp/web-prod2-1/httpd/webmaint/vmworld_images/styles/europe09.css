@@ -1,0 +1,1800 @@
+body {
+	margin: 0;
+	padding: 0;
+	font: 11px Tahoma, Arial, Helvetica, sans-serif;
+	background-color: #ABB0B6;
+	color: #666666;
+	text-align: left;
+}
+
+a {
+	color: #355491;
+	text-decoration: none;
+}
+
+
+a.feed {
+	padding-right: 22px;
+	background: url('http://www.vmware.com/images/icon-feed.gif') no-repeat top right;
+}
+
+a.more {
+	padding-right: 10px;
+	background: url('http://www.vmware.com/images/arrow-links.gif') no-repeat 100% 4px;
+}
+
+a.button {
+	display: block;
+	height: 29px;
+	text-indent: -9999px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+}
+
+a.b-register {
+	width: 116px;
+	background: url('http://www.vmware.com/images/button-register.gif');
+}
+
+
+a.b-logon2 {
+	height: 15px;
+	width: 193px;
+	background: url('http://www.vmware.com/images/button-logon2.gif');
+}
+form {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	margin: 0;
+	padding: 0 0 6px 0;
+	font: bold 16px Arial, Helvetica, sans-serif;
+	color: #fa952a;
+}
+
+h2 {
+	font: bold 20px Arial, Helvetica, sans-serif;
+	color: #fa952a;
+	margin: 0;
+	padding: 6px 0 4px 0;
+}
+
+h3 {
+	margin: 0;
+	/*padding: 12px 0 0px 40px;*/
+	font: bold 12px Arial, Helvetica, sans-serif;
+	color: #fa952a;
+}
+
+p {
+	margin: 0;
+	padding: 6px 0 6px 40px;
+	color: #666666;
+	font-family:"Arial","Franklin Gothic Medium Cond","sans-serif";
+	font-size:12px;
+	font-weight:normal;
+	line-height:142%;
+}
+}
+
+p.large {
+	font: 16px/22px Arial, Helvetica, sans-serif;
+	padding-right: 30px;
+	padding-bottom: 16px;
+}
+
+img {
+	border: none;
+}
+img.icon {
+	margin-left: 6px;
+	margin-bottom: 10px;
+}
+
+img.left {
+	float: left;
+}
+
+* html img.left {
+	display: inline;
+}
+
+ul {
+	margin: 0;
+	padding:0px 0px 0px 54px;
+	list-style: none;
+}
+
+ul li {
+	line-height: 16px;
+	list-style: square;
+}
+
+
+/* empty block */
+div.empty {
+	width: 100%;
+	height: 14px;
+	overflow: hidden;
+}
+
+
+
+/* separator block */
+div.separator {
+	border-top: 1px solid #CCCCCC;
+	border-bottom: 2px solid #F5F5F5;
+	overflow: hidden;
+}
+
+/* text box section */
+div.text-box {
+	font: 13px/17px Arial, Helvetica, sans-serif;
+}
+
+div.text-box h1 {
+	margin-bottom: 12px;
+}
+
+div.text-box img.icon {
+	margin: 10px 10px 15px 10px;
+}
+
+div.text-box ul {
+	list-style: disc;
+	margin: 0 0 12px 0;
+	padding: 0 0 0 20px;
+}
+
+div.text-box ul li {
+	line-height: 17px;
+}
+
+/* links list */
+ul.link {
+	padding-bottom: 2px;
+}
+
+ul.link li {
+	padding-left: 12px;
+	line-height: 21px;
+	background: url('http://www.vmworld.com/images/arrow-links.gif') no-repeat 0 8px;
+}
+
+
+/* actions list */
+ul.actions li {
+	line-height: 21px;
+}
+
+/* tabset list */
+ul.tabset {
+	margin: 0;
+	padding: 0 0 0 11px;
+	list-style: none;
+}
+
+ul.tabset li {
+	float: left;
+	padding-right: 2px;
+}
+
+ul.tabset li a {
+	display: block;
+	float: left;
+	color: #666666;
+	text-decoration: none;
+	background: #ECECEC url('http://www.vmware.com/images/tabset-left.gif') no-repeat;
+	padding: 0 0 0 11px;
+}
+
+ul.tabset li a span {
+	display: block;
+	float: left;
+	line-height: 23px;
+	background: url('http://www.vmware.com/images/tabset-right.gif') no-repeat top right;
+	padding: 0 40px 0 29px;
+	cursor: pointer;
+}
+
+ul.tabset li a:hover, ul.tabset li a.active {
+	text-decoration: none;
+	color: #fa952a;
+	background-color: #FFF;
+	background-position: 0 -23px;
+}
+
+ul.tabset li a:hover span, ul.tabset li a.active span {
+	cursor: pointer;
+	background-position: 100% -23px;
+}
+
+/* box section */
+div.box div.head {
+	background: #AEC774 url('http://www.vmware.com/images/background-box.png') no-repeat top right;
+	overflow: hidden;
+	height: 1%;
+}
+
+div.box div.head strong.head {
+	display: block;
+	background: url('http://www.vmware.com/images/background-box-head.gif') no-repeat;
+	padding-left: 16px;
+	line-height: 19px;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FFF;
+}
+
+div.box-grey div.head {
+	background-image: none;
+	background-color: #999;
+}
+
+div.box-grey div.head strong.head {
+	padding-left: 16px;
+	background-image: url('http://www.vmware.com/images/background-box-grey-head.gif');
+}
+
+div.box div.body {
+	padding: 10px 0 10px 0;
+}
+
+div.box-grey div.body p {
+	line-height: 16px;
+}
+
+#content-right div.box-grey div.body, div.inner-right div.box-grey div.body {
+	padding-right: 13px;
+	padding-left: 13px;
+}
+
+/* full box section */
+div.full-box div.head {
+	background-image: url('http://www.vmware.com/images/background-box-full.png');
+}
+
+div.full-box div.head strong.head {
+	background-image: url('http://www.vmware.com/images/background-box-full-head.gif');
+	padding-left: 11px;
+	line-height: 27px;
+}
+
+div.full-box div.body {
+	border: 1px solid #CCC;
+	border-top: none;
+	padding: 0 12px 3px 10px;
+}
+
+div.full-box div.actions {
+	margin-bottom: 10px;
+	padding: 11px 0 0 0;
+	overflow: hidden;
+	height: 1%;
+}
+
+div.full-box div.actions div.selector {
+	float: left;
+}
+
+div.full-box div.actions div.selector label {
+	padding-right: 5px;
+}
+
+div.full-box div.actions div.selector select {
+	font: 11px Arial, Helvetica, sans-serif;
+	color: #666666;
+	margin-right: 5px;
+}
+
+div.full-box div.actions div.roll {
+	float: right;
+}
+
+div.full-box div.actions div.roll ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+div.full-box div.actions div.roll ul li {
+	display: inline;
+}
+
+div.full-box div.actions div.roll ul li.next {
+	border-left: 1px solid #000;
+	padding-left: 3px;
+}
+
+/* box news list */
+
+div.box ul.news {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+div.box ul.news li {
+	border-top: 2px dotted #CCCCCC;
+	padding: 9px 0 9px 0;
+}
+
+div.box ul.news li:first-child {
+	border-top: none;
+	padding-top: 0;
+}
+
+/* ad.block section */
+div.ad a {
+	display: block;
+}
+
+div.ad a img {
+	margin-bottom: 4px;
+}
+
+div.ad a span {
+	display: block;
+}
+
+/* SEO headings */
+strong.seo {
+	display: block;
+	position: absolute;
+	top: 22px;
+	left: 16px;
+	z-index: 40;
+}
+
+strong.seo a {
+	display: block;
+	text-indent: -9999px;
+	overflow: hidden;
+	width: 145px;
+	height: 40px;
+	background:transparent url(/images/vmworld-com.gif) no-repeat top;
+height:40px; width:145px; top:10px;
+}
+
+/* container section */
+#container {
+	width: 950px;
+	margin: 0 auto; /* center align */
+	position: relative;
+	padding: 109px 0 20px 0;
+}
+
+/* header section */
+#header {
+	position: absolute;
+	top: 9px;
+	left: 0;
+	width: 100%;
+	height: 100px;
+	background: #EDEDED url('http://www.vmworld.com/vmworld/images/background-header.png') no-repeat;
+	z-index: 30;
+}
+#navigation-welcome {
+    border: 0;
+    position: absolute;
+	top: 13px;
+	right: 175px;
+	margin: 0;
+	padding-left: 2px;
+	list-style: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+/* header extra navigation */
+#navigation-extra {
+	position: absolute;
+	top: 11px;
+	right: 18px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font: 11px Tahoma, Arial, Helvetica, sans-serif;
+}
+
+#navigation-extra li {
+	display: inline;
+	line-height: 15px;
+	padding: 0;
+}
+
+#navigation-extra li:first-child {
+	border-left: none;
+}
+
+#navigation-extra li a {
+	text-decoration: none;
+}
+
+#navigation-extra li a:hover {
+	text-decoration: underline;
+}
+
+/* header right logo */
+#right-logo {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* header search form */
+#form-search {
+	position: absolute;
+	top: 41px;
+	right: 19px;
+}
+
+#form-search label {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	display: block;
+	float: left;
+	line-height: 20px;
+	padding-right: 2px;
+}
+
+#form-search input.text, #form-search select {
+	font: 11px Arial, Helvetica, sans-serif;
+	color: #666;
+	display: block;
+	float: left;
+}
+
+#form-search input.text {
+	margin: 0 6px 0 0;
+	padding: 2px 4px 2px 4px;
+	width: 150px;
+	border: 1px solid #A5ACB2;
+	height: 14px;
+}
+
+#form-search select {
+	margin: 0 2px 0 0;
+}
+
+#form-search input.submit {
+	display: block;
+	float: left;
+}
+/* header top navigation section */
+#navigation-top {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	top: 44px;
+	left: 2px;
+	font-size: 12px;
+}
+
+#navigation-top li {
+	float: left;
+	margin-left: -1px;
+	list-style:none;
+}
+
+#navigation-top li a {
+	display: block;
+	float: left;
+	background: url('http://www.vmworld.com/vmworld/images/navigation-top-left.gif') no-repeat;
+	padding: 0 0 0 16px;
+	text-decoration: none;
+	color: #666666;
+	position: relative;
+}
+
+#navigation-top li a span {
+	display: block;
+	float: left;
+	padding: 6px 18px 0 2px;
+	line-height: 21px;
+	cursor: pointer;
+	background: url('http://www.vmworld.com/vmworld/images/navigation-top-right.gif') no-repeat top right;
+}
+
+#navigation-top li a:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+#navigation-top li a.active {
+	background-position: 0 -27px;
+	color: #fa952a;
+}
+
+#navigation-top li a.active span {
+	background-position: 100% -27px;
+	padding-top: 2px;
+	line-height: 25px;
+}
+
+/* main navigation section */
+
+#navigation-main {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	top: 9px;
+	left: 6px;
+	font-size: 11px;
+}
+
+#navigation-main li {
+	float: left;
+	background: url('http://www.vmworld.com/vmworld/images/separator-navigation-main.gif') no-repeat left;
+	padding: 0 2px 0 3px;
+	position: relative;
+}
+
+#navigation-main li:first-child {
+	background: none;
+}
+
+#navigation-main li.first {
+	background: none;
+}
+
+#navigation-main li a {
+	display: block;
+	float: left;
+	line-height: 22px;
+	padding:3px 10px 3px 22px;
+	color: #666666;
+	text-decoration: none;
+	position: relative;
+	z-index: 10;
+}
+
+#navigation-main li a:hover {
+	color: #fa952a;
+}
+
+#jive-userbar-droplink a {
+    background: url('http://www.vmworld.com/vmworld/images/separator-navigation-main.gif') no-repeat left;
+    font-weight: normal;
+}
+#jive-userbar-droplink a:first-child {
+    background:none;
+}
+#jive-userbar-droplink a:hover {
+    background: url('http://www.vmworld.com/vmworld/images/separator-navigation-main.gif') no-repeat left;
+    color: #fa952a;
+}
+#jive-userbar-droplink a:hover:first-child {
+    background:none;
+}
+#jive-userbar-droplink a:hover span {
+    text-decoration: none;
+
+}
+#jive-userbar-droplink a.jive-userbar-droplink-on {
+    background:  url('http://www.vmworld.com/vmworld/images/separator-navigation-main.gif') no-repeat left;
+}
+#jive-userbar-droplink a.jive-userbar-droplink-on:first-child {
+    background:none;
+}
+#jive-userbar-droplink a span.jive-userbar-create {
+	background: none;
+}
+#jive-userbar-droplink a span.jive-userbar-toolbox {
+	background: none;
+}
+
+#jive-userbar-droplink a span.jive-userbar-history {
+	background: none;
+}
+#jive-userbar-droplink a span.jive-userbar-navigation {
+	background: none;
+}
+
+#navigation-main li.hover a, #navigation-main li.hover a:hover {
+	line-height: 20px;
+    border-top: 1px solid #D2D2D2;
+	border-left: 1px solid #D2D2D2;
+	border-right: 1px solid #D2D2D2;
+	border-bottom: 1px solid #FFF;
+	padding: 0 11px 0 11px;
+	background-color: #FFF;
+	color: #666666;
+	font-weight: normal;
+}
+
+#navigation-main li.active, #navigation-main li.active a {
+	color: #fa952a;
+	font-weight: bold;
+}
+
+#navigation-main li ul {
+	display: none;
+	position: absolute;
+	top: 21px;
+	left: 3px;
+	width: 150px;
+	background-color: #FFF;
+	border: 1px solid #D2D2D2;
+	margin: 0;
+	padding: 2px;
+	list-style: none;
+}
+
+#navigation-main li ul li {
+	background: none;
+	float: none;
+}
+
+#navigation-main li.hover ul {
+	display: block;
+}
+
+#navigation-main li ul li a,
+#navigation-main li.hover ul li a {
+	border: none;
+	background: none;
+	padding: 0;
+	line-height: 20px;
+	color: #999999;
+	float: none;
+	width: 100%;
+}
+#navigation-main li ul li a span {
+	display: block;
+	float: none;
+	padding: 2px 4px 2px 8px;
+}
+
+#navigation-main li ul li a:hover,
+#navigation-main li.hover ul li:hover a,
+#navigation-main li.hover ul li a:hover {
+	border: none;
+	padding: 0;
+	line-height: 20px;
+	background: #D6E3B9 url('http://www.vmworld.com/vmworld/images/navigation-sub-top.gif') no-repeat;
+	color: #fa952a;
+}
+
+#navigation-main li ul li a:hover span,
+#navigation-main li.hover ul li a:hover span {
+	background: url('http://www.vmworld.com/vmworld/images/navigation-sub-bottom.gif') no-repeat bottom left;
+
+}
+
+/* footer section */
+#footer {
+	width: 100%;
+	height: 40px;
+	padding: 5px 0 0 0;
+	background: #EDEDED url('http://www.vmworld.com/vmworld/images/background-footer.png') no-repeat;
+	overflow: hidden;
+	color: #999;
+}
+
+#footer p {
+	margin: 0;
+	padding: 0 0 0 14px;
+	line-height: 28px;
+	display: inline;
+}
+
+/* footer bottom navigation section*/
+#navigation-bottom {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	display: inline;
+}
+
+#navigation-bottom li {
+	display: inline;
+	padding: 0 0 0 18px;
+}
+
+#navigation-bottom li a {
+	color: #999;
+	text-decoration: none;
+}
+
+#navigation-bottom li a:hover {
+	text-decoration: underline;
+}
+
+/* content section */
+
+#content-left {
+	width: 700;
+	float: left;
+	padding: 20 0px 0 20px;
+	color: #666666;
+}
+
+#quickbar {
+	width: 230px;
+	float: right;
+}
+
+#quickbar div.inner {
+	background-color: #EFEFEF;
+	height: auto;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	overflow: hidden;
+	padding: 9px;
+	z-index:1;
+}
+#quickbar div.box {border-left: 1px solid #CCCCCC; padding:0px 0 0 1px; z-index:5;}
+#quickbar div.box div.inner{border-left: none; background-color:#ffffff; border-bottom:none;}
+#quickbar-main {
+	width: 330px;
+	_width: 331px;
+	float: left;
+	border-left: 1px solid #FFF;
+	padding: 1px 1px 14px 2px;
+	margin: 0 0 0 -1px;
+	position: relative;
+}
+
+#quickbar-main div.inner {
+	background-color: #EFEFEF;
+	height: 219px;
+	border-bottom: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	overflow: hidden;
+	padding: 9px;
+}
+
+#content-top {
+	padding: 16px 280px 10px 16px;
+	font: 13px Arial, Helvetica, sans-serif;
+}
+
+#content-top-main {
+	font-family:Arial,Helvetica,sans-serif;
+    font-size:13px;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    padding:16px 10px 10px 16px;
+}
+#content-top-main p.more {
+	font-size: 11px;
+}
+#content-right #content-top {
+	padding-right: 100px;
+	padding-top: 0;
+	padding-left: 0;
+}
+
+#content-top p.more {
+	font-size: 11px;
+}
+
+/* table holder section */
+ul.table-holder {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+ul.table-holder li {
+	overflow: hidden;
+	line-height: 29px;
+}
+
+ul.table-holder li.dark {
+	background-color: #EFEFEF;
+
+}
+
+ul.table-holder span {
+	display: block;
+	float: left;
+	padding: 0 11px 0 11px;
+}
+
+ul.table-holder span.center {
+	text-align: center;
+}
+
+ul.table-holder li.thead {
+	background: #ABB0B6 url('http://www.vmworld.com/vmworld/images/thead-right.gif') no-repeat top right;
+	line-height: 21px;
+	text-transform: uppercase;
+	color: #FFF;
+	font-size: 10px;
+}
+
+ul.table-holder li.tsubhead {
+	line-height: 31px;
+	background-color: #D6E3B9;
+	color: #fa952a;
+	font-weight: bold;
+	padding: 0 11px 0 11px;
+}
+
+ul.table-holder li.thead span {
+	background-repeat: no-repeat;
+}
+
+ul.table-holder li.thead span:first-child {
+	background-image: url('http://www.vmworld.com/vmworld/images/thead-left.gif');
+}
+
+ul.table-holder div.subnote {
+	clear: both;
+	font: 11px/13px Arial, Helvetica, sans-serif;
+	color: #999999;
+	border-top: 1px solid #CCCCCC;
+	padding-top: 4px;
+	margin: 0 8px 0 8px;
+}
+
+/* sessions table section */
+ul.table-sessions span.id {
+	width: 15px;
+}
+ul.table-sessions span.session {
+	width: 310px;
+}
+ul.table-sessions span.lab {
+	width: 415px;
+}
+ul.table-sessions span.presenter {
+	width: 82px;
+	text-align: left;
+}
+ul.table-sessions span.date {
+	width: 30px;
+	text-align: left;
+}
+ul.table-sessions span.view {
+	width: 78px;
+	text-align: left;
+}
+ul.table-sessions div.subnote {
+	padding-left: 77px;
+}
+
+/* documents table section */
+ul.table-documents span.type {
+	width: 95px;
+}
+ul.table-documents span.subject {
+	width: 190px;
+}
+ul.table-documents span.tags {
+	width: 125px;
+}
+ul.table-documents span.lasta {
+	width: 150px;
+}
+
+/* Jive CSS Changes */
+#jive-body-intro {
+    width:auto;
+}
+#jive-body-intro-content h1 {
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:16px;
+    font-weight:bold;
+}
+#jive-body-intro-content p {
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:13px;
+    padding-bottom:10px;
+}
+#jive-bodyhome-maincol-container {
+    float:none;
+    margin-left:0;
+}
+html > body #jive-bodyhome-maincol {
+    margin-left:-11pt;
+}
+
+.jive-body-intro-tour {
+    width:205px;
+    padding-right:5px;
+    padding-left:0;
+    margin-left:5px;
+    border-left:none;
+    float:none;
+    padding-top:10px;
+}
+.jive-body-intro-tour h3 {
+    float:left;
+    padding:3px 0pt;
+    font-size:12pt;
+    color:#555555;
+    font-weight:bold;
+}
+.jive-body-intro-tour span {
+    float:right;
+    padding:5px 2px 0pt 0pt;
+}
+.jive-body-intro-tour p {
+    clear:both;
+    padding:5px 0pt 8px;
+}
+#jive-community-list-short .jive-community-item-header {
+    padding-top:0px;
+}
+.jive-community-item-content {
+    padding:0;
+}
+
+#jive-body-maincol-container {
+    float:right;
+    margin-right:0;
+    min-height:350px;
+    min-width:0;
+    width:720px;
+    _width:720px;
+}
+#jive-body-maincol {
+    margin-right:0;
+	float:left;
+	padding: 0 0px;
+}
+
+#jive-body-sidebarcol {
+    padding-right:0;
+    padding-left:20px;
+}
+#jive-body-announcements {
+    min-width:0;
+    width:auto;
+    _width:auto;
+}
+#jive-body-announcements-main {
+    width:100%;
+    _width:650px;
+}
+
+.jive-content-block-container {
+    margin-right:0;
+    _width:670px;
+    width:670px;
+    margin-bottom:28px;
+    clear:both;
+    float:left;
+}
+
+html > body #jive-content-overview-widecol-container {
+    margin-right:0;
+    width:50%;
+}
+html > body #jive-content-overview-widecol {
+    margin-right:0;
+}
+#jive-content-overview-widecol {
+    margin-right:0;
+    width:100%;
+}
+#jive-content-overview-widecol-container {
+    width:50%;
+}
+#jive-content-overview-thincol-container {
+    margin:0;
+    width:50%;
+}
+#jive-content-overview-thincol {
+   padding:0pt 5px 30pt 10px;
+}
+.jive-community-overview-discussions span {
+   width:100%;
+}
+.jive-body-intro-tour {
+    width:225px;
+}
+#jive-home-topmemebers {
+    width:223px;
+    _width:220px;
+    margin-left:2px;
+}
+#jive-home-populartags {
+    width:223px;
+    _width:220px;
+    margin-left:2px;
+}
+#jive-home-latestpoll {
+    width:223px;
+    _width:220px;
+    margin-left:2px;
+}
+
+#jive-userbar {
+    background:none;
+    width:950px;
+    position:absolute;
+    top: 70px;
+    z-index:40;
+    float:left;
+}
+#jive-userbar-right {
+    background:none;
+    padding:0;
+}
+.jive-userbar-menu {
+	left: 0;
+	top: 38px;
+    background-color: #FFFFFF;
+}
+
+.jive-userbar-menu a:hover {
+	text-decoration: none;
+    background-color: #D6E3B9;
+    color: #fa952a;
+}
+
+#jive-userbar-community-tree {
+    width: 250px;
+}
+.jive-communitylist-sm {
+    background:none;
+    padding:0;
+}
+.jive-thread-info {
+    background-color: #9CCA40;
+}
+.jive-thread-post {
+    background-color:#E7FAC3;
+}
+.jive-icon-community-big {
+    background:none;
+}
+
+/* Style for Callout Note */
+.note {
+	color: #cc6600;
+}
+#conference-userbar {
+    background:none;
+    width:950px;
+    position:absolute;
+    top: 70px;
+    z-index:40;
+    float:left;
+}
+
+#secondary-navigation {
+/*	width: 205px; */
+	margin: 0 0 0px 0;
+	padding: 0 14px 20px 7px;
+	list-style: none;
+	font-size: 11px;
+	color:#fa952a;
+	_width:170px;
+}
+
+#secondary-navigation li {
+	border-top: 1px solid #ccc;
+	padding: 1px 0 1px 0;
+	background: url(http://www.vmworld.com/files/images/vmworld/arw-blue.gif) no-repeat 0 12px;
+	_background: url(http://www.vmworld.com/files/images/vmworld/arw-blue.gif) no-repeat 0 14px;
+	font-weight: bold;
+}
+#secondary-navigation li.first {
+	border-top: none;
+}
+
+#secondary-navigation li.active {
+	background-image: url(http://www.vmworld.com/files/images/vmworld08/arw-lightblue-4x8.gif);
+}
+
+#secondary-navigation li a {
+	padding: 8px 0 8px 12px;
+	display: block;
+	text-decoration: none;
+}
+
+#secondary-navigation li.active a {
+	font-weight: bold;
+	color:#fa952a;
+}
+
+#secondary-navigation li a:hover {
+	color:#fa952a;
+	background: url(http://www.vmworld.com/files/images/vmworld08/arw-lightblue-4x8.gif) no-repeat 0px 11px ;
+	_background: url(http://www.vmworld.com/files/images/vmworld08/arw-lightblue-4x8.gif) no-repeat 0px 12px;
+}
+
+#secondary-navigation li li a:hover {
+	color:#fa952a;;
+	background: url(http://www.vmworld.com/files/images/vmworld08/arw-lightblue-4x8.gif) no-repeat 10px 11px;
+	_background: url(http://www.vmworld.com/files/images/vmworld08/arw-lightblue-4x8.gif) no-repeat 10px 12px;
+
+}
+
+#secondary-navigation ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid #C5D4E9;
+}
+
+#secondary-navigation ul ul{
+	border-top: none;
+	padding-left: 7px;
+}
+
+#secondary-navigation li.active ul li a, #secondary-navigation ul li.active ul li a {
+	font-weight: normal;
+	background: none;
+}
+
+#secondary-navigation li.active ul li a:hover, #secondary-navigation ul li.active ul li a:hover {
+	color:#fa952a;;
+	background: url(http://www.vmworld.com/files/images/vmworld08/arw-lightblue-4x8.gif) no-repeat 10px 11px;
+	_background: url(http://www.vmworld.com/files/images/vmworld08/arw-lightblue-4x8.gif) no-repeat 10px 12px;
+
+}
+
+#secondary-navigation li ul li {
+/*	background-position: 9px 12px; */
+	background: url(http://www.vmworld.com/files/images/vmworld/arw-blue.gif) no-repeat 10px 12px;
+	_background: url(http://www.vmworld.com/files/images/vmworld/arw-blue.gif) no-repeat 10px 14px;
+	font-weight:normal;
+	/*_width:180px;*/
+/*	border-top: none;*/
+}
+#secondary-navigation li ul li a {
+	padding-left: 21px;
+	color:#fa952a;
+}
+#secondary-navigation li ul li ul li {
+	background: url(http://www.vmware.com/files/images/vmworld/arw-grey.gif) no-repeat 10px 12px;
+	_background: url(http://www.vmware.com/files/images/vmworld/arw-grey.gif) no-repeat 10px 14px;
+	border-top: none;
+	_width:190px;
+}
+
+/*#secondary-navigation li ul li ul li a {
+	padding-left: 29px;
+} */
+
+h2 {
+color:#fa952a;
+font-size:14px;
+line-height:normal;
+}
+
+.inner-right ul {
+border-top:2px solid #C1DF8C;
+list-style-position:outside;
+list-style-image:none;
+lit-style-type:none;
+margin:0px 30px 0px 15px;
+padding-left:0px;
+text-align:left;
+}
+
+.inner-right li {
+background:url(http://www.vmware.com/files/images/vmworld/arrow_trans.gif) no-repeat left center;
+border-bottom:2px dotted #C1DF8C;
+color:#fa952a;
+font-size:11px;
+font-weight:normal;
+margin:3px 0px 3px 0px;
+padding:7px 0pt 7px 12px;
+list-style:none;
+}
+
+.inner-right p { margin-left:15px; }
+
+#bread {margin:1px 1px 0px 1px;
+ background:#dedede; width:708px; _width:707px; height:20px; z-index:5; float:left;}
+#bread p {
+color:#666666;
+font-family:Tahoma;
+font-size:10px;
+margin:0px 15px 0 18px;
+padding:3px 0 0 0;
+}
+#bread p a {
+color:#666666;
+text-decoration:none;
+padding:0;
+}
+#bread p a:hover {
+color:#fa952a;
+}
+.inner h4 {
+background:#fa952a url(http://www.vmware.com/files/images/vmworld/arrow_trans.gif) no-repeat scroll center;
+color:#ffffff;
+font-weight:bold;
+margin:0px;
+padding:4px 5px;
+text-indent:12px;
+font-size:11px;
+}
+#quickbar p { padding:9px 15px; }
+#quickbar div.inner {padding:0px 0 9px;}
+
+.left #content-left {padding:20px 0px 0px 20px;}
+
+h2 {font-size:16px;}
+
+#navigation-main li.active
+{color:#4262a1;}
+
+#navigation-top li a.active
+{
+    color: #fa952a;
+    }
+
+a, #secondary-navigation li ul li a, #secondary-navigation li.active ul li a  {color:#3564cc;}
+
+#content-hero {background:url(/images/vmw09/bg_header-green.gif) no-repeat left top; margin:0px; height:80px;}
+
+#tabbox {padding:20px 0px 0px 40px;}
+
+#nav_control {
+float:left;
+width:90px;
+*width:140px;
+}
+
+#nav_control ul {
+display:block;
+float:left;
+margin:-10px 0pt 0pt;
+padding:0px;
+width:90px;
+}
+
+#nav_control li {
+background:transparent url(http://www.vmware.com/files/images/vmworld08/arw-grey-big.gif) no-repeat 0 32px;
+display:block;
+float:left;
+height:65px;
+padding:5px 0pt 0pt 0px;
+border-bottom: 1px solid #d3d3d3;
+*line-height:65px;
+width:80px;
+}
+
+#nav_control li.tabon {
+background:transparent url(http://www.vmware.com/files/images/vmworld08/arw-lightblue-big.gif) no-repeat 0 32px;
+}
+
+#nav_control a {
+text-decoration:none;
+}
+
+#nav_control li a {
+color:#fa952a;
+display:block;
+/*float:left;*/
+padding:5px 0pt 0px 8px;
+width:80px;
+}
+
+#description {
+display:block;
+float:left;
+height:auto;
+margin-left:30px;
+padding:0px 10px 10px;
+*margin-left:0px;
+*padding-left:0px;
+width:420px;
+clear:right;
+}
+
+#description p {padding-left:0px;}
+
+.show {
+display:block;
+visibility:visible;
+}
+.hide {
+display:none;
+visibility:hidden;
+}
+
+.date {font-size:40px; float:left; cursor:pointer; margin:0px; padding:0px; *line-height:40px;}
+.dd {font-size:20px; float:left; display:inline; cursor:pointer; margin-top:-5px; *margin-top:-18px;}
+.week {font-size:12px; cursor:pointer; padding-bottom:10px; *padding-bottom:0px; margin:0px; *padding:0px;     line-height:16px;}
+#nav_control li .date, #nav_control li .dd, #nav_control li .week {color:#999;}
+#nav_control li.tabon .date, #nav_control li.tabon .dd, #nav_control li.tabon .week {color:#fa952a;}
+.header {font-size:14px; color:#fa952a;}
+.bar {border-top:1px solid #cccccc; line-height:20px;}
+.title {position:absolute; font-size:32px; color:#fff; left:18px; top:25px;}
+hr {clear:both; height:1px; color:#fa952a; border-top:1px solid #fa952a; border-bottom:none; width:655px;}
+table h2 {font-size:12px;}
+#description table {margin-left:0px; _margin-left:-20px;}
+table p {padding-left:0px;}
+.arw{background:url(http://www.vmware.com/files/images/vmworld08/btn_lightblue.gif) no-repeat 3px 8px; padding-left:40px; height:34px; font-size:24px; color:#477AC3;}
+
+div.box_2cols {
+background:transparent url(/images/vmw09/bg_layout_green.gif) repeat-y scroll 290px 0pt;
+float:left;
+margin:0 0 30px 40px;
+_margin:0 0 30px 24px;
+}
+.box_2cols .col {
+float:left;
+width:230px;
+}
+.box_2cols ul.bigball {
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+margin:0pt;
+padding:10px 0pt 10px 0px;
+width:250px;
+}
+.box_2cols .layout {
+display:block;
+float:left;
+margin-left:116px;
+_margin-left:90px;
+padding-bottom:10px;
+width:250px;
+}
+.box_2cols ul.bigball li {
+background:transparent url(/images/vmw09/btn_green.gif) no-repeat scroll 0px 0px;
+line-height:28px;
+list-style-type:none;
+color:#fa952a;
+}
+.box_2cols ul.bigball li span {
+display:block;
+font-size:18px;
+padding-left:32px;
+}
+.box_2cols ul.bigball p {
+padding-top:10px;
+width:250px;
+padding:0px;
+}
+.box_2cols ul.links {
+border-top:1px solid #fa952a;
+float:left;
+list-style-image:none;
+list-style-position:outside;
+list-style-type:none;
+margin:0pt;
+padding:0pt 0pt 14px;
+width:250px;
+}
+.box_2cols ul.links p {margin:0; padding:0;}
+
+.box_2cols ul.links li {
+border-bottom:1px solid #fa952a;
+line-height:26px;
+list-style-type:none;
+background:none;
+font-size:12px;
+}
+.box_2cols ul.links li a {
+background:transparent url(/images/vmw09/arw-lightgreen.gif) no-repeat scroll 1px 9px;
+display:block;
+padding-left:10px;
+}
+
+
+/*********parts of vmworld08.css added here********************/
+.templateTableMain{
+	margin: 0px auto;
+	text-align: left;
+	width:950px;
+	/*border: 1px solid #ccc;*/
+	background-color: white;
+}
+.templateLogoSpacer, .templateSpanLogoSpacer
+{
+height: 150px;
+background: none;
+}
+
+.templateTableTopSpanTd
+{
+	height:150px;
+	background: url( ../images/vmw08/header_blue.jpg ) no-repeat;
+}
+.templateTableTopNestRightTd {background:none;}
+
+.templateTableSubTitleLeftTd, .templateTableContentLeftTd, .templateTableBottomNestLeftTd
+{
+background-color: #efefef;
+}
+/**********************************************************************
+support classes
+*/
+.supportSpacer {
+	height:10px;
+}
+.supportHeader,.supportHr,.supportPrompt,.supportValue {
+	padding-left:10px;
+}
+.supportHeader {
+	font-weight:bold;
+}
+.supportLink {
+	padding-left:10px;
+}
+.linkSupport {
+}
+/**********************************************************************
+/***** global classes *****/
+body,td,select,option,input,textarea {
+	font-family: Arial, MS Sans Serif, Helvetica;
+	font-size:12px;
+	color:#000000;
+}
+body {
+	margin:0px;
+	background-image:url(../images/pixel.gif);
+}
+form {
+	padding:0px;
+	margin:0px;
+}
+li {
+}
+ul,ol {
+	margin-top:6px;
+}
+
+.hide {	display:none;}
+
+.show { display: block;}
+
+html>body tr.show { display: table-row;}
+html>body tr.show td { display: table-cell;}
+
+/***** template classes *****/
+.templateTableMain {
+	width:100%;
+	height:100%;
+}
+.templateSpanLogoSpacer,.templateTopRightSpacer,.templateTopRightEndSpacer,
+.templateSubTitleLeftSpacer,.templateSubTitleCenterSpacer,.templateSubTitleRightSpacer,
+.templateNavSpacer,.templateContentSpacer,.templateContentRightSpacer,
+.templateBottomLeftSpacer,.templateBottomRightSpacer,.templateBottomRightEndSpacer {
+	width:1px;
+	height:1px;
+}
+.templateTableTopNestRightEndTd,.templateTableSubTitleRightTd,.templateTableContentRightTd,.templateTableBottomNestRightEndTd {
+	width:1px;
+}
+
+.templateTableTopNest,.templateTableBottomNest {
+	width:100%;
+	height:100%;
+}
+.templateLogoSpacer,.templateSpanLogoSpacer{
+	width:170px;
+	height:53px;
+	background-image:url(../images/ac3_logo.gif);
+	background-repeat:no-repeat;
+	background-position:top left;
+}
+.templateTableTopNestLeftTd {
+	width:170px;
+}
+.templateTableTopNestRightTd  {
+	background-image:url(../images/bg_top.gif);
+	background-repeat:repeat-x;
+	vertical-align:bottom;
+	padding-bottom:20px;
+	padding-left:10px;
+	font-size:16px;
+	font-weight:bold;
+	color:#000000;
+}
+.templateTableSubTitleLeftTd,.templateNavSpacer,.templateTableContentLeftTd,.templateTableBottomNestLeftTd {
+	width:160px;
+}
+.templateTableSubTitleLeftTd,.templateTableContentLeftTd,.templateTableBottomNestLeftTd {
+	vertical-align:top;
+	background-color:#E9E9F6;
+	border-right:1px solid #9999AA;
+}
+.formatNavAppDiv,.formatSubTitleAppDiv {
+	font-weight:bold;
+	font-size:12px;
+	padding:2px;
+	padding-left:10px;
+}
+.formatSubTitleAppDiv {
+	position:absolute;
+	visibility:hidden;
+}
+.templateTableSubTitleLeftTd {
+	height:1px;
+}
+.templateTableContentTd {
+	vertical-align:top;
+	padding:15px;
+}
+.templateContentSpacer { /* width set below with formatTableWidth */ }
+.templateTableBottomSpanTd,.templateBottomRightSpacer {
+	height:30px;
+}
+#poweredByWingateWeb{
+  display:block;
+  text-align:right;
+  float:right;
+  width:150px;
+  height:25px;
+  background: url(../images/powered_by.png) no-repeat bottom right;
+  color:#fff;
+  font-size:5px;
+}
+
+
+/***** font classes *****/
+.fontHeader {
+	padding-bottom:3px;
+	margin-bottom:15px;
+	margin-top:15px;
+	font-size:22px;
+	font-weight:bold;
+	color:#000000;
+}
+.fontTitle {
+	padding-bottom:3px;
+	margin-bottom:15px;
+	margin-top:15px;
+	font-size:20px;
+	font-weight:bold;
+	color:#000000;
+}
+.fontSubtitle {
+	margin-bottom:15px;
+	margin-top:15px;
+	font-size:13px;
+	font-weight:bold;
+	color:#000000;
+}
+.fontPageHeader {
+	font-size:13px;
+}
+.fontPageFooter {
+	font-size:10px;
+	font-weight:bold;
+}
+.fontBold {
+	font-weight:bold;
+}
+.fontSmall {
+	font-size:10px;
+	color:#999999;
+	font-weight:normal;
+}
+.fontWelcome {
+	text-align:left;
+	margin-left:10px;
+}
+.fontUserName {
+	font-weight:bold;
+	text-align:left;
+	margin-left:10px;
+	margin-bottom:20px;
+}
+.fontLinkLogout {
+	margin-left:10px;
+}
+.fontCopyright{
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:9px;
+	text-align:center;
+  margin:0;
+	padding:0;
+	color:#888;
+}
+
+
+/***** form classes *****/
+.formPromptTd,.formPromptTdWidth,.formElementTd,.formBoxElementTd,.formReqTd {
+	vertical-align:top;
+}
+.formPromptTd,.formPromptTdWidth {
+	width:170px;
+	padding-top:5px;
+	text-align:right;
+	font-weight:bold;
+}
+.formSelect{
+}
+.formPromptTdWidth {
+	width:65px;
+}
+.formPromptWidth {
+	width:130px;
+	height:0px;
+	font-size:0px;
+}
+/* class for text box, select, etc. elements (default) */
+.formBoxElementTd {
+	padding-top:3px;
+}
+/* added class for text only elements */
+.formElementTd {
+	padding-top:5px;
+}
+.formReqTd {
+	width:5px;
+	padding-top:7px;
+	color:#CC3333;
+}
+.formButton {
+	font-weight:bold;
+	color:#000000;
+}
+
+/***** link classes *****/
+
+a {
+	color: #477ac3;
+	text-decoration:none;
+}
+
+#secondary-navigation a {
+
+	text-decoration:none;
+}
+
+#secondary-navigation a:hover {
+	color: #fa952a;
+	text-decoration:none;
+}
+
+.linkNav {
+	color: #000000;
+	font-size: 12px;
+	text-decoration: none;
+  display:block;
+  padding: 4px 0px 4px 10px;
+  margin:0px;
+}
+.linkNav:hover {
+	text-decoration:underline;
+}
+.linkTab-on,.linkTab-on:link,.linkTab-on:visited,.linkTab-on:hover,
+.linkTab-off,.linkTab-off:link,.linkTab-off:visited,.linkTab-off:hover {
+	color:#000000;
+	text-decoration: none;
+	padding-left:2px;
+}
+.linkTab-on,.linkTab-on:link,.linkTab-on:visited,.linkTab-on:hover {
+	font-weight:bold;
+}
+/***** format classes *****/
+.standardsPopup{
+	border: 1px solid #33AAFF;
+	background: #D2E5FF;
+	text-align: left;
+}
+.formatPopupBody{
+	margin:0px;
+}
+.formatContentTd {
+	border-left:6px solid #FFFFFF;
+}
+.formatContent {
+	margin-top:8px;
+	margin-bottom:8px;
+}
+.formatNavSeparator {
+	font-size:0px;
+	margin:0 8px;
+	border-bottom:1px solid #bbb;
+}
+.formatLinkNavDiv {
+	width: auto;
+	height:100%;
+}
+
+.formatInfoBox,.formatContentBox{
+	display:table;
+	border: 1px solid #B3B3B3;
+	background-color: #FAFAFA;
+	padding:10px;
+}
+.formatListLinks {
+	text-align:right;
+	margin-bottom:4px;
+	border-top:1px solid #B3B3B3;
+	padding-top:6px;
+	margin-top:6px;
+}
+.formatListInfo {
+	background-color:#FAFAFA;
+	border:1px solid #999999;
+	color: #333399;
+}
+.formatListInfo {
+	padding:5px;
+	padding-left:10px;
+	font-weight:bold;
+	margin-top:20px;
+}
+.formatTableWidth,.formatContent,.templateContentSpacer,
+.fontHeader,.fontTitle,
+.formatHeaderTable,.formatListInfo,
+.formatListLinks,.formatInfoBox,.formatContentBox,.formatError,
+.formatFormButton, .formatParagraph,
+.errorbox, .successbox, .instructionsbox {
+	width:550px;
+}
+.formatParagraph{
+}
+.formatColumnHeaderTd {
+	font-weight:bold;
+	border-top:1px solid #AAAAB3;
+	border-bottom:1px solid #919199;
+	padding-right:8px;
+	vertical-align:bottom;
+	height:20px;
+}
+.spacer {
+	height:25px;
+	font-size:0px;
+}
+.spacerSmall {
+	height:10px;
+	font-size:0px;
+}
+.formatListOdd {
+	background-color:#F7F7F7;
+}
+.formatListEven {
+	background-color:#FFFFFF;
+}
+
+.formatIndent {
+	margin-left:30px;
+	margin-top:6px;
+	margin-bottom:6px;
+}
+.formatTable100 {
+	width:100%;
+}
+.formatFormButton{
+	text-align:right;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/***** steps classes *****/
+.formatStepTd,.formatStepTdOff {
+	width:70px;
+	height:70px;
+	vertical-align:top;
+	padding:5px;
+	text-align:center;
+	color:#c66b1d;
+ 	border: 1px solid #A5A5C5;
+	background-color: #ECECF6;
+}
+.formatStepTdOff {
+	border:1px solid #D4D4E8;
+	color:#D4D4E8;
+	background-color: #FCFCFF;
+}
+.fontStepNum,.fontStepNumOff {
+	font-weight:bold;
+	font-size:18px;
+	color:#c66b1d;
+	vertical-align:bottom;
+}
+.fontStepNumOff {
+	color:#D4D4E8;
+}
+
+.jive-content-block-container-europe {
+    width:950px;
+    float:left;
+}

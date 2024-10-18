@@ -1,0 +1,15 @@
+[Unit]
+Description=Temporary Leapp service which resumes execution after reboot
+After=default.target
+DefaultDependencies=no
+After=dbus.service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+# FIXME: this is temporary workround for Python3
+ExecStart=/root/tmp_leapp_py3/leapp3 upgrade --resume
+StandardOutput=journal+console
+# FIXME: this shouldn't be needed, but Satellite upgrade runs installer, and that's slow
+TimeoutStartSec=infinity

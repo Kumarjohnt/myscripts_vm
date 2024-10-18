@@ -1,0 +1,4 @@
+#!/bin/bash
+exit
+echo "!! Reloading Apache service on all the nodes. !!"
+/bin/bash /opt/sbin/pushconf.sh

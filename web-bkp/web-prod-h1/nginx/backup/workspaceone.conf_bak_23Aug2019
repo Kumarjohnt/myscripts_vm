@@ -1,0 +1,359 @@
+server {
+        listen 80;
+        server_name workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/workspace.one_access.log combined;
+        error_log /var/log/nginx/workspace.one_error.log debug;
+        rewrite ^(.*)$ https://www.vmware.com/products/workspace-one.html permanent;
+}
+
+server {
+        listen 80;
+        server_name my.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/workspace.one_access.log combined;
+        error_log /var/log/nginx/workspace.one_error.log debug;
+        rewrite ^(.*)$ https://my.workspaceone.com/ permanent;
+}
+
+server {
+        listen 80;
+        server_name docs.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/docs.workspace.one_access.log combined;
+        error_log /var/log/nginx/docs.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://docs.vmware.com/en/VMware-Workspace-ONE/index.html permanent;
+}
+
+server {
+        listen 80;
+        server_name get.workspace.one hub.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/get.workspace.one_access.log combined;
+        error_log /var/log/nginx/get.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://getws1.com permanent;
+}
+
+server {
+        listen 80;
+        server_name store.workspace.one buy.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/workspace.one_access.log combined;
+        error_log /var/log/nginx/workspace.one_error.log debug;
+        rewrite ^(.*)$ https://store.workspaceone.com/ permanent;
+}
+
+server {
+        listen 80;
+        server_name uag.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/uag.workspace.one_access.log combined;
+        error_log /var/log/nginx/uag.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://docs.vmware.com/en/Unified-Access-Gateway/index.html permanent;
+}
+
+server {
+        listen 80;
+        server_name techzone.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/techzone.workspace.one_access.log combined;
+        error_log /var/log/nginx/techzone.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://techzone.vmware.com/ permanent;
+}
+
+server {
+        listen 80;
+        server_name www.marketplace.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/www.marketplace.workspace.one_access.log combined;
+        error_log /var/log/nginx/www.marketplace.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://www.marketplace.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name www.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/www.workspace.one_access.log combined;
+        error_log /var/log/nginx/www.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://www.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name toolsuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/toolsuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/toolsuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://toolsuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name tools.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/tools.workspace.one_access.log combined;
+        error_log /var/log/nginx/tools.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://tools.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name supportuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/supportuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/supportuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://supportuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name support.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/support.workspace.one_access.log combined;
+        error_log /var/log/nginx/support.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://support.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name storeuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/storeuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/storeuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://storeuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name secureuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/secureuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/secureuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ http://secureuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name secure.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/secure.workspace.one_access.log combined;
+        error_log /var/log/nginx/secure.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://secure.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name resourcesuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/resourcesuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/resourcesuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://resourcesuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name resources.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/resources.workspace.one_access.log combined;
+        error_log /var/log/nginx/resources.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://resources.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name payments.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/payments.workspace.one_access.log combined;
+        error_log /var/log/nginx/payments.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://payments.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name partnersuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/partnersuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/partnersuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://partnersuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name partners.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/partners.workspace.one_access.log combined;
+        error_log /var/log/nginx/partners.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://partners.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name myuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/myuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/myuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://myuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name dl-originuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/dl-originuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/dl-originuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://dl-originuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name dl-originworkspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/dl-originworkspace.one_access.log combined;
+        error_log /var/log/nginx/dl-originworkspace.one_error.log debug;
+        rewrite ^(.*)$ https://dl-origin.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name cdnuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/cdnuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/cdnuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://cdnuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name cdn.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/cdn.workspace.one_access.log combined;
+        error_log /var/log/nginx/cdn.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://cdn.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name betauat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/betauat.workspace.one_access.log combined;
+        error_log /var/log/nginx/betauat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://betauat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name beta.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/beta.workspace.one_access.log combined;
+        error_log /var/log/nginx/beta.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://beta.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name awswuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/dawswuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/awswuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://awswuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name awsw.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/awsw.workspace.one_access.log combined;
+        error_log /var/log/nginx/awsw.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://awsw.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name askuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/askuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/askuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://askuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name ask.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/ask.workspace.one_access.log combined;
+        error_log /var/log/nginx/ask.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://ask.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name analyticsuat.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/analyticsuat.workspace.one_access.log combined;
+        error_log /var/log/nginx/analyticsuat.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://analyticsuat.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name analytics.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/analytics.workspace.one_access.log combined;
+        error_log /var/log/nginx/analytics.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://analytics.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name sdk.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/sdk.workspace.one_access.log combined;
+        error_log /var/log/nginx/sdk.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://sdk.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name marketplace.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/marketplace.workspace.one_access.log combined;
+        error_log /var/log/nginx/marketplace.workspace.one_error.log debug;
+        rewrite ^(.*)$ https://marketplace.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name developers.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/developers.workspace.one_access.log combined;
+        error_log /var/log/nginx/developers.workspace.one_error.log debug;
+        rewrite ^(.*)$ http://developers.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name developer.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/developer.workspace.one_access.log combined;
+        error_log /var/log/nginx/developer.workspace.one_error.log debug;
+        rewrite ^(.*)$ http://developer.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name dev.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/dev.workspace.one_access.log combined;
+        error_log /var/log/nginx/dev.workspace.one_error.log debug;
+        rewrite ^(.*)$ http://dev.workspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name api.workspace.one;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/api.workspace.one_access.log combined;
+        error_log /var/log/nginx/api.workspace.one_error.log debug;
+        rewrite ^(.*)$ http://api.workspaceone.com permanent;
+}

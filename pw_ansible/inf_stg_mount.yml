@@ -1,0 +1,22 @@
+---
+- name: Update INFA PROD Mount
+  hosts: infa-stg
+  gather_facts: true
+  become: yes
+
+  tasks:
+    - name: Create a NFS mount point
+      ansible.builtin.file:
+        path: /interface/BODS
+        state: directory
+        owner: root
+        group: root
+        mode: '1755'
+
+    - name: Update secsplunk Mount
+      ansible.posix.mount:
+        path: /interface/BODS 
+        src: sc2-stg-sap1.infra.vmware.com:/sapinterface_bods_stg 
+        state: mounted
+        fstype: nfs
+        opts: vers=4.0,rw,hard 

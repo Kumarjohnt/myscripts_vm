@@ -1,0 +1,125 @@
+10.40.76.130,DEAD
+10.40.76.135,fvt1500-76-135.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.158,DEAD
+10.40.76.16,DEAD
+10.40.76.19,DEAD
+10.40.76.197,DEAD
+10.40.76.200,DEAD
+10.40.76.201,DEAD
+10.40.76.202,fvt1500-76-202.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.209,fvt1500-76-209.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.212,DEAD
+10.40.76.228,fvt1500-76-228.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.77.14,fvt1500-77-14.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.77.206,DEAD
+10.40.77.55,DEAD
+10.40.77.58,DEAD
+10.40.77.59,DEAD
+10.40.78.157,fvt1500-78-157.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.78.193,DEAD
+10.40.78.41,fvt1500-78-41.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.78.46,fvt1500-78-46.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.11,fvt1500-79-11.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.110,DEAD
+10.40.79.111,DEAD
+10.40.79.159,fvt1500-79-159.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.193,fvt1500-79-193.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.79.92,DEAD
+10.40.90.12,hwe-cim-2.eng.vmware.com.,Linux,hwe-cim-2.eng.vmware.com,,NO history to login
+10.49.14.21,DEAD
+10.49.14.25,DEAD
+10.49.17.233,DEAD
+10.49.18.21,DEAD
+10.49.18.43,DEAD
+10.49.2.104,,PASSWORD:NON_MATCH
+10.49.21.122,,PASSWORD:NON_MATCH
+10.49.2.136,,PASSWORD:NON_MATCH
+10.49.2.148,,PASSWORD:NON_MATCH
+10.49.2.156,,PASSWORD:NON_MATCH
+10.49.2.161,,PASSWORD:NON_MATCH
+10.49.2.209,,PASSWORD:NON_MATCH
+10.49.2.217,,PASSWORD:NON_MATCH
+10.49.23.135,,PASSWORD:NON_MATCH
+10.49.23.141,,PASSWORD:NON_MATCH
+10.49.2.34,,PASSWORD:NON_MATCH
+10.49.30.225,,PASSWORD:NON_MATCH
+10.49.30.229,,PASSWORD:NON_MATCH
+10.49.30.230,,PASSWORD:NON_MATCH
+10.49.30.232,,PASSWORD:NON_MATCH
+10.49.30.233,,PASSWORD:NON_MATCH
+10.49.30.236,,PASSWORD:NON_MATCH
+10.49.30.237,,PASSWORD:NON_MATCH
+10.49.30.240,,PASSWORD:NON_MATCH
+10.49.30.243,,PASSWORD:NON_MATCH
+10.50.5.93,NO DNS Record,Linux,W2-VCF-R10-LinJump1,"CentOS Linux 7 (Core)",root     pts/0        10.50.5.92       Thu Jan 19 09:02 - 09:02  (00:00)    
+10.50.91.228,DEAD
+10.50.91.229,DEAD
+10.50.91.239,DEAD
+10.50.91.244,DEAD
+10.62.35.243,cniz-idrac01.eng.vmware.com.,Dell iDRAC
+10.62.40.176,,Dell iDRAC
+10.62.40.225,,Dell iDRAC
+10.62.40.32,,Dell iDRAC
+10.62.40.34,,Dell iDRAC
+10.62.40.84,DEAD
+10.71.216.164,s2-vcav-216-164.eng.vmware.com.,Linux,vcda-st-ftp-kms-srv,"CentOS Linux 7 (Core)",root     pts/0        puppetmaster.vmw Mon Jan 30 15:45 - 15:45  (00:00)    
+10.71.217.103,s2-vcav-217-103.eng.vmware.com.,Linux,s2-vcav-217-103.eng.vmware.com,"CentOS Linux 7 (Core)",root     pts/0        s2-vcav-v1248-24 Mon Jul 25 06:31 - 10:54  (04:23)    
+10.71.221.114,s2-vcav-221-114.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.221.120,s2-vcav-221-120.eng.vmware.com.,Linux,s2-vcav-221-120.eng.vmware.com,"CentOS Linux 7 (Core)",root     pts/0        puppetmaster.vmw Mon Jan 30 21:45 - 21:45  (00:00)    
+10.71.221.189,s2-vcav-221-189.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.221.190,s2-vcav-221-190.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.221.192,s2-vcav-221-192.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.222.15,s2-vcav-222-15.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.222.18,s2-vcav-222-18.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.222.72,s2-vcav-222-72.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.223.228,NO DNS Record,Linux,localhost.localdomains2-vcav-223-228s2-vcav-223-228.eng.vmware.c,"CentOS Linux 7 (Core)",root     pts/0        10.93.40.23      Mon Oct 18 08:59 - 09:05  (00:06)    
+10.71.249.102,s2-vcav-v1248-249-102.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.249.30,s2-vcav-v1248-249-030.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.249.31,s2-vcav-v1248-249-031.eng.vmware.com.,PASSWORD:NON_MATCH
+10.71.249.35,s2-vcav-v1248-249-035.eng.vmware.com.,PASSWORD:NON_MATCH
+10.72.0.3,DEAD
+10.72.218.7,,PASSWORD:NON_MATCH
+10.75.33.101,,Dell iDRAC
+10.75.33.102,,Dell iDRAC
+10.75.33.103,,Dell iDRAC
+10.75.33.104,,Dell iDRAC
+10.75.33.105,,Dell iDRAC
+10.78.31.69,NO DNS Record,Linux,rocky-dev-vm,"Ubuntu 16.04.7 LTS",root     pts/21       10.113.60.223    Mon Jan 30 12:42 - 12:42  (00:00)
+10.89.116.23,DEAD
+10.89.118.2,DEAD
+10.89.118.25,DEAD
+10.89.118.31,DEAD
+10.89.128.199,atl1-vcd-static-128-199.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.128.220,atl1-vcd-static-128-220.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.128.225,atl1-vcd-static-128-225.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.128.69,atl1-vcd-static-128-69.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.192,atl1-vcd-static-149-192.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.196,atl1-vcd-static-149-196.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.199,atl1-vcd-static-149-199.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.149.217,atl1-vcd-static-149-217.eng.vmware.com.,PASSWORD:NON_MATCH
+10.89.82.132,atl1-hs2-l0732-ilo.eng.vmware.com.,Dell iDRAC
+10.89.89.10,atl1-infra-backup-server.eng.vmware.com.,allows sftp connections only
+10.89.99.106,DEAD
+10.89.99.107,DEAD
+10.89.99.61,DEAD
+appsupp-prd-ita1,NO DNS Record,PASSWORD:NON_MATCH
+avi-controller-vdr-1,NO DNS Record,PASSWORD:NON_MATCH
+avi-controller-vdr-2,NO DNS Record,PASSWORD:NON_MATCH
+avi-controller-vdr-3,NO DNS Record,PASSWORD:NON_MATCH
+avi-se-vdr-1,NO DNS Record,PASSWORD:NON_MATCH
+avi-se-vdr-2,NO DNS Record,PASSWORD:NON_MATCH
+avi-se-vdr-3,NO DNS Record,PASSWORD:NON_MATCH
+avi-se-vdr-4,NO DNS Record,PASSWORD:NON_MATCH
+avi-test-vm-k8s,NO DNS Record,DEAD
+CentOS-prod-GOLD,NO DNS Record,DEAD
+cilt-centos7,NO DNS Record,DEAD
+cilt-centos7-2020,NO DNS Record,DEAD
+cilt-centos7-mysql8,NO DNS Record,DEAD
+cilt-infrstgdr,NO DNS Record,PASSWORD:NON_MATCH
+dtest-vm1,NO DNS Record,DEAD
+epm-prd-app1,NO DNS Record,PASSWORD:NON_MATCH
+epm-prd-app2,NO DNS Record,PASSWORD:NON_MATCH
+epm-prd-mysql1,NO DNS Record,PASSWORD:NON_MATCH
+epm-prd-mysql2,NO DNS Record,PASSWORD:NON_MATCH
+fgp1-prod-vdr,NO DNS Record,PASSWORD:NON_MATCH
+fgp2-prod-vdr,NO DNS Record,PASSWORD:NON_MATCH

@@ -1,0 +1,199 @@
+10.208.174.184,DEAD
+10.208.174.231,DEAD
+10.208.175.145,DEAD
+10.208.175.166,DEAD
+10.208.32.250,sherpa-portal.eng.vmware.com.,Linux,sherpa-portal.eng.vmware.com,"Ubuntu 18.04 LTS",root     pts/0        10.104.44.12     Thu Mar 11 00:47 - 00:52  (00:04)
+10.208.64.187,w2-hs6-h1405-ilo.eng.vmware.com.,Dell iDRAC
+10.208.70.148,,PASSWORD:NON_MATCH
+10.208.70.150,,PASSWORD:NON_MATCH
+10.208.70.87,DEAD
+10.208.71.73,vm-w2-hs6-10-208-71-73.eng.vmware.com.,PASSWORD:NON_MATCH
+10.208.71.85,vm-w2-hs6-10-208-71-85.eng.vmware.com.,PASSWORD:NON_MATCH
+10.208.79.117,,PASSWORD:NON_MATCH
+10.216.242.2,,PASSWORD:NON_MATCH
+10.216.242.9,,PASSWORD:NON_MATCH
+10.216.93.250,,PASSWORD:NON_MATCH
+10.217.68.215,blr12-vin-09.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.115.236,w4-nsbu-cqe-dhcp-236.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.13.166,DEAD
+10.221.13.230,,PASSWORD:NON_MATCH
+10.221.133.18,w4-vcd-static-133-18.eng.vmware.com.,Linux,postgres,"CentOS Linux 7 (Core)",reboot   system boot  3.10.0-514.10.2. Fri Sep  2 18:21 - 13:11 (150+18:49) 
+10.221.165.231,DEAD
+10.221.165.232,DEAD
+10.221.165.235,DEAD
+10.221.165.236,DEAD
+10.221.165.237,DEAD
+10.221.165.238,DEAD
+10.221.165.239,DEAD
+10.221.165.240,DEAD
+10.221.165.241,DEAD
+10.221.165.242,DEAD
+10.221.165.243,DEAD
+10.221.165.244,DEAD
+10.221.165.245,DEAD
+10.221.165.246,DEAD
+10.221.165.247,DEAD
+10.221.165.248,DEAD
+10.221.26.231,DEAD
+10.221.37.111,DEAD
+10.221.37.128,DEAD
+10.221.37.147,DEAD
+10.221.37.149,civt675-37-149.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.37.187,DEAD
+10.221.37.203,DEAD
+10.221.37.207,DEAD
+10.221.37.244,DEAD
+10.221.37.94,DEAD
+10.221.38.0,DEAD
+10.221.38.136,DEAD
+10.221.38.15,civt675-38-15.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.38.202,DEAD
+10.221.38.239,DEAD
+10.221.38.38,DEAD
+10.221.39.148,DEAD
+10.221.39.217,DEAD
+10.221.39.25,DEAD
+10.221.39.63,DEAD
+10.221.39.7,civt675-39-7.eng.vmware.com.,PASSWORD:NON_MATCH
+10.221.45.180,NO DNS Record,Linux,nimbus-iscsitemplate,"Ubuntu precise (12.04.5 LTS)",root     pts/0        puppetmaster.vmw Mon Jan 30 13:46 - 13:47  (00:00)    
+10.221.51.210,w4-hs9-tecbu-tca-677-978.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.104.25,wdc-10-225-104-25.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.110.105,wdc-10-225-110-105.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.111.14,wdc-10-225-111-14.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.225.111.23,wdc-10-225-111-23.nimbus.eng.vmware.com.,PASSWORD:NON_MATCH
+10.23.204.37,tlv-172809-ilo.eng.vmware.com.,Dell iDRAC
+10.23.204.72,tlv-172739-ilo.eng.vmware.com.,Dell iDRAC
+10.23.204.86,tlv-172771-ilo.eng.vmware.com.,Dell iDRAC
+10.23.204.89,tlv-172859-ilo.eng.vmware.com.,Dell iDRAC
+10.236.240.93,blr14-hs1-e0510-ilo.eng.vmware.com.,Dell iDRAC
+10.236.241.211,blr14-esxpdp-e1211-ilo.eng.vmware.com.,Dell iDRAC
+10.23.80.190,DEAD
+10.23.82.175,DEAD
+10.24.32.119,hp-skl-ep-dl360-004-ilo.eng.vmware.com.,Dell iDRAC
+10.24.32.134,hp-skl-ep-dl380-003-ilo.eng.vmware.com.,Dell iDRAC
+10.24.32.136,hp-skl-ep-dl380-004-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.135,prmb-hwe135-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.136,prmb-hwe136-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.137,prmb-hwe137-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.169,prmb-hwe169-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.173,prmb-hwe173-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.174,prmb-hwe174-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.20,prmb-hwe020-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.208,prmb-hwe208-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.212,prmb-hwe212-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.213,prmb-hwe213-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.33,prmb-hwe033-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.6,prmb-hwe006-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.75,prmb-hwe075-ilo.eng.vmware.com.,Dell iDRAC
+10.24.34.82,prmb-hwe082-ilo.eng.vmware.com.,Dell iDRAC
+10.24.41.63,hpe-spr2-dl380-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.42.124,hp-skl-ex-dl560-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.101,hp-clx-sp4-dl560-003-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.103,hp-clx-sp2-dl380-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.105,hp-clx-sp4-dl580-002-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.109,hp-clx-sp2-dl380-005-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.113,hp-clx-sp2-dl360-001-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.123,hp-clx-sp2-dl360-005-ilo.eng.vmware.com.,Dell iDRAC
+10.24.45.151,hp-icx-sp2-dl360-003-ilo.eng.vmware.com.,Dell iDRAC
+10.24.49.7,prmb-hwe002-ilo.eng.vmware.com.,HP ILO
+10.24.50.13,ILO7CE724P44J.eng.vmware.com.,HP ILO
+10.24.6.53,prmb-esxst-pmem-01-ilo.eng.vmware.com.,HP ILO
+10.24.88.196,hp-clx-sp4-dl560-004-ilo.eng.vmware.com.,HP ILO
+10.24.88.214,hp-clx-sp2-dl360-002-ilo.eng.vmware.com.,HP ILO
+10.24.90.51,DEAD
+10.24.90.56,DEAD
+10.24.90.60,DEAD
+10.25.110.27,,Dell iDRAC
+10.25.180.145,,Dell iDRAC
+10.26.236.94,sof2-vchs-dhcp-236-94.eng.vmware.com.,Linux,sof2-vchs-dhcp-236-94.eng.vmware.com,"CentOS Linux 8 (Core)",reboot   system boot  4.18.0-80.el8.x8 Tue Jan 10 08:07   still running
+10.28.219.200,DEAD
+10.28.221.107,prme-vsan-hol-vm-dhcp-221-107.eng.vmware.com.,Linux,RackStation,,NO history to login
+10.28.222.188,prme-vsan-hol-vm-dhcp-222-188.eng.vmware.com.,Linux,localhost,,root     pts/0        puppetmaster.vmw Mon Jan 30 12:40 - 12:40  (00:00)    
+10.28.240.61,prme-stsao-nas-1.eng.vmware.com.,Linux,RackStation,,NO history to login
+10.28.9.223,NO DNS Record,Linux,helper-elba-d0212,"Ubuntu 20.04.2 LTS",root     pts/0        10.117.181.5     Thu Mar 10 02:39 - 02:39  (00:00)
+10.30.221.121,DEAD
+10.33.102.172,,Dell iDRAC
+10.33.107.170,,PASSWORD:NON_MATCH
+10.33.107.93,,PASSWORD:NON_MATCH
+10.33.74.122,,Dell iDRAC
+10.40.152.104,prma-vdasa-esx-1-ilo.eng.vmware.com.,Dell iDRAC
+10.40.152.106,prma-vdasa-esx-2-ilo.eng.vmware.com.,Dell iDRAC
+10.40.152.66,mon-bdw-ep-01-ilo.eng.vmware.com.,Dell iDRAC
+10.40.195.58,,PASSWORD:NON_MATCH
+10.40.26.1,prmb-hs1-h0601-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.2,prmb-hs1-h0602-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.3,prmb-hs1-h0603-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.42,hp-icx-sp2-dl380-001-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.43,hp-icx-sp2-dl380-002-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.44,hp-icx-sp2-dl380-003-ilo.eng.vmware.com.,Dell iDRAC
+10.40.26.45,hp-icx-sp2-dl380-004-ilo.eng.vmware.com.,Dell iDRAC
+10.40.50.211,opvcstqe-50-211.eng.vmware.com.,Linux,vmware-uwsim2,"Ubuntu 16.04.1 LTS",NO history to login
+10.40.68.235,fvt1500-68-235.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.69.140,fvt1500-69-140.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.69.155,fvt1500-69-155.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.69.180,DEAD
+10.40.69.19,DEAD
+10.40.69.203,DEAD
+10.40.69.239,DEAD
+10.40.69.77,fvt1500-69-77.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.70.176,DEAD
+10.40.70.215,fvt1500-70-215.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.148,DEAD
+10.40.71.153,fvt1500-71-153.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.161,fvt1500-71-161.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.199,fvt1500-71-199.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.34,DEAD
+10.40.71.87,fvt1500-71-87.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.71.95,DEAD
+10.40.72.0,fvt1500-72-0.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.100,fvt1500-72-100.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.148,DEAD
+10.40.72.150,fvt1500-72-150.eng.vmware.com.,HOST:ESXi Server
+10.40.72.157,fvt1500-72-157.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.160,DEAD
+10.40.72.181,fvt1500-72-181.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.234,fvt1500-72-234.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.72.71,fvt1500-72-71.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.2,DEAD
+10.40.73.214,DEAD
+10.40.73.217,DEAD
+10.40.73.220,DEAD
+10.40.73.222,fvt1500-73-222.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.224,DEAD
+10.40.73.231,fvt1500-73-231.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.27,fvt1500-73-27.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.73.72,fvt1500-73-72.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.1,DEAD
+10.40.74.103,DEAD
+10.40.74.110,fvt1500-74-110.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.186,DEAD
+10.40.74.187,DEAD
+10.40.74.21,DEAD
+10.40.74.245,DEAD
+10.40.74.39,DEAD
+10.40.74.46,fvt1500-74-46.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.57,fvt1500-74-57.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.58,DEAD
+10.40.74.65,DEAD
+10.40.74.69,DEAD
+10.40.74.86,fvt1500-74-86.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.90,DEAD
+10.40.74.97,fvt1500-74-97.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.74.99,fvt1500-74-99.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.75.151,DEAD
+10.40.75.154,fvt1500-75-154.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.75.201,DEAD
+10.40.75.205,DEAD
+10.40.75.209,DEAD
+10.40.75.216,DEAD
+10.40.75.252,DEAD
+10.40.75.54,DEAD
+10.40.75.61,DEAD
+10.40.75.67,fvt1500-75-67.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.102,fvt1500-76-102.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.105,DEAD
+10.40.76.107,DEAD
+10.40.76.108,DEAD
+10.40.76.113,DEAD
+10.40.76.118,fvt1500-76-118.eng.vmware.com.,PASSWORD:NON_MATCH
+10.40.76.124,fvt1500-76-124.eng.vmware.com.,PASSWORD:NON_MATCH

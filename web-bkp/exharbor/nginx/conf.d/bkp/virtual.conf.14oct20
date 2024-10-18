@@ -1,0 +1,16 @@
+server {
+       listen 80;
+       server_name projects.registry.vmware.com;
+#       server_name projects-stg.registry.vmware.com;
+       include /etc/nginx/allow_GET_PATCH_only.conf;
+       access_log /var/log/nginx/projects_registry_vmware_com_access.log proxylog;
+       error_log /var/log/nginx/projects_registry_vmware_com_error.log;
+#       if ($http_user_agent !~* "docker") {
+#           return 403;
+#       }
+       location / {
+       proxy_set_header  Host                  $http_host;
+       proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+       proxy_pass https://projects.registry.vmware.com/;
+       }
+}

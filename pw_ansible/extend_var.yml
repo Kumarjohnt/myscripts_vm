@@ -1,0 +1,66 @@
+---
+- name: Extend /var to 20GB
+  hosts: race20
+  gather_facts: true
+  become: yes
+  vars:
+    hdisk: "/dev/sdc"
+    vgname: data
+    pvname: "/dev/sdc1"
+    lvname: data
+    lvsize: 20480m
+    mount_point: "/data"
+    hdpath: "/dev/mapper/data-data"
+
+  tasks:
+    - name: Create a new primary partition
+      community.general.parted:
+        device: "{{ hdisk }}"
+        number: 1
+        flags: [ lvm ]
+        label: gpt
+        state: present
+
+    - name: Extend the VG root to the maximum possible
+      community.general.lvg:
+        vg: "{{ vgname }}"
+        pvs: "{{ pvname }}"
+        pvresize: true
+        force: true
+
+#    - name: Extend the PV and filesystems
+#      community.general.lvol:
+#        vg: "{{ vgname }}"
+#        lv: "{{ lvname }}"
+#        pvs: "{{ pvname }}"
+#        size: "{{ lvsize }}"
+#        resizefs: true
+
+    - name: Create VG and filesystems
+      community.general.lvol:
+        vg: "{{ vgname }}"
+        lv: "{{ lvname }}"
+        pvs: "{{ pvname }}"
+        size: "{{ lvsize }}"
+        resizefs: true
+        force: yes
+
+    - name: Create directory if does not exist
+      ansible.builtin.file:
+        path: "{{ mount_point }}"
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: format the ext4 filesystem
+      community.general.filesystem:
+        fstype: ext4
+        dev: "{{ hdpath }}"
+
+    - name: mount the data
+      ansible.posix.mount:
+        path: "{{ mount_point }}"
+        src: "{{ hdpath }}"
+        fstype: ext4
+        state: mounted

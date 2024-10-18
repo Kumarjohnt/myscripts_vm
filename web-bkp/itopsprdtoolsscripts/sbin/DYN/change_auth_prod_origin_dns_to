@@ -1,0 +1,94 @@
+import sys
+import json
+import httplib2
+import argparse
+import dns.resolver
+import base64
+
+http = httplib2.Http()
+http.force_exception_to_status_code = True
+
+pwdh="YUhVM3VqRTVVQFU0dUh1XmUhdS4="
+pwd=base64.b64decode(pwdh)
+
+args = {
+"customer_name":"vmwarecorporate",
+"user_name":"cdnapiproduser",
+"password":pwd
+}
+
+def option_parser():
+	parser = argparse.ArgumentParser()	
+	parser.add_argument('action',choices=['status','WDC','SC2'],default='status')
+	return parser
+
+def status():
+	resolv = dns.resolver.Resolver()
+	resolv.nameservers=['8.8.8.8','8.8.4.4']
+	try:
+		print("Hi")
+		record_ip=resolv.query('auth.cdnorigin.vmware.com')
+		for rdata in record_ip:
+                	print rdata
+	except:
+		print("Failed")
+
+def gettoken():
+	token = ""
+	response, content = http.request('https://api.dynect.net/REST/Session/', 'POST', json.dumps(args), headers={'Content-type': 'application/json'})
+	result = json.loads(content)
+	token = result["data"]["token"]
+	return token
+
+def failover():
+	token=gettoken()
+	response, content = http.request('https://api.dynect.net/REST/ARecord/cdnorigin.vmware.com/auth.cdnorigin.vmware.com/', 'GET', headers={'Content-type': 'application/json', 'Auth-Token': token})
+	record_id = json.loads(content)
+	reference=record_id['data']
+	ref1=reference[0]
+	url1='https://api.dynect.net'+ref1+'/'
+	args1 = {
+	'rdata':{'address': '208.91.2.76'},
+	'ttl':'300'
+	}
+	response, content = http.request(url1, 'PUT', json.dumps(args1), headers={'Content-type': 'application/json', 'Auth-Token':  token})
+	result1 = json.loads(content)
+	pubdata = { 'publish': True }
+	response, content1 = http.request('https://api.dynect.net/REST/Zone/cdnorigin.vmware.com/', 'PUT', json.dumps(pubdata),  headers={'Content-type':'application/json', 'Auth-Token': token})
+	response, content = http.request('https://api.dynect.net/REST/Session/', 'DELETE')
+	print("Failover to WDC Successful")
+
+def failback():
+	token=gettoken()
+	response, content = http.request('https://api.dynect.net/REST/Session/', 'POST', json.dumps(args), headers={'Content-type': 'application/json'})
+	result = json.loads(content)
+	token = result["data"]["token"]
+	response, content = http.request('https://api.dynect.net/REST/ARecord/cdnorigin.vmware.com/auth.cdnorigin.vmware.com/', 'GET', headers={'Content-type': 'application/json', 'Auth-Token': token})
+	record_id = json.loads(content)
+	reference=record_id['data']
+	ref1=reference[0]
+	url1='https://api.dynect.net'+ref1+'/'
+	args1 = {
+	'rdata':{'address': '66.170.111.32'},
+	'ttl':'300'
+	}	
+	response, content = http.request(url1, 'PUT', json.dumps(args1), headers={'Content-type': 'application/json', 'Auth-Token':  token})
+	result1 = json.loads(content)
+	pubdata = { 'publish': True }
+	response, content1 = http.request('https://api.dynect.net/REST/Zone/cdnorigin.vmware.com/', 'PUT', json.dumps(pubdata),  headers={'Content-type':'application/json', 'Auth-Token': token})
+	response, content = http.request('https://api.dynect.net/REST/Session/', 'DELETE')
+	print("Failback to SC2 successful")
+
+def api_runner():
+	parser=option_parser()
+	args = parser.parse_args()
+	action = args.action
+	if action == 'status':
+		status()
+	elif action == 'WDC':
+		failover()
+	elif action == 'SC2':
+		failback()
+
+if __name__ == '__main__':
+	api_runner()

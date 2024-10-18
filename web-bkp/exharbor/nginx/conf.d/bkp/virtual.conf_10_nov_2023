@@ -1,0 +1,47 @@
+server {
+   listen 80;
+   server_name exharbor-prd2-proxy1.vmware.com exharbor-prd2-proxy1 exharbor-prd2-proxy2.vmware.com exharbor-prd2-proxy2 exharbor-prd2-proxy3.vmware.com exharbor-prd2-proxy3 exharbor-prd2-proxy4.vmware.com exharbor-prd2-proxy4 exharbor-prd2-proxy5.vmware.com exharbor-prd2-proxy5 exharbor-prd2-proxy6.vmware.com exharbor-prd2-proxy6;
+
+   location /basic_status {
+   # copied from http://blog.kovyrin.net/2006/04/29/monitoring-nginx-with-rrdtool/
+ stub_status on;
+   access_log   off;
+   allow all;
+   deny 10.128.45.52;
+   }
+   location /nginx_status {
+	stub_status on;
+      	access_log off;
+      	allow all;
+   	}
+
+   location / {
+#       include /etc/nginx/allow_GET_only.conf;
+       rewrite  .*  http://www.vmware.com/  permanent;
+   }
+
+}
+
+server {
+       listen 80;
+       server_name projects.registry.vmware.com projects-registry-wdc.vmware.com;
+#       server_name projects-stg.registry.vmware.com;
+       include /etc/nginx/allow_GET_PATCH_only.conf;
+       access_log /var/log/nginx/projects_registry_vmware_com_access.log proxylog;
+       error_log /var/log/nginx/projects_registry_vmware_com_error.log;
+       resolver 10.128.242.1 10.128.242.2 ipv6=off valid=30s;
+       proxy_connect_timeout 120s;
+#       if ($http_user_agent !~* "docker") {
+#           return 403;
+#       }
+       location / {
+       proxy_set_header  Host                  $http_host;
+       proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+	proxy_ssl_server_name on;
+       #proxy_pass https://projects.registry.vmware.com/;
+        set $BACKEND "https://projects.registry.vmware.com";
+#       set $BACKEND  "https://projects-registry-prod-tkg.intgslb.vmware.com";
+       proxy_pass $BACKEND;
+
+       }
+}

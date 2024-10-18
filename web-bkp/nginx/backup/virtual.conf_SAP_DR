@@ -1,0 +1,2787 @@
+# Virtual Hosts with Reverse Proxy setup or redirects
+
+server {
+   listen 80;
+   server_name web-prod-w1.vmware.com web-prod-w1 web-prod-w2.vmware.com web-prod-w2 web-prod-w3.vmware.com web-prod-w4.vmware.com;
+
+   location /nginx_status {
+      stub_status on;
+      access_log  off;
+      allow all;
+      deny 10.113.62.146;
+   }
+
+   location / {
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite  .*  http://www.vmware.com/  permanent;
+   }
+}
+
+#server {
+#   listen 80;
+#   #server_name cto.vmware.com cto-prod.vmware.com;
+#   server_name cto-prod.vmware.com;
+#   include /etc/nginx/allow_GET_POST_only.conf;
+#   access_log /var/log/nginx/cto.vmware.com_access.log proxylog;
+
+   # keepalive_timeout 10;
+#   client_max_body_size 150m; # HZ 1174098
+#   proxy_buffer_size   128k;  # HZ 1594521
+#   proxy_buffers   8 256k;
+#   proxy_busy_buffers_size   256k;
+
+#   location /akamai-probe.html {
+#      root /etc/nginx/akamai-probe;
+#   }
+
+#   location / {
+#      proxy_set_header  Host               $http_host;
+#      proxy_set_header  X-Forwarded-Host   $http_host;
+#      proxy_set_header  X-Forwarded-Server $http_host;
+#      proxy_set_header  X-Real-IP          $remote_addr;
+#      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+#      proxy_pass http://cto-wordpress.vmware.com;
+#      proxy_redirect http://cto-wordpress.vmware.com/ http://cto.vmware.com/;
+#   }
+#}
+
+
+
+server {
+   listen 80;
+   server_name devcenter.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log /var/log/nginx/devcenter.vmware.com_access.log main;
+
+   rewrite .* http://developercenter.vmware.com/home permanent; }
+
+
+# RFC 221609
+server {
+   listen 80;
+#RFC 226484 segrating code.vmware.com virtual host from developercenter by creating new virtual host for code.vmware.com with new redirects requested in TASK0286681 
+# server_name developercenter.vmware.com code.vmware.com  developercenter code ;
+   server_name developercenter.vmware.com developercenter;
+   #include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/developercenter.vmware.com_access.log proxylog;
+
+   #rewrite .* http://www.vmware.com/my_maintenance.html permanent;
+
+#   keepalive_timeout 10;
+   client_max_body_size 150m; # HZ 1174098
+
+   location /akamai-probe.html {
+      include /etc/nginx/allow_GET_POST_only.conf;
+      root /etc/nginx/akamai-probe;
+   }
+
+   #HZ 1614046  see comments #65, moved to vdc-repo vhost
+   #location  /scm-service/ {
+
+   #include /etc/nginx/allow_GET_POST_devcenter_only.conf;
+
+   #   proxy_set_header  Host               $http_host;
+   #   proxy_set_header  X-Forwarded-Host   $http_host;
+   #   proxy_set_header  X-Forwarded-Server $http_host;
+   #   proxy_set_header  X-Real-IP          $remote_addr;
+   #   proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+  
+   #   proxy_pass https://vdc-prod-svn-vip.vmware.com/scm-service/ ;
+
+   #  }
+
+   location / {
+      include /etc/nginx/allow_GET_POST_only.conf;
+      root /var/nginx/www;
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+          
+      if ( $http_x_forwarded_proto ~* https ) {      
+         proxy_pass https://vdc-prod-app-vip.vmware.com;
+      }
+
+      proxy_pass http://vdc-prod-app-vip.vmware.com;
+      #proxy_pass http://www.vmware.com/my_maintenance.html;
+      #rewrite .* http://www.vmware.com/maintenance.html;
+	
+
+   }          
+
+}
+
+
+
+server {
+   listen 80;
+   server_name vdc-repo.vmware.com;
+   access_log /var/log/nginx/vdc-repo.vmware.com_access.log main;
+
+   keepalive_timeout 30;
+   client_max_body_size 1G;  # need to revisit this setting
+   gzip on;
+
+
+
+   #HZ 1614046
+   location  /scm-service {
+      client_max_body_size 8G;  # need to revisit this setting
+
+
+      if ( $http_x_forwarded_proto !~* https ) {
+          rewrite ^(.*)$    https://vdc-repo.vmware.com$1  permanent;
+      }
+
+      include /etc/nginx/allow_WebDAV_methods.conf;
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      proxy_pass https://vdc-prod-svn-vip.vmware.com/scm-service/ ;
+
+   }
+
+
+
+   location / {
+      include /etc/nginx/allow_GET_POST_only.conf;
+      root /var/nginx/www;
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      if ( $http_x_forwarded_proto ~* https ) {
+          proxy_pass     https://vdc-prod-repo-vip.vmware.com;
+      }
+
+      proxy_pass     http://vdc-prod-repo-vip.vmware.com;
+
+   }
+}
+
+
+
+server {
+   listen 80;
+   server_name cloudcredibility.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log /var/log/nginx/cloudcredibility.com_access.log main;
+      
+   rewrite ^(.*)$ http://www.cloudcredibility.com$1 permanent; 
+}
+
+
+
+server {
+   listen 80;
+    
+   # server name ccred-check-maint.vmware.com is for itoc.vmware.com to
+   # check the return code for http://ccred-check-maint.vmware.com/check_maint_status/ccred.[all|ext]
+   # This is because the http to https redirect for www.cloudcredibility.com returns 302
+   # So we have to use a diffrent host name which is an alias of w-prod-int-vip which
+   # does not have http to https redirect irule but point to the same backend servers as ccred vip
+   server_name www.cloudcredibility.com ccred-check-maint.vmware.com;
+   include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/www.cloudcredibility.com_access.log main;
+   root /var/nginx/cloud_credibility;
+
+   keepalive_timeout 30;
+   proxy_read_timeout 300; # For https://www.cloudcredibility.com/backend.php
+   client_max_body_size 150m;
+
+   #location /akamai-probe.html {
+   #   root /etc/nginx/akamai-probe;
+   #}
+   
+   # External requests are from ccred-prod-proxy-ext-vip-nat
+   if ( $remote_addr = "10.113.62.146" ) {
+      set $external_request External;
+   }
+
+   # Internal requests are from ccred-prod-proxy-int-vip
+   #if ( $remote_addr = "10.113.62.105" ) {
+   #   set $internal_request Internal;
+   #}
+
+   if ( $remote_addr != "10.113.62.146" ) {
+      set $internal_request Internal;
+   }
+
+   # For /css /fonts /images /img /js, serve from local $doc_root
+   location /css/    {}
+   location /fonts/  {} 
+   location /images/ {}
+   location /img/    {}
+   location /js/     {}
+
+   # Other requests forward to backend servers
+   location / {
+
+      if ( -f /etc/nginx/maint_switcher/ccred.ext ) {
+            set $external_request "${external_request}MaintOn";
+      }
+
+      if ( -f /etc/nginx/maint_switcher/ccred.all ) {
+            set $all_request "MaintOn";
+      }
+
+      if ( $external_request = "ExternalMaintOn" ) {
+            return 503;
+      }
+
+      if  ($all_request = "MaintOn" ) {
+            return 503;
+      }
+      
+      error_page 503 @maint_page;
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+   #   proxy_pass     http://ccred-prod-app-vip.vmware.com;
+
+   }
+  
+   location /check_maint_status/ {
+
+      root /etc/nginx/maint_switcher; 
+      if ( $internal_request = "Internal" ) {
+           rewrite ^/check_maint_status/(.*)$ /$1 break; 
+      }
+
+      return 403;
+   }
+ 
+
+   location @maint_page {
+      root /var/nginx/cloud_credibility/maintenance;
+      rewrite ^.*$  /maintenance.html break;
+   }
+
+}
+
+
+
+server {
+   listen 80;
+    
+   # server name ccred-check-maint.vmware.com is for itoc.vmware.com to
+   # check the return code for http://ccred-check-maint.vmware.com/check_maint_status/ccred.[all|ext]
+   # This is because the http to https redirect for www.cloudcredibility.com returns 302
+   # So we have to use a diffrent host name which is an alias of w-prod-int-vip which
+   # does not have http to https redirect irule but point to the same backend servers as ccred vip
+   server_name www-prod.cloudcredibility.com;
+   include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/www-prod.cloudcredibility.com_access.log main;
+   root /var/nginx/cloud_credibility;
+
+   keepalive_timeout 30;
+   proxy_read_timeout 300; # For https://www.cloudcredibility.com/backend.php
+   client_max_body_size 150m;
+
+   #location /akamai-probe.html {
+   #   root /etc/nginx/akamai-probe;
+   #}
+   
+   # External requests are from ccred-prod-proxy-ext-vip-nat
+   if ( $remote_addr = "10.113.62.146" ) {
+      set $external_request External;
+   }
+
+   # Internal requests are from ccred-prod-proxy-int-vip
+   #if ( $remote_addr = "10.113.62.105" ) {
+   #   set $internal_request Internal;
+   #}
+
+   if ( $remote_addr != "10.113.62.146" ) {
+      set $internal_request Internal;
+   }
+
+   # For /css /fonts /images /img /js, serve from local $doc_root
+   location /css/    {}
+   location /fonts/  {} 
+   location /images/ {}
+   location /img/    {}
+   location /js/     {}
+
+   # Other requests forward to backend servers
+   location / {
+
+      if ( -f /etc/nginx/maint_switcher/ccred.ext ) {
+            set $external_request "${external_request}MaintOn";
+      }
+
+      if ( -f /etc/nginx/maint_switcher/ccred.all ) {
+            set $all_request "MaintOn";
+      }
+
+      if ( $external_request = "ExternalMaintOn" ) {
+            return 503;
+      }
+
+      if  ($all_request = "MaintOn" ) {
+            return 503;
+      }
+      
+      error_page 503 @maint_page;
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+    #  proxy_pass     http://ccred-prod-app-vip.vmware.com;
+
+   }
+  
+   location /check_maint_status/ {
+
+      root /etc/nginx/maint_switcher; 
+      if ( $internal_request = "Internal" ) {
+           rewrite ^/check_maint_status/(.*)$ /$1 break; 
+      }
+
+      return 403;
+   }
+ 
+
+   location @maint_page {
+      root /var/nginx/cloud_credibility/maintenance;
+      rewrite ^.*$  /maintenance.html break;
+   }
+
+}
+
+
+
+# vCenter Support Assistant Phonehome 2.0 Project 
+server {
+   listen 80;
+   server_name vcsa.vmware.com;
+#   include /etc/nginx/allow_GET_POST_only.conf;
+   include /etc/nginx/allow_vcsa_method_only.conf;
+    
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+    add_header 'Access-Control-Allow-Headers' 'Cookie';
+#    add_header 'Access-Control-Allow-Headers' 'DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type';
+
+   access_log /var/log/nginx/vcsa_access.log proxylog;
+   error_log  /var/log/nginx/vcsa_error.log  error;
+   root /var/nginx/vcsa;
+
+   keepalive_timeout 30;
+   client_max_body_size 150m;
+
+#Added below as per RFC235385
+   proxy_connect_timeout  180;
+   proxy_read_timeout 180;
+  
+
+   location ~ ^/ph/tl/stg/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      rewrite ^/ph/tl/stg/(.*)$   /$1 break;
+      proxy_pass     http://ph-stg-ts-vip.vmware.com:1080;
+   }
+
+
+   location ~ ^/ph/tl/prd/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      rewrite ^/ph/tl/prd/(.*)$   /$1 break;
+      proxy_pass     http://ph-prd-ts-vip.vmware.com:1080;
+   }
+
+
+   # Forward requests for /ph/tl/* to backend server
+   location ~ ^/ph/tl/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+      #proxy_pass_header  Authorization;
+      #proxy_pass_header  WWW-Authenticate;
+
+      rewrite ^/ph/tl/(.*)$   /$1 break;
+      proxy_pass     http://ph-dev-ts-a1.vmware.com:1080;
+   }
+
+
+   location  /ph-dev/api/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      # rewrite ^/ph-dev/api/(.*)$   /$1 break;
+     # proxy_pass	http://ph-dev-ts-a2.vmware.com:1081/api/;
+	# Below change made as per RFC#243229
+      proxy_pass	http://ph-tst-rts-lb.vac.vmware.com:1081/api/;
+      proxy_redirect default;
+   }
+
+## Added by Ritesh on 14th June request by Angel Sotirov TKT2843371
+location  /ph-tst/api/ {
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       proxy_pass        http://wdc-vcd01-vac-dev-t-tst-vip01.supercollider.vmware.com:1081/api/;
+      proxy_redirect default;
+   }
+
+### RFC 242715 ###
+#location  /ph-stg/api/v1/results {
+#      proxy_set_header  Host               $http_host;
+#      proxy_set_header  X-Forwarded-Host   $http_host;
+#      proxy_set_header  X-Forwarded-Server $http_host;
+#      proxy_set_header  X-Real-IP          $remote_addr;
+#      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+     
+#     proxy_pass http://ph-prd-rts-vip.vmware.com:1081/api/v1/results;
+#     proxy_redirect default;
+#   }
+
+###
+##### ITCM-2658 Update ph-stg-ts-vip.vmware.com to wdc-vcd01-vac-t-stg-vip01.supercollider.vmware.com
+  location  /ph-stg/api/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+      proxy_connect_timeout  60;
+   proxy_read_timeout 60;
+ 
+      # rewrite ^/ph-stg/api/(.*)$   /$1 break;
+     # proxy_pass http://ph-stg-ts-vip.vmware.com:1081/api/;
+      proxy_pass http://wdc-vcd01-vac-t-stg-vip01.supercollider.vmware.com:1081/api/;
+      proxy_redirect default;
+   }
+
+## 5 June Changes POC added by Ritesh
+location  /ph-stg-poc/api/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      # rewrite ^/ph-stg/api/(.*)$   /$1 break;
+      #proxy_pass http://wdc-vcd01-vac-t-stg-vip01.supercollider.vmware.com:1081/api/;
+      proxy_pass http://wdc-vcd01-vac-t-stg-vip01.supercollider.vmware.com:1081/api/;
+      proxy_redirect default;
+   }
+
+## Changes ending here for 5 June 2019
+
+# RFC 233163  
+   location /skyline/ {
+
+      #proxy_set_header  Host               $http_host;
+      #proxy_set_header  X-Forwarded-Host   $http_host;
+      #proxy_set_header  X-Forwarded-Server $http_host;
+      #proxy_set_header  X-Real-IP          $remote_addr;
+      #proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      #rewrite ^/skyline/(.*)$   https://skyline-api-gw.itcna.vmware.com/$1 break;
+      #proxy_pass     https://skyline-api-gw.itcna.vmware.com/;
+      #proxy_pass     https://skyline-api-gw.apps.wdc1.itcna.vmware.com/;
+      #proxy_pass     https://skyline-api-gw.apps.scdc1.itcna.vmware.com/; #Commented this line as PCF stopped accepting TLS 1.0 or lower versions.
+      #Below entry is added to reslove TLS lower version issue and will be permannent change.
+      proxy_pass 	https://skyline.vmware.com/;
+      #proxy_redirect default;
+   }
+
+##
+### RFC 242715 ###
+##RFC ITCM-2972
+#location  /ph/api/v1/results {
+#      proxy_set_header  Host               $http_host;
+#      proxy_set_header  X-Forwarded-Host   $http_host;
+#      proxy_set_header  X-Forwarded-Server $http_host;
+#      proxy_set_header  X-Real-IP          $remote_addr;
+#      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+
+ #    proxy_pass http://ph-prd-rts-vip.vmware.com:1081/api/v1/results;
+ #    proxy_redirect default;
+ #  }
+
+##
+
+### TKT2808603 ##
+#location  /ph/api/v1/manifest {
+#      proxy_set_header  Host               $http_host;
+#      proxy_set_header  X-Forwarded-Host   $http_host;
+#      proxy_set_header  X-Forwarded-Server $http_host;
+#      proxy_set_header  X-Real-IP          $remote_addr;
+#      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+
+#     proxy_pass http://ph-prd-rts-vip.vmware.com:1081/api/v1/manifest;
+#     proxy_redirect default;
+#   }
+
+## Update new proxy pass as part of RFC ITCM-2972
+  location  /ph/api/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+     #if ($request_method = HEAD) {
+     #	return 200;
+     #	}
+     # rewrite ^/ph/tl/prd/(.*)$   /$1 break;
+    # proxy_pass http://ph-prd-ts-vip.vmware.com:1081/api/;
+     proxy_pass http://wdc-vcd01-vac-t-prd-vip01.supercollider.vmware.com:1081/api/;
+     proxy_redirect default;
+   }
+
+   #Deny all other requests
+   location / {
+      return 403;
+   }
+}
+
+
+
+#Begin HZ 849544
+server {
+   listen 80;
+   server_name login-dev.vmware.com;
+
+   rewrite   ^.*$       https://myvmware.horizonlabs.vmware.com permanent;
+   access_log /var/log/nginx/login-dev-vmware-access_log main;
+
+}
+#End HZ 849544
+
+
+
+#Begin HZ 901826
+server {
+   listen 80;
+   server_name login-stg.vmware.com;
+
+   rewrite   ^.*$       https://myvmware-stg.horizonmanager.com permanent;
+   access_log /var/log/nginx/login-stg-vmware-access_log main;
+
+}
+#End HZ 901826
+
+
+
+#Begin HZ 903453
+server {
+   listen 80;
+   server_name login.vmware.com;
+
+#   rewrite   ^/adp$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/1658       permanent;
+# HZ 955472
+   rewrite   ^/zimbra$  https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/1890       permanent;
+# HZ 1022756
+#   rewrite   ^/wellness$        https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/3962       permanent;
+# HN INC0084899
+    rewrite   ^/wellness$       https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/7e427192-cfcf-4bd9-bd1d-dc0419795f40       permanent;
+# HZ 1230955
+#   rewrite   ^/mylearn$ https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4492       permanent;
+# HZ 1070409
+#   rewrite   ^/fip$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4236       permanent;
+# HZ 1176426
+#   rewrite   ^/aloha$   https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4404       permanent;
+# HZ 1211284
+   rewrite   ^/modelndirect$    http://www.vmware.com/modeln/redirect.html?/modeln/j/wl?WPAGE=com.vmware.sso.SsoLoginPage&JMETH=init    permanent;
+#RFC 107267
+   rewrite   ^/helpzilla$       https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4412       permanent;
+#   rewrite   ^/vmstar$  https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/1160       permanent;
+#HZ#1352877
+#   rewrite   ^/vbc$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4798       permanent;
+#HZ#1363386
+#   rewrite   ^/ebs$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4552       permanent;
+##RFC#197917
+   rewrite   ^/ebs$      https://myvmware.workspaceair.com/SAAS/API/1.0/GET/apps/launch/app/84b1e7fe-e387-4a99-b360-28ee22893123 permanent;
+#RFC 111246
+#RewriteRule ^/ebs$ https://horizonworkspace.vmware.com/SAAS/API/1.0/GET/apps/launch/app/2a2b62ae-a771-4d5d-9275-ca79649f2704   [R=301,L]
+#
+# HZ 1507547
+#   rewrite   ^/aetna$		https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/5108       permanent;
+#   rewrite   ^/enwisen$	https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/5106		permanent;
+
+# HZ 1425963
+#   rewrite   ^/triad$   https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4942 permanent;
+
+# HN TASK0045757
+#   rewrite   ^/fsa$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4942       permanent;
+
+# HN RITM0073793
+#   rewrite   ^/401k$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/5758       permanent;
+
+###RFC#200854###
+
+rewrite ^/adp$          https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/6fc8a1c7-88ec-4282-92dd-bdeb0dba83ab       permanent;
+        rewrite ^/mylearn$      https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/6fd55b7d-e3df-4259-b69c-c925694d621b       permanent;
+        rewrite ^/fip$          https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/bbb4dcf3-22f2-413d-bd24-82d6f0b09ea8       permanent;
+        rewrite ^/aloha$        https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/9a9ad68f-b595-4654-bbd6-e66b063e194b       permanent;
+        rewrite ^/vmstar$       https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/c028462f-d0c7-47fb-9aa3-477164b86219       permanent;
+        rewrite ^/vbc$          https://myvmware.workspaceair.com/SAAS/API/1.0/GET/apps/launch/app/14565aa1-2d99-4c07-bd3e-0806817004c3           permanent;
+        rewrite ^/aetna$        https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/a59f9455-b744-4529-bac5-543bd8e89918       permanent;
+        rewrite ^/enwisen$      https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/ef1359ab-6976-461b-8157-c05d06970ca7       permanent;
+        rewrite ^/triad$        https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/63dd1a9b-bc13-4517-b9cb-a681fedf150b       permanent;
+        rewrite ^/fsa$          https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/63dd1a9b-bc13-4517-b9cb-a681fedf150b       permanent;
+        rewrite ^/401k$         https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/1639b311-c645-4cb3-836e-5ee02080282b       permanent;
+
+#   rewrite   ^.*$       https://myvmware.horizonmanager.com     permanent;
+   rewrite   ^.*$       https://myvmware.workspaceair.com     permanent;
+
+   access_log /var/log/nginx/login-vmware-access_log main;
+
+}
+#End HZ 903453
+
+server {
+   listen 80;
+   server_name comm-prod.vmware.com;
+   include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/comm-prod.vmware.com_access.log main;
+
+  # keepalive_timeout 0;
+  # keepalive_requests 0;
+
+   rewrite ^(.*)$   https://communities.vmware.com$1  permanent;
+
+#   rewrite ^(.*)$   https://www.vmware.com/maintenance.html  permanent;
+
+}
+
+
+
+server {
+    listen 80;
+    server_name search.vmware.com search;
+    server_name search-2.vmware.com search-2;
+    # include /etc/nginx/allow_GET_POST_only.conf;
+
+  #  keepalive_timeout 5;
+    access_log /var/log/nginx/search_access.log;
+
+    location / {
+       proxy_redirect    off;
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+       
+       # This causes problem whem requests are passed in from web-prod-1,2,3,4 from my.vmware.com
+       #if ( $http_x_forwarded_proto ~* https ) {
+       #   proxy_pass     https://sc9-prod-gsa-ext-vip.vmware.com;
+       #
+
+       proxy_pass     http://sc9-prod-gsa-ext-vip.vmware.com;
+    }
+}
+
+
+
+server {
+    listen 80;
+    server_name register.vmware.com;
+    include /etc/nginx/allow_GET_POST_only.conf;
+
+    #keepalive_timeout 3;
+    access_log /var/log/nginx/register_access.log;
+
+    rewrite ^/content/download100.html                 http://www.vmware.com/products/workstation   permanent;
+    rewrite ^/content/download.html                    http://www.vmware.com/products/workstation   permanent;
+    rewrite ^/content/registration.html                http://www.vmware.com/products/workstation   permanent;
+    rewrite ^/content/beta/fusion/registration.html    http://www.vmware.com/products/fusion/       permanent;
+
+    rewrite ^.*                                        http://www.vmware.com/downloads              permanent;
+
+}
+
+
+
+server {
+    listen 80;
+    server_name register-rollback.vmware.com;
+    include /etc/nginx/allow_GET_POST_only.conf;
+
+   #keepalive_timeout 3;
+    access_log /var/log/nginx/register_proxy_access.log;
+
+    location / {
+       proxy_redirect    off;
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+#       proxy_pass     http://register-prod-web1.vmware.com:8080;
+    }
+
+}
+
+
+
+server {
+    listen 80;
+    server_name www-review.vmware.com;
+    include /etc/nginx/allow_GET_only.conf;
+
+    # keepalive_timeout 0;
+    access_log /var/log/nginx/www-review_access.log;
+
+    rewrite ^(.*)$      http://www.vmware.com$1  permanent;
+
+}
+
+
+
+server {
+    listen 80;
+    server_name www-stage.vmware.com;
+    include /etc/nginx/allow_GET_POST_only.conf;
+
+    # keepalive_timeout 0;
+    access_log /var/log/nginx/www-stage_access.log;
+
+    root /var/nginx/www-stage;
+
+    #rewrite ^(.*)$  /maintenance.html;
+
+}
+
+server {
+    listen 80;
+    server_name collaborationtraining.vmware.com;
+    include /etc/nginx/allow_GET_only.conf;
+
+   #  keepalive_timeout 0;
+    access_log /var/log/nginx/collaborationtraining_access.log;
+
+    rewrite  .*  https://onevmw.sharepoint.com/sites/EntCollabTrain/SitePages/Home.aspx permanent;
+
+}
+
+
+##RFC#183109##
+#Blogs upgrade
+
+######RFC 184785  #######
+
+server {
+   listen 80;
+
+   server_name blogs.vmware.com blogs-prd2-check-maint.vmware.com blogs-cdn91ek.vmware.com;
+   
+   include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/blogs.vmware.com_access.log proxylog;
+   error_log /var/log/nginx/blogs.vmware.com_error.log error;
+   root /var/nginx/blogs;
+   client_max_body_size 150m;
+
+    # Block Akamai identified bot through Akamai-Bot header
+    include /etc/nginx/BLOCK-BOT.conf;
+
+
+   set $all_request      "null";
+   set $external_request "null";
+   set $internal_request "null";
+
+   # External requests are from w-prod-ext-snat-vip.vmware.com
+   if ( $remote_addr = "10.113.62.39" ) {
+      set $external_request External;
+   }
+
+   # Internal requests
+   if ( $remote_addr != "10.113.62.39" ) {
+      set $internal_request Internal;
+   }
+
+
+location /performance-engineering {
+               #include /etc/nginx/conf-LOCAL/ADD-NODE-ID.conf;
+               error_log /var/log/nginx/performance_blogs_error.log error;
+               access_log /var/log/nginx/performance_blogs_access.log;
+               proxy_pass  http://blogs-prod-app-vip-1.vmware.com;
+        }
+
+   location / {
+      if ( -f /etc/nginx/maint_switcher/blogs.ext ) {
+            set $external_request "${external_request}MaintOn";
+      }
+      if ( -f /etc/nginx/maint_switcher/blogs.all ) {
+            set $all_request "MaintOn";
+      }
+      if ( $external_request = "ExternalMaintOn" ) {
+            return 503;
+      }
+      if  ($all_request = "MaintOn" ) {
+            return 503;
+      }
+
+      error_page 503 @maint_page;
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      include /etc/nginx/conf.d/blogs_tribalknowledge.conf;
+
+
+
+      ###RFC##204796
+      location /cto/wp-admin {
+                return 401 "Access denied";
+        }
+      location /cto/wp-login {
+                return 401 "Access denied";
+        }
+      ###RFC##222915 
+
+	rewrite ^/octo/(.*)$   https://cto.vmware.com/$1 break;
+	rewrite ^/octo    https://cto.vmware.com/ break;
+
+      ###RFC##204796
+
+        rewrite ^/cto/(.*)$   https://cto.vmware.com/$1 break;
+	rewrite ^/cto	 https://cto.vmware.com/ break;
+
+
+      ###RFC##204796
+      proxy_pass     http://blogs-prod-app-vip-1.vmware.com;
+
+   }
+
+   location /check_maint_status/ {
+
+      root /etc/nginx/maint_switcher;
+      if ( $internal_request = "Internal" ) {
+           rewrite ^/check_maint_status/(.*)$ /$1 break;
+      }
+      return 403;
+   }
+
+   location @maint_page {
+      root /var/nginx/blogs/maintenance;
+      rewrite ^.*$  http://www.vmware.com/webmaint/blogs_maintenance.html break;
+   }
+
+}
+
+server {
+   listen 80;
+
+   server_name blogs-prd2.vmware.com blogs-prod.vmware.com;
+   server_name mblogs.vmware.com techtest.vmware.com colt-solutiondelivery.vmware.com;
+#RFC 222218  #server_name mblogs.vmware.com itoutcomes.vmware.com techtest.vmware.com itoutcomes-fr.vmware.com itoutcomes-de.vmware.com colt-solutiondelivery.vmware.com;
+   server_name socialselling.vmware.com;
+#  server_name devops.vmware.com devops;   INC0053648
+   server_name vexpert.vmware.com vexpert;
+#  RFC # 221811 for code-old.vmware.com
+   server_name code-old.vmware.com code-old;
+# RFC 246151, adding octo.vmware.com and cto.vmware.com
+   server_name octo.vmware.com cto.vmware.com;
+   
+   include /etc/nginx/allow_GET_POST_only.conf;
+# Block Akamai identified bot through Akamai-Bot header
+   include /etc/nginx/BLOCK-BOT.conf;
+   access_log /var/log/nginx/mblogs.vmware.com_access.log main;
+   error_log /var/log/nginx/mblogs.vmware.com_error.log warn;
+   root /var/nginx/mblogs;
+   client_max_body_size 150m;
+
+   set $all_request      "null";
+   set $external_request "null";
+   set $internal_request "null";
+
+   # External requests are from w-prod-ext-snat-vip.vmware.com
+   if ( $remote_addr = "10.113.62.39" ) {
+      set $external_request External;
+   }
+
+   # Internal requests
+   if ( $remote_addr != "10.113.62.39" ) {
+      set $internal_request Internal;
+   }
+
+   location / {
+      if ( -f /etc/nginx/maint_switcher/mblogs.ext ) {
+            set $external_request "${external_request}MaintOn";
+      }
+      if ( -f /etc/nginx/maint_switcher/mblogs.all ) {
+            set $all_request "MaintOn";
+      }
+      if ( $external_request = "ExternalMaintOn" ) {
+            return 503;
+      }
+      if  ($all_request = "MaintOn" ) {
+            return 503;
+      }
+
+      error_page 503 @maint_page;
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      proxy_pass     http://mblogs-prod-vip.vmware.com;
+
+   }
+
+   location /check_maint_status/ {
+
+      root /etc/nginx/maint_switcher;
+      if ( $internal_request = "Internal" ) {
+           rewrite ^/check_maint_status/(.*)$ /$1 break;
+      }
+      return 403;
+   }
+
+   location @maint_page {
+      root /var/nginx/mblogs/maintenance;
+      rewrite ^.*$  http://www.vmware.com/webmaint/blogs_maintenance.html break;
+   }
+
+}
+
+server {
+#INC0053648   
+listen 80;
+   server_name devops.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log /var/log/nginx/aribasso.vmware.com_access.log main;
+
+   rewrite .* https://code.vmware.com permanent; 
+
+}
+
+server {
+   listen 80;
+   server_name aribasso.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log /var/log/nginx/aribasso.vmware.com_access.log main;
+
+   rewrite .* https://s1.ariba.com/Sourcing/Main?realm=vmware&passwordadapter=ThirdPartyUser permanent; }
+
+
+server {
+    listen 80;
+    server_name ftpsite4.vmware.com sftpsite4.vmware.com;
+    access_log /var/log/nginx/ftpsite4_sftpsite4_access.log;
+    root /var/nginx/ftpsite4;
+
+    index index.html;
+
+    gzip on;
+
+}
+
+#server {
+#   listen 80;
+#   server_name people-emc.vmware.com ;
+#   include /etc/nginx/allow_GET_POST_only.conf ;
+#   access_log /var/log/nginx/emc_access.log main;
+#   error_log /var/log/nginx/emc_error.log;
+#   root /var/nginx/emc;
+
+   #proxy_ssl_session_reuse on;
+
+#   location / {
+#       proxy_set_header  Host               $http_host;
+#       proxy_set_header  X-Forwarded-Host   $http_host;
+#       proxy_set_header  X-Forwarded-Server $http_host;
+#       proxy_set_header  X-Real-IP          $remote_addr;
+#       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+
+#   proxy_pass https://dsearchwpv01.emc.com/;
+#   }
+#}
+
+#RFC 182771
+###Approval Central Mobile Application##
+server {
+    listen 80;
+    server_name mbei.vmware.com mbei;
+    access_log /var/log/nginx/mbei_access.log proxylog;
+    root /var/nginx/mbei;
+
+# RFC 199503
+
+    keepalive_timeout 30;
+    proxy_read_timeout 300;
+    client_max_body_size 3m;
+
+    location / {
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       proxy_pass http://mbei-prod-vip.vmware.com;
+    }
+}
+
+##RFC187489##
+server {
+    listen 80;
+    server_name ext-changepoint.vmware.com ext-new-changepoint.vmware.com;
+    client_max_body_size 20M;
+
+    access_log /var/log/nginx/ext-changepoint_access.log proxylog;
+    keepalive_timeout 30;
+
+    root /var/nginx/noroot;
+
+    location / {
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       proxy_pass https://cp-prod-ext-vip.vmware.com;
+    }
+}
+
+
+#RFC 192874
+server {
+   listen 80;
+
+   server_name proposal.vmware.com;
+   include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/proposal_access.log main;
+   root /var/nginx/proposal;
+
+   keepalive_timeout 30;
+   proxy_read_timeout 300;
+   client_max_body_size 512m;
+
+   location /akamai-probe.html {
+      root /etc/nginx/akamai-probe;
+   }
+
+   # External requests are from w-prod-ext-snat-vip
+   if ( $remote_addr = "10.113.62.39" ) {
+      set $request_come_from EXTERNAL;
+   }
+
+   if ( $remote_addr != "10.113.62.39" ) {
+      set $request_come_from INTERNAL;
+   }
+
+   location / {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      if ( $request_come_from = "EXTERNAL" ) {
+         #rewrite .*  http://www.vmware.com;
+         proxy_pass http://lamp-prod-vip.vmware.com;
+      }
+
+      if  ($request_come_from = "INTERNAL" ) {
+         proxy_pass http://lamp-prod-vip.vmware.com;
+      }
+
+   }
+
+
+   location /wp-admin {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      if ( $request_come_from = "EXTERNAL" ) {
+         return 403;
+      }
+
+      if  ($request_come_from = "INTERNAL" ) {
+         proxy_pass http://lamp-prod-vip.vmware.com;
+      }
+   }
+
+   location /wp-admin/css/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      proxy_pass http://lamp-prod-vip.vmware.com;
+   }
+
+}
+
+###RFC 199004
+# Decommission under ticket number TKT3165455
+#server {
+#       listen 80;
+#       server_name delltech.vmware.com dts.vmware.com rodeo.vmware.com;
+#       client_max_body_size 20M;
+#       include /etc/nginx/allow_GET_POST_only.conf;
+#       access_log /var/log/nginx/cto_access.log;     
+#   
+#       location / {
+#       proxy_redirect    off;
+#       proxy_set_header  Host               $http_host;
+#       proxy_set_header  X-Forwarded-Host   $http_host;
+#       proxy_set_header  X-Real-IP          $remote_addr;
+#       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+#       proxy_pass   http://idd-prod-web.vmware.com;
+#    }
+#}
+
+###RFC 224599
+#server {
+#       listen 80;
+#       server_name octo.vmware.com;
+#       client_max_body_size 20M;
+#       include /etc/nginx/allow_GET_POST_only.conf;
+#       access_log /var/log/nginx/octo_access.log;
+#       location / {
+#       proxy_redirect    off;
+#       proxy_set_header  Host               $http_host;
+#       proxy_set_header  X-Forwarded-Host   $http_host;
+#       proxy_set_header  X-Real-IP          $remote_addr;
+#       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+#
+#       proxy_pass  http://idd-prod-web.vmware.com;
+#    }
+#}
+
+### RFC 203135
+#server {
+#       listen 80;
+#       server_name cla.vmware.com;
+#       include /etc/nginx/allow_GET_POST_only.conf;
+#       access_log /var/log/nginx/cla.log proxylog;
+#       location / {
+#       proxy_set_header  Host               $http_host;
+#       proxy_set_header  X-Forwarded-Host   $http_host;
+#       proxy_set_header  X-Real-IP          $remote_addr;
+#       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+#
+#       proxy_pass https://claportal-prod-a1.vmware.com;
+#                  }
+#}
+
+### RFC 203135
+
+### RFC 203135
+### RFC 203135
+server {
+    listen 80;
+    server_name cla.vmware.com;
+    include /etc/nginx/allow_GET_POST_only.conf;
+    access_log /var/log/nginx/cla.log proxylog;
+    location / {
+        proxy_set_header  Host               $http_host;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       proxy_pass https://claportal-prod-a1.vmware.com;
+    } 
+location /admin {
+        deny all;
+    }
+}
+
+##RFC 203899#
+server {
+   listen 80;
+   server_name solutionservices.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite .* https://solutiondesk.formstack.com/forms/sddc permanent;
+   access_log /var/log/nginx/solutionservices_access.log; 
+  }
+######RFC 206017 #
+server {
+    listen 80;
+    server_name pwx.vmware.com;
+    # include /etc/nginx/allow_GET_only.conf;
+     include /etc/nginx/allow_GET_POST_only.conf;
+     access_log /var/log/nginx/pwx_access.log;
+location / {
+       proxy_redirect    off;
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+    proxy_pass  https://psyx-prod-vip.vmware.com ;
+}
+} 
+
+server {
+	listen 80;
+	server_name vmw.re www.vmw.re;
+	include /etc/nginx/allow_GET_only.conf;
+	access_log /var/log/nginx/stage_vmw_re_access.log proxylog;
+	error_log /var/log/nginx/stage_vmw_re_error.log;
+location / {
+	   proxy_redirect    off;
+	   proxy_set_header  Host               $http_host;
+	   proxy_set_header  X-Forwarded-Host   $http_host;
+	   proxy_set_header  X-Real-IP          $remote_addr;
+	   proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+	proxy_pass  http://wwwa.vmware.com/tiny/  ;
+  }
+}
+
+#### RFC 212442
+
+server {
+       listen 80;
+       server_name prod-ws.vmware.com;
+       #include /etc/nginx/allow_GET_POST_only.conf; #commented as per RFC 235998
+       access_log /var/log/nginx/prod-ws.vmware.com proxylog;
+
+       	keepalive_timeout 30;
+        client_max_body_size 20m;
+
+	proxy_connect_timeout 300;
+	proxy_send_timeout 300;
+	proxy_read_timeout 300;
+	send_timeout 300;
+	fastcgi_buffers 8 128k;
+	fastcgi_buffer_size 128k;
+	fastcgi_busy_buffers_size 256k;
+	fastcgi_temp_file_write_size 256k;
+
+
+
+       location / {
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       #rewrite ^/(.*)$   /$1 break;
+       proxy_pass http://wsvr-prd-app-1.vmware.com:8080/;
+                  }
+       }
+
+#### RFC 212553
+
+server {
+       listen 80;
+       server_name simservice.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/simservice.log proxylog;
+       location / {
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       #rewrite ^/(.*)$   /$1 break;
+       proxy_pass https://sim-prod-srv-1.vmware.com/;
+                  }
+       }
+
+#RFC#212728 
+#include /etc/nginx/conf.d/signupvcloud.conf; => This is migrated to web-prod-h1/2, since its 301 redirect. 
+
+#RFC#213192 
+#include /etc/nginx/conf.d/vmwarebenefits.conf; => => This is migrated to web-prod-h1/2, since its 301 redirect. 
+
+#RFC 213800 - NGINX Redirects for benefits.vmware.com 
+server {
+       listen 80;
+       server_name benefits.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/benefits_vmware_com_access.log proxylog;
+       error_log /var/log/nginx/benefits_vmware_com_error.log;
+       root /var/nginx/benefits;
+       client_max_body_size    50m;
+       proxy_read_timeout 75s;
+
+	#Added this entry to check the DNS for every 120 secs as the upstream is GTM
+       resolver 10.113.61.110 10.113.61.111 ipv6=off valid=30s;
+
+# Block Akamai identified bot through Akamai-Bot header
+       include /etc/nginx/BLOCK-BOT.conf;
+
+       location / {
+       #proxy_set_header  Host               $http_host;
+       proxy_buffers 16 4k;
+       proxy_buffer_size 8k;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+      # proxy_pass  https://benefits.tkg.vmware.com; 
+#       proxy_redirect default;
+	set $BACKEND "https://benefits.tkg.vmware.com";
+	proxy_pass $BACKEND;
+       }
+}
+
+
+#RFC#219838
+server {
+listen 80;
+server_name cloudnative.vmware.com;
+include /etc/nginx/allow_GET_POST_only.conf;
+access_log /var/log/nginx/cloudnative proxylog;
+rewrite .* https://vault.vmware.com/group/vault-main-library/cloud-native-apps permanent;
+}
+
+#RFC#221035
+server {
+listen 80;
+server_name vmwareclarity.org www.vmwareclarity.org www.vmwareclarity.com vmwareclarity.com www.vmwareclariy.net vmwareclariy.net;
+include /etc/nginx/allow_GET_POST_only.conf;
+access_log /var/log/nginx/vmwareclarity.log proxylog;
+location / {
+proxy_set_header Host $http_host;
+proxy_set_header X-Forwarded-Host $http_host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+rewrite .* https://vmware.github.io/clarity/ permanent;
+}
+}
+
+
+#RFC 220087
+server {
+       listen 80;
+       server_name viewdoc.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/viewdoc_access.log main;
+       error_log /var/log/nginx/viewdoc_error.log;
+
+       #proxy_ssl on;
+
+       location / {
+         proxy_set_header  Host               $http_host;
+         proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+         proxy_pass  https://viewdoc-prod-app-vip.vmware.com;
+       }
+}
+
+#RFC 222218
+server {
+       listen 80;
+       server_name itoutcomes.vmware.com itoutcomes-fr.vmware.com itoutcomes-de.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/itoutcomes.log proxylog;
+       error_log /var/log/nginx/itoutcomes-error.log;
+       location / {
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       rewrite .* http://www.vmware.com/it-priorities.html permanent;
+       }
+}
+
+server {
+       listen 80;
+       server_name marketplace.vmware.com mp-svc.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/marketplace_access.log proxylog;
+       error_log /var/log/nginx/marketplace_error.log;
+
+       #proxy_ssl on;
+
+       location / {
+         proxy_set_header  Host               $http_host;
+         proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+         proxy_pass  https://mp-prod-app-vip.vmware.com;
+       }
+
+
+}
+
+
+server {
+       listen 80;
+       server_name marketplace-download.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/marketplace-download_access.log proxylog;
+       error_log /var/log/nginx/marketplace-download_error.log;
+
+       #proxy_ssl on;
+
+       location ~* ^/(repo|resources)/ {
+         proxy_set_header  Host               $http_host;
+         proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+         proxy_pass  https://mp-prod-app-vip.vmware.com;
+       }
+
+
+       location / {
+         rewrite .* https://marketplace.vmware.com permanent;
+       }
+}
+
+
+#server {
+#       listen 80;
+#       server_name helpnowplus.vmware.com;
+#       include /etc/nginx/allow_GET_POST_only.conf;
+#       access_log /var/log/nginx/helpnowplus_access.log main;
+#       error_log /var/log/nginx/helpnowplus_error.log;
+#       client_max_body_size 10M;
+
+       #root /var/nginx/helpnowplus;
+       #location /maintenance/ {}
+
+
+#       location / {
+#         proxy_set_header  Host               $http_host;
+
+        # Uncomment the line below to set up the maintenance page
+        # try_files $uri $uri/ @maint;
+        #RFC 225024
+
+         #proxy_pass  https://vhelp-prd-vip.vmware.com;
+#         proxy_pass  https://help.vmware.com;
+
+        #RFC 225024 
+
+         #proxy_redirect https://vhelp-prd-vip.vmware.com/ https://helpnowplus.vmware.com/;
+         #proxy_redirect http://vhelp-prd-vip.vmware.com/  https://helpnowplus.vmware.com/;
+#         proxy_redirect https://help.vmware.com/ https://helpnowplus.vmware.com/;
+#         proxy_redirect http://help.vmware.com/  https://helpnowplus.vmware.com/;
+#       }
+
+       #location @maint {
+        # rewrite ^.*$ /maintenance/maintenance.html break;
+       #}
+#}
+
+
+server {
+       listen 80;
+       server_name extranet.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/extranet_access.log main;
+       error_log /var/log/nginx/extranet_error.log;
+
+       location / {
+       proxy_set_header  Host               $http_host;
+       proxy_set_header  X-Forwarded-Host   $http_host;
+       proxy_set_header  X-Real-IP          $remote_addr;
+       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       proxy_pass  https://sps-prod-vip.vmware.com;
+       }
+}
+
+
+### RFC 225449 ###
+server {
+   listen 80;
+   server_name partnerdemandcenter.vmware.com;
+   server_name www.partnerdemandcenter.vmware.com;
+   include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/partnerdemandcenter_access.log;
+    proxy_buffers 16 4k;
+    proxy_buffer_size 2k;
+    proxy_set_header  X-Forwarded-Host   $http_host;
+    proxy_set_header  X-Real-IP          $remote_addr;
+    proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+    rewrite ^/$ /partner-demand-center.html break;
+
+    location  /partner-demand-center  {
+                proxy_pass http://www-cms-prod.vmware.com;
+    }
+     location /etc {
+                     proxy_pass http://www-cms-prod.vmware.com;
+     }
+    location /bin {
+                     proxy_pass http://www-cms-prod.vmware.com;
+     }
+     location /content/dam {
+                     proxy_pass http://www-cms-prod.vmware.com;
+     }
+     location / {
+                     proxy_pass http://www-cms-prod.vmware.com/partner-demand-center/404.html;
+     }
+}
+
+server {
+       listen 80;
+        server_name partneredge.vmware.com www.partneredge.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log  /var/log/nginx/partneredge_access.log;
+       rewrite ^(.*)$ http://partnerdemandcenter.vmware.com$1  permanent;
+       }
+
+server {
+   listen 80;
+   server_name solutionexchange.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log /var/log/nginx/solutionsexch.log;
+   rewrite ^(.*)$ https://marketplace.vmware.com$1 permanent;
+
+   }
+
+
+server {
+       listen 80;
+       server_name tableau.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/tableau_access.log proxylog;
+       error_log /var/log/nginx/tableau_error.log error;
+
+       location / {
+          proxy_set_header  Host               $http_host;
+          proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+          proxy_pass     https://tableau-prod-vip.vmware.com;
+          proxy_redirect https://tableau-prod-vip.vmware.com/  https://tableau.vmware.com/;
+          proxy_redirect http://tableau-prod-vip.vmware.com/  https://tableau.vmware.com/;
+       }
+}
+
+server {
+		listen 80;
+		server_name picalc.vmware.com;
+		include /etc/nginx/allow_GET_POST_only.conf;
+		access_log /var/log/nginx/picalc_access.log proxylog;
+		error_log 	/var/log/nginx/picalc_error.log error;
+		
+		location / {
+		proxy_set_header	Host			$http_host;
+		proxy_set_header	X-Forwarded-For		$proxy_add_x_forwarded_for;
+		
+		proxy_pass		https://web-prd-vsanw-1.vmware.com/;
+			
+		}
+
+}
+
+server {
+   listen 80;
+   server_name code.vmware.com code ;
+   #include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/code.vmware.com_access.log proxylog;
+   rewrite ^/vmware-virtual-san-poc-guide https://storagehub.vmware.com/#!/vmware-vsan/vsan-6-6-proof-of-concept-guide permanent;
+   #rewrite .* http://www.vmware.com/my_maintenance.html permanent;
+
+   keepalive_timeout 30;
+   client_max_body_size 150m; # HZ 1174098
+
+   location /akamai-probe.html {
+      include /etc/nginx/allow_GET_POST_only.conf;
+      root /etc/nginx/akamai-probe;
+   }
+
+   #HZ 1614046  see comments #65, moved to vdc-repo vhost
+   #location  /scm-service/ {
+
+   #include /etc/nginx/allow_GET_POST_devcenter_only.conf;
+
+   #   proxy_set_header  Host               $http_host;
+   #   proxy_set_header  X-Forwarded-Host   $http_host;
+   #   proxy_set_header  X-Forwarded-Server $http_host;
+   #   proxy_set_header  X-Real-IP          $remote_addr;
+   #   proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+   #   proxy_pass https://vdc-prod-svn-vip.vmware.com/scm-service/ ;
+
+   #  }
+
+   location / {
+      include /etc/nginx/allow_GET_POST_only.conf;
+      root /var/nginx/www;
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      if ( $http_x_forwarded_proto ~* https ) {
+         proxy_pass https://vdc-prod-app-vip.vmware.com;
+      }
+
+      proxy_pass http://vdc-prod-app-vip.vmware.com;
+      #proxy_pass http://www.vmware.com/my_maintenance.html;
+      #rewrite .* http://www.vmware.com/maintenance.html;
+
+# location /vmware-virtual-san-poc-guide {
+#       proxy_set_header  Host               $http_host;
+#       proxy_set_header  X-Forwarded-Host   $http_host;
+#       proxy_set_header  X-Real-IP          $remote_addr;
+#       proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+#       rewrite .* https://storagehub.vmware.com/#!/vmware-vsan/vsan-6-6-proof-of-concept-guide permanent;
+#       }
+
+   }
+
+}
+
+server {
+       listen 80;
+       server_name alliances.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/alliances_access.log proxylog;
+       error_log /var/log/nginx/alliances_error.log;
+       client_max_body_size 10M;
+
+       location / {
+        # proxy_set_header  Host               $http_host;
+         #proxy_buffers 16 4k;
+         #proxy_buffer_size 2k;
+         #proxy_set_header  X-Forwarded-Host   $http_host;
+         #proxy_set_header  X-Real-IP          $remote_addr;
+         #proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+         proxy_pass  http://vmware-alliances.force.com;
+       }
+}
+
+#RFC225024
+server {
+       listen 80;
+       server_name helpnowplus.vmware.com helpnow.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/helpnowplus_access.log main;
+       error_log /var/log/nginx/helpnowplus_error.log;
+       client_max_body_size 10M;
+
+
+       location / {
+            rewrite ^.*$ https://help.vmware.com permanent;
+       }
+}
+
+
+
+
+#RFC 225024##
+#server {
+#       listen 80;
+#       server_name help-prod.vmware.com;
+#       include /etc/nginx/allow_GET_POST_DELETE_only.conf;
+#       access_log /var/log/nginx/help-prod_access.log main;
+#       error_log /var/log/nginx/help-prod_error.log;
+#       client_max_body_size 10M;
+
+       #root /var/nginx/help-prod;
+       #location /maintenance/ {}
+
+
+#       location / {
+#         proxy_set_header  Host               $http_host;
+
+        # Uncomment the line below to set up the maintenance page
+        # try_files $uri $uri/ @maint;
+
+#         proxy_pass  https://vhelp-prd-vip.vmware.com;
+
+#         proxy_redirect https://vhelp-prd-vip.vmware.com/ https://help-prod.vmware.com/;
+#         proxy_redirect http://vhelp-prd-vip.vmware.com/  https://help-prod.vmware.com/;
+#       }
+
+       #location @maint {
+        # rewrite ^.*$ /maintenance/maintenance.html break;
+       #}
+#}
+
+#RFC 225024##
+
+server {
+       listen 80;
+       server_name help.vmware.com;
+       include /etc/nginx/allow_GET_POST_DELETE_only.conf;
+       access_log /var/log/nginx/help_access.log main;
+       error_log /var/log/nginx/help_error.log;
+       client_max_body_size 10M;
+#Uncomment the below mentioned lines to enable the maintenance page after editing /var/nginx/helpnowplus/maintenance/maintenance.html date
+  
+#       root /var/nginx/helpnowplus;
+#       location /maintenance/ {}
+
+#Comment below proxy_set_header line to enable maintenance page
+       location / {
+      proxy_set_header  Host               $http_host;
+
+# Uncomment the line below to set up the maintenance page
+#        try_files $uri $uri @maint;
+
+#Comment below Proxy lines to enable maintenance page
+         proxy_pass  https://vhelp-prd-vip.vmware.com;
+       proxy_redirect https://vhelp-prd-vip.vmware.com/ https://help.vmware.com/;
+      proxy_redirect https://vhelp-prd-vip.vmware.com/  https://help.vmware.com/;
+    }
+
+# Uncomment the line below to set up the maintenance page
+#       location @maint {
+#         rewrite ^(.*)$ /maintenance/maintenance.html break;
+#       }
+}
+
+
+## RFC 232970
+server {
+listen 80;
+server_name csp-jira.eng.vmware.com;
+include /etc/nginx/allow_GET_POST_only.conf;
+
+keepalive_timeout 30;
+access_log /var/log/nginx/csp-jira_access.log;
+
+location / {
+proxy_redirect off;
+proxy_set_header Host $http_host;
+proxy_set_header X-Forwarded-Host $http_host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+proxy_pass https://csp-jira.eng.vmware.com;
+}
+
+}
+# RFC 238678
+server {
+listen 80;
+server_name servicedesk.eng.vmware.com ;
+include /etc/nginx/allow_GET_POST_only.conf;
+
+keepalive_timeout 30;
+access_log /var/log/nginx/servicedesk_access.log;
+
+location / {
+proxy_redirect off;
+proxy_set_header Host $http_host;
+proxy_set_header X-Forwarded-Host $http_host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+proxy_pass https://csp-jira.eng.vmware.com;
+}
+
+}
+
+#######RFC 233706 ###
+server {
+# For /community URL to mblogs only, all other URLs are served in AWS origin
+# Jean Chen, Igor Lemes
+       listen 80;
+       server_name cloud.vmware.com www2-akorig.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/cloud.vmware.com_access.log main;
+       error_log /var/log/nginx/cloud.vmware.com_error.log;
+       client_max_body_size 20M;
+
+       root /var/nginx/cloud.vmware.com;
+
+       location /community {
+                        proxy_set_header  Host               $http_host;
+                        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+                        proxy_pass  http://cblogs-prod.vmware.com;
+                        proxy_redirect  http://cblogs-prod.vmware.com  https://cloud.vmware.com/community;
+       }
+  
+       location / {
+                      # Special return code here to differentiate with other 403 or 404
+                      return 491;
+        }
+}
+#RFC 233642
+server {
+	listen 80;
+	server_name vvt.vmware.com;
+	access_log /var/log/nginx/vvt_access.log proxylog;
+	error_log /var/log/nginx/vvt_error.log;
+	client_max_body_size 10M;
+	
+	location / {
+	proxy_set_header Host $http_host;
+	proxy_pass https://vvt-prd-vip.vmware.com;
+}
+}
+
+### RFC 236208 ###
+server {
+        listen 80;
+        server_name info.vmware.com;
+
+        rewrite ^/content/Subscription(.*)$ http://learn.vmware.com/Subscription$1 permanent;
+	rewrite ^/content/opt-out(.*)$ http://learn.vmware.com/Subscription$1 permanent;
+        rewrite ^/content/apac_jp_co_solution-p_ent(.*)$ http://learn.vmware.com/apac_jp_co_solution-p_ent;
+        rewrite ^/content/apac_jp_co_solution-p_premier(.*)$ http://learn.vmware.com/apac_jp_co_solution-p_premier;
+        rewrite ^/forms/ContactProfessionalServices(.*)$ http://learn.vmware.com/ContactProfessionalServices$1 permanent;
+	rewrite ^/content/subscription(.*)$ http://learn.vmware.com/Subscription$1 permanent;
+        rewrite ^.*$  https://www.vmware.com   permanent;
+
+
+        access_log /var/log/nginx/info-access_log proxylog;
+        error_log  /var/log/nginx/info-error_log;
+
+}
+
+
+server {
+       listen 80;
+       server_name emailitcna-prod.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/emailitcna-prod_access.log proxylog;
+       error_log /var/log/nginx/emailitcna-prod_error.log;
+       client_max_body_size 10M;
+
+        location / {
+
+         proxy_pass https://email-manager-api-gateway.apps.itcna.vmware.com;
+       }
+}
+
+server {
+       listen 80;
+       server_name video.vmware.com video-prod.vmware.com;
+       access_log  /var/log/nginx/video_access.log proxylog;
+       error_log   /var/log/nginx/video_error.log;
+       client_max_body_size 10M;
+       location / {
+
+       include /etc/nginx/conf.d/video_redirects.conf;
+	rewrite ^/channel/(.*)$ https://align.ustream.tv/channel/$1;
+	rewrite ^ https://align.ustream.tv/wzn1p0h9p1d?;
+	#rewrite ^/vmwarefe/vu\?pi\=zEfz6O0IFzF47fz0       https://align.ustream.tv/channel/23584255/video/115653617	permanent; 
+ #	rewrite ^.* https://align.ustream.tv permanent;
+ 	
+ 	 }
+
+}
+
+server {
+       listen 80;
+       server_name videos.vmworld.com;
+       access_log  /var/log/nginx/videos_vmworld_access.log proxylog;
+       error_log   /var/log/nginx/videos_vmworld_error.log;
+       client_max_body_size 10M;
+       location / {
+
+        rewrite ^.* https://www.vmworld.com/en/video-library/search.html;
+
+         }
+}
+
+## RFC  238253
+
+server {
+listen 80;
+#listen 443 ssl;
+server_name vmwareemeablog.com;
+include /etc/nginx/allow_GET_POST_only.conf;
+access_log /var/log/nginx/vmwareemeablog.com_access.log main;
+error_log /var/log/nginx/vmwareemeablog.com_error.log;
+client_max_body_size 20M;
+include /etc/nginx/vmwareemeablog_redirect_rules.conf;
+return 301 https://blogs.vmware.com/emea;
+}
+
+### RFC 238774 #######
+server {
+       listen 80;
+       server_name vforum.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/vforum_access.log proxylog;
+       error_log /var/log/nginx/vforum_error.log;
+       client_max_body_size 10M;
+
+       location / {
+        proxy_buffers 16 4k;
+        proxy_buffer_size 2k;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+       rewrite ^/singapore/vforum-online.html$ https://secure.vmware.com/vFORUMOnline_Reg?src=af_5bbae4a424e4e? permanent;
+       
+#IMPORTANT NOTE: vforum.vmware.com is configured in AEM and all the locale redirects like /sydney.html /singapore.html etc., should be configured in AEM prod environment NOT in NGINX. Sanjeev Rabakavi <srabakavi@vmware.com> is the point of contact to implement the locale redirects on AEM.
+
+# Submitted https://jira.eng.vmware.com/browse/DMR-10895 for implementing the sydney.html redirect in AEM, we need to remove sydney.html after change is implemented by sanjeev rabakavi in AEM
+rewrite ^/sydney.html$  /au.html permanent;
+       proxy_pass  http://vforum-prod.vmware.com/;
+       }
+}
+
+
+
+
+## RFC 239518 ##
+server {
+	listen 80;
+	server_name jiraintegrations.eng.vmware.com jira-euc.eng.vmware.com;
+	include /etc/nginx/allow_GET_POST_only.conf;
+	access_log /var/log/nginx/jiraintegrations_access.log;
+	access_log /var/log/nginx/jiraintegrations_error.log;
+	client_max_body_size 10M;
+	gzip off;
+
+	location / {
+	  proxy_set_header X-Forwarded-Host $http_host;
+	  proxy_set_header X-Real-IP $remote_addr;
+	  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+	proxy_pass https://jira-euc.eng.vmware.com;
+	}
+
+}
+
+
+#### RFC 239795 ###
+
+server {
+   listen 80;
+   server_name supercollider.vmware.com;
+   include /etc/nginx/allow_vcsa_method_only.conf;
+
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+    add_header 'Access-Control-Allow-Headers' 'Cookie';
+
+
+   access_log /var/log/nginx/supercollider_access.log proxylog;
+   error_log  /var/log/nginx/supercollider_error.log  warn;
+   root /var/nginx/supercollider;
+
+   keepalive_timeout 30;
+   client_max_body_size 150m;
+
+   proxy_connect_timeout  180;
+   proxy_read_timeout 180;
+
+location  /sc/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+      
+      proxy_pass http://ph-stg-ts-vip.vmware.com:1081/sc/;
+      proxy_redirect default;
+   }
+
+}
+
+#RFC240551
+server {
+       listen 80;
+       server_name vropssizer.vmware.com;
+       access_log /var/log/nginx/vropssizer_access.log proxylog;
+       error_log /var/log/nginx/vropssizer_error.log;
+       include /etc/nginx/allow_GET_POST_only.conf;
+
+       location / {
+        proxy_buffers 16 4k;
+        proxy_buffer_size 2k;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+
+       proxy_pass  https://vropssizer-prod-int-vip.vmware.com/;
+       }
+}
+
+###RFC 240985 ####
+server {
+   listen 80;
+   server_name scapi.vmware.com ;
+   include /etc/nginx/allow_vcsa_method_only.conf;
+
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+    add_header 'Access-Control-Allow-Headers' 'Cookie';
+
+
+   access_log /var/log/nginx/scapi_access.log proxylog;
+   error_log  /var/log/nginx/scapi_error.log  warn;
+   root /var/nginx/scapi;
+
+   keepalive_timeout 30;
+   client_max_body_size 150m;
+
+   proxy_connect_timeout  180;
+   proxy_read_timeout 180;
+
+location  /sc/ {
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+
+   ## Changing Proxy pass URL as part of ITCM-4528
+   #   proxy_pass http://ph-prd-ts-vip.vmware.com:1081/sc/;
+	proxy_pass http://wdc-vcd01-sc-t-prd-vip01.supercollider.vmware.com:1081/sc/;
+      proxy_redirect default;
+   }
+
+}
+
+server {
+       listen 80;
+       server_name rocs.eng.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/rocs.eng_access.log proxylog;
+       error_log  /var/log/nginx/rocs.eng_error.log;
+
+       location / {
+       rewrite .*   https://confluence.eng.vmware.com/pages/viewpage.action?pageId=180995550 permanent;
+    }
+}
+
+### RFC 243001 ####
+server {
+   listen 80;
+   server_name vcdx.vmware.com;
+  include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/vcdx_access.log proxylog;
+   error_log /var/log/nginx/vcdx_error.log;
+#    root /var/nginx/vcdx-uat;
+
+      proxy_set_header  Host               $http_host;
+      proxy_set_header  X-Forwarded-Host   $http_host;
+      proxy_set_header  X-Forwarded-Server $http_host;
+      proxy_set_header  X-Real-IP          $remote_addr;
+      proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+#        location /vcdx-timer.html {
+#                        proxy_pass http://www-cms-prod.vmware.com/content/dam/campaigns/vcdx-timer.html ;
+#                   }
+#        location /policies-and-procedures {
+#                                             proxy_pass  http://www-cms-prod.vmware.com/content/microsites/vcdx/home/policies.html;
+#                                           }
+#
+#        location /calendar {
+#                              proxy_pass  http://www-cms-prod.vmware.com/content/microsites/vcdx/home/calendar.html;
+#                           }
+#
+#        location /policies {
+#                              proxy_pass  http://www-cms-prod.vmware.com/content/microsites/vcdx/home/policies.html;
+#                           }
+#
+#        location /login {
+#                              proxy_pass  http://www-cms-prod.vmware.com/content/microsites/vcdx/home.html ;
+#                           }
+#
+#	location /expert-detail-pages {
+#                                        proxy_pass   http://www-cms-prod.vmware.com/content/microsites/vcdx/home/expert-detail-pages ;
+#                                       }
+#
+#        location = / {
+#                        proxy_pass   http://www-cms-prod.vmware.com/content/microsites/vcdx/home.html ;
+#                   }
+#
+        location / {
+#		       rewrite ^/vcdx-timer.html  https://www.vmware.com/content/dam/campaigns/vcdx-timer.html permanent; 
+                       proxy_pass   http://www-cms-prod.vmware.com/ ;
+                   }
+#        location /vcdx-timer.html {
+#                        proxy_pass http://www-cms-prod.vmware.com/content/dam/campaigns/vcdx-timer.html ;
+#                  }
+}
+
+server {
+       listen 80;
+       server_name nfv-tco.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/nfvtco_access.log proxylog;
+       error_log /var/log/nginx/nfvtco_error.log;
+      
+       location / {
+        proxy_set_header  Host               $http_host;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+       
+	 proxy_pass  https://nfv-prd-tco-1.vmware.com/;
+       }
+}
+
+server {
+       listen 80;
+       server_name vcloud.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/vcloud_access.log proxylog;
+       error_log /var/log/nginx/vcloud_error.log;
+
+        proxy_set_header  Host               $http_host;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+
+        rewrite ^.*$ https://cloudsolutions.vmware.com/ permanent;	
+}
+
+server {
+       listen 80;
+       server_name  vvs.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/vvs_access.log proxylog;
+       error_log /var/log/nginx/vvs_error.log;
+location / {
+        proxy_buffers 16 4k;
+        proxy_buffer_size 2k;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+        proxy_pass https://apigw.vmware.com/m4/compatibility/ ;
+}
+}
+
+
+
+server {
+       listen 80;
+       server_name cioforum.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/cioforum_access.log proxylog;
+       error_log /var/log/nginx/cioforum_error.log;
+       client_max_body_size 10M;
+
+       location / {
+        proxy_buffers 16 4k;
+        proxy_buffer_size 2k;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+        proxy_pass  http://cioforum-prd.vmware.com/;
+       }
+}
+
+server {
+       listen 80;
+       server_name  digitalselfservice.vmware.com;
+        include /etc/nginx/allow_PUT_GET_DIGITAL_only.conf;
+        access_log /var/log/nginx/digitalselfservice_access.log proxylog;
+        error_log /var/log/nginx/digitalselfservice_error.log;
+	
+	#rewrite .* http://www.vmware.com/maintenance.html; 
+
+
+# /ords/f?p=21424
+
+location /ords/f {
+
+      if ($args !~ "p=2017:") {
+              return    403;
+ }
+
+        proxy_buffers 16 4k;
+        proxy_buffer_size 2k;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+         proxy_set_header  Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+        proxy_pass https://dssp.vmware.com/ords/f;
+
+}
+
+
+location / {
+        proxy_buffers 16 4k;
+        proxy_buffer_size 2k;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+        proxy_pass https://dssp.vmware.com/;
+}
+}
+server {
+       listen 80;
+       server_name  frs.vmware.com;
+#       include /etc/nginx/allow_GET_POST_only.conf;
+       include /etc/nginx/allow_GET_POST_DELETE_only.conf;
+       access_log /var/log/nginx/frs_access.log proxylog;
+       error_log /var/log/nginx/frs_error.log;
+       add_header 'Access-Control-Allow-Methods' 'GET, POST, DELETE';
+       client_max_body_size 30M;
+location / {
+           proxy_pass https://frs-vip.vmware.com/ ;
+}
+}
+#ITCM-219
+server {
+        listen 80;
+        server_name salesweaver.vmware.com;
+        include /etc/nginx/allow_GET_POST_DELETE_only.conf;
+	client_header_buffer_size 16k;
+        large_client_header_buffers 4 16k;
+
+        keepalive_timeout 30;
+        access_log /var/log/nginx/saleswever_access.log proxylog;
+        error_log  /var/log/nginx/saleswever_error.log;
+#	add_header DC-Pool-ID afe79w1test;
+      
+        #Added this entry to check the DNS for every 120 secs as the upstream is GTM
+        resolver 10.113.61.110 10.113.61.111 ipv6=off valid=60s; 
+
+        rewrite ^/$ https://salesweaver.vmware.com/landing/home redirect;
+
+        location / {
+
+        # proxy_set_header  Host               $proxy_host;
+	#proxy_connect_timeout 1200s;
+	#proxy_send_timeout 1200s;
+	#proxy_read_timeout 1200s;        
+	proxy_set_header  X-Forwarded-Host   $proxy_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+
+       # include             /etc/nginx/mime.types;
+
+
+        #Below setting is done to make resolver effective.
+        set $BACKEND "https://salesweaver.apps.itcna.vmware.com";
+        proxy_pass $BACKEND ;
+     
+#       rewrite ^(.*)$  https://salesweaver-stg.apps.itcna.vmware.com/landing/home/ permanent;
+        }
+}
+
+server {
+       listen 80;
+       server_name  charity.vmware.com ;
+       include /etc/nginx/allow_GET_POST_only.conf;       
+       access_log /var/log/nginx/charity_access.log proxylog;
+       error_log /var/log/nginx/charity_error.log;
+location / {
+           proxy_pass https://charity-prd-app-vip.vmware.com/ ;
+}
+}
+
+server {
+        listen 80;
+        server_name launch.vmware.com;
+        include /etc/nginx/allow_GET_POST_only.conf;
+        access_log /var/log/nginx/launch_access.log proxylog;
+        error_log /var/log/nginx/launch_error.log ;
+        location / {
+        proxy_set_header  Host   $http_host;
+        proxy_pass http://www-cms-prod.vmware.com/;
+        }
+}
+
+server {
+        listen 80;
+        server_name telco.vmware.com;
+        include /etc/nginx/allow_GET_POST_only.conf;
+        access_log /var/log/nginx/telco_access.log proxylog;
+        error_log /var/log/nginx/telco_error.log ;
+        location / {
+        proxy_set_header  Host   $http_host;
+        proxy_pass http://www-cms-prod.vmware.com/;
+        }
+}
+
+server {
+        listen 80;
+        server_name source.vmware.com ssp.vmware.com dell-synergy.vmware.com;
+        include allow_GET_POST_OPTIONS_only-source-prd.conf;
+        access_log /var/log/nginx/source_access.log proxylog;
+        error_log /var/log/nginx/source_error.log ;
+        client_max_body_size 60M;
+        large_client_header_buffers 4 32k;        
+        proxy_connect_timeout 75;
+        proxy_send_timeout 300;
+        proxy_read_timeout 300;
+        #For enabling maintenance page, please uncomment below line and run pushnginx script
+       #rewrite .* http://maintenance.vmware.com/maintenance.html; 
+
+if ( $remote_addr = "10.113.62.39" ) {
+       set $request_come_from EXTERNAL;
+     }
+
+       if ( $remote_addr != "10.113.62.39" ) {
+       set $request_come_from INTERNAL;
+   }
+	if ($host = 'ssp.vmware.com') {
+#	rewrite ^/$ https://ssp.vmware.com/portal/ redirect;
+        rewrite (.*)$    https://dell-synergy.vmware.com$1 redirect;
+	}
+	if ($host = 'source.vmware.com') {
+	rewrite ^/$ https://source.vmware.com/portal/ redirect;
+	}
+
+### Uncomment this
+if ($host = 'dell-synergy.vmware.com') {
+   rewrite ^/$    https://dell-synergy.vmware.com/portal/ redirect;
+}
+
+##
+#rewrite ^/$    https://source.vmware.com/portal/ redirect;
+
+location  /portal {
+        proxy_set_header   Host             $host;
+        proxy_pass http://srcx-prod.vmware.com;
+}
+
+location  /health {
+        proxy_set_header   Host             $host;
+        proxy_pass http://srcx-prod.vmware.com;
+}
+
+location /intranet/admin {
+        proxy_set_header   Host             $host;
+        proxy_pass http://srcx-prod.vmware.com;
+}
+
+location ~* /intranet/user/login {
+        proxy_set_header   Host             $host;
+
+	if ( $request_come_from = "EXTERNAL" ) {
+        rewrite .* https://source.vmware.com/intranet/403-forbidden.html redirect;
+   }
+
+    if ( $request_come_from = "INTERNAL" ) {
+         proxy_pass http://srcx-prod.vmware.com;
+ }
+}
+
+location  /intranet {
+        proxy_set_header   Host             $host;
+       proxy_pass http://srcx-prod.vmware.com;
+ }
+
+location  /innovation {
+        proxy_set_header   Host             $host;
+       proxy_pass http://srcx-prod.vmware.com;
+}
+
+location ~* /EMEA-vmbeat {
+        proxy_set_header   Host             $host;
+         proxy_pass http://srcx-prod.vmware.com;
+}
+
+location  /search {
+        proxy_set_header   Host             $host;
+       proxy_pass http://srcx-prod.vmware.com;
+}
+
+location  /searchservice {
+        proxy_set_header   Host             $host;
+       proxy_pass http://srcx-prod.vmware.com;
+}
+
+location  /orgchart {
+        proxy_set_header   Host             $host;
+       proxy_pass http://srcx-prod.vmware.com;
+}
+
+#### Comment from 21 Nov 2019
+#location  / {
+#                fastcgi_read_timeout 300s;
+#        proxy_set_header   Host             $host;
+
+#       if ( $request_come_from = "EXTERNAL" ) {
+#       rewrite .* https://source.vmware.com/intranet/403-forbidden.html redirect;
+#   }
+
+#    if ( $request_come_from = "INTERNAL" ) {
+#         proxy_pass https://srcx-prod.vmware.com;
+# }
+
+#}
+
+##############Ending Commented Lines Here
+
+#### Adding 21 Nov 2019
+
+location  / {
+                fastcgi_read_timeout 300s;
+        	proxy_set_header   Host             $host;
+
+    if ( $request_come_from = "INTERNAL" ) {
+         proxy_pass http://srcx-prod.vmware.com;
+         break;
+ }
+
+  if ( $http_cookie ~* "aff6460ec7" ) {
+                 proxy_pass http://srcx-prod.vmware.com;
+                  break;
+       }
+
+set $pm 0;
+    if ( $request_come_from = "EXTERNAL" ) {
+          set $pm  "1";
+       }
+    if ( $http_cookie ~* "source_token" ) {
+               set $pm "${pm}1";
+       }
+
+      if ( $pm = "11" ){
+           rewrite .*  https://source.vmware.com/intranet/auth/validate-token/?token=$cookie_source_token&sharepoint_url=$request_uri redirect;
+      }
+
+
+     if ( $pm != "11" ) {
+          rewrite .*  https://source.vmware.com/?sharepoint_url=$request_uri redirect;
+
+}
+
+}
+
+
+##### Ending Added Lines 21 Nov 2019
+
+
+      #  location / {
+      #  fastcgi_read_timeout 300s;
+      #  proxy_pass https://srcx-prod.vmware.com/ ;
+      #  proxy_set_header   Host             $host;
+
+#}
+
+}
+
+server {
+        listen 80;
+        server_name evolve.vmware.com;
+        include /etc/nginx/allow_GET_POST_only.conf;
+        access_log /var/log/nginx/evolve_access.log proxylog;
+        error_log /var/log/nginx/evolve_error.log ;
+        location / {
+        proxy_set_header  Host   $http_host;
+        proxy_pass http://www-cms-prod.vmware.com/;
+        }
+}
+
+server {
+        listen 80;
+        server_name wscg.vmware.com;
+        include /etc/nginx/allow_GET_POST_OPTIONS_only.conf;
+        access_log /var/log/nginx/wscg_vmware_com_access.log proxylog;
+        error_log /var/log/nginx/wscg_vmware_com_error.log ;
+	client_max_body_size 1G;
+	proxy_connect_timeout 300;
+	proxy_send_timeout 300;
+	proxy_read_timeout 300;
+	send_timeout 300;
+
+	location  /oe-es/ {
+        proxy_pass 	http://wscg-prod-oe-es-vip.vmware.com:8443/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+        }
+		
+	location /oe-ers/ {
+        proxy_pass 	http://wscg-prod-oe-ers-vip.vmware.com:9443/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+       }
+
+       location / {
+       proxy_set_header  Host                  $http_host;
+       proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection $connection_upgrade;
+       proxy_pass https://wscg-prod-app-vip.vmware.com/;
+       }
+
+}
+
+server {
+        listen 80;
+        server_name wscg-prod-oe.vmware.com;
+        include /etc/nginx/allow_GET_POST_PUT_only.conf;
+        access_log /var/log/nginx/wscg-prod_oe_vmware_com_access.log proxylog;
+        error_log /var/log/nginx/wscg-prod_oe_vmware_com_error.log;
+        location / {
+        proxy_set_header  Host                  $http_host;
+        proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+        proxy_pass https://wscg-prod-oe-vip.vmware.com/;
+        }
+}
+
+server {
+    listen 80;
+    server_name tasc.vmware.com;
+    access_log /var/log/nginx/tasc_access.log proxylog;
+    error_log /var/log/nginx/tasc_error.log;
+
+    proxy_set_header  Host                  $http_host;
+    proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+
+    # Block Akamai identified bot through Akamai-Bot header
+    include /etc/nginx/BLOCK-BOT.conf;
+    include /etc/nginx/BLOCK-EXTERNAL-DIRECT-ORIGIN-ACCESS.conf;
+    include /etc/nginx/REDIRECT-TO-HTTPS.conf;
+
+    location / {
+       proxy_pass http://tasc-prd-app1.vmware.com:8080/tasc-root/;
+       proxy_redirect https://tasc-prd-app1.vmware.com:8080/  https://tasc.vmware.com/;
+       proxy_redirect http://tasc-prd-app1.vmware.com:8080/   https://tasc.vmware.com/;
+    }
+}
+
+server {
+       listen 80;
+       server_name flings.vmware.com research.vmware.com labs.vmware.com;
+       include /etc/nginx/allow_GET_PUT_POST_PATCH_DELETE_HEAD_only.conf;
+       access_log /var/log/nginx/labs_flings_research_access.log proxylog;
+       error_log /var/log/nginx/labs_flings_research_error.log;
+       client_max_body_size 50M;
+       location / {
+       proxy_set_header  Host                  $http_host;
+       proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+       proxy_pass http://octox-prd-vip.vmware.com/;
+       }
+   }
+
+server {
+      listen 80;
+      server_name  cpm.vmware.com;
+      include /etc/nginx/allow_GET_PUT_POST_PATCH_DELETE_HEAD_only.conf;
+      access_log /var/log/nginx/cpm_access.log proxylog;
+      error_log /var/log/nginx/cpm_error.log;
+      client_max_body_size 10m;
+      add_header 'Access-Control-Allow-Methods' 'GET, POST, DELETE, PUT, PATCH, HEAD';
+
+      location /console/ {
+      		proxy_set_header  Host                  $http_host;
+      		proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+      		proxy_pass http://cpm-vip.vmware.com ;
+      	}
+
+        location /ams/ {
+               proxy_set_header  Host                  $http_host;
+               proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+               proxy_pass https://ams-scdc2-prod-ams.svc.eng.vmware.com/;
+        }
+
+ 	location /core/ {
+        	if ( $remote_addr = '10.113.62.39' ) {
+        	rewrite ^.*$  https://maintenance.vmware.com/maintenance.html;
+		}		
+       		proxy_set_header  Host                  $http_host;
+       		proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+       		proxy_pass https://cpm-vip.vmware.com:11205;
+   	}
+ 
+    	location / {
+   		proxy_pass http://cpm.vmware.com/console/ ;
+        }	
+}
+
+server {
+       listen 80;
+       server_name radio.vmware.com;
+       include /etc/nginx/allow_GET_PUT_POST_PATCH_DELETE_HEAD_only.conf;
+       access_log /var/log/nginx/radio_vmware_com_access.log proxylog;
+       error_log /var/log/nginx/radio_vmware_com_error.log;
+       client_max_body_size 50M;
+       location / {
+       proxy_set_header  Host                  $http_host;
+       proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+       proxy_pass http://radiox-prd-vip.vmware.com/;
+       }
+   }
+
+
+server {
+        listen 80;
+        server_name argo.vmware.com;
+        include /etc/nginx/allow_GET_POST_PUT_only.conf;
+        access_log /var/log/nginx/argo_vmware_com_access.log proxylog;
+        error_log /var/log/nginx/argo_vmware_com_error.log ;
+        client_max_body_size 300m;
+        proxy_connect_timeout 300;
+        proxy_send_timeout 300;
+        proxy_read_timeout 300;
+        send_timeout 300;
+        location / {
+        proxy_set_header  Host                  $http_host;
+        proxy_set_header  X-Forwarded-For       $proxy_add_x_forwarded_for;
+        proxy_pass http://argo-prd-app-vip.vmware.com/;
+        }
+}
+
+#TKT3470966
+server {
+        listen 80 ;
+        server_name passport-workspaceair.vmware.com;
+        include /etc/nginx/allow_GET_POST_PUT_only.conf;
+        access_log /var/log/nginx/passport_vmware_com_access.log combined;
+        error_log /var/log/nginx/passport_vmware_com_error.log ;
+        proxy_connect_timeout 300;
+        proxy_send_timeout 300;
+        proxy_read_timeout 300;
+        send_timeout 300;
+	location / {
+        proxy_pass https://ccure-prd-app-1.vmware.com;
+        }
+}
+
+#TKT3672590
+server {
+        listen 80 ;
+        server_name wscg-oe-es.vmware.com;
+        include /etc/nginx/allow_GET_POST_OPTIONS_only.conf;
+        access_log /var/log/nginx/wscg-oe-es_vmware_com_access.log combined;
+        error_log /var/log/nginx/wscg-oe-es_vmware_com_error.log ;
+        location / {
+        proxy_pass http://wscg-prod-oe-es-vip.vmware.com:8443;
+	proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+        }
+}
+#TKT3672590
+server {
+        listen 80 ;
+        server_name wscg-oe-ers.vmware.com;
+        include /etc/nginx/allow_GET_POST_OPTIONS_only.conf;
+        access_log /var/log/nginx/wscg-oe-ers_vmware_com_access.log combined;
+        error_log /var/log/nginx/wscg-oe-ers_vmware_com_error.log ;
+        location / {
+        proxy_pass http://wscg-prod-oe-ers-vip.vmware.com:9443;
+	proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+       }
+}
+
+#TKT3670408
+server {
+   listen 80;
+   server_name eventsportal.vmware.com;
+   include /etc/nginx/allow_GET_PUT_POST_PATCH_DELETE_HEAD_only.conf;
+   access_log /var/log/nginx/eventsportal.log debuglog;
+   error_log /var/log/nginx/eventsportal_error.log;
+
+
+   location / {
+#        proxy_set_header Host                   $host;
+ #       proxy_set_header X-Forwarded-For        $proxy_add_x_forwarded_for;
+        # proxy_pass    https://campusevents.svc.eng.vmware.com/events-portal-web/;
+        return 301 https://eventsportal.vmware.com/events-portal-web;
+        }
+
+	location /events-portal-web {
+proxy_set_header  X-Forwarded-Host   $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  X-Forwarded-Server $http_host;
+	proxy_pass 	https://campusevents.svc.eng.vmware.com/events-portal-web;
+	}
+  
+}
+
+server {
+	listen 80;
+	server_name salespulse.vmware.com;
+	include /etc/nginx/allow_GET_POST_only.conf;
+	access_log /var/log/nginx/salespulse.vmware.com.log combined;
+	error_log /var/log/nginx/salespulse.vmware.com.log;
+	proxy_connect_timeout 300;
+        proxy_send_timeout 300;
+        proxy_read_timeout 300;
+        send_timeout 300;
+   	location / {
+        proxy_set_header 	Host				$http_host;
+	proxy_set_header 	X-Forwarded-For   		$proxy_add_x_forwarded_for;
+	proxy_pass 		http://salespulse.eng.vmware.com/;
+    }
+}
+
+#TKT3716926
+server {
+        listen 80;
+        server_name sdwan.vmware.com;
+        include /etc/nginx/allow_GET_POST_PUT_only.conf;
+        proxy_set_header  Host               $http_host;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        access_log /var/log/nginx/sdwan_access.log proxylog;
+       error_log /var/log/nginx/sdwan_error.log;
+
+        location / {
+        proxy_pass http://www-cms-prod.vmware.com;
+        }
+}
+
+#TKT3761482
+server {
+        listen 80;
+        server_name expulse.vmware.com;
+        include /etc/nginx/allow_GET_POST_PUT_only.conf;
+        proxy_set_header  Host               $http_host;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        access_log /var/log/nginx/expulse_access.log proxylog;
+       error_log /var/log/nginx/expulse_error.log;
+
+        location / {
+        proxy_pass http://expulse-vip.vmware.com;
+        }
+}
+
+#TKT3750481
+server {
+        listen 80;
+        server_name cxroadmap.vmware.com;
+        include /etc/nginx/allow_GET_POST_PUT_only.conf;
+        proxy_set_header  Host               $http_host;
+        proxy_set_header  X-Forwarded-Host   $http_host;
+        location / {
+        proxy_pass http://cxroadmap-app-scdc2-prod-cx-roadmap.svc.eng.vmware.com;
+        }
+}
+
+

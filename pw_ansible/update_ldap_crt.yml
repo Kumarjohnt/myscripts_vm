@@ -1,0 +1,19 @@
+---
+- name: Update LDAP 
+  hosts: race20
+  gather_facts: true
+  become: yes
+  vars:
+
+  tasks:
+    - name:  Copy the LDAP.conf & LDAP cert over 
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: root
+        group: root
+        mode: '0644'
+      with_items:
+        - { src: /root/ansible/others/templates/ldap.conf, dest: /etc/ldap/ldap.conf }
+        - { src: /root/ansible/others/templates/ldap-eng-vmware.pem, dest: /etc/ssl/certs/ldap-eng-vmware.pem }
+

@@ -1,0 +1,14 @@
+---
+- name: Install netstat pckage 
+  hosts: hdop-python3
+  gather_facts: true
+  become: yes
+
+  tasks:
+    - name: Install python3 pckage 
+      ansible.builtin.package:
+        name: python3
+        state: present
+    - items:
+      - net-tools
+      - 

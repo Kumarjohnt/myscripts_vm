@@ -1,0 +1,19 @@
+---
+- name: Install Package 
+  hosts: PROD 
+  become: true
+  gather_facts: False
+
+  tasks:
+  - name: copy Repo 
+    ansible.builtin.copy:
+      src=/home/peterw1/ansible/percona-original-release.repo 
+      dest=/etc/yum.repos.d/ 
+      owner=root 
+      group=root 
+      mode=0644
+
+  - name: Install ntpdate
+    ansible.builtin.package:
+      name: percona-toolkit.x86_64
+      state: present

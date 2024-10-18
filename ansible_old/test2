@@ -1,0 +1,76 @@
+#!/bin/bash
+
+SSH="ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no -o NumberOfPasswordPrompts=1"
+OUTPUT="out2"
+
+
+function OS_VERS
+{
+        OS_TEMP=""
+        OS_TEMP=`$SSH root@$IP "cat /etc/*-release |grep -i release | head -1" `
+        OS_RELX=`echo $OS_TEMP |awk -F" " '{print $7}' `
+}
+
+function COLLECT_DATA {
+       
+        #UPTIME=`sshpass -p 'ca\$hc0w' $SSH root@$IP "uptime |awk -F',' '{print $1}'" 2> /dev/null `
+	NODENAME=`sshpass -p 'ca\$hc0w' $SSH root@$IP "uname -n"`
+        OS_TEMP=`sshpass -p 'ca\$hc0w' $SSH root@$IP 'cat /etc/*-release* |grep PRETTY_NAME '|awk -F"=" '{print $2}' 2> /dev/null `
+        LOGIN=`sshpass -p 'ca\$hc0w' $SSH root@$IP "last |grep -v 'wtmp begins' |head -1" 2> /dev/null`
+        [[ ! $LOGIN ]] && LOGIN="NO history to login"
+        [[ ! $FQDN ]] && FQDN="NO DNS Record"
+        printf "$IP,$FQDN,$OS_TYPE,$NODENAME,$OS_TEMP,$LOGIN\n" >> $OUTPUT 
+}
+
+function FD_PD {
+
+OS_TYPE=`sshpass -p 'ca\$hc0w' $SSH root@$IP 'uname -s'` 
+if [[ $(echo $OS_TYPE |grep -i 'Linux') ]]; then
+        COLLECT_DATA
+elif [[ $(echo $OS_TYPE |grep -i 'connection timed out') ]]; then
+	printf "$IP,$FQDN,SSH: CONNECTION TIME OUT\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |grep -i 'Permission denied') ]]; then
+	printf "$IP,$FQDN,PASSWORD:NON_MATCH\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |grep -i 'authentication fail') ]]; then
+	printf "$IP,$FQDN,PASSWORD:NON_MATCH\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |grep -i 'Received disconnect') ]]; then
+	printf "$IP,$FQDN,PASSWORD:NON_MATCH\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |grep -i 'VMkernel') ]]; then
+	printf "$IP,$FQDN,HOST:ESXi Server\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |egrep -i 'cmdstatPE|cmdstat') ]]; then
+	printf "$IP,$FQDN,Dell iDRAC\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |egrep -i 'Invalid command specified') ]]; then
+	printf "$IP,$FQDN,Dell iDRAC \n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |egrep -i 'Welcome to Photon') ]]; then
+	printf "$IP,$FQDN,Vcenter IP\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |egrep -i 'JUNOS') ]]; then
+	printf "$IP,$FQDN,Juniper Device\n" >> $OUTPUT
+elif [[ $(echo $OS_TYPE |egrep -i 'VMware vCenter Server Appliance') ]]; then
+	printf "$IP,$FQDN,VMware vCenter Server Appliance\n" >> $OUTPUT
+else
+	echo "sshpass -p 'ca\$hc0w' $SSH root@$IP 'uname -s'"
+#        set -x
+#	[[ ! $OS_TYPE ]] && [[ $(sshpass -p 'ca\$hc0w' $SSH root@$IP 'uname -s' |egrep 'Permission denied') ]] && printf "$IP,$FQDN,PASSWORD:NON_MATCH\n" >> $OUTPUT
+        printf "$IP,$FQDN,PASSWORD:NON_MATCH\n" >> $OUTPUT 
+fi
+}
+
+for IP in `cat ip2.txt`
+do
+    PING=`ping -c 1 -W 1 $IP |grep "icmp_seq=1"`
+    FQDN=`/bin/host $IP | head -1 | /bin/awk -F"pointer " '{print $2}'`
+    if [[ $(ping -c 1 -W 1 $IP |grep "icmp_seq=1") ]]; then 
+	if [[ $(echo $FQDN | /bin/grep -e '-ilo' 2> /dev/null) ]]; then
+		printf "$IP,$FQDN,Dell iDRAC\n"  >> $OUTPUT
+	else
+        	FD_PD
+	fi
+    else
+        if [[ $(nmap -sV -p 22 $IP | egrep ssh) ]]; then
+		FD_PD
+        else
+		printf "$IP,DEAD\n"  >> $OUTPUT
+        fi
+    fi 
+done
+

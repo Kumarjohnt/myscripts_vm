@@ -1,0 +1,89 @@
+---
+
+- name: Clone multiple VMs
+  hosts: localhost
+  gather_facts: false
+  vars:
+    vcenter_hostname: sc2-prd-fed-vc.infra.vmware.com
+    username: peterw1@vmware.com
+    password: "%TGBNHY^7ujm"
+    datacenter: sc2-prd-fed-esx
+    vm_username: root
+    vm_name: fed-prd-dm-worker-3
+    vm_password: "a_Xh30_@4@edMRjs_6X@L"
+    vm_ip: 10.113.61.82
+    vm_gateway: 10.113.61.253
+    vlan1_id: FED_SJC5_PROD_Network_VLAN1526
+
+  tasks:
+  - name: Update hostname
+    community.vmware.vmware_vm_shell:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      datacenter: "{{ datacenter }}"
+      validate_certs: no
+      vm_id: "{{ vm_name }}"
+      vm_username: "{{ vm_username }}"
+      vm_password: "{{ vm_password }}"
+      vm_shell: /usr/bin/hostnamectl
+      vm_shell_args: set-hostname "{{ vm_name }}"
+    delegate_to: localhost
+
+  - name: Update IP address
+    community.vmware.vmware_vm_shell:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      datacenter: "{{ datacenter }}"
+      validate_certs: no
+      vm_id: "{{ vm_name }}"
+      vm_username: "{{ vm_username }}"
+      vm_password: "{{ vm_password }}"
+      vm_shell: /bin/sed
+      #      vm_shell_args: -i 's/^IPADDR.*/IPADDR="{{ vm_ip }}"/g' /etc/sysconfig/network-scripts/ifcfg-ens192
+      vm_shell_args: -i 's/^IPADDR.*/IPADDR="{{ vm_ip }}"/g' {{ vm_nic192 }}
+    delegate_to: localhost
+
+  - name: Update GW address
+    community.vmware.vmware_vm_shell:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      datacenter: "{{ datacenter }}"
+      validate_certs: no
+      vm_id: "{{ vm_name }}"
+      vm_username: "{{ vm_username }}"
+      vm_password: "{{ vm_password }}"
+      vm_shell: /bin/sed
+      vm_shell_args: -i 's/^GATEWAY.*/GATEWAY="{{ vm_gateway }}"/g' {{ vm_nic192 }}
+    delegate_to: localhost
+
+
+  - name: Assign the correct VLAN
+    community.vmware.vmware_guest_network:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      validate_certs: no
+      datacenter: "{{ datacenter }}"
+      name: "{{ vm_name }}"
+      label: Network adapter 1
+      vlan_id: "{{ vlan1_id }}"
+      start_connected: yes
+      state: present
+    delegate_to: localhost
+
+  - name: Reboot VMs
+    community.vmware.vmware_vm_shell:
+      hostname: "{{ vcenter_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      datacenter: "{{ datacenter }}"
+      validate_certs: no
+      vm_id: "{{ vm_name }}"
+      vm_username: "{{ vm_username }}"
+      vm_password: "{{ vm_password }}"
+      vm_shell: /sbin/reboot
+    delegate_to: localhost
+

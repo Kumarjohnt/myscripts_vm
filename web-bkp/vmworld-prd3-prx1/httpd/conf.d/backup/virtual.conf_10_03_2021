@@ -1,0 +1,182 @@
+# The variable is set per request
+SetEnvIf Request_URI ^ VMWORLD_HOST=www.vmworld.com
+
+<VirtualHost *:80>
+    ServerName   www.vmworld.com
+    ServerAlias  vmworld.com www-prd.vmworld.com
+
+    DocumentRoot /opt/www
+    loglevel warn
+
+    Header always set X-Frame-Options SAMEORIGIN
+
+    RewriteEngine On
+    KeepAlive On
+    ProxyPreserveHost On
+    SSLProxyEngine On
+    LimitRequestFields 200
+
+    CustomLog logs/vmworld-access_log xcombined
+    ErrorLog  logs/vmworld-error_log
+
+    # Block certain URLs
+    RewriteCond %{REQUEST_URI}  ^/server-status       [OR]
+    RewriteCond %{REQUEST_URI}  ^/server-info         [OR]
+    RewriteCond %{REQUEST_URI}  ^/load-balancer-check
+    RewriteRule .* - [F,L]
+
+    #Host redirect protection
+    RewriteCond %{HTTP_HOST} !^([a-zA-Z0-9-_]{1,20}.){0,3}vmworld.com$
+    RewriteRule ^(.*)$ https://%{ENV:VMWORLD_HOST} [R=301,L]
+
+    # Handle static URIs
+    RewriteRule ^/[0-9]\.[0-9]\.[0-9]{1,3}/images/(.*)$   /images/$1
+    RewriteRule ^/[0-9]\.[0-9]\.[0-9]{1,3}/scripts/(.*)$  /scripts/$1
+    RewriteRule ^/[0-9]\.[0-9]\.[0-9]{1,3}/styles/(.*)$   /styles/$1
+    RewriteRule ^(/images/|/scripts/|/styles/)(.*);jsessionid=[A-Za-z0-9]+\.node[0-9](.*)$ $1$2
+
+    #Adding DC-Instance Header to provide DC Details.
+    Header set DC-Instance "SC2-PROD"
+    Header set Access-Control-Expose-Headers DC-Instance
+
+    #Handle home page
+    RedirectMatch ^/$ /en/index.html
+
+    # Cache common static files for 24 hours
+    <FilesMatch "\.(swf|flv|pdf|avi|mov|ppt|doc|mp4|mp3|wmv|wav)$">
+        Header set Cache-Control "max-age=86400, public, must-revalidate"
+    </FilesMatch>
+
+    # Cache image files for 24 hours
+    <FilesMatch "\.(jpg|gif|jpeg|png|ico|svg)$">
+        Header set Cache-Control "max-age=86400, public, must-revalidate"
+    </FilesMatch>
+
+    # Cache font files for 30 days
+    <FilesMatch "\.(woff|woff2|eot|ttf|otf)$">
+        Header set Cache-Control "max-age=2592000, public, must-revalidate"
+    </FilesMatch>
+
+    # Cache css and js files for 60 min
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "max-age=3600, public, must-revalidate"
+    </FilesMatch>
+
+    RewriteRule /static/sessions/(.*)$  http://%{ENV:VMWORLD_HOST}/community/sessions/$1 [R=301,L]
+    Include conf.d/common_rewrite
+    Include conf.d/BLOCK-EXTERNAL-DIRECT-ORIGIN-ACCESS.conf
+    Include conf.d/BLOCK-BOT.conf
+
+    # Block 4xx and 5xx
+#    <LocationMatch "^/.*\.jspa">
+                ProxyErrorOverride On
+#               ErrorDocument 400 /en/404.html
+#               ErrorDocument 401 /en/404.html
+                ErrorDocument 404 /en/404.html
+#               ErrorDocument 403 /en/404.html
+                ErrorDocument 405 /en/404.html
+                ErrorDocument 409 /en/404.html
+                ErrorDocument 500 /en/404.html
+                ErrorDocument 501 /en/404.html
+                ErrorDocument 503 /en/404.html
+#    </LocationMatch>
+    ## Akamai sure path configuration
+    RewriteRule ^/akamai-probe.html$   /etc/httpd/conf/akamai-probe/akamai-probe.html [L]
+    # Serve static URLs locally instead of proxypass to Tomcat
+    # For Akamai SureRoute, serve /akamai/test-route.html locally on Apache
+    # Proxypass all non static requests to Tomcat
+    # Tomcat document root: /opt/apache-tomcat/webapps/ROOT --> /opt/deployments/current
+    # DO NOT use RewriteRule ^.*$ http://127.0.0.1:9001$1 [P,L]
+    # .* matches whole URL including "https://..."
+    # The proxied URL becomes "http://127.0.0.1:9001https://...."
+    # Apache throw 503 error "DNS lookup failure for: 127.0.0.1:9001https:"
+    # Is this a thing with Apache 2.4?
+    # DO NOT serve /en under Apache, there is a known issue with Server Side Include and
+    # will cause header and footer not able to display
+    RewriteRule ^/rt/(.*)$          https://vmworld-sc2-prd-app-vip.vmware.com/rt/$1 [P,L]
+    RewriteRule ^/oauth/(.*)$       https://vmworld-sc2-prd-app-vip.vmware.com/oauth/$1 [P,L]
+    RewriteRule ^/account/(.*)$     https://vmworld-sc2-prd-app-vip.vmware.com/account/$1 [P,L]
+    RewriteRule ^/myvmworld/(.*)$   https://vmworld-sc2-prd-app-vip.vmware.com/myvmworld/$1 [P,L]
+    RewriteRule ^/(.*\.jspa.*)$     https://vmworld-sc2-prd-app-vip.vmware.com/$1 [P,L]
+    #Admin and Internal URLs not allowed from external
+    RewriteRule ^/admin/(.*)$       https://vmworld-sc2-prd-app-vip.vmware.com/admin/$1 [P,L]
+    RewriteRule ^/internal/(.*)$    https://vmworld-sc2-prd-app-vip.vmware.com/internal/$1 [P,L]
+    ProxyPassReverse /     https://vmworld-sc2-prd-app-vip.vmware.com/
+    # URLs like /image/* /scripts/* /styles/* /akamai/* will not trigger the proxypass rule above
+    # These URLs will be served from DocumentRoot /opt/www
+    <Directory "/opt">
+        Options FollowSymLinks
+#        Options +Includes
+        AllowOverride none
+#        Require all granted
+    </Directory>
+
+    <Directory "/opt/www" >
+        Header always set Access-Control-Allow-Origin "https://www.vmworld.com"
+        Header always append X-Frame-Options SAMEORIGIN
+        Options FollowSymLinks
+        Options +Includes
+        AddType text/html .html
+        AddOutputFilter INCLUDES .html
+        AllowOverride none
+        Require all granted
+    </Directory>
+
+</VirtualHost>
+
+########### For load balancer monitor ########
+
+<VirtualHost *:80>
+    ServerName load-balancer-monitor
+    KeepAlive Off
+    RewriteEngine On
+
+    # Do not allow auth-stg-ext-vip 10.188.246.18 to proxy request to load-balancer-monitor
+    #RewriteCond "%{REMOTE_ADDR}"  "!^10\.188\.246\.18$"
+    RewriteRule ^/load-balancer-monitor/ruok.html$   /etc/httpd/conf/load-balancer-monitor/ruok.html [L]
+
+    # Block any URL that is not /load-balancer-monitor/ruok.html
+    RewriteRule .* - [F,L]
+
+    ErrorLog logs/load-balancer-monitor-error_log
+    CustomLog logs/load-balancer-monitor-access_log xcombined
+</VirtualHost>
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#  For server status and info
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+<VirtualHost *:80>
+    ServerName  vmworld-prd2-prx1
+    ServerAlias vmworld-prd2-prx2 vmworld-prd2-prx1.infra.vmware.com vmworld-prd2-prx2.infra.vmware.com vmworld-prd2-prx3 vmworld-prd2-prx3.infra.vmware.com vmworld-prd2-prx4 vmworld-prd2-prx4.infra.vmware.com vmworld-prd2-prx5 vmworld-prd2-prx5.infra.vmware.com
+
+    DocumentRoot /var/www/html
+
+    # Default location deny, so any URL that is not /server-status or /server-info are denied
+    <Location />
+      Require all denied
+    </Location>
+
+    <Location /server-status>
+        SetHandler server-status
+        <RequireAll>
+             Require all granted
+             # Disable access of server-status from external vip
+             # Change to external vip
+             Require not ip 10.113.208.60 10.113.208.61 10.113.208.49 10.113.208.50
+        </RequireAll>
+    </Location>
+
+    <Location /server-info>
+        SetHandler server-info
+        <RequireAll>
+              Require all granted
+              # Disable access of server-status from external vip
+              # Change to external vip
+              Require not ip 10.113.208.60 10.113.208.61 10.113.208.49 10.113.208.50
+        </RequireAll>
+    </Location>
+
+    ErrorLog  logs/server-status-error_log
+    CustomLog logs/server-status-access_log xcombined
+</VirtualHost>
+

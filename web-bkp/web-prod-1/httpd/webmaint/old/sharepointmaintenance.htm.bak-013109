@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Sharepoint Slowness</title>
+  <style type="text/css">
+    body { font-family: Arial, Helvetica, sans-serif }
+  .style1 {
+	color: #FFFFFF;
+}
+  </style>
+</head>
+<body>
+<br />
+<div align="center">
+<table cellpadding="1px" cellspacing="1px" width="600px" border="1" bgcolor="#7D9BC6" bordercolor="#7D9BC6">
+  <tr>
+    <td><b><font color="white">Sharepoint Slowness</font></b></td>
+  </tr>
+  <tr>
+    <td bgcolor="white">
+<br />
+<div align="left">
+<font size="2">Due to some database jobs running SharePoint is expected to be slow or intermittently disconnected between 3:30am to 4:30am PST.
+We apologize for the inconvenience and request you to come back after the window with an assurance that effort are being taken to avoid it to happen in future.
+<br /><br />
+<b>Questions? Please contact the VMware Service Desk</b>
+<br />
+Call: 1-888-VMWARE8 (650-842-9200 outside the U.S.)
+<br />
+<a href="https://helpzilla.eng.vmware.com/">Submit a Helpzilla ticket.</a>
+<br /><br />
+</font>
+</div>
+    </td>
+  </tr>
+</table>
+</div>
+</body>
+</html>

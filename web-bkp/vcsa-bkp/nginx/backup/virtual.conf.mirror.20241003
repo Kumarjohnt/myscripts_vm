@@ -1,0 +1,229 @@
+server {
+   listen 80;
+   server_name vcsa.vmware.com;
+   include /etc/nginx/allow_vcsa_method_only.conf;
+   add_header 'Access-Control-Allow-Credentials' 'true';
+   add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, PATCH, DELETE';
+   add_header 'Access-Control-Allow-Headers' 'Cookie';
+   access_log /var/log/nginx/vcsa_access.log debuglog;
+   error_log  /var/log/nginx/vcsa_error.log  error;
+   #resolver 10.128.242.1 10.128.242.2 ipv6=off valid=30s;
+   root /var/nginx/vcsa;
+   keepalive_timeout 30;
+   client_max_body_size 150m;
+   proxy_connect_timeout  180;
+   proxy_read_timeout 180;
+
+   ## added for artemis EUC
+   proxy_ssl_server_name on;
+
+   ## Adding stage host
+   set $hhost_stg sct-payload-service-stg-w38-prd-oc-d4-wdc-vcd09.vdp.oc.vmware.com;
+
+   ## Adding this for default values for $hhost
+   set $hhost sct-payload-service-prd-w38-prd-oc-d4-wdc-vcd09.vdp.oc.vmware.com;
+
+   ## changing $http_host to $hhost variable to pass the proxy headers to Artemis 
+   ## Artemis expects api.artemis.omnissa.com as host header 
+   proxy_set_header  Host               $hhost;
+   proxy_set_header  X-Forwarded-Host   $hhost;
+   proxy_set_header  X-Forwarded-Server $hhost;
+   proxy_set_header  X-Real-IP          $remote_addr;
+   proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+###ITCM-55108
+   set $target_prod "https://sct-payload-service-prd-w38-prd-oc-d4-wdc-vcd09.vdp.oc.vmware.com/api/hyper/send?$query_string";
+   set $target_stg "https://sct-payload-service-stg-w38-prd-oc-d4-wdc-vcd09.vdp.oc.vmware.com/api/hyper/send?$query_string";
+
+   if ($http_x_sky__collector) {
+	set $target_prod "http://127.0.0.1/skyline/data/raw/v1/";
+	set $target_stg "http://127.0.0.1/skyline-stg/data/raw/v1/";
+   }
+
+## Commented below as the same is updated for artemis
+#   location = /ph/api/hyper/send {
+#	proxy_pass $target_prod;
+#   }
+
+   location = /ph-stg/api/hyper/send {
+        proxy_set_header  Host  $hhost_stg;
+        proxy_set_header  X-Forwarded-Host $hhost_stg;
+        proxy_set_header  X-Forwarded-Server $hhost_stg; 
+	proxy_pass $target_stg;
+   }
+
+###TKT6362937
+#   location  /ph-tst/api/ {
+#	proxy_pass        http://telemetry.tst.supercollider.vmware.com:1081/api/;
+#       proxy_redirect default;
+#   }
+
+###ITCM-55108
+   location  /ph-stg/api/ {
+        proxy_set_header  Host  $hhost_stg;
+        proxy_set_header  X-Forwarded-Host $hhost_stg;
+        proxy_set_header  X-Forwarded-Server $hhost_stg;
+        proxy_pass https://sct-payload-service-stg-w38-prd-oc-d4-wdc-vcd09.vdp.oc.vmware.com/api/;
+        proxy_redirect default;
+   }
+
+## Changes ending here for TKT5136253 ##
+   location /skyline/ {
+     	# SPOOFED in /etc/hosts  to 10.165.147.5 to avoid the hair pin traffic i.e VMWARE ===> CDN ====> VMWARE
+     	proxy_set_header  Host    "skyline.vmware.com";
+        proxy_pass        https://skyline-vcsa.vmware.com/;
+        #proxy_pass        https://skyline.vmware.com/;
+        #proxy_pass        https://w-prod-scdc-int-vip.vmware.com/;
+        # 10.165.147.5
+   }
+##### for testing  ##
+   location /skyline1/ {
+     	# SPOOFED in /etc/hosts  to 10.165.147.5 to avoid the hair pin traffic i.e VMWARE ===> CDN ====> VMWARE
+     	proxy_set_header  Host    "skyline.vmware.com";
+	resolver 10.128.242.1 10.128.242.2 valid=30s ipv6=off;
+	set $BACKEND https://skyline-vcsa.vmware.com/;
+        proxy_pass	$BACKEND;
+#	proxy_pass https://skyline-vcsa.vmware.com/;
+        #proxy_pass        https://w-prod-scdc-int-vip.vmware.com/;
+        # 10.165.147.5
+   }
+#####TKT3408127
+   location  /ph/api/v1/manifest {
+      	proxy_pass http://manifest.prd.supercollider.vmware.com:8080/api/v1/manifest;
+      	proxy_redirect default;
+   }
+    
+   location  /ph-stg/api/v1/manifest {
+         proxy_pass http://manifest.stg.supercollider.vmware.com:8080/api/v1/manifest;
+     	 proxy_redirect default;
+   }
+
+
+
+### TKT6069427
+
+   location /ph-tst/api/v1/manifest {
+         proxy_pass http://manifest.tst.supercollider.vmware.com:8080/api/v1/manifest;
+         proxy_redirect default;
+}
+##########
+
+######TKT5136253
+
+#TKT5177396  ITCM-30694
+#TKT6938827
+location  /ph/api/v1/results {
+	proxy_pass https://rs-ext.supercollider.vmware.com/api/v1/results;
+	proxy_set_header Host $proxy_host;
+        proxy_redirect default;
+   }
+
+location  /ph-stg/api/v1/results {
+       proxy_pass https://rs-ext.stg.supercollider.vmware.com/api/v1/results;
+       proxy_set_header Host $proxy_host;
+       proxy_redirect default;
+}
+
+## Changes ending here for TKT5136253 ##
+   location  /ph/api/ {
+        proxy_set_header  Host $hhost;
+	proxy_pass https://sct-payload-service-prd-w38-prd-oc-d4-wdc-vcd09.vdp.oc.vmware.com/api/;
+     	proxy_redirect default;
+   }
+
+
+## Adding below for forwarding EUC traffic to Artemis 
+
+   # Sample URL:
+   # https://vcsa.vmware.com/ph/api/v1/lps/:0/rest/files?directory=UAG_3.2,uag-4de0f01f-50a2-4e74-a222-d3e503dcba36/f2da4873-88cc-4c13-a3a2-1321a57dd1a0/2.6.216969&offset=0
+   # collector_id: the starting value of parameter "directory", stops at first comma.
+   # collector_id: UAG_3.2
+   # instance_id: from the first comma to the first '/', alphanumeric and hexadecimal
+   # instance_id: uag-4de0f01f-50a2-4e74-a222-d3e503dcba36
+   # autogenerated-uuid: 32 hexadecimal chars split into: 8-4-4-4-12 chars by hypens '-', stops at the next '/'
+   # autogenerated-uuid: f2da4873-88cc-4c13-a3a2-1321a57dd1a0
+   # Note nginx variable is scoped to the requst level, not restricted by block level
+
+   set $euc_artemis_hostname 'api.artemis.omnissa.com';
+   set $sc_hostname 'sct-payload-service-prd-w38-prd-oc-d4-wdc-vcd09.vdp.oc.vmware.com';
+
+   location ~* ^/ph/api/v1/lps/:0/rest/files$ {
+      if ($arg_directory ~* ^(.+),(.+)/(.+)/(.+) ) {
+         set $collector_id   $1;
+         set $instance_id    $2;
+         set $autogen_uuid   $3;
+      }
+
+      if ($collector_id ~* "(^horizon_operational_data.8_[0-9]{1,2}|horizon.[78]_[0-9]{1,2}|UAG_3.2)" ) {
+         set $hhost "api.artemis.omnissa.com";
+         proxy_pass https://$euc_artemis_hostname/cdf/$collector_id/$collector_id-$autogen_uuid-$instance_id.cdf;
+      }
+
+      proxy_set_header  Host  $hhost;
+      proxy_pass https://$sc_hostname/api/v1/lps/:0/rest/files?$query_string;
+   }
+
+   location ~* ^/ph/api/hyper/send$ {
+      # Sample URL:
+      # https://vcsa.vmware.com/ph/api/hyper/send?_c=vidm&_i=762276c4-fe8d-48e4-8620-773f42c3dba1
+      # arg__c: vidm
+      # arg__i: 762276c4-fe8d-48e4-8620-773f42c3dba1
+      # Nginx still does not support boolean expression in if statement
+      # so Creating a variable to match the conditions
+
+      set $both_collector_and_instance_id_match "No"; ## is the default and no action is taken. 
+
+      if ( $arg__c ~* (vidm|seg.2_2|Workspace.1902_0|vmware_tunnel.4_1) ) {
+         set $collector_id $1;
+         set $both_collector_and_instance_id_match "Yes";
+      }
+
+      if ( $arg__i ~* (.+) ) {
+         set $instance_id $1;
+         set $both_collector_and_instance_id_match "${both_collector_and_instance_id_match}Yes";
+      }
+ 
+      ## "Yes" indicates only Collector ID in URL
+
+	#      if ( $both_collector_and_instance_id_match ~ "Yes" ) {
+	#         set $hhost "api.artemis-dev.omnissa.com";
+	#         proxy_pass https://$euc_artemis_hostname/dp/api/batch/$collector_id;
+	#      }
+      
+      ## "YesYes" indicates URL has both collector ID and Instance ID
+
+      if ( $both_collector_and_instance_id_match ~ "YesYes" ) {
+         set $hhost "api.artemis.omnissa.com";
+         proxy_pass https://$euc_artemis_hostname/dp/api/batch/$collector_id/instances/$instance_id;
+      }
+
+      proxy_set_header  Host  $hhost;
+      proxy_pass $target_prod;
+   }
+
+### End of Artemis EUC configs ### 
+
+#Change Start - TKT5342265
+   location  /skyline/data/raw/v1/ {
+        resolver 10.128.242.1 10.128.242.2 ipv6=off valid=30s;
+        set $BACKEND "https://data.mgmt.cloud.vmware.com";
+   	proxy_set_header Authorization 'Bearer B92QIDAisU1HIvryf1aJjg79g66wai1b';
+	proxy_set_header Content-Type 'application/octet-stream';
+   	proxy_pass $BACKEND/le-mans/v1/streams/skyline-topology;
+        proxy_redirect $BACKEND/le-mans/v1/streams/skyline-topology/ /skyline/data/raw/v1/;
+   }
+#Change End - TKT5342265
+   location /skyline-stg/data/raw/v1/ {
+	resolver 10.128.242.1 10.128.242.2 valid=30s ipv6=off;
+	set $BACKEND "https://data.staging.symphony-dev.com";
+	proxy_set_header Authorization 'Bearer yPaUMUmTEpxe39A4QxcCsfRiC5aa2fbf';
+	proxy_set_header Content-Type 'application/octet-stream';
+	proxy_pass $BACKEND/le-mans/v1/streams/skyline-topology;
+	proxy_redirect $BACKEND/le-mans/v1/streams/skyline-topology/ /skyline-stg/data/raw/v1/;
+   }   
+
+   location / {
+      	return 403;
+   }
+}
+
+

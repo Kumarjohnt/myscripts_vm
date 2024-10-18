@@ -1,0 +1,13 @@
+---
+- name: Install VNC server 
+  hosts: vnc_hosts
+  gather_facts: true
+  become: yes
+
+  tasks:
+    - name: Install vnc server 
+      ansible.builtin.package:
+        name={{ item }} state=latest
+      with_items:
+        - xorg-x11-Xvnc 
+        - tigervnc

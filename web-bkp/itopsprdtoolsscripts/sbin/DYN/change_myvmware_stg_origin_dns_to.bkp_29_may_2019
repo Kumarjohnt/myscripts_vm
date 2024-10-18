@@ -1,0 +1,143 @@
+#!/bin/ruby
+
+
+# Script to update A records in gtmglb.vmwtest.com 
+# Flow is Login -> Token -> GET Record ID -> Update -> Publish -> Test A Record -> Delete Session/ Logout 
+# sharmasachin@vmware.com 
+# 28 Sep 2017
+
+#my-stage-sc9-cdnorigin.vmware.com      10 A 208.91.0.118
+#my-stage-wdc-cdnorigin.vmware.com  10 A 208.91.2.246
+
+require 'net/https'
+require 'uri'
+require 'json'
+require 'getoptlong'
+require 'highline/import'
+
+# Only 1 Argument is allowed 
+
+if ARGV.length != 1
+  puts "Please use only One Option  i.e. ./change_myvmware_stg_origin_dns_to --WDC|SC9"
+  exit 0
+end
+
+# HTTP POST/GET Debug Logs 
+
+$stderr = File.new( '/var/log/myvmware-stg.log', 'a' )
+
+# Defining address Local variable with nil. Local variables do not, like globals and instance variables, have the value nil before initialization. :)
+
+address = nil
+
+# New Help Object 
+
+opts = GetoptLong.new(
+  [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
+  [ '--WDC', '-W', GetoptLong::NO_ARGUMENT ],
+  [ '--SC9', '-S', GetoptLong::NO_ARGUMENT ],
+)
+
+opts.each do |opt|
+  case opt
+    when '--help'
+      puts <<-EOF
+
+./change_myvmware_stg_origin_dns_to --WDC|SC9
+
+-h, --help:
+   show help
+
+--WDC, -W:
+   Switch to MyVMWARE WDC IP
+
+--SC9, -S:
+   Switch to MyVMWARE SC9 IP
+      EOF
+      exit 
+    when '--WDC'
+        exit unless HighLine.agree("This will Update DNS for my-stage.vmware.com to WDC 208.91.2.246. Do you want to proceed?  \"yes|y\" or \"no|n")
+        address = '208.91.2.246' 
+    when '--SC9'
+        exit unless HighLine.agree("This will Update DNS for my-stage.vmware.com to SC9 208.91.0.118. Do you want to proceed?  \"yes|y\" or \"no|n")
+        address = '208.91.0.118' 
+    else 
+          puts "Please try Options. ./change_myvmware_stg_origin_dns_to --SC9|--WDC "
+          exit
+  end
+end
+
+# To make sure address has some value. Else Exit !
+if address.nil?
+  puts "Please try Options. ./change_myvmware_stg_origin_dns_to --SC9|--WDC "
+  exit
+end
+
+ADDRESS = address
+#puts "Hi #{ADDRESS}"
+#exit
+
+if __FILE__ == $0
+  # Set the desired parameters on the command line 
+  CUSTOMER_NAME = 'vmwarecorporate'
+  USER_NAME = 'cdnapistguser'
+  PASSWORD = 'y^e.Y^Y2UTuzy^Y.A!U'
+  ZONE = 'cdnoriginstg.vmware.com'
+  FQDN = 'myvmwareincapstg.cdnoriginstg.vmware.com'
+    
+  # Set up our HTTP object with the required host and path
+  url = URI.parse('https://api2.dynect.net/REST/Session/')
+  headers = { "Content-Type" => 'application/json' }
+  http = Net::HTTP.new(url.host, url.port)
+  http.set_debug_output $stderr
+  http.use_ssl = true
+  
+  # Login and get an authentication token that will be used for all subsequent requests.
+  session_data = { :customer_name => CUSTOMER_NAME, :user_name => USER_NAME, :password => PASSWORD }
+  
+  resp = http.post(url.path, session_data.to_json, headers)
+  data = resp.body
+  result = JSON.parse(data)
+  if result['status'] == 'success'    
+  	auth_token = result['data']['token']
+  else
+    puts "Command Failed:\n"
+    # the messages returned from a failed command are a list
+    result['msgs'][0].each{|key, value| print key, " : ", value, "\n"}
+  end
+  # New headers to use from here on with the auth-token set
+  headers = { "Content-Type" => 'application/json', 'Auth-Token' => auth_token }
+
+# Get the A record's REcordID. Record id keep chnages after modification.
+   url = URI.parse("https://api2.dynect.net/REST/ARecord/#{ZONE}/#{FQDN}/") 
+   resp = http.get(url.path, headers)
+   data = resp.body
+   jsond = JSON.parse(data)
+   arec = jsond['data']
+   arcstr = arec.to_s
+   sptary = arcstr.split("/")
+   lemt = sptary.last
+   RCDID = lemt.gsub(/[^\d]/, '')
+
+  # Update the A record
+  url = URI.parse("https://api2.dynect.net/REST/ARecord/#{ZONE}/#{FQDN}/#{RCDID}/") 
+  record_data = { :rdata => { :address => "#{ADDRESS}" }, :ttl => "60" }
+ # To get Record id has to HTTP GET with FQDN. 
+ # resp = http.get(url.path, headers)
+  resp = http.put(url.path, record_data.to_json, headers)
+  print "\n",'PUT ARecord Response: ', resp.body, "\n"; 
+  
+ 
+  # Publish the changes
+  url = URI.parse("https://api2.dynect.net/REST/Zone/#{ZONE}/") 
+  publish_data = { "publish" => "true" }
+  resp = http.put(url.path, publish_data.to_json, headers)
+  print "\n", 'PUT Zone Response: ', resp.body, "\n"; 
+  
+  # Logout
+  url = URI.parse('https://api2.dynect.net/REST/Session/')
+  resp  = http.delete(url.path, headers)
+  print "\n", 'DELETE Session Response: ', resp.body, "\n"; 
+end
+
+$stderr = STDOUT

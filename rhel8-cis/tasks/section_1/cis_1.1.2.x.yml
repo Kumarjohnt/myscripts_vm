@@ -1,0 +1,53 @@
+---
+
+- name: "1.1.2.1 | PATCH | Ensure /tmp is a separate partition"
+  block:
+      - name: "1.1.2.1 | PATCH | Ensure /tmp is a separate partition | Absent"
+        debug:
+            msg: "Warning!! /tmp is not mounted on a separate partition"
+        when:
+            - required_mount not in mount_names
+
+      - name: "1.1.2.1 | PATCH | Ensure /tmp is a separate partition | Present"
+        ansible.builtin.import_tasks: warning_facts.yml
+  vars:
+      warn_control_id: '1.1.2.1'
+      required_mount: '/tmp'
+  when:
+      - rhel8cis_rule_1_1_2_1
+      - "'/tmp' not in mount_names"
+      - rhel8cis_tmp['enabled']
+  tags:
+      - level1-server
+      - level1-workstation
+      - automated
+      - audit
+      - mounts
+      - rule_1.1.2.1
+
+# via fstab
+- name: |
+        "1.1.2.2 | PATCH | Ensure nodev option set on /tmp partition"
+        "1.1.2.3 | PATCH | Ensure noexec option set on /tmp partition"
+        "1.1.2.4 | PATCH | Ensure nosuid option set on /tmp partition"
+  ansible.posix.mount:
+      name: /tmp
+      src: "{{ rhel8cis_tmp['source'] }}"
+      state: present
+      fstype: "{{ rhel8cis_tmp['fstype'] }}"
+      opts: "{{ rhel8cis_tmp ['opts'] }}"
+  notify: remount tmp
+  when:
+      - rhel8cis_rule_1_1_2_2 or
+        rhel8cis_rule_1_1_2_3 or
+        rhel8cis_rule_1_1_2_4
+      - rhel8cis_tmp['enabled']
+  tags:
+      - level1-server
+      - level1-workstation
+      - automated
+      - patch
+      - mounts
+      - rule_1.1.2.2
+      - rule_1.1.2.3
+      - rule_1.1.2.4

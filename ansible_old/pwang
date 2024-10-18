@@ -1,0 +1,121 @@
+appsupp-prd-ita1					Migrated to cluster 2		
+avi-controller-vdr-1	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+avi-controller-vdr-2	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+avi-controller-vdr-3	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+avi-se-vdr-1	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+avi-se-vdr-2	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+avi-se-vdr-3	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+avi-se-vdr-4	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+avi-test-vm-k8s	renanb	Completed			Cold Migration 	Migrated to cluster 2	
+CentOS-prod-GOLD					Migrated to cluster 2		
+cilt-centos7					Migrated to cluster 2		
+cilt-centos7-2020					Migrated to cluster 2		
+cilt-centos7-mysql8					Migrated to cluster 2		
+cilt-infrstgdr					Migrated to cluster 2		
+dtest-vm1					Migrated to cluster 2		
+epm-prd-app1					Migrated to cluster 2		
+epm-prd-app2					Migrated to cluster 2		
+epm-prd-mysql1					Migrated to cluster 2		
+epm-prd-mysql2					Migrated to cluster 2		
+fgp1-prod-vdr					Migrated to cluster 2		
+fgp2-prod-vdr					Migrated to cluster 2		
+FINET-PRD-APP-1					Not Present in VADER		
+FINET-PRD-APP1					Not Present in VADER		
+FINET-PRD-SQL-1					Not Present in VADER		
+hcx-test-vm					Migrated to cluster 2		
+idm-stg2-conn3					Windows		
+idm-stg2-conn4					Windows		
+jira-mysql					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-a1					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-a2					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-a3					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-mysql1					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-mysql2					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-mysql3					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-nfs1					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-prd-dr-nfs2					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-stg-dr-a1					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-stg-dr-a2					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-stg-dr-mysql1					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-stg-dr-mysql2					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-stg-dr-mysql3					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-stg-dr-nfs1					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jira1-stg-dr-nfs2					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+jumpbox-bkp					Get confirmation from Ramnathan/Tom about Tungsten Cluster		
+l2apps-prd-a1					Windows		
+l2apps-prd-mysql					Migrated to cluster 2		
+mtlicp-prd-vdr-1					Migrated to cluster 2		
+mtvrnic-prd-pxy27					Migrated to cluster 2		
+mtvrops-stg-win					Windows		
+mtvrops-vmc-vader-cp01					Migrated to cluster 2		
+ns1-vdr-sea03					Work with Antoine		
+ns2-vdr-sea03					Work with Antoine		
+NSX-Edge-0							
+NSX-Edge-1							
+NSX-Manager-0							
+NSX-Manager-1							
+NSX-Manager-2							
+onenode-prd-a1					Power OFF	Migrated to cluster 2	
+onenode-prd-a2					Power OFF	Migrated to cluster 2	
+OREVMCSLK01						Migrated to cluster 2	
+OREVMCSLK01 -  October Migrated					Power OFF	Migrated to cluster 2	
+pmaster-vdr-ca					Migrated to cluster 2		
+pmaster-vdr-db					Migrated to cluster 2		
+secureprx-prd3-w1					Migrated to cluster 2		
+secureprx-prd3-w2					Migrated to cluster 2		
+secureprx-stg3-w1					Migrated to cluster 2		
+secureprx-stg3-w2					Migrated to cluster 2		
+sgrc-stg-a11					Have dependency on Unity SA		
+sgrc-stg-a11_clone					Have dependency on Unity SA		
+sgrc-stg-a4					Have dependency on Unity SA		
+sgrc-stg-a5					Have dependency on Unity SA		
+sgrc-stg-d3					Have dependency on Unity SA		
+srm-vader-prod2							
+srm-vader-stage2							
+srm-vader1							
+test-vm-kd1					Power OFF	Migrated to cluster 2	
+vault-prd-app1					Migrated to cluster 2		
+vault-prd-app2					Migrated to cluster 2		
+vault-prd-ora1					Migrated to cluster 2		
+vcenter							
+vdr-smtp-relay1					Windows		
+vdr-smtp-relay2					Windows		
+vltelk-prd-md1					Migrated to cluster 2		
+vltelk-prd-md2					Migrated to cluster 2		
+vltelk-prd-md3					Migrated to cluster 2		
+vmc-vdr-avamar-1					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-avmr-prxy-1					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-avmr-prxy-1.vmware.com-old					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-avmr-prxy-2					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-avmr-prxy-2.vmware.com-old					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-linux-repo					Migrated to cluster 2		
+vmc-vdr-nattest-vm					Migration testing VM		
+vmc-vdr-ntp-1					Migrated to cluster 2		
+vmc-vdr-ntwksrvr-1					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-ntwkstrg-1					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-ntwkstrg-2					Avamar Servers Preethy G is gone confirm with Backup team		
+vmc-vdr-openldap-1					Migrated to cluster 2		
+vmc-vdr-openldap-2					Migrated to cluster 2		
+vmc-vdr-prdngx-1					Migrated to cluster 2		
+vmc-vdr-prdngx-2					Migrated to cluster 2		
+vmc-vdr-rsa-am-1					Migrated to cluster 2		
+vmc-vdr-rsa-idr-1					Migrated to cluster 2		
+vmc-vdr-stgngx-1					Migrated to cluster 2		
+vmc-vdr-stgngx-2					Migrated to cluster 2		
+vmc-vdr-tenable-1					Migrated to cluster 2		
+vmc-vdr-uvsa-1					Preethy G to get confirmation from Storage team		
+vmcvdr-splunk-hwf1					Migrated to cluster 2		
+vmcvdrrootdc01					Windows		
+vmcvdrrootdc02					Windows		
+vr							
+vrops-proxy-vdr-1					Migrated to cluster 2		
+web-prd-vdr-w1					Migrated to cluster 2		
+web-prd-vdr-w2					Migrated to cluster 2		
+web-prod-ints-1					Migrated to cluster 2		
+web-prod-ints-2					Migrated to cluster 2		
+web-prod-vault-1					Migrated to cluster 2		
+web-prod-vault-2					Migrated to cluster 2		
+web-stg-vdr-w1					Migrated to cluster 2		
+web-stg-vdr-w2					Migrated to cluster 2		
+Win-prod-GOLD					Windows		
+ws-prod2-conn3					Windows		

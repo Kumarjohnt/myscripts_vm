@@ -1,0 +1,99 @@
+
+user                  nginx;
+worker_processes      4;
+error_log             /var/log/nginx/error.log warn;
+pid                   /run/nginx.pid;
+worker_rlimit_nofile  81920;
+
+# Load dynamic modules. See /usr/share/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+
+events {
+    worker_connections  10240;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $http_x_forwarded_for - $http_x_forwarded_proto '
+                      '$http_host $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_via" "$http_True_Client_IP" "$http_Incap_Client_IP" '
+                      '$request_time $upstream_response_time $pipe "$http_INCAP_TLS_VERSION"';
+
+    log_format  proxylog  '[$time_local] $remote_addr - $http_x_forwarded_for - $http_x_forwarded_proto '
+                      '$http_host $remote_user "$request" to $upstream_addr '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_via" "$http_True_Client_IP" "$http_Incap_Client_IP" '
+                       '$request_time $upstream_response_time $pipe "$http_INCAP_TLS_VERSION"';
+
+    log_format  debuglog  '[$time_local] $remote_addr - $http_x_forwarded_for - $http_x_forwarded_proto '
+                      '$http_host $remote_user "$request" to $upstream_addr '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_via" "$http_True_Client_IP" "$http_Incap_Client_IP" '
+                      '"$http_X_Akamai_G2O_Auth_Data" "$http_X_Akamai_G2O_Auth_Sign" "$http_INCAP_TLS_VERSION"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout  30s;
+    server_tokens      off;
+
+  types_hash_max_size 2048;
+  server_names_hash_bucket_size 128;
+  server_names_hash_max_size 1024;
+
+
+
+    gzip             on;
+    gzip_min_length  128;
+    gzip_comp_level  5;
+    gzip_disable     "MSIE [1-6]\.(?!.*SV1)";
+    gzip_types       text/plain text/css text/xml text/javascript application/javascript application/x-javascript application/json application/xml application/xml+rss;
+
+    resolver 10.113.61.110 10.113.61.111 ipv6=off;
+
+    server {
+       listen 80 default_server;
+       server_name _;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite  .*  http://www.vmware.com/  permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name load-balancer-monitor;
+       include /etc/nginx/allow_GET_only.conf;
+       access_log  /var/log/nginx/load-balancer-monitor_access.log main;
+
+       # External SNAT IP 10.113.62.39
+       # Internal SNAT IP 10.113.62.109
+
+       #if ( $remote_addr != "10.113.62.109" )  {
+       #   return 403;
+       #}
+       
+       location /load-balancer-monitor/ruok.html {
+          root /etc/nginx/load-balancer-monitor;
+       }
+
+       location / {
+          return 403;
+       }
+    }
+
+
+    # All other virtual hosts are configured at here:
+    include /etc/nginx/virtual.conf;
+    include /etc/nginx/conf.d/ws-prod.conf;
+    include /etc/nginx/conf.d/ams.conf;
+    include /etc/nginx/conf.d/lqe.conf;
+    include /etc/nginx/conf.d/emc.conf;
+} # End of http
+

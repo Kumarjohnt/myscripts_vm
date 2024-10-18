@@ -1,0 +1,1 @@
+Testing the redirection rule deployment after webservers upgrade

@@ -1,0 +1,533 @@
+#TKT2918058
+RewriteRule ^/sitemap.xml   /content/dam/digitalmarketing/vmworld/assets/sitemap.xml [P,L]
+
+#TKT2618224
+RewriteRule ^/searchservice/(.*)   https://searchapp-stage.apps.wdc1.itcna.vmware.com/searchservice/$1 [L,P]
+
+
+#TKT2039904
+RewriteRule ^/favicon.ico$          /content/dam/digitalmarketing/vmware/en/files/favicon.ico  [P,L]
+
+#INC0222924 RFC#218704
+RewriteRule ^/en/sessions/2015.html$  http://vmware.mediasite.com/mediasite/Channel/2015 [L,R=301,NE]
+RewriteRule ^/en/europe/sessions/2015.html$  http://vmware.mediasite.com/mediasite/Channel/2015 [L,R=301,NE]
+RewriteRule ^/en/sessions/2014.html$  http://vmware.mediasite.com/mediasite/Channel/2014 [L,R=301,NE]
+RewriteRule ^/en/europe/sessions/2014.html$  http://vmware.mediasite.com/mediasite/Channel/2014 [L,R=301,NE]
+RewriteRule ^/en/sessions/2013.html$  http://vmware.mediasite.com/mediasite/Channel/2013 [L,R=301,NE]
+RewriteRule ^/en/europe/sessions/2013.html$  http://vmware.mediasite.com/mediasite/Channel/2013 [L,R=301,NE]
+RewriteRule ^/en/sessions/2012.html$  http://vmware.mediasite.com/mediasite/Channel/2012 [L,R=301,NE]
+RewriteRule ^/en/europe/sessions/2012.html$  http://vmware.mediasite.com/mediasite/Channel/2012 [L,R=301,NE]
+RewriteRule ^/en/sessions/2011.html$  http://vmware.mediasite.com/mediasite/Channel/2011 [L,R=301,NE]
+RewriteRule ^/en/europe/sessions/2011.html$  http://vmware.mediasite.com/mediasite/Channel/2011 [L,R=301,NE]
+RewriteRule ^/en/sessions/2010.html$  http://vmware.mediasite.com/mediasite/Channel/2010  [L,R=301,NE]
+RewriteRule ^/en/europe/sessions/2010.html$  http://vmware.mediasite.com/mediasite/Channel/2010  [L,R=301,NE]
+
+# Stop BOT
+RewriteCond %{ENV:spider} 1
+# block all bot traffic
+#RewriteRule .* - [F]
+# block all bot traffic on static assets
+RewriteRule ^/(styles|images|scripts|resources|people|docs/DOC-5482) - [F]
+#
+# Block this IP
+# This guy is hitting /blogs
+RewriteCond %{HTTP:X-FORWARDED-FOR} ^87.4.195.202
+RewriteRule .* - [F]
+# My test
+#RewriteCond %{HTTP:X-FORWARDED-FOR} ^10.21.180.30
+#RewriteRule .* - [F]
+
+# Below Rewrite are for Vmworld 23rd June 2015 Release
+RewriteRule ^/index.jspa(/?)$ /en/index.html [L,R=301,NE]
+RewriteRule ^/community/social(/?)$ /en/social.html [L,R=301,NE]
+RewriteRule ^/community/contact(/?)$ /en/contact.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/sponsors(/?)$ /en/us/sponsors.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/refer-a-friend(/?)$ /en/us/refer-a-friend.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/plan/pricing(/?)$ /en/us/pricing.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/plan/hotel-travel(/?)$ /en/us/hotel-travel.html [L,R=301,NE]
+#RewriteRule ^/community/conference/us/plan(/?)$ /en/us/plan.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/training(/?)$ /en/us/learning/training-certification.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/sessions-labs(/?)$ /en/us/learning/sessions-labs.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/schedule-builder(/?)$ /en/us/learning/schedule-builder.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/programs/vmug(/?)$ /en/us/programs/vmug.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/programs/tam(/?)$ /en/us/programs/tam.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/programs/partners(/?)$ /en/us/programs/partner-exchange.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/programs/new-to-vmworld(/?)$ /en/us/new-to-vmworld.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/programs/alumni(/?)$ /en/us/programs/alumni.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/general-sessions(/?)$ /en/us/learning/general-sessions.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/content-catalog(/?)$ /en/us/learning/content-catalog.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/learn/agenda(/?)$ /en/us/agenda.html [L,R=301,NE]
+#RewriteRule ^/community/conference/us/learn(/?)$ /en/us/learn.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/faqs(/?)$ /en/us/faqs.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/connect/networking(/?)$ /en/us/networking.html [L,R=301,NE]
+RewriteRule ^/community/conference/us/analysts(/?)$ /en/us/press-analysts.html [L,R=301,NE]
+RewriteRule ^/community/conference/us(/?)$ /en/us/index.html [L,R=301,NE]
+RewriteRule ^/community/conference/pre-reg(/?)$ /en/pre-register.html [L,R=301,NE]
+RewriteRule ^/community/conference/partner-pre-reg(/?)$ /en/partner-pre-register.html [L,R=301,NE]
+RewriteRule ^/community/conference/mobile-apps/docs-licenses(/?)$ /en/mobile-app-legal.html [L,R=301,NE]
+RewriteRule ^/community/conference/mobile-apps(/?)$ /en/mobile-app.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/sponsors(/?)$ /en/europe/sponsors.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/refer-a-friend(/?)$ /en/europe/refer-a-friend.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/plan/pricing(/?)$ /en/europe/pricing.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/plan/hotel-travel(/?)$ /en/europe/hotel-travel.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/plan(/?)$ /en/europe/plan.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/vmug(/?)$ /en/europe/learn/special-programs/vmug.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/programs/tam(/?)$ /en/europe/programs/tam.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/tam(/?)$ /en/europe/learn/special-programs/tam.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/partners(/?)$ /en/europe/learn/special-programs/partners.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/alumni(/?)$ /en/europe/learn/special-programs/alumni.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/sessions-labs(/?)$ /en/europe/learning/sessions-labs.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/schedule-builder(/?)$ /en/europe/learning/schedule-builder.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/programs/vmug(/?)$ /en/europe/programs/vmug.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/programs/new-to-vmworld(/?)$ /en/europe/new-to-vmworld.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/programs/alumni(/?)$ /en/europe/programs/alumni.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/general-sessions(/?)$ /en/europe/learning/general-sessions.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/content-catalog(/?)$ /en/europe/learning/content-catalog.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/programs/partners(/?)$ /en/europe/programs/partner-exchange.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/learn/agenda(/?)$ /en/europe/agenda.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn(/?)$ /en/europe/learn.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/faqs(/?)$ /en/europe/faqs.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe/analysts(/?)$ /en/europe/press-analysts.html [L,R=301,NE]
+RewriteRule ^/community/conference/europe(/?)$ /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/community/conference/cfp(/?)$ /en/call-for-papers.html [L,R=301,NE]
+RewriteRule ^/community/about/privacy(/?)$ /en/privacy.html [L,R=301,NE]
+RewriteRule ^/community/about/accounts(/?)$ /en/accounts.html [L,R=301,NE]
+RewriteRule ^/community/about(/?)$ /en/about.html [L,R=301,NE]
+# End of Vmword Rewrite Rules
+
+# Rewrites for phase 2 VMWorld - July 17 
+RewriteRule ^/en/index$  /en/index.html [L,R=301,NE]
+RewriteRule ^/en/social$ /en/social.html [L,R=301,NE]
+RewriteRule ^/en/contact$ /en/contact.html [L,R=301,NE]
+RewriteRule ^/en/us/sponsors$ /en/us/sponsors.html [L,R=301,NE]
+RewriteRule ^/en/us/refer-a-friend$ /en/us/refer-a-friend.html [L,R=301,NE]
+RewriteRule ^/en/us/plan/pricing$ /en/us/pricing.html [L,R=301,NE]
+RewriteRule ^/en/us/plan/hotel-travel$ /en/us/hotel-travel.html [L,R=301,NE]
+#RewriteRule ^/community/conference/us/plan(/?)$ /en/us/plan.html [L,R=301,NE]
+RewriteRule ^/en/us/learning/training-certification$ /en/us/learning/training-certification.html [L,R=301,NE]
+RewriteRule ^/en/us/learning/sessions-labs$ /en/us/learning/sessions-labs.html [L,R=301,NE]
+RewriteRule ^/en/us/learning/schedule-builder$ /en/us/learning/schedule-builder.html [L,R=301,NE]
+RewriteRule ^/en/us/programs/vmug$ /en/us/programs/vmug.html [L,R=301,NE]
+RewriteRule ^/en/us/programs/tam$ /en/us/programs/tam.html [L,R=301,NE]
+RewriteRule ^/en/us/programs/partner-exchange$ /en/us/programs/partner-exchange.html [L,R=301,NE]
+RewriteRule ^/en/us/new-to-vmworld$ /en/us/new-to-vmworld.html [L,R=301,NE]
+#RewriteRule ^/en/us/programs/alumni$ /en/us/programs/alumni.html [L,R=301,NE]
+RewriteRule ^/en/us/programs/alumni.html$  /en/us/learning/programs.html#alumni [R=301,L,NE]
+
+RewriteRule ^/en/us/learning/general-sessions$ /en/us/learning/general-sessions.html [L,R=301,NE]
+RewriteRule ^/en/us/learning/content-catalog$ /en/us/learning/content-catalog.html [L,R=301,NE]
+RewriteRule ^/en/us/agenda$ /en/us/agenda.html [L,R=301,NE]
+#RewriteRule ^/community/conference/us/learn(/?)$ /en/us/learn.html [L,R=301,NE]
+RewriteRule ^/en/us/faqs$ /en/us/faqs.html [L,R=301,NE]
+RewriteRule ^/en/us/networking$ /en/us/networking.html [L,R=301,NE]
+RewriteRule ^/en/us/press-analysts$ /en/us/press-analysts.html [L,R=301,NE]
+RewriteRule ^/en/us$ /en/us/index.html [L,R=301,NE]
+RewriteRule ^/en/us/index$ /en/us/index.html [L,R=301,NE]
+RewriteRule ^/en/pre-register$ /en/pre-register.html [L,R=301,NE]
+RewriteRule ^/en/partner-pre-register$ /en/partner-pre-register.html [L,R=301,NE]
+RewriteRule ^/en/mobile-app-legal$ /en/mobile-app-legal.html [L,R=301,NE]
+RewriteRule ^/en/mobile-app$ /en/mobile-app.html [L,R=301,NE]
+RewriteRule ^/en/europe/sponsors$ /en/europe/sponsors.html [L,R=301,NE]
+RewriteRule ^/en/europe/refer-a-friend$ /en/europe/refer-a-friend.html [L,R=301,NE]
+RewriteRule ^/en/europe/pricing$ /en/europe/pricing.html [L,R=301,NE]
+RewriteRule ^/en/europe/hotel-travel$ /en/europe/hotel-travel.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/plan(/?)$ /en/europe/plan.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/vmug(/?)$ /en/europe/learn/special-programs/vmug.html [L,R=301,NE]
+RewriteRule ^/en/europe/programs/tam$ /en/europe/programs/tam.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/tam(/?)$ /en/europe/learn/special-programs/tam.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/partners(/?)$ /en/europe/learn/special-programs/partners.html[L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn/special-programs/alumni(/?)$ /en/europe/learn/special-programs/alumni.html [L,R=301,NE]
+RewriteRule ^/en/europe/learning/sessions-labs$ /en/europe/learning/sessions-labs.html [L,R=301,NE]
+RewriteRule ^/en/europe/learning/schedule-builder$ /en/europe/learning/schedule-builder.html [L,R=301,NE]
+RewriteRule ^/en/europe/programs/vmug$ /en/europe/programs/vmug.html [L,R=301,NE]
+RewriteRule ^/en/europe/new-to-vmworld$ /en/europe/new-to-vmworld.html [L,R=301,NE]
+#RewriteRule ^/en/europe/programs/alumni$ /en/europe/programs/alumni.html [L,R=301,NE]
+RewriteRule ^/en/europe/programs/alumni.html$  /en/europe/learning/programs.html#alumni [R=301,L,NE]
+
+RewriteRule ^/en/europe/learning/general-sessions$ /en/europe/learning/general-sessions.html [L,R=301,NE]
+RewriteRule ^/en/europe/learning/content-catalog$ /en/europe/learning/content-catalog.html [L,R=301,NE]
+RewriteRule ^/en/europe/programs/partner-exchange$ /en/europe/programs/partner-exchange.html [L,R=301,NE]
+RewriteRule ^/en/europe/agenda$ /en/europe/agenda.html [L,R=301,NE]
+#RewriteRule ^/community/conference/europe/learn(/?)$ /en/europe/learn.html [L,R=301,NE]
+RewriteRule ^/en/europe/faqs$ /en/europe/faqs.html [L,R=301,NE] 
+RewriteRule ^/en/europe/press-analysts$ /en/europe/press-analysts.html [L,R=301,NE]
+RewriteRule ^/en/europe/index$ /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/en/europe$ /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/en/call-for-papers$ /en/call-for-papers.html [L,R=301,NE]
+RewriteRule ^/en/privacy$ /en/privacy.html [L,R=301,NE]
+RewriteRule ^/en/accounts$ /en/accounts.html [L,R=301,NE]
+RewriteRule ^/en/about$ /en/about.html [L,R=301,NE]
+# End of VMWorld Rewrite Rules - July 17
+# July 19
+RewriteRule ^/en/us/sponsors.html$ /ussponsor.jspa [L,R=302,NE]
+
+#INC0143345 RFC# 213790
+RewriteRule ^/en/us/learning/sessions-labs.html$  /en/us/learning/sessions.html [L,R=301,NE]
+
+#INC0178066 RFC#216061
+RewriteRule ^/en/social-eu.html$  /en/europe/socialstream.html [L,R=301,NE]
+
+#INC0354351 RFC#223929
+RewriteRule ^/en/us/know-before-you-go.html$  /en/us/index.html [L,R=301,NE]
+RewriteRule ^/en/europe/know-before-you-go.html$  /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/en/us/networking.html$  /en/us/index.html [L,R=301,NE]
+RewriteRule ^/en/europe/networking.html$  /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/en/us/vmworld-party-details.html$  /en/us/index.html [L,R=301,NE]
+RewriteRule ^/en/europe/vmworld-party-details.html$  /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/en/mobile-app.html$  /en/us/index.html [L,R=301,NE]
+RewriteRule ^/en/europe/mobile-app.html$  /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/en/europe/whats-new.html$  /en/europe/index.html [L,R=301,NE]
+RewriteRule ^/en/us/landing.html$  /en/us/index.html [L,R=301,NE]
+
+#INC0354351  RFC#224035
+RewriteRule ^/en/us/online.html$		http://vmware.mediasite.com/mediasite/Showcase/Channel/2016  [L,R=301,NE]
+RewriteRule ^/en/europe/online.html$		http://vmware.mediasite.com/mediasite/Showcase/Channel/2016   [L,R=301,NE]
+RewriteRule ^/en/us/hot-topic/compute-virtualization.html$		/en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/europe/hot-topic/compute-virtualization.html$		/en/europe/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/hot-topic/devops.html$		/en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/hot-topic/networking.html$		/en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/europe/hot-topic/networking.html$		/en/europe/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/hot-topic/storage.html$		/en/us/learning/sessions.html [L,R=301,NE]
+RewriteRule ^/en/europe/hot-topic/storage.html$		/en/europe/learning/sessions.html [L,R=301,NE]
+RewriteRule ^/en/europe/hot-topic/mobility.html$		/en/europe/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/learning/general-sessions.html$		/en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/europe/learning/general-sessions.html$		/en/europe/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/learning/schedule-builder.html$		/en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/europe/learning/schedule-builder.html$		/en/europe/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/learning/justadded.html$		/en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/europe/learning/justadded.html$		/en/europe/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/top-10.html$		  /en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/pre-register.html$		https://my.vmworld.com/api/sso/vmware/vmworldus17/reg  [L,R=301,NE]
+RewriteRule ^/en/pre-reg-confirm.html$		https://my.vmworld.com/api/sso/vmware/vmworldus17/reg  [L,R=301,NE]
+RewriteRule ^/en/partner-pre-register.html$		https://my.vmworld.com/api/sso/vmware/vmworldus17/reg  [L,R=301,NE]
+RewriteRule ^/en/us/learning/content-catalog.html$		/en/us/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/europe/learning/content-catalog.html$		/en/europe/learning/sessions.html  [L,R=301,NE]
+RewriteRule ^/en/us/press-analysts.html$		/en/media.html  [L,R=301,NE]
+RewriteRule ^/en/europe/press-analysts.html$		/en/media.html [L,R=301,NE]
+RewriteRule ^/en/us/new-to-vmworld.html$		/en/us/attendeeresources.html  [L,R=301,NE]
+RewriteRule ^/en/europe/new-to-vmworld.html$		/en/europe/attendeeresources.html [L,R=301,NE]
+RewriteRule ^/en/us/learning/training-certification.html$		/en/us/learning/labs-training-certification.html [L,R=301,NE]
+RewriteRule ^/en/europe/learning/training-certification.html$		/en/europe/learning/labs-training-certification.html [L,R=301,NE]
+RewriteRule ^/en/europe/alumni.html$		/en/europe/learning/programs.html [L,R=301,NE]
+
+
+
+
+#INC0142237 RFC# 213950
+RewriteRule ^/en/social-resources.html$  /en/social.html  [L,R=301,NE]
+
+#INC0205015 RFC#217437
+RewriteRule ^/en/sessions/featured-eu-wed.html$  /en/sessions/featured-eu.html [L,R=301,NE]
+RewriteRule ^/en/sessions/featured-eu-thurs.html$  /en/sessions/featured-eu.html [L,R=301,NE]
+
+
+#INC0170752 RFC#215643
+RewriteRule ^/en/europe/learning/sessions-labs.html$  /en/europe/learning/sessions.html [L,R=301,NE]
+
+#INC0151544 RFC#214336
+RewriteRule ^/en/sessions/repeats-us.html$  /en/us/learning/content-catalog.html  [L,R=301,NE]
+RewriteRule ^/en/europe/sponsors.html$  /eusponsor.jspa [L,R=301,NE]
+
+# Mobile Kiosk Survey
+RewriteRule     ^/mobile$                       /en/mobile-app.html [R=301,NE,L]
+# HZ 1179297
+#RewriteRule     ^/mobile-login.jspa$            https://vmworldeurope2012.activeevents.com/attendee/mobile/app.html [R=301,NE,L]
+#
+RewriteRule     ^/kiosk$                        /kiosk-login.jspa [R=301]
+RewriteRule     ^/cybercafe$                    /cybercafe-login.jspa [R=301]
+
+# CR 00138739
+RewriteRule     ^/vmwarepartnerexchange(/?)$            http://%{ENV:VMWORLD_HOST}/en/index.html  [R=301,NE,L] 
+RewriteRule     ^/vmwarepartnerexchange/(.*)$           http://%{ENV:VMWORLD_HOST}/en/index.html  [R=301,NE,L]
+RewriteRule     ^/pexcontact(.*).jspa(.*)$           http://%{ENV:VMWORLD_HOST}/en/index.html  [R=301,NE,L]
+
+#redirect reg to pre-reg for temp
+RewriteRule     ^/registration(.*).jspa(.*)$               /myvmworld.jspa  [R=301,NE,L]
+#RewriteRule     ^/sponsorcfp(.*).jspa(.*)$                   /en/index.html  [R=301,NE,L]
+#RewriteRule     ^/uscatalog(.*).jspa(.*)$                   http://%{ENV:VMWORLD_HOST}/en/index.html  [R=301,NE,L]
+RewriteRule     ^/schedulebuilder(.*).jspa(.*)$                   /eucatalog.jspa [R=301,NE,L]
+RewriteRule     ^/vote-(.*).jspa(.*)$                   /en/index.html  [R=301,NE,L]
+RewriteRule     ^/voting(.*).jspa(.*)$                   /en/index.html  [R=301,NE,L]
+RewriteRule     ^/sponsorcfp(.*).jspa(.*)$                   /en/index.html  [R=301,NE,L]
+
+#logout override to force clean RF cookie fix
+#RewriteRule     ^/logout.jspa$                   /logoutandredirect.jspa?successfulURL=index.jspa  [R=301]
+RewriteRule     ^/login(.*).jspa(.*)$                  /myvmworld.jspa  [R=301]
+RewriteRule     ^/create-account(.*).jspa(.*)$        /myvmworld.jspa  [R=301]
+RewriteRule     ^/edit-profile(.*).jspa(.*)$          /myvmworld.jspa  [R=301]
+#MyVMworld CFP change
+RewriteRule     ^/cfp.jspa(.*)$         /myvmworld.jspa$1 [R=301]
+RewriteRule     ^/cfp-login(.*).jspa(.*)$         /myvmworld-login.jspa$2 [R=301]
+RewriteRule     ^/cfp-create-account(.*).jspa(.*)$         /myvmworld-create!input.jspa$2 [R=301]
+#MyVMworld Dashboard change
+RewriteRule     ^/dashboard.jspa(.*)$         /myvmworld.jspa$1 [R=301]
+RewriteRule     ^/dashboard-login(.*).jspa(.*)$         /myvmworld-login.jspa$2 [R=301]
+RewriteRule     ^/dashboard-create(.*).jspa(.*)$         /myvmworld-create!input.jspa$2 [R=301]
+#MyVMworld ERC change
+RewriteRule     ^/erc(.*).jspa(.*)$                  /myvmworld.jspa$2  [R=301]
+
+RewriteRule     ^/community/contact/access(/?)$                   https://%{ENV:VMWORLD_HOST}/contact.jspa  [R=301]
+RewriteRule     ^/community/pexcontact/access(/?)$                   https://%{ENV:VMWORLD_HOST}/pexcontact.jspa  [R=301]
+
+# Enable SSl for userinfo pages
+RewriteCond  %{HTTP:X-Forwarded-Proto} https
+RewriteRule .* - [S=79]
+RewriteRule     ^/admin(.*)$ 							https://%{ENV:VMWORLD_HOST}/admin$1 [R=301]
+RewriteRule     ^/login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/myvmworld.jspa  [R=301]
+RewriteRule     ^/create-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/myvmworld.jspa [R=301]
+RewriteRule     ^/edit-profile(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/myvmworld.jspa  [R=301]
+RewriteRule     ^/emailPasswordToken(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/emailPasswordToken$1.jspa$2  [R=301]
+RewriteRule     ^/email-username(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/email-username$1.jspa$2  [R=301]
+RewriteRule     ^/registration-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/registration-login$1.jspa$2  [R=301]
+RewriteRule     ^/registration-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/registration-update$1.jspa$2  [R=301]
+RewriteRule     ^/registration-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/registration-create$1.jspa$2  [R=301]
+RewriteRule     ^/vote-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vote-login$1.jspa$2  [R=301]
+RewriteRule     ^/vote-update-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vote-update-account$1.jspa$2  [R=301]
+RewriteRule     ^/vote-create-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vote-create-account$1.jspa$2  [R=301]
+RewriteRule     ^/cfp-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/cfp-login$1.jspa$2  [R=301]
+RewriteRule     ^/cfp-update-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/cfp-update-account$1.jspa$2  [R=301]
+RewriteRule     ^/cfp-create-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/cfp-create-account$1.jspa$2  [R=301]
+RewriteRule     ^/sponsorcfp-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/sponsorcfp-login$1.jspa$2  [R=301]
+RewriteRule     ^/sponsorcfp-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/sponsorcfp-create$1.jspa$2  [R=301]
+RewriteRule     ^/sponsorcfp-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/sponsorcfp-update$1.jspa$2  [R=301]
+RewriteRule     ^/erc-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/erc-login$1.jspa$2  [R=301]
+RewriteRule     ^/erc-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/erc-create$1.jspa$2  [R=301]
+RewriteRule     ^/erc-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/erc-update$1.jspa$2  [R=301]
+RewriteRule     ^/src-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/src-login$1.jspa$2  [R=301]
+RewriteRule     ^/src-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/src-create$1.jspa$2  [R=301]
+RewriteRule     ^/src-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/src-update$1.jspa$2  [R=301]
+RewriteRule     ^/schedulebuilder-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/schedulebuilder-login$1.jspa$2  [R=301]
+RewriteRule     ^/schedulebuilder-sso(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/schedulebuilder-sso$1.jspa$2  [R=301]
+RewriteRule     ^/mobile-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/mobile-login$1.jspa$2  [R=301]
+RewriteRule     ^/kiosk-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/kiosk-login$1.jspa$2  [R=301]
+RewriteRule     ^/cybercafe-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/cybercafe-login$1.jspa$2  [R=301]
+RewriteRule     ^/change-password(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/change-password$1.jspa$2  [R=301]
+RewriteRule     ^/resetPassword(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/resetPassword$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pcregistration-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pcregistration-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pcregistration-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pcregistration-update$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pcregistration-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pcregistration-create$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexlogin(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexlogin$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/npcregistration-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/npcregistration-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/npcregistration-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/npcregistration-update$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/npcregistration-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/npcregistration-create$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexerc-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexerc-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexerc-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexerc-create$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexerc-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexerc-update$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsrc-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsrc-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsrc-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsrc-create$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsrc-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsrc-update$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsb-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsb-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexscheduler(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexscheduler$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsb-update-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsb-update-account$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsv-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsv-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsurvey(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsurvey$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexsv-update-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexsv-update-account$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexcfp-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexcfp-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexcfp-update-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexcfp-update-account$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexcfp-create-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexcfp-create-account$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexcfplogin(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexcfplogin$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexem-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexem-login$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/exec-forum-meetings(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/exec-forum-meetings$1.jspa$2  [R=301]
+RewriteRule     ^/vmwarepartnerexchange/pexem-update-account(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/vmwarepartnerexchange/pexem-update-account$1.jspa$2  [R=301]
+RewriteRule     ^/community/contact/access(/?)$                   https://%{ENV:VMWORLD_HOST}/contact.jspa  [R=301]
+RewriteRule     ^/community/pexcontact/access(/?)$                   https://%{ENV:VMWORLD_HOST}/pexcontact.jspa  [R=301]
+RewriteRule     ^/contact(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/contact$1.jspa$2  [R=301]
+RewriteRule     ^/pexcontact(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/pexcontact$1.jspa$2  [R=301]
+RewriteRule     ^/uscatalog-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/uscatalog-login$1.jspa$2  [R=301]
+RewriteRule     ^/uscatalog-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/uscatalog-create$1.jspa$2  [R=301]
+RewriteRule     ^/uscatalog-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/uscatalog-update$1.jspa$2  [R=301]
+RewriteRule     ^/ussponsor-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/ussponsor-login$1.jspa$2  [R=301]
+RewriteRule     ^/ussponsor-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/ussponsor-create$1.jspa$2  [R=301]
+RewriteRule     ^/ussponsor-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/ussponsor-update$1.jspa$2  [R=301]
+RewriteRule     ^/dashboard-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/dashboard-login$1.jspa$2  [R=301]
+RewriteRule     ^/dashboard-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/dashboard-create$1.jspa$2  [R=301]
+RewriteRule     ^/dashboard-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/dashboard-update$1.jspa$2  [R=301]
+RewriteRule     ^/eucatalog-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/eucatalog-login$1.jspa$2  [R=301]
+RewriteRule     ^/eucatalog-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/eucatalog-create$1.jspa$2  [R=301]
+RewriteRule     ^/eucatalog-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/eucatalog-update$1.jspa$2  [R=301]
+RewriteRule     ^/eusponsor-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/eusponsor-login$1.jspa$2  [R=301]
+RewriteRule     ^/eusponsor-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/eusponsor-create$1.jspa$2  [R=301]
+RewriteRule     ^/eusponsor-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/eusponsor-update$1.jspa$2  [R=301]
+RewriteRule     ^/myvmworld-login(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/myvmworld-login$1.jspa$2  [R=301]
+RewriteRule     ^/myvmworld-create(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/myvmworld-create$1.jspa$2  [R=301]
+RewriteRule     ^/myvmworld-update(.*).jspa(.*)$                   https://%{ENV:VMWORLD_HOST}/myvmworld-update$1.jspa$2  [R=301]
+
+
+
+#HZ 817745
+RewriteRule ^/community/conference/us/pricing$     /community/conference/us/plan/pricing [R=301,L]
+RewriteRule ^/community/conference/us/pricing/$     /community/conference/us/plan/pricing [R=301,L]
+RewriteRule ^/community/conference/us/agenda$     /community/conference/us/learn/agenda [R=301,L]
+RewriteRule ^/community/conference/us/agenda/$     /community/conference/us/learn/agenda [R=301,L]
+RewriteRule ^/community/conference/us/hotel-travel$     /community/conference/us/plan/hotel-travel [R=301,L]
+RewriteRule ^/community/conference/us/hotel-travel/$     /community/conference/us/plan/hotel-travel [R=301,L]
+RewriteRule ^/community/conference/europe/pricing$     /community/conference/europe/plan/pricing [R=301,L]
+RewriteRule ^/community/conference/europe/pricing/$     /community/conference/europe/plan/pricing [R=301,L]
+RewriteRule ^/community/conference/europe/agenda$     /community/conference/europe/learn/agenda [R=301,L]
+RewriteRule ^/community/conference/europe/agenda/$     /community/conference/europe/learn/agenda [R=301,L]
+RewriteRule ^/community/conference/europe/hotel-travel$     /community/conference/europe/plan/hotel-travel [R=301,L]
+RewriteRule ^/community/conference/europe/hotel-travel/$     /community/conference/europe/plan/hotel-travel [R=301,L]
+
+# HZ 621328 - redirects for vmworld.com
+RewriteRule ^/community/discussions$                 /community/forum     [R=301,L]
+RewriteRule ^/community/documents$                   /community/forum     [R=301,L]
+RewriteRule ^/community/discussions-documents$       /community/forum     [R=301,L]
+RewriteRule ^/community/networking$                  /community/forum     [R=301,L]
+
+# Comment out per HZ 828286 - 8/8/2011
+#RewriteRule     /ibmbooth                       /community/exhibitors/ibm       [R=301,L]
+#RewriteRule     /hpbooth                        /community/exhibitors/hp        [R=301,L]
+#RewriteRule     /emcbooth                       /community/exhibitors/emc       [R=301,L]
+#RewriteRule     /netappbooth                    /community/exhibitors/netapp    [R=301,L]
+#RewriteRule     /novellbooth                    /community/exhibitors/novell    [R=301,L]
+#RewriteRule     /symantecbooth                  /community/exhibitors/symantec  [R=301,L]
+#
+# HZ 430489 - redirects for vmworld.com and vmworld2009.com
+#RewriteRule     /vmwarebooth                    /community/exhibitors/vmware    [R=301]
+#RewriteRule     /ciscobooth                     /community/exhibitors/cisco     [R=301]
+#RewriteRule     /intelbooth                     /community/exhibitors/intel     [R=301]
+#RewriteRule     /dellbooth                      /community/exhibitors/dell      [R=301]
+#RewriteRule     /amdbooth                       /community/exhibitors/amd       [R=301]
+#RewriteRule     /neverfailbooth                 /community/exhibitors/neverfail [R=301]
+#RewriteRule     /asigrabooth                    /community/exhibitors/asigra    [R=301]
+# HZ 603478
+
+# HZ 828286 - 8/8/2011
+RewriteRule     ^/buzz                          /community/conference/live      [R=301,L]
+RewriteRule     ^/live                          /community/conference/live      [R=301,L]
+# HZ 828286 - 8/8/2011 - Exhibitor Booth
+RewriteRule     ^/accellion                     /community/exhibitors/accellion [R=301,L]
+RewriteRule     ^/akorri                        /community/exhibitors/akorri    [R=301,L]
+RewriteRule     ^/amd                           /community/exhibitors/amd       [R=301,L]
+RewriteRule     ^/apani                         /community/exhibitors/apani     [R=301,L]
+RewriteRule     ^/asigra                        /community/exhibitors/asigra    [R=301,L]
+RewriteRule     ^/cassatt                       /community/exhibitors/cassatt   [R=301,L]
+RewriteRule     ^/cisco                         /community/exhibitors/cisco     [R=301,L]
+RewriteRule     ^/coraid                        /community/exhibitors/coraid    [R=301,L]
+RewriteRule     ^/csc                           /community/exhibitors/csc       [R=301,L]
+RewriteRule     ^/desktone                      /community/exhibitors/desktone  [R=301,L]
+RewriteRule     ^/dell                          /community/exhibitors/dell      [R=301,L]
+RewriteRule     ^/emc                           /community/exhibitors/emc       [R=301,L]
+RewriteRule     ^/falconstor                    /community/exhibitors/falconstor        [R=301,L]
+RewriteRule     ^/fujitsu                       /community/exhibitors/fujitsu   [R=301,L]
+RewriteRule     ^/hp                            /community/exhibitors/hp        [R=301,L]
+RewriteRule     ^/ibm                           /community/exhibitors/ibm       [R=301,L]
+RewriteRule     ^/idealstor                     /community/exhibitors/idealstor [R=301,L]
+RewriteRule     ^/inmage                        /community/exhibitors/inmage    [R=301,L]
+RewriteRule     ^/intel                         /community/exhibitors/intel     [R=301,L]
+RewriteRule     ^/netapp                        /community/exhibitors/netapp    [R=301,L]
+RewriteRule     ^/netex                         /community/exhibitors/netex     [R=301,L]
+RewriteRule     ^/neverfail                     /community/exhibitors/neverfail [R=301,L]
+RewriteRule     ^/novell                        /community/exhibitors/novell    [R=301,L]
+RewriteRule     ^/panologic                     /community/exhibitors/panologic [R=301,L]
+RewriteRule     ^/phdvirtual                    /community/exhibitors/phdvirtual        [R=301,L]
+RewriteRule     ^/quest                         /community/exhibitors/quest     [R=301,L]
+RewriteRule     ^/vizioncore                    /community/exhibitors/vizioncore        [R=301,L]
+RewriteRule     ^/seanodes                      /community/exhibitors/seanodes  [R=301,L]
+RewriteRule     ^/symantec                      /community/exhibitors/symantec  [R=301,L]
+RewriteRule     ^/tranxition                    /community/exhibitors/tranxition        [R=301,L]
+RewriteRule     ^/ultrabac                      /community/exhibitors/ultrabac  [R=301,L]
+RewriteRule     ^/veeam                         /community/exhibitors/veeam     [R=301,L]
+RewriteRule     ^/verizon                       /community/exhibitors/verizon   [R=301,L]
+RewriteRule     ^/vmware$                       /community/exhibitors/vmware    [R=301,L]
+
+# HZ 427394 - redirects for vmworld.com
+
+# HZ 438210 - /go/ redirects
+Redirect    /go                             http://www.vmware.com/go
+RewriteRule ^/go/(.*)$                      http://www.vmware.com/go/$1     [R=301]
+
+#HZ 464347
+RewriteRule /account.jspa                 /create-account.jspa [R]
+RewriteRule /europe-create-account.jspa   /create-account.jspa [R]
+RewriteRule /sessions-access.jspa         /community/subscription [R]
+
+#HZ 475178
+RewriteRule /community/discussions(/?)     /community/forum [R=301]
+RewriteRule /community/documents(/?)       /community/forum [R=301]
+RewriteRule /community/discussion-document(/?)     /community/forum [R=301]
+
+#HZ 1044386
+RewriteRule /community/us/conference/cfp(/?)   /community/conference/cfp [R=301]
+RewriteRule /community/conference/us/cfp(/?)   /community/conference/cfp [R=301]
+
+#HZ 1098361
+RewriteRule ^/community/vmworld-blogs$       /community/vmworldblogs [R=301,L]
+RewriteRule /community/vmworld-blogs(/?)     /community/vmworldblogs [R=301]
+
+#HZ 851094
+
+# HZ 495500
+# HZ1134426
+RewriteRule ^/campusmap     /static/vmworld-campus-map.pdf [R=301,L]
+#HZ 1143475
+RewriteRule ^/programguide     http://download3.vmware.com/vmworld/vmworld_eu_2012_program_guide.pdf [R=301,L]
+#HZ 1402693
+RewriteRule ^/2013-Program-Guide   http://download3.vmware.com/community/pdfs/vmworld-2013-program-guide.pdf [R=301,L]
+#HZ 1438125
+RewriteRule ^/ABC-Guide   http://download3.vmware.com/vmworld/2014/downloads/abc-guide.pdf [R=301,L]
+RewriteRule ^/2015-Pre-Register   /community/conference/pre-reg [R=301,L]
+RewriteRule ^/2016-Pre-Register   /en/pre-register.html [R=301,L]
+
+# Rule to route old /vmworld/* to the right place...
+RewriteRule ^/vmworld/(.*)$             /$1     [R=301]
+
+# Disable user-picker - a bug caused out of memory
+RewriteRule ^(.*)/user-picker\.jspa(.*)$    /404.jsp   [R=404]
+RewriteRule ^/people;    /404.jspa   [R=404]
+RewriteRule ^/people(/?)$ 	/404.jspa   [R=404]
+RewriteRule ^/people/(.*)$ 	/404.jspa   [R=404]
+RewriteRule ^/dwr/index.html    /404.jspa   [R=404]
+
+# Rewrite files to www.vmware.com
+RewriteRule ^/files/(.*)$    http://www.vmware.com/files/$1 [P,L]
+
+# Rewrite /community/conferences to /community/conference per Corey
+RewriteRule ^/community/conferences/(.*)$ /community/conference/$1 [R=301]
+RewriteRule ^/community/conferences$ /community/conference [R=301]
+
+# HZ 217244 - conferences.jspa
+RewriteCond %{REQUEST_URI}  ^/conferences(/?|/index.html)$
+RewriteRule ^.*$      /vmworld/conferences.jspa    [R=301,L]
+
+# HZ 202477 - Redirect /emc to www.vmware.com/go/vmworld08-emc
+RewriteRule ^/emc$    http://www.vmware.com/go/vmworld08-emc/   [R=301,L]
+
+Redirect /vmworld/conferences/vmworld2007              /conferences/2007
+Redirect /vmworld/conferences/vmworldeu2008/index.html /conferences/2008/europe
+# 7/25/2011 - Changed to /community/conference/europe2008
+#Redirect /vmworldeurope2008                            /conferences/2008/europe
+RewriteRule ^/vmworldeurope2008                         http://%{ENV:VMWORLD_HOST}/community/conference/europe2008 [R=301,L]
+Redirect /conferences/vmworldeu2008/home.html          /conferences/2008/europe
+Redirect /vmworld/conferences/vmworld2008/index.html   /conferences/2008
+
+# 7/25/2011 - /conferences/2007/ pages are not longer correct, redirect to main site
+#RewriteRule ^/conferences/2007$                        http://%{ENV:VMWORLD_HOST}/conferences/2007/ [R,L]
+RewriteRule ^/conferences/2007$                        http://%{ENV:VMWORLD_HOST} [R=301,L]
+# 7/25/2011 - /conferences/2008 got moved to /community/conference/2008/
+#RewriteRule ^/conferences/2008$                        http://%{ENV:VMWORLD_HOST}/conferences/2008/ [R,L]
+RewriteRule ^/conferences/2008$                        http://%{ENV:VMWORLD_HOST}/community/conference/2008/ [R=301,L]
+# 7/25/2011 - Teamsite don't have these content anymore, so comment it out
+#RewriteRule ^/conferences/2007(.*)$                    http://www.vmware.com/conferences/2007$1 [P,L]
+#RewriteRule ^/conferences/2008(.*)$                    http://www.vmware.com/conferences/2008$1 [P,L]
+# HZ 1427390
+RewriteRule ^/2014-pre-register              /community/conference/pre-reg [R=301,L]
+# HZ 1442982
+RewriteRule ^/sddc$              /go/rt-sddc [R=301,L]
+RewriteRule ^/hybridcloud$              /go/rt-hybridcloud [R=301,L]
+RewriteRule ^/mobility$              /go/rt-mobility [R=301,L]
+RewriteRule ^/euc$              /go/rt-euc [R=301,L]
+RewriteRule ^/partner$              /go/rt-partner [R=301,L]
+RewriteRule ^/architects$              /go/rt-architects [R=301,L]
+#
+RewriteRule ^/networking$              http://www.vmware.com/go/rt-networking [R=301,L]
+RewriteRule ^/security$              http://www.vmware.com/go/rt-security [R=301,L]
+RewriteRule ^/storage$              http://www.vmware.com/go/rt-storage [R=301,L]
+# HZ 1473404
+RewriteRule ^/management$              http://www.vmware.com/go/rt-management [R=301,L]
+# HZ 1498365 CR-00104669
+RewriteRule ^/keynote              /community/conference/us/learn/general-sessions [R=301,L]
+#CR-00094939
+#RewriteRule ^/voting.jspa              /index.jspa [R=301,L]
+# CR-00104669
+RewriteRule ^/mobile-login.jspa     /community/conference/mobile-apps [R=301,L]

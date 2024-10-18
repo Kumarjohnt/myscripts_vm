@@ -1,0 +1,2319 @@
+# This file contains "dumb" virtual hosts which does nothing more than a few redirects.
+
+
+    server {
+       listen 80;
+       server_name vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^(.*)$ https://www.vmware.com$1 permanent;
+
+    }
+
+
+    server {
+       listen 80;
+       server_name hol.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       # HZ 1151113
+       # rewrite .* https://www.vmware.com/landing_pages/hands-on-labs-beta.html  permanent;
+       rewrite .* http://communities.vmware.com/community/vmtn/resources/how  permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.wespeakcloud.org wespeakcloud.org;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://wespeakcloud.vmware.com/ permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.co.hu vmware.co.hu;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/hu   permanent;
+    }
+
+
+   server {
+       listen 80;
+       server_name www.vmware.de vmware.de;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/de   permanent;
+    }
+
+#RFC-224331
+#server {
+#       listen 80;
+#       server_name vmware.de;
+#       include /etc/nginx/allow_GET_only.conf;
+#       rewrite .* https://www.vmware-event.com/vmworld   permanent;
+#    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.fr vmware.fr;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/fr   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.be vmware.be;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/nl_be   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.it vmware.it;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/it   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.se vmware.se;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/se   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.es vmware.es www.vmware.com.es vmware.com.es;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/es   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.nl vmware.nl;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/nl   permanent;
+    }
+
+
+    # HZ1222523
+    #server {
+    #   listen 80;
+    #   server_name www.vmware.com.co
+    #               vmware.com.co www.vmware.com.mx
+    #               vmware.com.mx vmware.mx www.vmware.mx
+    #               www.vmware.co vmware.co;
+    #   include /etc/nginx/allow_GET_only.conf;
+    #   rewrite .* http://www.vmware.com/latam   permanent;
+    #}
+
+
+    server {
+       listen 80;
+       server_name www.vmware.ca vmware.ca;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/ca   permanent;
+    }
+
+
+    #server {
+    #   listen 80;
+    #   server_name www.vmware.com.br vmware.com.br;
+    #   include /etc/nginx/allow_GET_only.conf;
+    #   rewrite .* http://www.vmware.com/br   permanent;
+   # }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.co.uk vmware.co.uk;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/uk/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.in vmware.in vmware.co.in www.vmware.co.in;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/yourcloud($|/$) http://info.vmware.com/content/APAC_IN_Cloud_Basics?src=www_11Q2VMW_APAC_IN_12225_Cloud_vmware.com   permanent;
+       rewrite .* http://www.vmware.com/in   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.tw vmware.tw www.vmware.com.tw vmware.com.tw;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/tw   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.com.cn vmware.com.cn www.vmware-tsx.cn vmware-tsx.cn;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/movebeyond$ http://www.vmware.com/cn/movebeyond/   permanent;
+       rewrite .* http://www.vmware.com/cn   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name vmwarepartnerexchange.com www.vmwarepartnerexchange.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/register$  http://vmware.regsvc.com/e161 permanent;
+       rewrite ^/(S|s)urvey$  http://www.vmware.com/go/pex2011survey permanent;
+       rewrite ^/game$  http://www.vmware.com/go/pex2011game permanent;
+       rewrite ^/gomobile$  http://www.vmware.com/go/pex2011mobileapp permanent;
+       rewrite ^/2014-(P|p)re-(R|r)egister$ http://communities.vmware.com/community/vmtn/partner-exchange/savethedate permanent;
+       ##rewrite .* http://communities.vmware.com/community/partner-exchange/ permanent;
+       rewrite ^/2015-(P|p)re-(R|r)egister$ http://communities.vmware.com/community/vmtn/partner-exchange/savethedate permanent;
+       rewrite .* http://communities.vmware.com/community/partner-exchange/ permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name businessready.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/de$ http://67.199.9.144/CGI-BIN/bca_assessment/de/vmware_at.html permanent;
+       rewrite ^/fr$ http://67.199.9.144/CGI-BIN/bca_assessment/fr/vmware_at.html permanent;
+       rewrite ^/br$ http://67.199.9.144/CGI-BIN/bca_assessment/br/vmware_at.html permanent;
+       rewrite ^/cn$ http://67.199.9.144/CGI-BIN/bca_assessment/cn/vmware_at.html permanent;
+       rewrite ^/lasp$ http://67.199.9.144/CGI-BIN/bca_assessment/le/vmware_at.html permanent;
+       rewrite .* http://67.199.9.144/CGI-BIN/bca_assessment/vmware_at.html permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name journeyassessment.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/jp$ http://67.199.9.144/CGI-BIN/journey_assessment/jp/vmware_at.html permanent;
+       rewrite ^/de$ http://67.199.9.144/CGI-BIN/journey_assessment/de/vmware_at.html permanent;
+       rewrite ^/cn$ http://67.199.9.144/CGI-BIN/journey_assessment/cn/vmware_at.html permanent;
+       rewrite ^/fr$ http://67.199.9.144/CGI-BIN/journey_assessment/fr/vmware_at.html permanent;
+       rewrite ^.*$ http://67.199.9.144/CGI-BIN/journey_assessment/vmware_at.html permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.co.kr vmware.co.kr;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/kr   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.co.at vmware.co.at;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/at   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.jp vmware.jp www.vmware.co.jp vmware.co.jp jp.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/education/?$ http://www.vmware.com/jp/services/education-certification/   permanent;
+       rewrite .* http://www.vmware.com/jp   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.co.nz vmware.co.nz;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/careers($|/$|/index.html$) http://info.vmware.com/content/APAC_AP_VMware_Careers   permanent;
+       rewrite .* http://www.vmware.com/ap   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.asia vmware.asia;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/time$ http://www.vmwareyourtime.com/apac   permanent;
+       rewrite .* http://www.vmware.com/ap/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.com.sg vmware.com.sg;
+       include /etc/nginx/allow_GET_only.conf;
+       # HZ 885209
+       rewrite ^/careers(/?|/index.html)$ http://info.vmware.com/content/APAC_AP_VMware_Careers   permanent;
+       #HZ 460651
+       rewrite ^/vforum09$ http://info.vmware.com/content/APAC_ASEAN_SG_VirtualizationForum2009?src=URL_09Q4_VMW_OTHER_VFORUM_URL&ossrc=URL_09Q4_VMW_OTHER_VFORUM_URL   permanent;
+       rewrite .* http://www.vmware.com/ap/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.com.my vmware.com.my;
+       include /etc/nginx/allow_GET_only.conf;
+       #HZ 460651
+       rewrite ^/vss09$ http://info.vmware.com/content/APAC_ASEAN_MY_VSS_Home?src=URL_09Q4_VMW_OTHER_VFORUM_URL&ossrc=URL_09Q4_VMW_OTHER_VFORUM_URL   permanent;
+       rewrite .* http://www.vmware.com/ap/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.com.hk vmware.com.hk www.vmware.hk vmware.hk;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/ap   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vmware.com.ru vmware.com.ru www.vmware.ru vmware.ru;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/ru   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vsphere.com vsphere.com www.vsphere.net vsphere.net www.vsphere.org vsphere.org;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/products/vsphere/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name www.vsphere.de vsphere.de www.vsphere.eu vsphere.eu www.vsphere.at vsphere.at;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/de/products/vsphere/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name fastscale.com fastscale.tv fastscale.name fastscale.biz fastscale.ws fastscale.mobi fastscale.de myfastscale.com;
+       server_name www.fastscale.com www.fastscale.tv www.fastscale.name www.fastscale.biz www.fastscale.ws www.fastscale.mobi www.fastscale.de www.myfastscale.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/products/configuration-manager/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name spring-integration.com spring-integration.org springintegration.com springintegration.org;
+       server_name www.spring-integration.com www.spring-integration.org www.springintegration.com www.springintegration.org;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.springsource.org/spring-integration/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name aliveapm.com aliveipc.com aliveitsm.com aliveprofiler.com alivercm.com aliverewind.com alivertsm.com alivesm.com aliveux.com alivevm.com alivevmax.com alivevue.com integrien.org integrien.net integrien.com;
+       server_name www.aliveapm.com www.aliveipc.com www.aliveitsm.com www.aliveprofiler.com www.alivercm.com www.aliverewind.com www.alivertsm.com www.alivesm.com www.aliveux.com www.alivevm.com www.alivevmax.com www.alivevue.com www.integrien.org www.integrien.net www.integrien.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/products/datacenter-virtualization/vcenter-operations-management/overview.html   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name cloudfoundryonline.com shopcloudfoundry.com buycloudfoundry.com cloudfoundryworld.com newcloudfoundry.com mycloudfoundry.com;
+       server_name ecloudfoundry.com cloudfoundrystore.com cloudfoundrys.com gocloudfoundry.com wwwcloudfoundry.com wwcloudfoundry.com openpaas.com;
+       server_name www.cloudfoundryonline.com www.shopcloudfoundry.com www.buycloudfoundry.com www.cloudfoundryworld.com www.newcloudfoundry.com www.mycloudfoundry.com;
+       server_name www.ecloudfoundry.com www.cloudfoundrystore.com www.cloudfoundrys.com www.gocloudfoundry.com www.wwwcloudfoundry.com www.wwcloudfoundry.com www.openpaas.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.cloudfoundry.com/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name interface21.org springprojects.org springtechnology.com interface21.co.uk spring-source.ca springcommunity.org;
+       server_name springforce.com springframework.biz springframework.info springframework.us springplatform.com springplatform.org;
+       server_name springsauce.com springsource.ca springtechnology.ag springtechnology.be springtechnology.de;
+       server_name www.interface21.org www.springprojects.org www.springtechnology.com www.interface21.co.uk www.spring-source.ca www.springcommunity.org;
+       server_name www.springforce.com www.springframework.biz www.springframework.info www.springframework.us www.springplatform.com www.springplatform.org;
+       server_name www.springsauce.com www.springsource.ca www.springtechnology.ag www.springtechnology.be www.springtechnology.de;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.springsource.org/   permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name 3cipher.com www.3cipher.com 3cipher.net www.3cipher.net 3cypher.com www.3cypher.com 3cypher.net www.3cypher.net;
+       server_name armorcredential.com www.armorcredential.com armorcredential.net www.armorcredential.net;
+       server_name armorcredentials.com www.armorcredentials.com armorcredentials.net www.armorcredentials.net;
+       server_name armoredauth.com www.armoredauth.com armoredauth.net www.armoredauth.net armoredauth.org www.armoredauth.org;
+       server_name armoredcredential.com www.armoredcredential.com armoredcredential.net www.armoredcredential.net armoredcredentials.com;
+       server_name www.armoredcredentials.com armoredcredentials.net www.armoredcredentials.net armoredlogin.com www.armoredlogin.com;
+       server_name armoredlogin.net www.armoredlogin.net armoredlogin.org www.armoredlogin.org armoredowa.com www.armoredowa.com armoredowa.net;
+       server_name armoredidentitymanagement.com www.armoredidentitymanagement.com armoredidentity.org www.armoredidentity.org armoredidentity.com www.armoredidentity.com armoredidentitymanagement.net www.armoredidentitymanagement.net armoredidentitymanagement.org www.armoredidentitymanagement.org;
+       server_name www.armoredowa.net armoredowa.org www.armoredowa.org armoredpassword.com www.armoredpassword.com armoredpassword.net www.armoredpassword.net armoredpassword.org www.armoredpassword.org;
+       server_name armoredsmartcard.com www.armoredsmartcard.com armoredsmartcard.net www.armoredsmartcard.net armoredsmartcard.org www.armoredsmartcard.org armoredtoken.com www.armoredtoken.com armoredtoken.net www.armoredtoken.net armoredtoken.org www.armoredtoken.org;
+       server_name armoredtransastions.com www.armoredtransastions.com armoredtransastions.net www.armoredtransastions.net armoredtransastions.org www.armoredtransastions.org;
+       server_name armoredvpn.com www.armoredvpn.com armoredvpn.net www.armoredvpn.net armoredvpn.org www.armoredvpn.org armourcredential.com www.armourcredential.com armourcredential.net www.armourcredential.net armourcredentials.com;
+       server_name www.armourcredentials.com armourcredentials.net www.armourcredentials.net armouredcredential.com www.armouredcredential.com armouredcredential.net www.armouredcredential.net armouredcredentials.com;
+       server_name www.armouredcredentials.com armouredcredentials.net www.armouredcredentials.net authenticationladder.com www.authenticationladder.com authenticationladder.net www.authenticationladder.net;
+       server_name authplus.com www.authplus.com authplus.net www.authplus.net brilliantid.com www.brilliantid.com brilliantid.net www.brilliantid.net;
+       server_name clevercredential.com www.clevercredential.com clevercredential.net www.clevercredential.net clevercredentials.com www.clevercredentials.com clevercredentials.net www.clevercredentials.net esecureid.com www.esecureid.com esecureid.net www.esecureid.net esecureid.org www.esecureid.org eyedentityblog.com www.eyedentityblog.com eyedentityonline.com www.eyedentityonline.com ezdigitalsignatures.com www.ezdigitalsignatures.com ezdigitalsignatures.net www.ezdigitalsignatures.net ezdigitalsignatures.org www.ezdigitalsignatures.org ezdigsig.com www.ezdigsig.com ezdigsig.net www.ezdigsig.net ezdigsig.org www.ezdigsig.org ezdigsigs.com www.ezdigsigs.com ezdigsigs.net www.ezdigsigs.net ezdigsigs.org www.ezdigsigs.org ezmultifactor.net www.ezmultifactor.net ezmultifactor.org www.ezmultifactor.org;
+       server_name ezsso.biz www.ezsso.biz ezsso.com www.ezsso.com ezsso.net www.ezsso.net ezsso.org www.ezsso.org ezstrongauth.com www.ezstrongauth.com ezstrongauthentication.com www.ezstrongauthentication.com ezstrongauthentication.net www.ezstrongauthentication.net ezstrongauthentication.org;
+       server_name www.ezstrongauthentication.org ezstrongauth.net www.ezstrongauth.net ezstrongauth.org www.ezstrongauth.org;
+       server_name flexikey.com www.flexikey.com gotomylogon.com www.gotomylogon.com gotomylogon.info www.gotomylogon.info gotomylogon.mobi www.gotomylogon.mobi gotomylogon.net www.gotomylogon.net gotomylogon.org www.gotomylogon.org gotomyonelogin.biz;
+       server_name www.gotomyonelogin.biz gotomyonelogin.com www.gotomyonelogin.com gotomyonelogin.info www.gotomyonelogin.info gotomyonelogin.me www.gotomyonelogin.me gotomyonelogin.mobi www.gotomyonelogin.mobi gotomyonelogin.net www.gotomyonelogin.net gotomyonelogin.org www.gotomyonelogin.org gotomyonelogin.us www.gotomyonelogin.us gotomyonelogon.biz www.gotomyonelogon.biz gotomyonelogon.com www.gotomyonelogon.com gotomyonelogon.mobi www.gotomyonelogon.mobi gotomyonelogon.us www.gotomyonelogon.us;
+       server_name gotomyvpn.biz www.gotomyvpn.biz gotomyvpn.info www.gotomyvpn.info gotomyvpn.me www.gotomyvpn.me gotomyvpn.mobi www.gotomyvpn.mobi gotomyvpn.net www.gotomyvpn.net gotomyvpn.org www.gotomyvpn.org identifort.com www.identifort.com identifort.net www.identifort.net keymerge.com www.keymerge.com keymerge.net www.keymerge.net mykeyz.com www.mykeyz.com myonelogin.net www.myonelogin.net myonepassword.com www.myonepassword.com myonepassword.net www.myonepassword.net myonesig.com www.myonesig.com myonesignature.com www.myonesignature.com myonesignature.net www.myonesignature.net myonesignature.org www.myonesignature.org myonesig.net www.myonesig.net myonesig.org www.myonesig.org myonlylogin.com www.myonlylogin.com myonlylogin.net www.myonlylogin.net myonlylogon.com www.myonlylogon.com myonlylogon.net www.myonlylogon.net myonlypassword.com www.myonlypassword.com myonlypassword.net www.myonlypassword.net mysinglelogon.com www.mysinglelogon.com;
+       server_name mysinglelogon.net www.mysinglelogon.net phishsentry.com www.phishsentry.com phishsentry.net www.phishsentry.net privasecure.com www.privasecure.com privasecure.net www.privasecure.net signonsafely.com www.signonsafely.com signonsafely.net www.signonsafely.net singlelogin.com www.singlelogin.com singlelogin.net www.singlelogin.net singlelogon.com www.singlelogon.com singlelogon.net www.singlelogon.net singlesignin.com www.singlesignin.com singlesignin.net www.singlesignin.net singlesignon.com www.singlesignon.com singlesignon.net www.singlesignon.net singlesingon.com www.singlesingon.com singlesingon.net www.singlesingon.net theonepassword.com www.theonepassword.com theonepassword.net www.theonepassword.net tricipher.com.cn www.tricipher.com.cn tricipher.com.tw www.tricipher.com.tw tricipher.net www.tricipher.net tricypher.net www.tricypher.net trustedcloud.com www.trustedcloud.com trycipher.com www.trycipher.com trycipher.net www.trycipher.net trycypher.com www.trycypher.com trycypher.net www.trycypher.net user-manager.net www.user-manager.net armoredidentity.net www.armoredidentity.net;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.myonelogin.com/?ref=tricipher_home   permanent;
+    }
+
+    server {
+       listen 80;
+       server_name why.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/virtualization/why-choose-vmware.html permanent;
+    }
+
+    server {
+       listen 80;
+       server_name whiteboard.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/whiteboard permanent;
+    }
+
+    server {
+       listen 80;
+       server_name tamguide.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://www.gosavo.com/vmware/CustomPage/View.aspx?id=1015834 permanent;
+    }
+
+    server {
+       listen 80;
+       server_name tam.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://www.gosavo.com/vmware/CustomPage/View.aspx?id=1183782 permanent;
+    }
+
+    server {
+       listen 80;
+       server_name spm.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://www.gosavo.com/vmware/CustomPage/View.aspx?id=28779417 permanent;
+    }
+
+    server {
+       listen 80;
+       server_name infra-corp.com www.infra-corp.com infra.co.uk www.infra.co.uk infra.com.au www.infra.com.au;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/products/datacenter-virtualization/service-manager/overview.html permanent;
+    }
+
+    server {
+       listen 80;
+       server_name appblast.com www.appblast.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://appblast.ma-appblast.trcint.com permanent;
+    }
+
+    server {
+       listen 80;
+       server_name vcloudipadsupport.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://communities.vmware.com/community/vmtn/server/vcd?view=discussions permanent;
+    }
+
+    server {
+       listen 80;
+       server_name srt.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://mylearn.vmware.com/portals/gsssrt permanent;
+    }
+
+    server {
+       listen 80;
+       server_name tryvmware.com www.tryvmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://www.vmware.com/tryvmware permanent;
+    }
+
+    server {
+       listen 80;
+       server_name hyperforge.org www.hyperforge.org hyperforge.com www.hyperforge.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://support.hyperic.com/display/hypcomm/HyperFORGE permanent;
+    }
+
+    server {
+       listen 80;
+       server_name vmwareforumlatam.com www.vmwareforumlatam.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://info.vmware.com/content/VirtualizationForum_WW permanent;
+    }
+
+    server {
+       listen 80;
+       server_name cloudfoundry.com.cn www.cloudfoundry.com.cn cloudfoundry.cn www.cloudfoundry.cn;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://cn.cloudfoundry.com permanent;
+    }
+
+    server {
+       listen 80;
+       server_name vmwarefling.com www.vmwarefling.com vmwareflings.com www.vmwareflings.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://labs.vmware.com/ permanent;
+    }
+
+    server {
+       listen 80;
+       server_name wavemaker.jp www.wavemaker.jp;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.wavemaker.com permanent;
+    }
+
+    server {
+       listen 80;
+       server_name trango-vp.com www.trango-vp.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/mobile permanent;
+    }
+
+    server {
+       listen 80;
+       server_name thinstall.com www.thinstall.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/products/thinapp permanent;
+    }
+
+    server {
+       listen 80;
+       server_name vmwaretechnologyexchange.com www.vmwaretechnologyexchange.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://communities.vmware.com/community/developer/techexchange permanent;
+    }
+
+    server {
+       listen 80;
+       server_name emt.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/EMT permanent;
+    }
+
+    server {
+       listen 80;
+       server_name vmwarepress.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.pearsonitcertification.com/promotions/promotion.aspx?promo=138356 permanent;
+    }
+
+    server {
+       listen 80;
+       server_name hyperichq.com www.hyperichq.com hyperichq.net www.hyperichq.net;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.hyperic.com/ permanent;
+    }
+
+    server {
+       listen 80;
+       server_name cloudstatus.net www.cloudstatus.net cloudstatus.org www.cloudstatus.org cloudstatus.com www.cloudstatus.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://vmware.com/go/Hyperic permanent;
+    }
+
+    server {
+       listen 80;
+       server_name packetsentry.com www.packetsentry.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.packetmotion.com/ permanent;
+    }
+
+    server {
+       listen 80;
+       server_name vmforce.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmforce.com/ permanent;
+    }
+
+    server {
+       listen 80;
+       server_name vov.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://rd.eng.vmware.com/web/vov permanent;
+    }
+
+    server {
+       listen 80;
+       server_name www.myvmware.com myvmware.com www.myvmware.org myvmware.org myvmware.net www.myvmware.net;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://my.vmware.com permanent;
+    }
+
+    server {
+       listen 80;
+       server_name www.vmwarestore.com vmwarestore.com store.vmware.com shop.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/vmwarestore/ permanent;
+    }
+
+    #HZ 1663667
+    server {
+       listen 80;
+       server_name opensource.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/download/open_source.html  permanent;
+    }
+
+    server {
+       listen 80;
+       server_name viops.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://communities.vmware.com/community/viops  permanent;
+    }
+    
+    #RFC 203704
+    server {
+       listen 80;
+       server_name www.vmtn.net vmtn.net vmtn.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://communities.vmware.com  permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name vmug.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://communities.vmware.com/community/vmug  permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name developer.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://developercenter.vmware.com  permanent;
+    }
+
+    server {
+       listen 80;
+       server_name beta.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://communities.vmware.com/community/beta?view=overview  permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name vam.vmware.com vamarketplace.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/appliances  permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name fieldacademy.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^(.*)$ http://mylearn.vmware.com/portals/field$1  permanent;
+    }
+
+
+    server {
+       listen 80;
+       server_name link.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://vmware-com.socialcast.com  permanent;
+    }
+
+    server {
+        listen 80;
+        server_name vmware.com.ar www.vmware.com.ar;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/latam/ permanent;
+    }
+
+    server {
+        listen 80;
+        server_name yourvfabric.com www.yourvfabric.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://www.vmware.com/products/application-platform/vfabric/overview.html permanent;
+    }
+
+    server {
+        listen 80;
+        server_name tryvfabric.com www.tryvfabric.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://my.vmware.com/web/vmware/evalcenter?p=vfabric-advanced&lp=default permanent;
+    }
+
+    server {
+        listen 80;
+        server_name tryvcloud.com www.tryvcloud.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://my.vmware.com/web/vmware/evalcenter?p=vcloud-director15&lp=default permanent;
+    }
+
+    server {
+        listen 80;
+        server_name tryvsphere.com www.tryvsphere.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://my.vmware.com/web/vmware/evalcenter?p=vmware-vsphere5-ent&lp=default permanent;
+    }
+# HZ1222523
+    #server {
+    #    listen 80;
+#       server_name vmware.co.ve www.vmware.co.ve;
+#        include /etc/nginx/allow_GET_only.conf;
+#        rewrite .* http://www.vmware.com/latam/ permanent;
+#    }
+
+    server {
+        listen 80;
+        server_name vmw.com www.vmw.com;
+        include /etc/nginx/allow_GET_only.conf;
+        access_log /var/log/nginx/vmw.com/vmw.com_access.log main;
+        rewrite ^(.*)$ http://www.vmware.com$1 permanent;
+    }
+
+    server {
+        listen 80;
+        server_name vmware.co www.vmware.co vmware.com.co www.vmware.com.co;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/co/ permanent;
+    }
+
+    server {
+        listen 80;
+        server_name vmware.com.pe www.vmware.com.pe vmware.pe www.vmware.pe;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/pe/ permanent;
+    }
+
+    server {
+        listen 80;
+        server_name vmware.com.ve www.vmware.com.ve vmware.co.ve www.vmware.co.ve;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/ve/ permanent;
+    }
+
+    server {
+        listen 80;
+        server_name vmware.com.mx www.vmware.com.mx vmware.mx www.vmware.mx;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/mx/ permanent;
+    }
+
+    server {
+        listen 80;
+        server_name vfarbric.us www.vfarbric.us;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://www.vmware.com/products/application-platform/vfabric/overview.html permanent;
+    }
+
+    # HZ 1284402
+    server {
+        listen 80;
+        server_name vmwarepress.com www.vmwarepress.com;
+        include /etc/nginx/allow_GET_only.conf;
+        #rewrite .* http://www.pearsonitcertification.com/topics/topic.aspx?st=87566 permanent;
+        rewrite .* http://www.pearsonitcertification.com/promotions/promotion.aspx?promo=138356 permanent;
+    }
+
+    server {
+        listen 80;
+        server_name 101.vmware.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://www.gosavo.com/vmware/CustomPage/View.aspx?id=28877445 permanent;
+    }
+
+    # HZ 1256050
+    server {
+        listen 80;
+        server_name vmwarecertification.com www.vmwarecertification.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://mylearn.vmware.com/portals/certification/ permanent;
+    }
+
+    # HZ 1253489
+    server {
+        listen 80;
+        server_name ithcsolutions.com www.ithcsolutions.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://benchmark.vmware.com permanent;
+    }
+
+    server {
+        listen 80;
+        server_name ithc.com www.ithc.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite ^ithc$  http://benchmark.vmware.com permanent;
+        rewrite .* http://www.vmware.com/products/it-business-management/it-benchmarking/overview.html permanent;
+    }
+
+    # HZ 1258754
+    server {
+        listen 80;
+        server_name vmwarecertifications.com www.vmwarecertifications.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://mylearn.vmware.com/portals/certification/ permanent;
+    }
+
+        # HZ 1271661
+        server {
+        listen 80;
+        server_name packetmotion.com www.packetmotion.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/company/acquisitions/packetmotion.html permanent;
+    }
+
+    # HZ 1330506
+    server {
+        listen 80;
+        server_name latamvmwareforum.com www.latamvmwareforum.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/latam permanent;
+    }
+
+    #HZ 1543875
+    server {
+        listen 80;
+        server_name openstack.vmware.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://vault.vmware.com/group/vault-main-library/openstack permanent;
+    }
+
+   server {
+        listen 80;
+        server_name gss.vmware.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://vmwaresearch.vmware.com/search?&btnG.x=52&btnG.y=14&client=gsssearch_frontend&proxystylesheet=gsssearch_frontend&proxyreload=1&sort=date%3AD%3AL%3Ad1&oe=UTF-8&ie=UTF-8&getfields=*&filter=0&entsp=a__vmwaresearch_policy&exclude_apps=1&site=GSSSearch permanent;
+    }
+
+    #HZ 1382197
+    server {
+         listen 80;
+         server_name vmwarepartnercentral.com www.vmwarepartnercentral.com;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://www.vmware.com/partners/partners permanent;
+    }
+
+    server {
+         listen 80;
+         server_name vmwarepartnercentral.net www.vmwarepartnercentral.net;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://www.vmware.com/partners/partners permanent;
+    }
+
+    server {
+         listen 80;
+         server_name vmwarepartnercentral.org www.vmwarepartnercentral.org;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://www.vmware.com/partners/partners permanent;
+    }
+
+    server {
+         listen 80;
+         server_name psb.vmware.com;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://www.vmware.com/ permanent;
+    }
+
+    #HZ 1446142
+    server {
+         listen 80;
+         server_name viewplanner.net www.viewplanner.net vdimark.net www.vdimark.net;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .*  http://www.vmware.com/products/desktop_virtualization/view-planner/overview.html permanent;
+    }
+
+    server {
+         listen 80;
+         server_name strides.do www.strides.do;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://www.socialcast.com/ permanent;
+    }
+
+
+#
+# 2013-07-27 RFC 119093
+#
+server {
+   listen 80;
+   server_name www.myoneloginlabs.com myoneloginlabs.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log /var/log/nginx/tricipher-access_log main;
+
+   rewrite  .*  http://www.myonelogin.com/?ref=tricipher_home  permanent;
+
+}
+
+
+
+server {
+   listen 80;
+   server_name vmwareifonly.com www.vmwareifonly.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   ^/(uk|en)$ http://info.vmware.com/content/SMB_2010_If_only_Intro_ie        permanent;
+   rewrite   ^/(de|fr|es|nl|it)$        http://info.vmware.com/content/SMB_2010_If_only_Intro_$1        permanent;
+   rewrite   ^/(cz|pl|ru)$      http://info.vmware.com/content/SMB_TIER3_$1_Index       permanent;
+   rewrite   ^/se$      http://info.vmware.com/content/SMB_TIER3_se_Index       permanent;
+   rewrite   ^/br$      http://info.vmware.com/content/SMB_2010_If_only_Intro_br_pt     permanent;
+   rewrite   ^/latam$   http://info.vmware.com/content/SMB_2010_If_only_Intro_lt_es     permanent;
+   rewrite   ^/(apac|cn|jp)$    http://www.vmware.com   permanent;
+   rewrite   ^/dell/ap$ http://www.vmware.com   permanent;
+   rewrite   ^/na$      http://info.vmware.com/content/SMB_2010_If_only_intro$1 permanent;
+   rewrite   ^/na/introduction(.*)$     http://info.vmware.com/content/SMB_2010_If_only_intro$1 permanent;
+   rewrite   ^/na/home(.*)$     http://info.vmware.com/content/SMB_2010_If_only_Landing$1       permanent;
+   rewrite   ^/na/assessment(.*)$       http://info.vmware.com/content/SMB_2010_If_only_assessment$1    permanent;
+   rewrite   ^/na/calculator(.*)$       http://info.vmware.com/content/SMB_2010_If_only_Calculator$1    permanent;
+   rewrite   ^/na/interactiveguide(.*)$ http://info.vmware.com/content/SMB_2010_If_only_interactive_guide$1     permanent;
+   rewrite   ^/na/resources(.*)$        http://info.vmware.com/content/SMB_2010_If_only_resources$1     permanent;
+   rewrite   ^/na/howtobuy(.*)$ http://info.vmware.com/content/SMB_2010_If_only_how_to_buy$1    permanent;
+   rewrite   ^/na/game(.*)$     http://info.vmware.com/content/SMB_2010_If_only_game$1  permanent;
+   rewrite   ^/na/solutionsfewer20(.*)$ http://info.vmware.com/content/SMB_2010_If_only_fewer_than_20$1 permanent;
+   rewrite   ^/na/solutionsmore20(.*)$  http://info.vmware.com/content/SMB_2010_If_only_more_than_20$1  permanent;
+   rewrite   ^/na/evaluation(.*)$       https://www.vmware.com/tryvmware/index.php?p=vmware-vsphere&lp=2&cid=70180000000PJTM$1  permanent;
+    #RewriteRule ^.*$ http://info.vmware.com/content/SMB_2010_If_only_Landing [R=301,L]
+    #RewriteRule ^.*$ http://info.vmware.com/content/SMB_2010_If_only_intro [R=301,L]
+   rewrite   ^.*$       http://info.vmware.com/content/SMB_2010_If_only_country_selection       permanent;
+
+   access_log /var/log/nginx/vmwareifonly-access_log main;
+}
+
+
+
+#Begin HZ 849544
+server {
+   listen 80;
+   server_name login-dev.vmware.com;
+
+   rewrite   ^.*$       https://myvmware.horizonlabs.vmware.com permanent;
+   access_log /var/log/nginx/login-dev-vmware-access_log main;
+
+}
+#End HZ 849544
+
+
+
+#Begin HZ 901826
+server {
+   listen 80;
+   server_name login-stg.vmware.com;
+
+   rewrite   ^.*$       https://myvmware-stg.horizonmanager.com permanent;
+   access_log /var/log/nginx/login-stg-vmware-access_log main;
+
+}
+#End HZ 901826
+
+
+
+#Begin HZ 903453
+server {
+   listen 80;
+   server_name login.vmware.com;
+
+   rewrite   ^/adp$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/1658       permanent;
+# HZ 955472
+   rewrite   ^/zimbra$  https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/1890       permanent;
+# HZ 1022756
+#   rewrite   ^/wellness$        https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/3962       permanent;
+# HN INC0084899
+    rewrite   ^/wellness$       https://myvmware.workspaceair.com:443/SAAS/API/1.0/GET/apps/launch/app/7e427192-cfcf-4bd9-bd1d-dc0419795f40       permanent;
+# HZ 1230955
+   rewrite   ^/mylearn$ https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4492       permanent;
+# HZ 1070409
+   rewrite   ^/fip$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4236       permanent;
+# HZ 1176426
+   rewrite   ^/aloha$   https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4404       permanent;
+# HZ 1211284
+   rewrite   ^/modelndirect$    http://www.vmware.com/modeln/redirect.html?/modeln/j/wl?WPAGE=com.vmware.sso.SsoLoginPage&JMETH=init    permanent;
+#RFC 107267
+   rewrite   ^/helpzilla$       https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4412       permanent;
+   rewrite   ^/vmstar$  https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/1160       permanent;
+#HZ#1352877
+   rewrite   ^/vbc$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4798       permanent;
+#HZ#1363386
+   rewrite   ^/ebs$     https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4552       permanent;
+#RFC 111246
+#RewriteRule ^/ebs$ https://horizonworkspace.vmware.com/SAAS/API/1.0/GET/apps/launch/app/2a2b62ae-a771-4d5d-9275-ca79649f2704   [R=301,L]
+#
+
+# HZ 1425963
+   rewrite   ^/triad$   https://myvmware.horizonmanager.com/SAAS/API/1.0/GET/apps/launch/app/4942       permanent;
+
+   rewrite   ^.*$       https://myvmware.horizonmanager.com     permanent;
+
+   access_log /var/log/nginx/login-vmware-access_log main;
+
+}
+#End HZ 903453
+
+
+
+#Begin HZ 1000985
+server {
+   listen 80;
+   server_name myvmware.horizon.vmware.com;
+
+   rewrite   ^.*$       https://source.vmware.com/it/ss/Pages/Horizon.aspx      permanent;
+   access_log /var/log/nginx/myvmware-horizon-vmware-access_log main;
+
+}
+#End HZ 1000985
+
+
+
+# Begin HZ 920899
+server {
+   listen 80;
+   server_name www.vfabric.co vfabric.co;
+   include /etc/nginx/allow_GET_only.conf;
+
+    # 2012-06-18 HZ 1055322
+   rewrite   ^/postgres/?$      http://www.vmware.com/products/application-platform/vfabric-postgres/overview.html      permanent;
+   rewrite   ^/pg/?$    http://www.vmware.com/products/application-platform/vfabric-postgres/overview.html      permanent;
+   rewrite   ^/vpostgres/?$     http://www.vmware.com/products/application-platform/vfabric-postgres/overview.html      permanent;
+   rewrite   ^/faq/?$   http://www.vmware.com/products/application-platform/vfabric/faqs.html   permanent;
+
+    # 2012-01-17 HZ 951198
+   rewrite   ^/trials?$ https://www.vmware.com/tryvmware/?p=vfabric-advanced&lp=default permanent;
+   rewrite   ^/(slides?|presentations?|prez|prezos?)$   http://www.slideshare.net/vfabric       permanent;
+   rewrite   ^/hyperichq$       http://www.vmware.com/products/application-platform/vfabric-hyperic/    permanent;
+   rewrite   ^/(prices?|pricing)$       http://www.vmware.com/products/application-platform/vfabric/buy.html    permanent;
+   rewrite   ^/(store|buy)$     http://www.vmware.com/vmwarestore/datacenter-products/vfabric-online-store.html permanent;
+   rewrite   ^/(training|education|learning|train|class|courses?)$      https://mylearn.vmware.com/portals/www/search/catalogA2Z.cfm?ui=www_edu&category=catalog&pageName=Catalog%20A%20to%20Z       permanent;
+   rewrite   ^/(devs|developers?)$      https://www.vmware.com/support/services/vfabric-developer.html  permanent;
+   rewrite   ^/httpd$   http://www.vmware.com/products/application-platform/vfabric-web-server/ permanent;
+   rewrite   ^/twitter$ http://twitter.com/vfabric      permanent;
+   rewrite   ^/youtube$ https://www.youtube.com/view_play_list?p=6B8CB4FD6C168F48       permanent;
+   rewrite   ^/facebook$        http://facebook.com/vfabric     permanent;
+   rewrite   ^/slideshare$      http://slideshare.net/vfabric   permanent;
+   rewrite   ^/vault$   https://www.gosavo.com/vmware/CustomPage/View.aspx?id=1710269   permanent;
+   rewrite   ^/vmvault$ https://www.gosavo.com/vmware/CustomPage/View.aspx?id=1710269   permanent;
+   rewrite   ^/socialcast$      https://vmware-com.socialcast.com/groups/cloudapplicationplatform       permanent;
+   rewrite   ^/try$     https://www.vmware.com/go/try-vfabric-advanced  permanent;
+   rewrite   ^/download$        http://downloads.vmware.com/d/info/application_platform/vmware_vfabric/5        permanent;
+   rewrite   ^/doc$     https://www.vmware.com/support/pubs/vfabric-pubs.html   permanent;
+   # HZ 959056
+   # RewriteRule ^/overview$   http://www.youtube.com/watch?v=QUycud3oprM [NC,R=301,L]
+   # HZ 1038929
+   rewrite   ^/overview$        https://www.youtube.com/watch?v=dwzVK-Ys6CI     permanent;
+   rewrite   ^/csc$     https://www.youtube.com/watch?v=pfKl2mQTZAA     permanent;
+   rewrite   ^/southwest$       https://www.youtube.com/watch?v=Zs-kb8Z83wo     permanent;
+   rewrite   ^/swa$     https://www.youtube.com/watch?v=Zs-kb8Z83wo     permanent;
+   rewrite   ^/emcc$    https://www.youtube.com/watch?v=BnNqi4Z-xqg     permanent;
+   rewrite   ^/emc$     https://www.youtube.com/watch?v=BnNqi4Z-xqg     permanent;
+   rewrite   ^/hcl$     https://www.youtube.com/watch?v=u6lQtW2K5uY     permanent;
+   rewrite   ^/logicalis$       https://www.youtube.com/watch?v=DnZjjKnrZEQ     permanent;
+   rewrite   ^/consilium1$      https://www.youtube.com/watch?v=Oq6ENTooYds     permanent;
+   rewrite   ^/consilium$       https://www.youtube.com/watch?v=Oq6ENTooYds     permanent;
+   rewrite   ^/consiliumone$    https://www.youtube.com/watch?v=Oq6ENTooYds     permanent;
+   rewrite   ^/insightintegrated$       https://www.youtube.com/watch?v=5IwFFygS2Qg     permanent;
+
+   # Begin HZ 920899 comment 20
+   rewrite   ^/blog$    http://blogs.vmware.com/vfabric permanent;
+   rewrite   ^/tctco$   https://www.visualize-roi.com/vmware/tcserver   permanent;
+   rewrite   ^/em4j$    http://www.vmware.com/products/application-platform/vfabric-tcserver    permanent;
+   rewrite   ^/sts$     https://www.springsource.com/developer/sts      permanent;
+   rewrite   ^/tcdev$   https://www.springsource.com/developer/tcserver permanent;
+   rewrite   ^/ad$      http://www.vmware.com/products/application-platform/vfabric-appdirector permanent;
+   rewrite   ^/appdirector$     http://www.vmware.com/products/application-platform/vfabric-appdirector permanent;
+   rewrite   ^/apm$     http://www.vmware.com/products/application-platform/vfabric-application-performance-manager     permanent;
+   rewrite   ^/consulting$      http://www.vmware.com/services/consulting/vmware-vfabric-consulting-services.html       permanent;
+   rewrite   ^/pso$     http://www.vmware.com/services/consulting/vmware-vfabric-consulting-services.html       permanent;
+   rewrite   ^/dd$      http://www.vmware.com/products/application-platform/vfabric-data-director       permanent;
+   rewrite   ^/datadirector$    http://www.vmware.com/products/application-platform/vfabric-data-director       permanent;
+   rewrite   ^/dev$     https://www.vmware.com/support/services/vfabric-developer.html  permanent;
+   rewrite   ^/devsupport$      https://www.vmware.com/support/services/vfabric-developer.html  permanent;
+   rewrite   ^/ers$     http://www.vmware.com/products/application-platform/vfabric-enterprise-ready-server     permanent;
+   rewrite   ^/gemfire$ http://www.vmware.com/products/application-platform/vfabric-gemfire     permanent;
+   rewrite   ^/gf$      http://www.vmware.com/products/application-platform/vfabric-gemfire     permanent;
+   rewrite   ^/hyperic$ http://www.vmware.com/products/application-platform/vfabric-hyperic     permanent;
+   rewrite   ^/hq$      http://www.vmware.com/products/application-platform/vfabric-hyperic     permanent;
+
+   # 2012-06-18 HZ 1055322 DELETED RewriteRule ^/postgres$     http://www.vmware.com/products/application-platform/vfabric-data-director [NC,R=301,L]
+   # 2012-06-18 HZ 1055322 DELETED RewriteRule ^/pg$           http://www.vmware.com/products/application-platform/vfabric-data-director [NC,R=301,L]
+
+   rewrite   ^/rb$      http://www.vmware.com/products/application-platform/vfabric-rabbitmq    permanent;
+   rewrite   ^/rmq$     http://www.vmware.com/products/application-platform/vfabric-rabbitmq    permanent;
+   rewrite   ^/rabbit$  http://www.vmware.com/products/application-platform/vfabric-rabbitmq    permanent;
+   rewrite   ^/rabbitmq$        http://www.vmware.com/products/application-platform/vfabric-rabbitmq    permanent;
+   rewrite   ^/sf$      http://www.vmware.com/products/application-platform/vfabric-sqlfire     permanent;
+   rewrite   ^/sqlfire$ http://www.vmware.com/products/application-platform/vfabric-sqlfire     permanent;
+   rewrite   ^/tc$      http://www.vmware.com/products/application-platform/vfabric-tcserver    permanent;
+   rewrite   ^/tcserver$        http://www.vmware.com/products/application-platform/vfabric-tcserver    permanent;
+   rewrite   ^/ws$      http://www.vmware.com/products/application-platform/vfabric-web-server  permanent;
+   rewrite   ^/http$    http://www.vmware.com/products/application-platform/vfabric-web-server  permanent;
+   rewrite   ^/webserver$       http://www.vmware.com/products/application-platform/vfabric-web-server  permanent;
+   rewrite   ^/apache$  http://www.vmware.com/products/application-platform/vfabric-web-server  permanent;
+   rewrite   ^/eula$    http://www.vmware.com/download/eula/    permanent;
+   rewrite   ^/(partnercentral|partner|partners)$       http://www.vmware.com/partners/partners.html    permanent;
+   # End HZ 920899 comment 20
+   # HZ 977350
+   rewrite   ^/((51)?launch(51)?/?)$    https://vmshare.vmware.com/products/launch/Pages/vFabric51.aspx permanent;
+   rewrite   ^/((vf)?calc/?)$   https://www.visualize-roi.com/vmware/vfabric/   permanent;
+   rewrite   ^/(tco?calc/?)$    https://www.visualize-roi.com/vmware/tcserver/  permanent;
+   rewrite   ^/((spring|sts)downloads?/?)$      https://na6.salesforce.com/00O80000004QDR8      permanent;
+    # HZ 1110951
+   rewrite   ^/forrester$       http://blogs.forrester.com/mike_gualtieri/11-07-15-stop_wasting_money_on_weblogic_websphere_and_jboss_application_servers       permanent;
+   rewrite   ^/forester$        http://blogs.forrester.com/mike_gualtieri/11-07-15-stop_wasting_money_on_weblogic_websphere_and_jboss_application_servers       permanent;
+   rewrite   ^/gartner$ http://www.gartner.com/technology/reprints.do?id=1-19EDYKH&ct=120222&st=sg      permanent;
+   rewrite   ^/gartnergroup$    http://www.gartner.com/technology/reprints.do?id=1-19EDYKH&ct=120222&st=sg      permanent;
+   rewrite   ^/southwestairlines$       http://vfabric.co/swa   permanent;
+   rewrite   ^/southwestair$    http://vfabric.co/swa   permanent;
+   rewrite   ^/newrelic$        http://blog.newrelic.com/2012/01/10/infographic-oss-java-wins-in-the-cloud-era/ permanent;
+   rewrite   ^/zeroturnaround$  http://zeroturnaround.com/blog/developer-productivity-report-2012-java-tools-tech-devs-and-data/        permanent;
+   rewrite   ^/wsj$     http://online.wsj.com/article/SB10001424053111903480904576512250915629460.html  permanent;
+   rewrite   ^/chronicle$       http://www.sfgate.com/cgi-bin/article.cgi?f=/g/a/2011/09/28/businessinsiderboxnet-2011-9.DTL    permanent;
+   rewrite   ^/checkitout$      http://vfabric.co/try   permanent;
+   rewrite   ^/infoworld$       http://www.infoworld.com/t/java-programming/still-dont-think-open-source-hurts-commercial-software-guess-again-184168   permanent;
+   rewrite   ^/uid$     http://uidai.gov.in/index.php?option=com_content&view=article&id=153&Itemid=13  permanent;
+   rewrite   ^/leads$   http://www.j.mp/vfabricleads    permanent;
+   rewrite   ^/overview$        http://www.vmware.com/products/application-platform/vfabric/overview.html       permanent;
+   rewrite   ^/overall$ http://www.vmware.com/products/application-platform/vfabric/overview.html       permanent;
+   rewrite   ^/features$        http://www.vmware.com/products/application-platform/vfabric/features.html       permanent;
+   rewrite   ^/feature$ http://www.vmware.com/products/application-platform/vfabric/features.html       permanent;
+   rewrite   ^/resources$       http://www.vmware.com/products/application-platform/vfabric/resources.html      permanent;
+   rewrite   ^/resource$        http://www.vmware.com/products/application-platform/vfabric/resources.html      permanent;
+   rewrite   ^/compare$ http://www.vmware.com/products/application-platform/vfabric/compare.html        permanent;
+   rewrite   ^/comparison$      http://www.vmware.com/products/application-platform/vfabric/compare.html        permanent;
+   rewrite   ^/howtobuy$        http://www.vmware.com/products/application-platform/vfabric/buy.html    permanent;
+   rewrite   ^/faqs$    http://www.vmware.com/products/application-platform/vfabric/faqs.html   permanent;
+
+   # Begin HZ 1154607
+   rewrite   ^/sliderocket$     http://portal.sliderocket.com/vmware/VMware-vFabric     permanent;
+   rewrite   ^/nanotrader$      http://blogs.vmware.com/vfabric/2012/08/sneak-peak-at-vmwares-nanotrader-reference-architecture.html    permanent;
+   rewrite   ^/(references?|casestudy|casestudies)$     http://www.vmware.com/a/customers/solution/11/Application+Platform      permanent;
+   # End HZ 1154607
+   rewrite   ^.*$       http://www.vmware.com/vfabric   permanent;
+
+   access_log /var/log/nginx/vfabric-co-access_log main;
+}
+# End HZ 920899
+
+
+
+server {
+   listen 80;
+   server_name feeds.vmware.com feed.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   ^.*$       http://www.vmware.com/files/subscribe.xml       permanent;
+   access_log /var/log/nginx/feeds-access_log main;
+}
+
+
+
+server {
+   listen 80;
+   server_name www.digitalfuel.com digitalfuel.com;
+   include /etc/nginx/allow_GET_only.conf;
+   #HZ 1495679
+   #rewrite   ^.*$       http://www.vmware.com/products/datacenter-virtualization/it-business-management/overview.html   permanent;
+   rewrite   ^.*$       http://www.vmware.com/products/itbm-suite/ permanent;
+   access_log /var/log/nginx/digitafuel-access_log main;
+}
+
+
+
+server {
+   listen 80;
+   server_name support.digitalfuel.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   ^.*$       http://itbm-support.vmware.com  permanent;
+   access_log /var/log/nginx/digitafuel-access_log main;
+}
+
+
+
+server {
+   listen 80;
+   server_name www.configuresoft.com configuresoft.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   ^.*$       http://www.vmware.com/products/configuration-manager/overview.html      permanent;
+   access_log /var/log/nginx/configuresoft-access_log main;
+}
+
+
+
+server {
+   listen 80;
+   server_name compliancechecker.configuresoft.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   ^.*$       https://my.vmware.com/web/vmware/evalcenter?p=compliance-chk&lp=default permanent;
+   access_log /var/log/nginx/configuresoft-access_log main;
+}
+
+
+# End of 2013-07-26 RFC 119093
+
+
+
+#  This vhost punches through firewall, it should be moved to web-prod-w1 and w2
+
+    #HZ 1355185
+    server {
+       listen 80;
+       server_name vmwarebriefing.com www.vmwarebriefing.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+
+       location / {
+          proxy_set_header  Host               $http_host;
+          proxy_set_header  X-Forwarded-Host   $http_host;
+          proxy_set_header  X-Forwarded-Server $http_host;
+          proxy_set_header  X-Real-IP          $remote_addr;
+          proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+          proxy_pass http://10.21.54.60:8080/;
+          }
+    }
+
+#HZ 1424800
+
+server {
+   listen 80;
+   server_name standards.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   ^.*$  http://developercenter.vmware.com/web/standards/-/ux-design-standards-for-vsphere-web-client permanent;
+   access_log /var/log/nginx/standards-access_log main;
+}
+
+server {
+       listen 80;
+       server_name nicira.com www.nicira.com nicira.org www.nicira.org;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/support$  https://apps.nicira.com/support/  permanent;
+       rewrite ^/support/$ https://apps.nicira.com/support/  permanent;
+       rewrite .*   https://www.vmware.com/products/nsx/  permanent;
+}
+
+
+server {
+       listen 80;
+       server_name vmware.com.au www.vmware.com.au;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .*  http://www.vmware.com/au  permanent;
+       access_log /var/log/nginx/vmware.com.au-access_log main;
+}
+
+server {
+       listen 80;
+       server_name virsto.com www.virsto.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/support$  http://www.vmware.com/support.html  permanent;
+       rewrite ^/support/(.*)$ http://www.vmware.com/support.html  permanent;
+       rewrite .*   http://www.vmware.com/products/virsto/  permanent;
+}
+
+server {
+       listen 80;
+       server_name virsto.net www.virsto.net;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .*   http://www.virsto.com  permanent;
+       access_log /var/log/nginx/virsto-access_log main;
+}
+
+server {
+       listen 80;
+       server_name jobs.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^.*$   http://vmware.jobs  permanent;
+       access_log /var/log/nginx/jobs-vmware-access_log main;
+}
+
+
+server {
+       listen 80;
+       server_name vmwarepartnerlearning.com www.vmwarepartnerlearning.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^.*   http://www.vmware.com/partners/partner-learning/partner-learning.html  permanent;
+       access_log /var/log/nginx/vmwarepartnerlearning-access_log main;
+}
+
+
+server {
+       listen 80;
+       server_name www.vmworld.eu www.vmworld2008.com www.vmworld2009.com www.vmworld2010.com;
+       server_name www.vmworld2011.com www.vmworld2012.com www.vmworld2013.com www.vmworld2014.com;
+       server_name www.vmworld2015.com www.vmworldeurope.com www.vmworldeurope2009.com www.vmworldeurope2010.com;
+       server_name www.vmworldeurope2011.com www.vmworldeurope2012.com www.vmworldeurope2013.com;
+       server_name www.vmworldeurope2014.com  www.vmworldeurope2015.com;
+       server_name vmworld.eu vmworldeurope.com vmworld2008.com vmworld2009.com vmworld2010.com vmworld2011.com;
+       server_name vmworld2012.com vmworld2013.com vmworld2014.com vmworld2015.com vmworldeurope2009.com vmworldeurope2010.com;
+       server_name vmworldeurope2011.com vmworldeurope2012.com vmworldeurope2013.com vmworldeurope2014.com vmworldeurope2015.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^.*   http://www.vmworld.com/  permanent;
+       access_log /var/log/nginx/vmworld-generic-access_log main;
+}
+
+
+server {
+   listen 80;
+   server_name  helpnow-old.vmware.com help-old.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   .*   http://vmwarecorp.service-now.com/helpnow      permanent;
+}
+
+
+#HZ 1691821
+server {
+   listen 80;
+   server_name www.vmwarecanadabenefits.com vmwarecanadabenefits.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   .*   https://ssl2.perquisite.net/rewardcentre/login?EID=00959331-9a3e-4239-8810-915bda05396b   permanent;
+}
+
+server {
+   listen 80;
+   server_name www.vmwarechinabenefits.com vmwarechinabenefits.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   .*   https://ssl2.perquisite.net/rewardcentre/login?EID=6fb1b178-b757-4c19-aa39-22514cea4558   permanent;
+}
+
+server {
+   listen 80;
+   server_name www.vmwareirelandbenefits.com vmwareirelandbenefits.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite   .*   https://ssl2.perquisite.net/rewardcentre/login?EID=ee695493-384f-4e71-b41f-c6441db27571   permanent;
+}
+
+#HZ 1699745
+
+server {
+        listen 80;
+        server_name www.my-vmware.net my-vmware.net;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://my.vmware.com  permanent;
+    }
+
+server {
+        listen 80;
+        server_name www.my-vmware.com my-vmware.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://my.vmware.com  permanent;
+#       access_log /var/log/nginx/my-vmware.com-access_log main;
+    }
+
+#HZ 1728024
+server {
+         listen 80;
+         server_name servicerequest.fieldsalesservices.vmware.com;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* https://adobeformscentral.com/?f=%2AYXydv8uvjtBqKJdqT2FPA permanent;
+    }
+#HZ 1746028
+
+server {
+        listen 80;
+        server_name www.vmdev.net vmdev.net;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://developercenter.vmware.com  permanent;
+    }
+
+
+#TASK0018056
+server {
+        listen 80;
+        server_name www.vcloudair.com vcloudair.com;
+        include /etc/nginx/allow_GET_only.conf;
+##RFC#181283##
+	rewrite ^/available(/?|\.html)$	http://vcloud.vmware.com/service-offering/disaster-recovery-campaign permanent;
+        rewrite .* http://vcloud.vmware.com  permanent;
+    }
+
+#RFC 153481
+#server {
+#        listen 80;
+#        server_name cto.vmware.com;
+#        include /etc/nginx/allow_GET_only.conf;
+#        rewrite (.*)$ http://blogs.vmware.com/cto$1 permanent;
+#    }
+
+#TASK0041423
+server {
+        listen 80;
+        server_name www.evpfederation.com evpfederation.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.emcfederation.com permanent;
+    }
+
+
+#
+server {
+        listen 80;
+        server_name www.desktone.net desktone.net www.desktone.org desktone.org www.desktone.info desktone.info;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.desktone.com permanent;
+    }
+
+#HZ INC0018780
+server {
+         listen 80;
+         server_name emeafieldsalesservices.vmware.com;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* https://adobeformscentral.com/?f=7TyrEfy5N1XWDScD6fZwHg permanent;
+    }
+
+# INC RITM0052616
+server {
+         listen 80;
+         server_name hyperic.com;
+         server_name www.hyperic.com;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://www.vmware.com/products/vrealize-hyperic/ permanent;
+    }
+
+# RITM0046012
+server {
+         listen 80;
+         server_name nsx.vmware.com;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* https://vault.vmware.com/group/nsx/nsx-technical-resources permanent;
+    }
+
+
+# CR-00120247 Requested by Eric Nielsen
+server {
+         listen 80;
+         server_name www.vmwareitoutcomes.com vmwareitoutcomes.com;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* https://itoutcomes.vmware.com/  permanent;
+    }
+
+
+server {
+         listen 80;
+         server_name www.cloudvolumes.com cloudvolumes.com www.snapvolumes.com snapvolumes.com www.snapvolumes.net snapvolumes.net;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* https://www.vmware.com/products/appvolumes  permanent;
+    }
+
+server {
+         listen 80;
+         server_name itoutcomes.vmware.fr;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://itoutcomes-fr.vmware.com  permanent;
+    }
+
+server {
+         listen 80;
+         server_name itoutcomes.vmware.de;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://itoutcomes-de.vmware.com  permanent;
+    }
+
+
+server {
+         listen 80;
+         server_name socialcast.co.uk www.socialcast.co.uk;
+         include /etc/nginx/allow_GET_only.conf;
+         rewrite .* http://www.socialcast.com permanent;
+    }
+
+server {
+       listen 80;
+       server_name solutioncenter.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://developercenter.vmware.com  permanent;
+    }
+
+server {
+       listen 80;
+       server_name vmwarehimssvipkeynote.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmwarehimssvipkeynote.com permanent;
+    }
+
+server {
+       listen 80;
+       server_name vmwarehimsswrigleyfield.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmwarehimsswrigleyfield.com permanent;
+    }
+
+server {
+       listen 80;
+       server_name www.bluelane.com bluelane.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/products/vsphere/  permanent;
+    }
+
+server {
+       listen 80;
+       server_name www.dynamicops.com dynamicops.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://www.vmware.com/company/acquisitions/dynamicops.html  permanent;
+    }
+
+server {
+       listen 80;
+       server_name www.neoaccel.com neoaccel.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://www.vmware.com/products/vcloud-network-security.html  permanent;
+    }
+
+server {
+       listen 80;
+       server_name www.tricipher.com tricipher.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/products/workspace-suite  permanent;
+    }
+
+server {
+       listen 80;
+       server_name projectdiscus.org www.projectdiscus.org projectdiscus.com www.projectdiscus.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/discus permanent;
+    }
+server {
+        listen 80;
+        server_name vmwarehitshimss15.com www.vmwarehitshimss15.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://info.vmware.com/content/31806_Healthcare_HIMSS15
+        permanent;
+}
+
+###RFC#180074###
+	server {
+	listen 80;
+	server_name immidio.com blog.immidio.com;
+	include /etc/nginx/allow_GET_only.conf;
+	rewrite ^/support/?$ https://www.vmware.com/support/user-environment-manager/ permanent;
+	rewrite .* https://www.vmware.com/products/user-environment-manager/  permanent;
+}
+
+###RFC#180074###
+	server {
+	listen 80;
+	server_name support.immidio.com;
+	include /etc/nginx/allow_GET_only.conf;
+	rewrite .* https://www.vmware.com/support/user-environment-manager/  permanent;
+}
+
+###RFC#175013###
+server {
+	listen 80;
+	server_name activeappscanner.com appscriber.com appscriber.net appscriber.info appscriber.org;
+	server_name flexprofiles.com immidio.be immidio.biz immidio.cn immidio.de immidio.info;
+	server_name immidio.net immidio.org immidio.tv immidio.us iummidio.xxx immidioflexplus.com;
+###RFC#180074###
+        server_name immid.io immidio.co.uk immidio.es immidio.eu immidio.fr immidio.it immidio.jp immidio.nl ;
+	include /etc/nginx/allow_GET_only.conf;
+	rewrite .* http://immidio.com permanent;
+}
+
+server {
+       listen 80;
+       server_name roadmap.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://vault.vmware.com/group/vault-main-library/vmware-strategy   permanent;
+    }
+
+server {
+  listen 80;  
+  server_name  continuent.com www.continuent.com ;  
+  include /etc/nginx/allow_GET_only.conf;
+  rewrite  ^/news/blogs/?$  http://blogs.vmware.com  permanent;
+  rewrite  ^/news/events/1407-oow-2014/?$  http://www.vmware.com/company/news/  permanent;
+  rewrite  ^/news/events/?$  http://www.vmware.com/events/  permanent;
+  rewrite  ^/news/press/1315-continuent-tungsten-replicator-now-completely-open-source/?$  http://www.vmware.com/company/news/  permanent;
+  rewrite  ^/news/press/?$  http://www.vmware.com/company/news/  permanent;
+  rewrite  ^/news/?$  http://www.vmware.com/company/news/  permanent;
+  rewrite  ^/about/board/?$  http://www.vmware.com/company/leadership/  permanent;
+  rewrite  ^/about/contact/?$  http://www.vmware.com/company/contact/  permanent;
+  rewrite  ^/about/contact-form/?$  http://www.vmware.com/company/contact/  permanent;
+  rewrite  ^/about/legal/?$  http://www.vmware.com/help/legal.html  permanent;
+  rewrite  ^/about/management/?$  http://www.vmware.com/company/leadership/  permanent;
+  rewrite  ^/about/?$  http://www.vmware.com/company/  permanent;
+  rewrite .* http://www.vmware.com/products/continuent/  permanent;
+  }
+
+server {
+  listen 80;
+  server_name  applicationcluster.com  www.applicationcluster.com ; 
+  server_name  auree.com  www.auree.com ;  
+  server_name  c-jdbc.com  www.c-jdbc.com ;  
+  server_name  cjdbc.com  www.cjdbc.com ;  
+  server_name  database-ha.com  www.database-ha.com ;  
+  server_name  database-ha.org  www.database-ha.org ;  
+  server_name  databaseha.com  www.databaseha.com ;  
+  server_name  databaseha.org  www.databaseha.org ;  
+  server_name  datafabric.eu  www.datafabric.eu ;  
+  server_name  datafabric.info  www.datafabric.info ;  
+  server_name  datafabric.org  www.datafabric.org ;  
+  server_name  dbscaleout.com  www.dbscaleout.com ;  
+  server_name  dbscaleout.org  www.dbscaleout.org ;  
+  server_name  mysql-master-master.com  www.mysql-master-master.com ;  
+  server_name  mysql-multi-master.com  www.mysql-multi-master.com ;  
+  server_name  mysqlcluster.com  www.mysqlcluster.com ;  
+  server_name  mysqlloadbalancing.com  www.mysqlloadbalancing.com ;  
+  server_name  mysqlmaster-master.com  www.mysqlmaster-master.com ;  
+  server_name  mysqlmastermaster.com  www.mysqlmastermaster.com ;  
+  server_name  mysqlmulti-master.com  www.mysqlmulti-master.com ;  
+  server_name  mysqlmultimaster.com  www.mysqlmultimaster.com ;  
+  server_name  mysqlmultisite.com  www.mysqlmultisite.com ;  
+  server_name  mysqlpost.com  www.mysqlpost.com ;  
+  server_name  mysqlproxy.com  www.mysqlproxy.com ;  
+  server_name  mysqlscaleout.com  www.mysqlscaleout.com ;  
+  server_name  mysqlscaleout.org  www.mysqlscaleout.org ;  
+  server_name  postgresqlscaleout.com  www.postgresqlscaleout.com ;  
+  server_name  postgresqlscaleout.org  www.postgresqlscaleout.org ;  
+  server_name  scaleout.org  www.scaleout.org ;  
+  server_name  scaleoutblog.com  www.scaleoutblog.com ;  
+  server_name  scaleoutblog.org  www.scaleoutblog.org ;  
+  server_name  unbreakabledatabase.com  www.unbreakabledatabase.com ;  
+  server_name  unbreakabledatabase.org  www.unbreakabledatabase.org ;  
+  server_name  unbreakabledbms.com  www.unbreakabledbms.com ;  
+  server_name  unbreakabledbms.org  www.unbreakabledbms.org ;  
+  server_name  unbreakablemysql.com  www.unbreakablemysql.com ;  
+  server_name  unbreakablemysql.org  www.unbreakablemysql.org ;  
+  server_name  unbreakablepostgresql.com  www.unbreakablepostgresql.com ;  
+  server_name  unbreakablepostgresql.org  www.unbreakablepostgresql.org ;  
+  include /etc/nginx/allow_GET_only.conf;
+  rewrite .* http://www.vmware.com/products/continuent/  permanent;
+  }
+
+###RFC#179318###
+
+server {
+	listen 80;
+	server_name vmwareviewpoint.com;
+	include /etc/nginx/allow_GET_only.conf;
+	rewrite .* http://www.vmwareviewpoint.com/ permanent;
+  }	
+
+###RFC#180478##
+
+server {
+        listen 80;
+        server_name vmwareukbenefits.com www.vmwareukbenefits.com;
+	server_name vmwarenetherlandsbenefits.com www.vmwarenetherlandsbenefits.com;
+	server_name vmwarebulgariabenefits.com www.vmwarebulgariabenefits.com;
+	server_name vmwarekoreabenefits.com www.vmwarekoreabenefits.com;
+	server_name vmwarebrazilbenefits.com www.vmwarebrazilbenefits.com ;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .*  https://ssl2.perquisite.net/rewardcentre  permanent;
+  }
+
+###RFC#182722##
+server {
+        listen 80;
+        server_name identity.vmware.com;
+        server_name vidm.vmware.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* http://www.vmware.com/products/identity-manager permanent;
+       }
+
+###RFC#186010##
+server {
+        listen 80;
+        server_name helpvm.com www.helpvm.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://vmwaresupport.webex.com permanent;
+       }
+
+###RFC#185965##
+server {
+       listen 80;
+       server_name vmware.vn;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/ap/   permanent;
+       }
+
+###RFC#187461##
+server {
+       listen 80;
+       server_name gedays.com www.gedays.com golfevent2015.com www.golfevent2015.com ciort.com www.ciort.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://www.vmware.com/ciovantage  permanent;
+       }
+
+###RFC#189197###
+##RFC#189955##
+server {
+       listen 80;
+       server_name thebridge.vmware.com;
+       server_name boundless.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       rewrite  .* http://www.vmware.com/radius  permanent;
+       }
+
+###RFC#189481###
+server {
+       listen 80;
+       server_name usvmworld2015vca.com www.usvmworld2015vca.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       rewrite .* http://vcloud.vmware.com/service-offering/vpc-ondemand-vmworld2015 permanent;
+       }
+
+##RFC#189953##
+server {
+       listen 80;
+       server_name docs.continuent.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^(.*)$ http://pubs.vmware.com/continuent$1 permanent;
+       }
+
+##RFC#190746##
+server {
+        listen 80;
+        server_name vmwarelearning.com www.vmwarelearning.com;
+        server_name vmwarecertificationvideos.com www.vmwarecertificationvideos.com;
+        include /etc/nginx/allow_GET_only.conf;
+        rewrite .* https://www.youtube.com/user/VMwareLearning/videos?view=0&flow=list permanent;
+       }
+
+##RFC #194448
+server {
+listen 80;
+server_name vmwareitacademy.com www.vmwareitacademy.com vmwareitacademy.net www.vmwareitacademy.net vmwareitacademy.us www.vmwareitacademy.us vmwareitacademy.info www.vmwareitacademy.info;
+include /etc/nginx/allow_GET_POST_only.conf;
+rewrite .* https://mylearn.vmware.com/mgrReg/plan.cfm?plan=69513&ui=www_edu permanent;
+} 
+
+##RFC #195069
+server {
+listen 80;
+server_name vcloudair.at vcloudair.be vcloudair.ch vcloudair.cz vcloudair.de vcloudair.es vcloudair.eu vcloudair.fr vcloudair.info vcloudair.it vcloudair.nl vcloudair.pl ;
+include /etc/nginx/allow_GET_POST_only.conf;
+rewrite .* https://vcloud.vmware.com permanent;
+}
+
+##RFC #195069
+server {
+listen 80;
+server_name www.vmware.co.id vmware.co.id;
+include /etc/nginx/allow_GET_POST_only.conf;
+rewrite .* http://www.vmware.com/id/ permanent;
+}
+
+##RFC #195069
+server {
+listen 80;
+server_name www.vmwarecommunities.com vmwarecommunities.com;
+include /etc/nginx/allow_GET_POST_only.conf;
+rewrite .* https://www.vmware.com/ permanent;
+}
+## RFC #195292
+server {
+listen 80;
+server_name vmwaregrid.com;
+include /etc/nginx/allow_GET_only.conf;
+rewrite .* http://www.vmwaredemandcenter.com/ permanent;
+}
+##RFC#196265##
+server {
+       listen 80;
+       server_name momentumsi.com www.momentumsi.com;
+       server_name momentumsoftware.com www.momentumsoftware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/consulting/devops-consulting-services.html  permanent;
+       }
+
+server {
+       listen 80;
+       server_name vrealizeaircompliance.vmware.com www.vrealizeaircompliance.vmware.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://vrealizeair.vmware.com/compliance  permanent;
+       }
+
+##RFC#196770##
+server {
+       listen 80;
+       server_name getappcatalyst.com www.getappcatalyst.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://vmware.com/appcatalyst  permanent;
+       }
+
+##RFC#199481##
+server {
+       listen 80;
+       server_name mysqlha.com www.mysqlha.com mysqlha.org www.mysqlha.org;
+       include /etc/nginx/allow_GET_only.conf;
+       #rewrite .* http://www.mysqlha.com.s3-website-us-east-1.amazonaws.com/  permanent;
+       rewrite ^(.*)$ http://www.mysqlha.com.s3-website-us-east-1.amazonaws.com$1  permanent;
+       }
+
+server {
+       listen 80;
+       server_name virtualblocks.com www.virtualblocks.com;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* https://blogs.vmware.com/virtualblocks/  permanent;
+       }
+
+##RFC#200100##
+server {
+   listen 80;
+   server_name www.vmware-techcenter.com vmware-techcenter.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com/radius/ permanent;
+   }
+
+##RFC#200100##
+server {
+   listen 80;
+   server_name www.vmweare.com vmweare.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com permanent;
+   }
+
+##RFC#200100##
+server {
+   listen 80;
+   server_name virtualizeyournetwork.com www.virtualizeyournetwork.com ;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com/radius/feature/network-virtualization-sdn/ permanent;
+   }
+
+##RFC#200100##
+server {
+   listen 80;
+   server_name hybridcloudanalysis.vmware-erdos.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://hotspots-stage.vmware-erdos.com.s3-website-us-east-1.amazonaws.com/ permanent;
+   }
+
+##RFC#200854##
+server {
+   listen 80;
+   server_name vmware-mktg.com www.vmware-mktg.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com permanent;
+   }
+
+##RFC#200854##
+server {
+   listen 80;
+   server_name vcloudair.net www.vcloudair.net;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://vcloud.vmware.com permanent;
+   }
+
+##RFC#202556##
+server {
+   listen 80;
+   server_name vmwareblog.com www.vmwareblog.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com permanent;
+   }
+
+##RFC#204128##
+server {
+       listen 80;
+       server_name culture.vmware.com;
+        include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://careers.vmware.com  permanent;
+    }
+
+###RFC#RFC 205132###
+server {
+   listen 80;
+   server_name productselector.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log /var/log/nginx/solutionservices.vmware.com_access.log main;
+   rewrite .* http://www.vmware.com/products permanent; 
+}
+
+###RFC 205709###
+server {
+       listen 80;
+       server_name www.vmware.lv vmware.lv;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/uk permanent;
+}
+
+
+###RFC 206856###
+server {
+       listen 80;
+       server_name www.vmwareforyou.co.uk  vmwareforyou.co.uk;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.yourcloudhub.com permanent;
+}
+
+##RFC#208497#TASK0030260
+server {
+       listen 80;
+       server_name www.vmwaredemandcenter.com	vmwaredemandcenter.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       rewrite .* http://partnerdemandcenter.vmware.com/ permanent;
+       }
+
+#210038 # TASK0047495
+server {
+       listen 80;
+       server_name nsxt.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       rewrite .* https://vault.vmware.com/group/nsx/transformers/ permanent;
+       }
+#RFC-209863
+server {
+ listen 80;
+       server_name www.vmware.fi vmware.fi;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/fi  permanent;
+       }
+server {
+ listen 80;
+       server_name www.vmware.dk vmware.dk;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/dk permanent;
+       }
+server {
+ listen 80;
+       server_name www.vmware.no vmware.no;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite .* http://www.vmware.com/no  permanent;
+       }
+
+##211330
+server {
+   listen 80;
+   server_name genesis.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://genesisvmware.com permanent;
+   }
+
+##212206
+server {
+       listen 80;
+       server_name signupvcloud.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       rewrite .* http://vcloud.vmware.com/using-vcloud-air/vca-faq-cc-2016 permanent;
+       }
+
+server {
+#RFC 212380
+    listen 80;
+    server_name referralhub.vmware.com;
+    include 	/etc/nginx/allow_GET_only.conf;
+    access_log 	/var/log/nginx/referralhub-stage_access.log combined;
+    error_log 	/var/log/nginx/referralhub-stage_error.log debug;
+    rewrite ^(.*)$ https://vmware.rolepoint.com permanent;
+
+}
+
+server {
+#RFC 208758
+    listen 80;
+    server_name  sessions.vmworld.com;
+    include     /etc/nginx/allow_GET_only.conf;
+    access_log  /var/log/nginx/sessions.vmworld.com_access.log main;
+    error_log   /var/log/nginx/sessions.vmworld.com_error.log;
+    rewrite  ^(.*)$  https://mylearn.vmware.com$1  permanent;
+}
+
+server {
+#RFC 212801
+   listen 80;
+   server_name nlblogs.vmware.com;
+   include     /etc/nginx/allow_GET_only.conf;
+   include     /etc/nginx/rewrites.nlblogs.conf;
+   access_log  /var/log/nginx/nlblogs-access_log main;
+   error_log   /var/log/nginx/nlblogs_error.log;
+   rewrite   ^.*$  http://vmwareemeablog.com/nl/   permanent;
+}
+
+
+#server {
+#RFC 214309
+#   listen 80;
+#   server_name vcanedge.com www.vcanedge.com;
+#   include /etc/nginx/allow_GET_only.conf;
+#   rewrite ^(.*)$ http://cloudsolutions.vmware.com permanent;
+#   }
+
+server {
+#RFC 224600
+   listen 80;
+   server_name vcanedge.com www.vcanedge.com;
+   include /etc/nginx/allow_GET_only.conf;
+   access_log  /var/log/nginx/vcanedge_access.log main;
+   error_log   /var/log/nginx/vcanedge_error.log debug;
+   rewrite ^/events/(.*)$   https://cloudsolutions.vmware.com/events break;
+   rewrite ^/events    https://cloudsolutions.vmware.com/events break;
+   rewrite ^.*$ https://cloudsolutions.vmware.com permanent;
+   }
+
+server {
+   listen 80;
+   server_name workspace-air.com www.workspace-air.com workspaceconnect.com www.workspaceconnect.com ws-connect.com www.ws-connect.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com/products/identity-manager.html permanent;
+   }
+
+server {
+#RFC 
+    listen 80;
+    server_name ereferral.vmware.com;
+    include     /etc/nginx/allow_GET_only.conf;
+    access_log  /var/log/nginx/ereferral_access.log combined;
+    error_log   /var/log/nginx/ereferral_error.log debug;
+    rewrite ^(.*)$ https://vmware.rolepoint.com permanent;
+
+}
+
+server {
+#RFC 214309
+   listen 80;
+   server_name vmwarensx.com.au;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com/au permanent;
+   }
+
+server {
+#RFC 219920
+    listen 80;
+    server_name www.vmworld.de vmworld.de;
+    include     /etc/nginx/allow_GET_only.conf;
+    access_log  /var/log/nginx/vmworld.de_access.log combined;
+    error_log   /var/log/nginx/vmworld.de_error.log debug;
+    rewrite ^(.*)$ https://www.vmware-event.com/vmworld/ permanent;
+}
+server {
+#RFC 221394
+   listen 80;
+   server_name vmc.vmware.com;
+   include /etc/nginx/allow_GET_only.conf;
+   rewrite ^(.*)$ http://www.vmware.com/cloud-services/vmware-cloud-aws.html permanent;
+   }
+
+
+server {
+#RFC 222649
+    listen 80;
+    server_name www.champions.vmware.com champions.vmware.com;
+    include     /etc/nginx/allow_GET_only.conf;
+    access_log  /var/log/nginx/champions_access.log combined;
+    error_log   /var/log/nginx/champions_error.log debug;
+    rewrite ^(.*)$ https://vmware.influitive.com/ permanent;
+
+}
+
+#server {
+#RFC 224080
+#    listen 80;
+#   server_name www.vmworld.de vmworld.de;
+#    include     /etc/nginx/allow_GET_only.conf;
+#    access_log  /var/log/nginx/vmworld.de_access.log combined;
+#    error_log   /var/log/nginx/vmworld.de_error.log debug;
+#    rewrite ^(.*)$ https://www.vmware-event.com/vmworld/ permanent;
+
+#}
+
+server {
+#RFC 226036 
+    listen 80;
+    server_name alliances.vmware.com;
+    include     	/etc/nginx/allow_GET_only.conf;
+    access_log  	/var/log/nginx/alliances_access.log combined;
+    error_log   	/var/log/nginx/alliances_error.log debug;
+    rewrite ^(.*)$ 	http://vmware-alliances.force.com$1 permanent;
+}
+
+#RFC-226997
+server {
+listen 80;
+server_name vcppedge.com www.vcppedge.com;
+include /etc/nginx/allow_GET_only.conf;
+access_log /var/log/nginx/vcanedge_access.log main;
+error_log /var/log/nginx/vcanedge_error.log debug;
+rewrite ^/events/(.*)$ https://cloudsolutions.vmware.com/events break;
+rewrite ^/events https://cloudsolutions.vmware.com/events break;
+rewrite ^.*$ https://cloudsolutions.vmware.com permanent;
+}
+
+server {
+listen 80;
+server_name cpedge.com www.cpedge.com;
+include /etc/nginx/allow_GET_only.conf;
+access_log /var/log/nginx/vcanedge_access.log main;
+error_log /var/log/nginx/vcanedge_error.log debug;
+rewrite ^/events/(.*)$ https://cloudsolutions.vmware.com/events break;
+rewrite ^/events https://cloudsolutions.vmware.com/events break;
+rewrite ^.*$ https://cloudsolutions.vmware.com permanent;
+}
+
+server {
+listen 80;
+server_name vmwarecloudprovideredge.com www.vmwarecloudprovideredge.com;
+include /etc/nginx/allow_GET_only.conf;
+access_log /var/log/nginx/vcanedge_access.log main;
+error_log /var/log/nginx/vcanedge_error.log debug;
+rewrite ^/events/(.*)$ https://cloudsolutions.vmware.com/events break;
+rewrite ^/events https://cloudsolutions.vmware.com/events break;
+rewrite ^.*$ https://cloudsolutions.vmware.com permanent;
+}
+
+server {
+listen 80;
+server_name cloudprovideredge.com www.cloudprovideredge.com;
+include /etc/nginx/allow_GET_only.conf;
+access_log /var/log/nginx/vcanedge_access.log main;
+error_log /var/log/nginx/vcanedge_error.log debug;
+rewrite ^/events/(.*)$ https://cloudsolutions.vmware.com/events break;
+rewrite ^/events https://cloudsolutions.vmware.com/events break;
+rewrite ^.*$ https://cloudsolutions.vmware.com permanent;
+}
+
+###RFC 227782 ###
+server {
+listen 80;
+server_name www.windowsuem.com windowsuem.com;
+include /etc/nginx/allow_GET_POST_only.conf;
+access_log /var/log/nginx/windowsuem.com_access.log combined;
+error_log /var/log/nginx/windowsuem.com_error.log;
+rewrite .* http://air-watch.com/solutions/windows-10-management permanent;
+
+}
+
+###RFC  227976 ####
+server {
+       listen 80;
+       server_name  www.vmwareblogs.com vmwareblogs.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/vmwareblogs_access.log combined;
+       error_log /var/log/nginx/vmwareblogs_error.log;
+       client_max_body_size 10M;
+        rewrite ^(.*)$  http://blogs.vmware.com/$1 permanent;
+}
+
+#######RFC 228642 ######
+server {
+   listen 80;
+   server_name vmwhorizonair.com www.vmwhorizonair.com info.vmwhorizonair.com;
+   include /etc/nginx/allow_GET_POST_only.conf;
+   access_log /var/log/nginx/vmwhorizonair_access.log combined;
+   error_log /var/log/nginx/vmwhorizonair_error.log;
+   rewrite ^  http://www.vmware.com/cloud-services/desktop.html permanent;
+}
+
+######RFC231182  #######
+server {
+    listen 80;
+    server_name vmwarecloud.com www.vmwarecloud.com vmwarecloud.org www.vmwarecloud.org;
+    include             /etc/nginx/allow_GET_only.conf;
+    access_log          /var/log/nginx/vmwarecloud_access.log combined;
+    error_log           /var/log/nginx/vmwarecloud_error.log debug;
+    rewrite ^(.*)$      http://cloud.vmware.com permanent;
+}
+
+########RFC 232186########
+server {
+    listen 80;
+    server_name www.whychooseview.com whychooseview.com www.whychoosehorizon.com whychoosehorizon.com www.whychoosevmwareeuc.com whychoosevmwareeuc.com;
+    include /etc/nginx/allow_GET_POST_only.conf;
+    access_log /var/log/nginx/whychoose_access.log combined;
+    error_log /var/log/nginx/whychoose_error.log debug;
+    rewrite .* https://www.vmware.com/company/why-choose-vmware/workspace-transformation.html permanent;
+}
+
+########RFC 233186########
+server {
+       listen 80;
+       server_name job-referrals.vmware.com;
+       include /etc/nginx/allow_GET_POST_only.conf;
+       access_log /var/log/nginx/job-referrals_access.log combined;
+       error_log /var/log/nginx/job-referrals_error.log debug;
+       rewrite .* https://myvmware.workspaceair.com/SAAS/API/1.0/GET/apps/launch/app/eb49d733-0730-48ef-b066-eda843195ef5 permanent;
+}
+#### RFC 233829  ######
+server {
+	listen 80;
+	server_name testdrive.vmware.com;
+	include /etc/nginx/allow_GET_only.conf;
+       	access_log /var/log/nginx/testdrive_access.log combined;
+       	error_log /var/log/nginx/testdrive_error.log debug;
+	rewrite ^(.*)$ https://portal.vmtestdrive.com$1 permanent;
+}
+
+#### RFC 235768 ####
+server {
+	listen 80;
+	server_name sftp2download.eng.vmware.com;
+	include /etc/nginx/allow_GET_POST_only.conf;
+	access_log /var/log/nginx/sftp2download_access.log combined;
+	error_log /var/log/nginx/sftp2download_error.log debug;
+	rewrite .* https://sftp2download.vmware.com permanent;
+}
+
+#### RFC 237020 ####
+server {
+	listen 80;
+	server_name www.vmwarelearningpaths.com;
+	include /etc/nginx/allow_GET_POST_only.conf;
+	access_log /var/log/nginx/vmwarelearningpaths_access.log combined;
+	error_log /var/log/nginx/vmwarelearningpaths_error.log debug;
+	rewrite ^(.*)$  https://mylearn.vmware.com/portals/www permanent;
+}
+#RFC 237691
+server {
+        listen 80;
+        server_name security.vmware.com;
+        include /etc/nginx/allow_GET_POST_only.conf;
+        access_log /var/log/nginx/security_access.log combined;
+        error_log /var/log/nginx/security_error.log debug;
+        rewrite ^(.*)$  https://www.vmware.com/security permanent;
+}
+
+### RFC 237698 #####
+server {
+	listen 80;
+	server_name vmwarepartners.vmware.com;
+	include /etc/nginx/allow_GET_POST_only.conf;
+	access_log /var/log/nginx/vmwarepartners_access.log combined;
+	error_log /var/log/nginx/vmwarepartners_error.log debug;
+	include /etc/nginx/conf.d/vmwarepartners-prod_rewrite.conf;
+
+}
+
+### RFC 237693 #####
+server {
+        listen 80;
+        server_name cloudverified.cloud;
+        include /etc/nginx/allow_GET_POST_only.conf;
+        access_log /var/log/nginx/cloudverified.cloud_access.log combined;
+        error_log /var/log/nginx/cloudverified.cloud_error.log debug;
+        rewrite ^(.*)$  https://cloud.vmware.com/providers/vmware-cloud-verified permanent;
+}
+
+## RFC 238528
+
+server {
+listen 80;
+listen 443 ssl;
+server_name vmwareemeablog.com;
+include /etc/nginx/allow_GET_POST_only.conf;
+access_log /var/log/nginx/vmwareemeablog.com_access.log main;
+error_log /var/log/nginx/vmwareemeablog.com_error.log;
+client_max_body_size 20M;
+include /etc/nginx/vmwareemeablog_redirect_rules.conf;
+return 301 https://blogs.vmware.com/emea;
+}
+
+### RFC 238347 ####
+server {
+	listen 80;
+    	server_name vmware-summerschool.nl www.vmware-summerschool.nl;
+    	include             /etc/nginx/allow_GET_only.conf;
+    	access_log          /var/log/nginx/vmware-summerschool_access.log combined;
+    	error_log           /var/log/nginx/vmware-summerschool_error.log debug;
+    	rewrite ^(.*)$      https://secure.vmware.com/SUMMER_EXPERIENCE_DAYS_NL_INDEX permanent;
+}
+
+##### RFC 238754 ####
+server {
+        listen 80;
+        server_name webappus.vmworld.com www.webappus.vmworld.com;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/webappus-vmworld_access.log combined;
+        error_log           /var/log/nginx/webappus-vmworld_error.log debug;
+        rewrite ^(.*)$      https://vmworldus2018-webapp.evba.ca permanent;
+}
+
+##### RFC 239935 ####
+server {
+        listen 80;
+        server_name www.vmware.com.br vmware.com.br;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/vmware.com.br_access.log combined;
+        error_log           /var/log/nginx/vmware.com.br_error.log debug;
+        rewrite ^(.*)$      https://www.vmware.com/br.html permanent;
+}
+
+### RFC 240108 ###
+server {
+        listen 80;
+        server_name ws1dossiers.app wsoneworkspaceone.app ws1altitude.app wsoneworkspaceonehub.app wsonesmartdeck.app ws1container.app ws1workflows.app wsonecontainer.app wsonedashboards.app wsonemobileflows.app wsoneworkflows.app wsonedossier.app wsoneengagement.app ws1mobileflows.app ws1workspaceone.app ws1organizer.app wsonedossiers.app ws1dashboards.app wsoneorganizer.app ws1engagement.app ws1smartdeck.app wsonealtitude.app ws1workspaceonehub.app ws1dossier.app s1dashboard.app ws1notebook.app wsonepulse.app ws1pulse.app ws1planner.app ws1access.app wsonedashboard.app sonefolio.app ws1web.app wsoneportal.app wsonenotebook.app wsoneaccess.app wsoneplanner.app ws1folio.app ws1workspace.app ws1verify.app ws1send.app wsoneverify.app wsonesend.app ws1portal.app wsoneworkspace.app wsoneagent.app ws1agent.app wsone.app mobileflows.app dossiers.app ws1hub.app air-watch.app workspaceone.app workspaceonehub.app wsonehub.app airwatch.app dashboards.app ws1.app smartdeck.app workflows.app;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/workspaceone_access.log combined;
+        error_log           /var/log/nginx/workspaceone_error.log debug;
+        rewrite ^(.*)$      https://whatisworkspaceone.com permanent;
+}
+
+server {
+        listen 80;
+        server_name ws1boxer.app wsoneboxer.app;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/workspaceone-boxer_access.log combined;
+        error_log           /var/log/nginx/workspaceone-boxer_error.log debug;
+        rewrite ^(.*)$      https://whatisworkspaceone.com/boxer/ permanent;
+}
+
+server {
+        listen 80;
+        server_name ws1browser.app wsoneweb.app wsonebrowser.app;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/workspaceone-browser_access.log combined;
+        error_log           /var/log/nginx/workspaceone-browser_error.log debug;
+        rewrite ^(.*)$      https://whatisworkspaceone.com/browser/ permanent;
+}
+
+server {
+        listen 80;
+        server_name wsonecontentlocker.app ws1contentlocker.app ws1content.app wsonecontent.app contentlocker.app;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/workspaceone-content-locker_access.log combined;
+        error_log           /var/log/nginx/workspaceone-content-locker_error.log debug;
+        rewrite ^(.*)$      https://whatisworkspaceone.com/content-locker permanent;
+}
+
+
+server {
+        listen 80;
+        server_name wsonepeople.app ws1people.app wsonepeoplesearch.app ws1peoplesearch.app;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/workspaceone-people-search_access.log combined;
+        error_log           /var/log/nginx/workspaceone-people-search_error.log debug;
+        rewrite ^(.*)$      https://whatisworkspaceone.com/people-search permanent;
+}
+
+server {
+        listen 80;
+        server_name ws1privacy.app wsoneprivacy.app;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/workspaceone-privacy_access.log combined;
+        error_log           /var/log/nginx/workspaceone-privacy_error.log debug;
+        rewrite .*      http://whatisworkspaceone.com/privacy/ permanent;
+}
+
+##RFC 240459 ###
+server {
+        listen 80;
+        server_name vcpp.cloud;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/vcpp.cloud_access.log combined;
+        error_log           /var/log/nginx/vcpp.cloud_error.log debug;
+        rewrite ^(.*)$      https://cloudsolutions.vmware.com permanent;
+}
+
+##RFC 240569 ###
+
+server {
+       listen 80;
+       server_name www.vmwareexecutiveprogram.com;
+       access_log /var/log/nginx/vmwareexecutiveprogram_access.log combined;
+       error_log /var/log/nginx/vmwareexecutiveprogram_error.log;
+       include /etc/nginx/allow_GET_only.conf;
+       rewrite ^/boardofdirectors(.*)$  https://www.vmware.com/cio-vantage.html permanent;
+}
+
+server {
+        listen 80;
+        server_name hol-support.vmware.com;
+        include             /etc/nginx/allow_GET_only.conf;
+        access_log          /var/log/nginx/hol-support_access.log combined;
+        error_log           /var/log/nginx/hol-support_error.log debug;
+        rewrite ^(.*)$      https://vmware-hol.atlassian.net/servicedesk/customer/portals permanent;
+}

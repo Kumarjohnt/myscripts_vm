@@ -1,0 +1,181 @@
+
+
+
+
+
+<HTML>
+<HEAD>
+<base href="http://vip-knova7kcc.vmware.com:8080/contactcenter/common/login.jsp">
+<title>Login</title>
+<LINK href="../css/kanisa.css" type="text/css" rel="stylesheet">
+<script language="JavaScript" src="../jslib/button.js"></script>
+<script language="JavaScript" src="../jslib/common.js"></script>
+<SCRIPT>
+  // this page should never load inside of another frame
+  if (top.location != self.location)
+  {
+    top.location = self.location;
+  }
+  
+  // TW17784: try/catch is applied to avoid permission denied error when open BB link in email
+  try {
+  if (window.opener != null && window.opener.location.href.indexOf("KanisaSupportCenter") > 1 ) 
+  {
+    var myWin = window;
+    var loginLocation = myWin.location;
+    while (myWin.opener != null && myWin.opener.location.href.indexOf("KanisaSupportCenter") > 1 ) {
+      //myWin.location='/contactcenter/sessionExpired.do';
+      myWin.close();
+      myWin = myWin.opener;
+    }
+    myWin.location = loginLocation;
+    //myWin.location.reload();
+  }
+  } catch (exception) {}
+
+  //because we are using struts' ActionForm, which remembers default values
+  function clearForm()
+  {
+    document.loginForm.username.value='';
+    document.loginForm.password.value='';
+  }
+
+  function onSubmitFunc() {
+      loginForm.gmtOffset.value = getOffset();
+  }
+</SCRIPT>
+</HEAD>
+
+<body MS_POSITIONING="GridLayout" TOPMARGIN="0" LEFTMARGIN="0" MARGINHEIGHT="0" MARGINWIDTH="0">
+<div class="microsite_bkgrnd">
+
+<center>
+<table style="margin-top: 40px" cellSpacing="0" cellPadding="0" width="680" border="0" align="center">
+<tr><td align="center">
+
+<span class="customError"><b></b></span>
+</td></tr></table>
+<form name="loginForm" method="post" action="/contactcenter/loginSubmit.do" onsubmit="onSubmitFunc();">
+	 
+<table style="margin-top: 5px" cellSpacing="0" cellPadding="0" width="680" border="0" align="center">
+
+<tr>
+	<td colspan="2"><!--- Content --->
+	 
+	<table cellSpacing="0" cellPadding="0" width="100%" border="0" align="center">
+	<tr>
+		<td>
+		
+		<h2>Knova Contact Center (iKB)</h2>
+		
+	 	<h3><font color="red">WARNING: When editing articles, use <U>ONLY</U> <br />Microsoft Internet Explorer 6.0.</font></h3>
+
+		<div style="padding: 20px 20px 0px 20px">
+		<table width="630" cellSpacing="0" cellPadding="0" border="0">
+
+		<tr valign="top">
+		<td>
+ 		 
+		<!-- dots -->
+		<table cellSpacing="0" cellPadding="0" border="0" width="100%" >
+		<tr>
+			<td>
+			<!-- shadow -->
+		
+			<table cellSpacing="0" cellPadding="0" border="0" width="100%" >
+
+			<tr>
+			<td colspan="2" bgcolor="#FFFFFF">
+				<div style="padding: 15px 10px 45px 15px">
+				
+			 	<table cellSpacing="2" cellPadding="2" border="0" >
+			    <tr>
+			      <td nowrap class="body_bold">User Name:&nbsp;</td>
+				 </tr> 
+				 <tr>
+			      <td><input type="text" name="username" maxlength="64" size="32" value="" class="skb_query"></td>
+			    </tr>
+				<tr>
+			      <td><img src="../img/sp.gif" alt="" width="1" height="10" border="0"></td>
+			    </tr>
+			    <tr>
+			      <td class="body_bold">Password:</td>
+				   </tr> 
+	
+				 <tr>
+			      <td width="200"><input type="password" name="password" maxlength="64" size="32" value="" class="skb_query"></td>
+			    </tr>
+			    <tr>
+			      <td><img src="../img/sp.gif" alt="" width="1" height="20" border="0"></td>
+			    </tr>
+			    <tr>
+			      <td align="right"><input type="submit" name="Button1" id="Login" class="btn_dr-blue_80" value="Login" onMouseOver="buttonOvr(this)" onMouseOut="buttonOut(this)" >&nbsp;&nbsp;<input type="button" onClick="javascript:clearForm();" class="btn_gry_80" value="Clear" onMouseOver="buttonOvr(this)" onMouseOut="buttonOut(this)" ></td>
+			    </tr>
+			  	</table>
+			  	
+			  	<br/><br/><font size="-2">Forgot your password? <a href="/selfservice/forgotpassword.do" target="_blank">Click here</a>.</font>
+			  		</td>
+				<td class="shadow_rght" width="4"><img src="../img/sp.gif" alt="" border="0" width="4" height="1"></td>
+			</tr>
+
+			<tr>
+			    <td class="shadow_bot_left" width="4"><img src="../img/sp.gif" alt="" border="0" width="4" height="1" ></td>
+			    <td class="shadow_bot" width="99%"><img src="../img/sp.gif" alt="" border="0" height="5" width="1"></td>
+			    <td class="shadow_bot_rght" width="4"><img src="../img/sp.gif" alt="" border="0" width="4" height="1"></td>
+			</tr>
+
+			</table>
+		  	<!-- /shadow -->
+			</td>
+			
+			<td><img src="../img/sp.gif" alt="" border="0" width="5" height="1"></td>
+
+			<td width="100%">
+
+			<ul>
+			<b>Guest Login:</b> <br/>User Name: viewer<br/>Password: vmware
+    		<br/><br/><b>If you have a problem with Knova:</b>
+    		<br />File a <a href="http://helpzilla.vmware.com" target="_blank">Helpzilla</a> ticket
+			<br/>Category: Applications
+			<br/>Component: Knova Knowledgebase
+<!-- Removing instructions to contact kb-admins. Requests for assistance should be through Helpzilla tickets -->
+<!--    		<br/><br/><b>For questions, contact:</b>
+    		<br /><a href="mailto:kb-admins@vmware.com">kb-admins@vmware.com</a> -->
+    		<p><img src="../img/vmware.gif">
+    		</ul>
+
+    		
+    		</tr>
+		</table>
+		<!--/dots -->
+		</td>
+	</tr>
+    
+	</table>
+	
+	</div>
+	  
+	</td></tr>
+	
+	</table>
+	<!--- /Content --->
+	</td>
+</tr>
+
+</table>
+<input type="hidden" name="gmtOffset"/>    
+</div>
+</form>
+<script type="text/javascript" language="JavaScript">
+  <!--
+  var focusControl = document.forms["loginForm"].elements["username"];
+
+  if (focusControl.type != "hidden" && !focusControl.disabled) {
+     focusControl.focus();
+  }
+  // -->
+</script>
+
+</center>
+</body>
+</HTML>

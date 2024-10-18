@@ -1,0 +1,119 @@
+###############################################################################
+## Script to failover NS1 cdnorigin record for my-stage.vmware.com           ##
+## Maintainer : Neha G							     ##
+## Contact : gneha@vmware.com, net-services@vmware.com			     ##
+###############################################################################
+
+import sys
+import time
+import shlex,subprocess
+import json
+import httplib2
+import argparse
+from getpass import getpass
+import requests
+import logging
+import urllib3
+from datetime import datetime
+from subprocess import Popen, PIPE
+from email.mime.text import MIMEText
+import base64
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+pwdh="RjZPNTJZNDRLQWhiY2pLaVBKaFU="
+pwd=base64.b64decode(pwdh)
+
+_HEADERS = {
+    "X-NSONE-Key": pwd ,
+    "Content-type": "application/json",
+}
+
+_URL = {
+	"url_switch" : "https://api.nsone.net/v1/zones/cdnoriginstg.vmware.com/myvmwareincapstg.cdnoriginstg.vmware.com/A"
+}
+
+_PAYLOAD_SC2 = json.dumps({ "zone" : "cdnoriginstg.vmware.com" ,
+                            "domain": "myvmwareincapstg.cdnoriginstg.vmware.com",
+                            "type": "A",
+                            "answers":[{"answer": ["208.91.0.118"]}] })
+
+_PAYLOAD_WDC = json.dumps({ "zone" : "cdnoriginstg.vmware.com" ,
+                            "domain":"myvmwareincapstg.cdnoriginstg.vmware.com",
+                            "type": "A",
+                            "answers":[{"answer": ["208.91.2.246"]}] })
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)-5.5s] %(message)s",
+    handlers=[
+        logging.StreamHandler()
+    ])
+logger = logging.getLogger()
+
+def TD_Argument_Parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--action',choices=['status','sc2','wdc'],default=None,help='Action to be executed')
+    return parser
+
+def TD_GetStatusFromCDN(cdn_url,host):
+    response_from_cdn = requests.get(cdn_url,verify=False,headers={'host': host, 'Cache-Control': 'no-cache'})
+    try:
+        dc = response_from_cdn.headers['DC-Instance']
+        return dc
+    except KeyError as err:
+        return None
+
+
+def TD_FailoverTo(dc):
+	logger.info("Attempting failover to %s..." % dc)
+	url = _URL["url_switch"]
+	if dc == 'wdc':
+        	logger.info("Failing over to WDC...")
+		response = requests.request("POST",url,data=_PAYLOAD_WDC,headers=_HEADERS)
+		if response.status_code != 200:
+                       	return 1
+		return 0
+
+	elif dc == 'sc2':
+		logger.info("Failing over to SC2...")
+                response = requests.request("POST",url,data=_PAYLOAD_SC2,headers=_HEADERS)
+                if response.status_code != 200:
+                        return 1
+		return 0
+    	else:
+        	return 1
+
+
+def dig():
+	time.sleep(2)
+	cmd='dig @dns1.p05.nsone.net myvmwareincapstg.cdnoriginstg.vmware.com +short'
+	proc=subprocess.Popen(shlex.split(cmd),stdout=subprocess.PIPE)
+	out,err=proc.communicate()
+	print("my-stage.vmware.com origin record is resolving to -> " + out)
+
+def TD_Runner():
+    args = TD_Argument_Parser().parse_args()
+    if args.action == 'status':
+        dc = TD_GetStatusFromCDN('https://107.154.106.19/web/csp/','my-stage.vmware.com')
+        if dc is not None:
+            print('Currently serving from %s ' % dc)
+	    dig()
+        else:
+            logger.error('Could not retrieve status from CDN')
+    elif args.action in ['sc2', 'wdc']:
+        stat = TD_FailoverTo(args.action)
+        if stat == 0:
+            logger.info("Failover was completed..")
+	    dig()
+        else:
+            logger.error("Failover was not completed.")
+	    dig()
+    else:
+        logger.info('Unsupported option requested! Type -h, --help for options')
+
+
+if __name__ == '__main__':
+        TD_Runner()
+
+

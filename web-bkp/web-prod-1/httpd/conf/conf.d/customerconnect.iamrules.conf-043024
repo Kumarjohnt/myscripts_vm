@@ -1,0 +1,218 @@
+#========= Rewrite Rules for my-IAM BookMark =================
+
+#################### Customer Connect Backward Compatibility Rules - Start #################################
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/login(.*)  https://customerconnect.vmware.com/$1/login$2 [NC,L]
+RewriteRule   ^/web/vmware/login(.*)  https://customerconnect.vmware.com/login$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/home(.*)  https://customerconnect.vmware.com/$1/home$2 [R=301,NC,L]
+RewriteRule   ^/web/vmware/home(.*)  https://customerconnect.vmware.com/home$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/registration(.*)  https://customerconnect.vmware.com/$1/account-registration$2 [R=301,NC,L]
+RewriteRule   ^/web/vmware/registration(.*)  https://customerconnect.vmware.com/account-registration$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/resetpassword(.*)  https://customerconnect.vmware.com/$1/password-reset$2 [NC,L]
+RewriteRule   ^/web/vmware/resetpassword(.*)  https://customerconnect.vmware.com/password-reset$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/invalid-action(.*)  https://customerconnect.vmware.com/$1/invalid-action$2 [R=301,NC,L]
+RewriteRule   ^/web/vmware/invalid-action(.*)  https://customerconnect.vmware.com/invalid-action$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/inactiveaccount(.*)  https://customerconnect.vmware.com/$1/activate-account$2 [R=301,NC,L]
+RewriteRule   ^/web/vmware/inactiveaccount(.*)  https://customerconnect.vmware.com/activate-account$1 [R=301,NC,L]
+
+RewriteCond   %{REQUEST_URI} !^/(en|de|fr|zh|ja|jp|cn)/web/vmware/activationbeforeauth [NC]
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/activation(.*)  https://customerconnect.vmware.com/$1/account-activated$2 [NC,L]
+
+RewriteCond   %{REQUEST_URI} !^/web/vmware/activationbeforeauth [NC]
+RewriteRule   ^/web/vmware/activation(.*)  https://customerconnect.vmware.com/account-activated$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/activationbeforeauth(.*)  https://customerconnect.vmware.com/$1/activation-auth$2 [NC,L]
+RewriteRule   ^/web/vmware/activationbeforeauth(.*)  https://customerconnect.vmware.com/activation-auth$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/resetemailaddress(.*)  https://customerconnect.vmware.com/$1/resetemailaddress$2 [NC,L]
+RewriteRule   ^/web/vmware/resetemailaddress(.*)  https://customerconnect.vmware.com/resetemailaddress$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/mfa(.*)  https://customerconnect.vmware.com/$1/mfa$2 [NC,L]
+RewriteRule   ^/web/vmware/mfa(.*)  https://customerconnect.vmware.com/mfa$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/troubleshoot-mfa(.*)  https://customerconnect.vmware.com/$1/troubleshoot-mfa$2 [NC,L]
+RewriteRule   ^/web/vmware/troubleshoot-mfa(.*)  https://customerconnect.vmware.com/troubleshoot-mfa$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/web/vmware/forgot-password(.*)  https://customerconnect.vmware.com/$1/forgot-password$2 [NC,L]
+RewriteRule   ^/web/vmware/forgot-password(.*)  https://customerconnect.vmware.com/forgot-password$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/home(.*)  https://customerconnect.vmware.com/$1/dashboard$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/home(.*)  https://customerconnect.vmware.com/dashboard$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/app-launcher(.*)  https://customerconnect.vmware.com/$1/app-launcher$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/app-launcher(.*)  https://customerconnect.vmware.com/app-launcher$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/profile(.*)  https://customerconnect.vmware.com/$1/manage-user-profile$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/profile(.*)  https://customerconnect.vmware.com/manage-user-profile$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/my-licenses(.*)  https://customerconnect.vmware.com/$1/license-management$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/my-licenses(.*)  https://customerconnect.vmware.com/license-management$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/users-permissions(.*)  https://customerconnect.vmware.com/$1/users-permissions$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/users-permissions(.*)  https://customerconnect.vmware.com/users-permissions$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/support-entitlement(.*)  https://customerconnect.vmware.com/$1/support-entitlements$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/support-entitlement(.*)  https://customerconnect.vmware.com/support-entitlements$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/license-key-tracker(.*)  https://customerconnect.vmware.com/$1/license-key-tracker$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/license-key-tracker(.*)  https://customerconnect.vmware.com/license-key-tracker$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/terms-of-use(.*)  https://customerconnect.vmware.com/$1/terms-of-use$2 [NC,L]
+RewriteRule   ^/group/vmware/terms-of-use(.*)  https://customerconnect.vmware.com/terms-of-use$1 [NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/my-funds(.*)  https://customerconnect.vmware.com/$1/my-funds$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/my-funds(.*)  https://customerconnect.vmware.com/my-funds$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/alerts(.*)  https://customerconnect.vmware.com/$1/all-notifications$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/alerts(.*)  https://customerconnect.vmware.com/all-notifications$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/my-account(.*)  https://customerconnect-${INSTANCE}.vmware.com/$1/account-management$2 [R=301,NC,L]
+RewriteRule   ^/group/vmware/my-account(.*)  https://customerconnect.vmware.com/account-management$1 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/reports(.*)  https://customerconnect-${INSTANCE}.vmware.com/$1/reports$3 [NC,L]
+RewriteRule   ^/group/vmware/reports(.*)  https://customerconnect.vmware.com/reports$2 [NC,L]
+
+#### Downloads Section ####
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/details(.*)  https://customerconnect.vmware.com/$1/downloads/details$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/details(.*)  https://customerconnect.vmware.com/downloads/details$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/get-download(.*)  https://customerconnect.vmware.com/$1/downloads/get-download$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/get-download(.*)  https://customerconnect.vmware.com/downloads/get-download$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/info(.*)  https://customerconnect.vmware.com/$1/downloads/info$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/info(.*)  https://customerconnect.vmware.com/downloads/info$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/all-products(.*)  https://customerconnect.vmware.com/$1/downloads/#all_products$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/all-products(.*)  https://customerconnect.vmware.com/downloads/#all_products$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/downloads(.*)  https://customerconnect.vmware.com/$1/downloads$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/downloads(.*)  https://customerconnect.vmware.com/downloads$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/downloads/#all_products(.*)  https://customerconnect.vmware.com/$1/downloads/#all_products$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/downloads/#all_products(.*)  https://customerconnect.vmware.com/downloads/#all_products$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/downloads/#my_products(.*)  https://customerconnect.vmware.com/$1/downloads/#my_products$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/downloads/#my_products(.*)  https://customerconnect.vmware.com/downloads/#my_products$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/downloads/#products_atoz(.*)  https://customerconnect.vmware.com/$1/downloads/#products_atoz$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/downloads/#products_atoz(.*)  https://customerconnect.vmware.com/downloads/#products_atoz$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/my-downloads-remote(.*)  https://customerconnect.vmware.com/$1/downloads/my-downloads$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/my-downloads-remote(.*)  https://customerconnect.vmware.com/downloads/my-downloads$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/my-downloads(.*)  https://customerconnect.vmware.com/$1/downloads/my-downloads$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/my-downloads(.*)  https://customerconnect.vmware.com/downloads/my-downloads$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/free(.*)  https://customerconnect.vmware.com/$1/downloads/free$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/free(.*)  https://customerconnect.vmware.com/downloads/free$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/searchresults(.*)  https://customerconnect.vmware.com/$1/downloads/search$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/searchresults(.*)  https://customerconnect.vmware.com/downloads/search$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/patch(.*)  https://customerconnect.vmware.com/$1/patch [R=301,NC,L]
+RewriteRule   ^/group/vmware/patch(.*)  https://customerconnect.vmware.com/patch [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/(web|group)/vmware/evalcenter(.*)  https://customerconnect.vmware.com/$1/evalcenter$3 [R=301,NC,L]
+RewriteRule   ^/(web|group)/vmware/evalcenter(.*)  https://customerconnect.vmware.com/evalcenter$2 [R=301,NC,L]
+RewriteRule   ^/(ko|kr)/(web|group)/vmware/evalcenter(.*)  https://customerconnect.vmware.com/evalcenter$3 [R=301,NC,L]
+RewriteRule   ^/(ko|kr)/evalcenter(.*)  https://customerconnect.vmware.com/evalcenter$2 [R=301,NC,L]
+
+RewriteRule   ^/(en|de|fr|zh|ja|jp|cn)/group/vmware/myeval(.*)  https://customerconnect.vmware.com/$1/eval [R=301,NC,L]
+RewriteRule   ^/group/vmware/myeval(.*)  https://customerconnect.vmware.com/eval [R=301,NC,L]
+RewriteRule   ^/(ko|kr)/group/vmware/myeval(.*)  https://customerconnect.vmware.com/eval$2 [R=301,NC,L]
+RewriteRule   ^/(ko|kr)/eval(.*)  https://customerconnect.vmware.com/eval$2 [R=301,NC,L]
+
+################################# Customer Connect Backward Compatibility Rules - End #################################
+
+#################### Customer Connect login #################################
+
+##########MSM Changes - Start###############
+# RewriteCond %{REQUEST_URI} 		^/(en|de|fr|zh|ja|jp|cn)/home
+# RewriteCond %{QUERY_STRING}  	!(BMCTX|OverrideRetryLimit|request_id) [NC,OR]
+# RewriteCond %{HTTP_COOKIE}  	!OAMRequestContext_.* [NC]
+# RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/home  https://customerconnect.vmware.com/$1/web/vmware/checksession [QSD,NC,L]
+
+# RewriteCond %{REQUEST_URI} 		^/home
+# RewriteCond %{QUERY_STRING}  	!(BMCTX|OverrideRetryLimit|request_id) [NC,OR]
+# RewriteCond %{HTTP_COOKIE}  	!OAMRequestContext_.* [NC]
+# RewriteRule ^/home  https://customerconnect.vmware.com/web/vmware/checksession [QSD,NC,L]
+
+RewriteCond %{REQUEST_URI}   ^/(en|de|fr|zh|ja|jp|cn)/home
+RewriteCond %{HTTP_COOKIE}   !cc-authenticated
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/home  https://customerconnect.vmware.com/web/vmware/checksession?locale=$1 [NC,L]
+
+RewriteCond %{REQUEST_URI}  ^/home
+RewriteCond %{HTTP_COOKIE}   !cc-authenticated
+RewriteRule ^/home  https://customerconnect.vmware.com/web/vmware/checksession [NC,L]
+
+<LocationMatch "^(/(en|de|fr|zh|ja|jp|cn))?/home" >
+  Header add Set-Cookie "cc-authenticated=INVALID;Max-Age=0;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT;secure;HttpOnly"
+  Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+</LocationMatch>
+
+
+RewriteCond %{REQUEST_URI} 		^/(fr|de|jp|cn|en|kr|zh|ko|ja)/login
+RewriteCond %{QUERY_STRING} 	!(resource_url|AUTH-ERR|crossfunctional|tracksn.portal|loginUserPortlet_WAR_itvmlogin|p_p_resource_id) [NC]
+RewriteRule ^/(fr|de|jp|cn|en|kr|zh|ko|ja)/login https://customerconnect.vmware.com/channel/auth/login?locale=$1 [QSA,NC,L]
+
+RewriteCond %{REQUEST_URI} 		^/login
+RewriteCond %{QUERY_STRING} 	!(resource_url|vpp%252Fsecure%252Fpoints%252Fhome.do|betanext%252FshowPrivateMSBTA.portal|account%252Fsecure%252FproductRegistration.do|partnerEval%252Fsecure%252Fniagara%252FthirdPartyProductHome.do|%252Fuser%252Floginsso|p_p_resource_id) [NC]
+RewriteCond %{QUERY_STRING} 	!(AUTH-ERR|crossfunctional|tracksn.portal|loginUserPortlet_WAR_itvmlogin) [NC]
+RewriteRule ^/login  			https://customerconnect.vmware.com/channel/auth/login$1 [NC,L]
+
+##########MSM Changes - End#####################
+
+###################### my-admin login(vmwenrollmentflag) ############################
+RewriteCond %{REQUEST_URI} 		^/web/admin/login
+RewriteCond %{HTTP_COOKIE} 		vmwenrollmentflag=2 [NC]
+RewriteRule ^/web/admin/login   https://customerconnect.vmware.com/dashboard? [NC,L]
+
+#################### my-admin login #################################
+RewriteCond %{REQUEST_URI} 		^/web/admin/login
+RewriteCond %{QUERY_STRING} 	!(AUTH-ERR|crossfunctional) [NC]
+RewriteCond %{HTTP_COOKIE}  	!OAMRequestContext_.* [NC]
+RewriteRule ^/web/admin/login   https://customerconnect.vmware.com/group/admin/home? [NC,L]
+
+#================= Communities and 3rd Party dependency on MyVMware home page redirection change===========
+RewriteCond %{REQUEST_URI} 		^/dashboard
+RewriteCond %{QUERY_STRING} 	redirectURL [NC]
+RewriteCond %{QUERY_STRING} 	!redirectMyAirwatchURL [NC]
+RewriteRule ^/group/vmware/home(.*)  https://customerconnect.vmware.com/group/vmware/alogin$1 [QSA,NE,NC,L]
+
+#================ Registration Fix for WDC Issue =====================================
+RewriteCond %{REQUEST_URI} 		^/(en|de|fr|zh|ja|jp|cn)/account-registration
+RewriteCond %{QUERY_STRING} 	source=(jivp|oemp|evap|dwnp|LICP) [NC]
+RewriteCond %{QUERY_STRING} 	!loggedin [NC]
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/account-registration(.*) https://customerconnect.vmware.com/channel/auth/login?locale=$1&type=registration [QSA,NC,L]
+
+RewriteCond %{REQUEST_URI} 		^/account-registration
+RewriteCond %{QUERY_STRING} 	source=(jivp|oemp|evap|dwnp|LICP) [NC]
+RewriteCond %{QUERY_STRING} 	!loggedin [NC]
+RewriteRule ^/account-registration(.*) https://customerconnect.vmware.com/channel/auth/login?type=registration [QSA,NC,L]
+
+################### Activation Rewrite Rules ############################
+RewriteCond %{REQUEST_URI} 		^/(en|de|fr|zh|ja|jp|cn)/activation-auth
+RewriteCond %{QUERY_STRING} 	token
+RewriteRule ^/(en|de|fr|zh|ja|jp|cn)/activation-auth(.*)  https://customerconnect.vmware.com/channel/auth/login?locale=$1&type=activation [QSA,NC,L]
+
+RewriteCond %{REQUEST_URI} 		^/activation-auth
+RewriteCond %{QUERY_STRING} 	token
+RewriteRule ^/activation-auth(.*)  https://customerconnect.vmware.com/channel/auth/login?type=activation [QSA,NC,L]
+
+################### Logout Rewrite Rules ############################
+RewriteRule ^/web/vmware/logout(.*)$ https://customerconnect.vmware.com/vmwauth/logout$1 [NC,L]
+
+################### Connect Support Rules ############################
+RewriteRule ^/supporthub(.*)  https://customerconnect.vmware.com/support$1 [R=307,L]
+
+################### Extend Session Redirect Rules ###################
+RewriteRule ^/c/portal/extend_session(.*)  https://customerconnect.vmware.com/group/vmware/extend_session$1 [QSA,NC,L]
+
+#=================  Rewrite Rules for IAM BookMark  END =============================================================

@@ -1,0 +1,127 @@
+10.106.0.121,NO DNS Record,Linux,dev,"Ubuntu 16.04.1 LTS",NO HISTORY, 08:10:40 up 1001 days, 13:08,  0 users,  load average: 1.00, 1.00, 1.00
+10.106.0.182,NO DNS Record,Linux,dev,"Ubuntu 16.04.1 LTS",NO HISTORY, 21:40:55 up 843 days, 15:01,  0 users,  load average: 1.00, 1.00, 1.00
+10.108.160.129,NO DNS Record,Linux,localhost.localdom,"Ubuntu 14.04.1 LTS",NO HISTORY,NO DATA
+10.108.160.130,NO DNS Record,Linux,prome-mdt-dhcp412,"Ubuntu 14.04 LTS",root     pts/2        10.113.82.123    Wed Jan 11 19:51 - 19:52  (00:00)    , 15:00:13 up 1166 days, 10:48,  0 users,  load average: 1.00, 1.07, 1.23
+10.108.160.16,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:49:11 up 706 days,  7:59,  0 users,  load average: 2.72, 2.66, 2.71
+10.108.160.193,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:49:31 up 706 days,  8:18,  0 users,  load average: 2.67, 2.61, 2.69
+10.108.160.194,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:49:44 up 706 days,  8:18,  0 users,  load average: 2.23, 2.61, 2.73
+10.108.160.215,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:50:01 up 706 days,  8:05,  0 users,  load average: 2.45, 2.44, 2.39
+10.108.160.233,NO DNS Record,Linux,PBVpnGw2,"Ubuntu 16.04.4 LTS",NO HISTORY, 03:03:29 up 867 days,  2:56,  0 users,  load average: 2.10, 2.25, 2.38
+10.108.160.60,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:50:29 up 706 days,  8:00,  0 users,  load average: 2.73, 2.55, 2.45
+10.108.161.156,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:50:44 up 706 days,  8:12,  0 users,  load average: 3.43, 2.98, 2.84
+10.108.161.183,NO DNS Record,Linux,Ubuntu1804Server,"Ubuntu 18.04 LTS",NO HISTORY, 08:21:05 up 743 days,  6:26,  0 users,  load average: 0.00, 0.00, 0.00
+10.108.161.190,NO DNS Record,Linux,LinuxRouter,"Ubuntu 16.04.4 LTS",NO HISTORY, 03:04:31 up 868 days, 14:43,  0 users,  load average: 2.40, 2.36, 2.42
+10.108.161.220,NO DNS Record,Linux,RBVpnGw2,"Ubuntu 16.04.4 LTS",NO HISTORY, 03:04:42 up 858 days,  8:10,  0 users,  load average: 2.58, 2.44, 2.50
+10.108.161.226,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:51:43 up 706 days,  8:01,  0 users,  load average: 2.48, 2.58, 2.67
+10.108.161.40,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 21:51:58 up 706 days,  8:02,  0 users,  load average: 2.30, 2.29, 2.36
+10.108.161.49,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 03:05:25 up 862 days, 18:37,  0 users,  load average: 2.19, 2.81, 2.70
+10.108.161.93,NO DNS Record,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO HISTORY,NO DATA
+10.108.161.98,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 22:08:52 up 706 days,  8:24,  0 users,  load average: 2.98, 2.80, 2.70
+10.108.162.119,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 22:09:09 up 706 days,  8:24,  0 users,  load average: 2.70, 2.82, 2.72
+10.108.162.235,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 03:22:36 up 852 days, 16 min,  0 users,  load average: 7.08, 7.22, 6.78
+10.108.162.25,NO DNS Record,Linux,RBVpnGw1,"Ubuntu 16.04.4 LTS",NO HISTORY, 03:23:02 up 869 days,  1:41,  0 users,  load average: 3.04, 2.76, 2.56
+10.108.162.29,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 22:09:53 up 706 days,  8:25,  0 users,  load average: 2.54, 2.48, 2.47
+10.108.162.8,NO DNS Record,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO HISTORY,NO DATA
+10.108.161.98,NO DNS Record,Linux,strongswan56,"Ubuntu 16.04.4 LTS",NO HISTORY, 22:26:14 up 706 days,  8:41,  0 users,  load average: 2.63, 2.65, 2.71
+10.108.53.55,NO DNS Record,Linux,lin-1-ubuntu-16,"Ubuntu 16.04.5 LTS",reboot   system boot  4.4.0-131-generi Tue Jan 31 10:54   still running, 22:36:33 up 11:40,  0 users,  load average: 0.00, 0.00, 0.00
+10.108.55.225,NO DNS Record,Linux,nimbus-nfsserver,"Ubuntu 14.04.2 LTS",NO HISTORY,NODATA
+10.108.55.226,NO DNS Record,Linux,nimbus-nfsserver,"Ubuntu 14.04.2 LTS",NO HISTORY,NODATA
+10.110.113.124,colo-vshield7-dhcp-113-124.eng.vmware.com.,Linux,nimbus-iscsitemplate,"Ubuntu precise (12.04.5 LTS)",NO HISTORY, 09:14:50 up 82 days,  1:28,  0 users,  load average: 0.00, 0.01, 0.05
+10.110.113.169,colo-vshield7-dhcp-113-169.eng.vmware.com.,Linux,nimbus-iscsitemplate,"Ubuntu precise (12.04.5 LTS)",NO HISTORY, 09:15:03 up 114 days, 22:46,  0 users,  load average: 0.00, 0.01, 0.05
+10.110.83.104,NO DNS Record,Linux,systest-runner,"Ubuntu 18.04.6 LTS",root     pts/0        10.104.45.0      Mon Mar 21 07:08 - 07:08  (00:00), 09:15:19 up 410 days,  5:00,  0 users,  load average: 0.15, 0.03, 0.01
+10.110.9.2,blrcolo-vshield4-dhcp-2.eng.vmware.com.,Linux,dev,"Ubuntu 14.04.1 LTS",NO HISTORY, 09:15:32 up 503 days,  6:28,  1 user,  load average: 0.00, 0.01, 0.05
+10.114.10.140,prmh-nsx-mgmt-dhcp-10-140.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO HISTORY, 09:15:33 up 614 days, 43 min,  0 users,  load average: 1.00, 1.01, 1.05
+10.114.10.141,prmh-nsx-mgmt-dhcp-10-141.eng.vmware.com.,Linux,vdnet-shaolan,"Ubuntu 14.04.1 LTS",NO HISTORY, 17:15:34 up 619 days, 14:46,  0 users,  load average: 0.17, 0.05, 0.06
+10.114.10.162,prmh-nsx-mgmt-dhcp-10-162.eng.vmware.com.,Linux,vd-enr2,"Ubuntu 14.04.1 LTS",reboot   system boot  3.13.0-36-generi Mon Jul 19 23:39 - 17:15 (560+17:36) , 17:15:35 up 560 days, 17:36,  0 users,  load average: 0.00, 0.01, 0.05
+10.114.10.181,prmh-nsx-mgmt-dhcp-10-181.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",root     pts/0        10.188.147.113   Tue Jul  6 15:49 - 15:51  (00:01)    , 09:15:39 up 573 days, 18:37,  0 users,  load average: 0.00, 0.01, 0.05
+10.114.10.199,prmh-nsx-mgmt-dhcp-10-199.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO HISTORY, 09:15:42 up 612 days, 23:44,  0 users,  load average: 0.08, 0.03, 0.05
+10.114.11.167,prmh-nsx-mgmt-dhcp-11-167.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO HISTORY, 09:15:43 up 578 days, 17:27,  0 users,  load average: 1.00, 1.01, 1.05
+10.114.11.208,prmh-nsx-mgmt-dhcp-11-208.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",NO HISTORY, 09:15:44 up 612 days, 23:45,  0 users,  load average: 3.00, 3.01, 3.05
+10.114.11.212,prmh-nsx-mgmt-dhcp-11-212.eng.vmware.com.,Linux,loki,"Ubuntu 18.04.2 LTS",root     pts/0        10.166.131.161   Wed Jul 21 10:38    gone - no logout, 09:15:27 up 620 days, 11:10,  0 users,  load average: 0.08, 0.02, 0.01
+10.114.11.221,prmh-nsx-mgmt-dhcp-11-221.eng.vmware.com.,Linux,perf,"Ubuntu 18.04.4 LTS",NO HISTORY, 09:18:18 up 620 days, 18:50,  0 users,  load average: 0.08, 0.02, 0.01
+10.114.11.7,prmh-nsx-tor-mg-7.eng.vmware.com.,Linux,odin,"Ubuntu 16.04.2 LTS",NO HISTORY, 09:15:56 up 619 days, 15:35,  0 users,  load average: 0.08, 0.02, 0.01
+10.117.4.205,pek2-office-04-dhcp205.eng.vmware.com.,Linux,dev,"Ubuntu 16.04.1 LTS",root     pts/0        10.117.4.175     Tue Jan 31 01:09   still logged in, 09:16:10 up 54 days, 12:53,  2 users,  load average: 0.00, 0.00, 0.00
+10.118.78.58,NO DNS Record,Linux,bootstrapper,"VMware Photon OS/Linux",root     pts/0        10.117.183.26    Mon Oct 10 06:28 - 06:35  (00:06), 17:16:15 up 258 days, 11:32,  0 users,  load average: 0.01, 0.05, 0.01
+10.144.137.208,wdc-vsphere-cf-fvt-137-dhcp208.eng.vmware.com.,Linux,wdc-vsphere-cf-fvt-137-dhcp208.eng.vmware.com,"Ubuntu 20.04.2 LTS",root     pts/0        10.201.49.253    Wed Sep 21 17:55 - 20:23  (02:28), 17:16:19 up 240 days,  2:12,  0 users,  load average: 0.00, 0.01, 0.00
+10.148.143.97,NO DNS Record,Linux,base-linux,"Ubuntu 16.04.5 LTS",NO HISTORY, 12:16:22 up 232 days,  4:18,  0 users,  load average: 0.00, 0.00, 0.00
+10.153.134.13,NO DNS Record,Linux,RedHatEnter-001,,NO HISTORY, 09:05:22 up 1454 days, 49 min,  0 users,  load average: 0.00, 0.00, 0.00
+10.156.216.203,wdc-pod2-nsbust-vm-dhcp-216-203.eng.vmware.com.,Linux,no,"Red Hat Enterprise Linux"
+"Red Hat Enterprise Linux Server 7.1 (Maipo)"
+"Red Hat Enterprise Linux",root     pts/2        10.128.202.150   Thu Jun 18 09:03 - 09:03  (00:00)    , 17:16:33 up 1464 days, 11:44,  0 users,  load average: 1.78, 1.56, 1.57
+10.156.223.102,wdc-pod2-nsbust-vm-dhcp-223-102.eng.vmware.com.,Linux,systest-runner,"Ubuntu 14.04.3 LTS",root     pts/1        10.104.0.61      Wed Oct  6 03:44    gone - no logout , 09:16:36 up 385 days,  6:09,  1 user,  load average: 0.00, 0.01, 0.05
+10.157.46.166,NO DNS Record,Linux,euc-ubuntu-64a,"Ubuntu 16.04.4 LTS",reboot   system boot  4.4.0-116-generi Fri Apr 29 15:33   still running, 09:16:39 up 276 days, 18:21,  0 users,  load average: 0.00, 0.00, 0.00
+10.158.130.183,goat183.eng.vmware.com.,Linux,template,"CentOS Linux 7 (Core)",root     pts/0        10.84.200.161    Fri Apr 15 15:26 - 15:28  (00:01)    , 09:17:10 up 368 days, 16:13,  1 user,  load average: 0.04, 0.06, 0.05
+10.172.149.251,NO DNS Record,Linux,10.172.149.251,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:14 up 113 days,  3:50,  0 users,  load average: 0.00, 0.00, 0.00
+10.172.149.254,NO DNS Record,Linux,10.172.149.254,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:17 up 113 days,  3:50,  0 users,  load average: 0.00, 0.00, 0.00
+10.172.150.117,NO DNS Record,Linux,10.172.150.117,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:19 up 114 days,  3:02,  0 users,  load average: 0.08, 0.02, 0.01
+10.172.150.132,NO DNS Record,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO HISTORY, 22:47:56 up 114 days,  3:03,  0 users,  load average: 0.00, 0.00, 0.00
+10.172.150.31,NO DNS Record,Linux,10.172.150.31,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:24 up 114 days,  2:55,  0 users,  load average: 0.08, 0.02, 0.01
+10.172.150.34,NO DNS Record,Linux,10.172.150.34,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:26 up 114 days,  2:55,  0 users,  load average: 0.08, 0.02, 0.01
+10.172.150.38,NO DNS Record,Linux,10.172.150.38,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:29 up 114 days,  3:02,  0 users,  load average: 0.08, 0.02, 0.01
+10.172.150.85,NO DNS Record,Linux,10.172.150.85,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:32 up 114 days,  3:02,  0 users,  load average: 0.00, 0.00, 0.00
+10.172.20.27,NO DNS Record,Linux,w1-st-dhcp-18-125.eng.vmware.com,"Ubuntu 14.04.1 LTS",NO HISTORY, 17:17:33 up 83 days, 20:40,  0 users,  load average: 0.00, 0.02, 0.05
+10.172.51.204,sc2-nsbu-cqe-dhcp-51-204.eng.vmware.com.,Linux,jolt-runner,"Ubuntu 18.04.2 LTS",root     pts/1        10.104.53.164    Thu Apr  7 08:31    gone - no logout, 08:43:04 up 362 days, 38 min,  1 user,  load average: 0.28, 0.29, 0.30
+10.172.51.50,sc2-nsbu-cqe-dhcp-51-50.eng.vmware.com.,Linux,no,"Ubuntu 16.04 LTS",root     pts/0        10.203.75.47     Mon Sep 26 20:38 - 21:39 (4+01:01), 17:11:38 up 143 days, 22:37,  0 users,  load average: 0.00, 0.00, 0.00
+10.172.90.142,NO DNS Record,Linux,Maas-DBServer02,"CentOS Linux 7 (Core)",root     :0           :0               Sat Jan 15 17:32   still logged in   , 09:17:39 up 380 days, 15:17,  1 user,  load average: 0.07, 0.05, 0.05
+10.173.177.216,NO DNS Record,Linux,ubuntu18dev1,"Ubuntu 18.04.4 LTS",NO HISTORY, 09:17:43 up 824 days, 20:03,  1 user,  load average: 4.08, 4.02, 4.01
+10.173.183.197,sc2-hs2-183-197.eng.vmware.com.,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO HISTORY, 22:47:44 up 170 days,  8:49,  0 users,  load average: 2.00, 2.04, 2.29
+10.173.217.165,sc2-hs2-dfw-dhcp-217-165.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",abrao    pts/1        :pts/0:S.0       Fri Apr  8 17:12 - 19:24  (02:12), 17:17:45 up 304 days, 13:28,  0 users,  load average: 0.00, 0.00, 0.00
+10.173.236.237,sc2-hs2-nsbu-pune-02-237.eng.vmware.com.,Linux,sc2-hs2-nsbu-pune-02-237,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:49 up 62 days,  4:55,  0 users,  load average: 0.08, 0.02, 0.01
+10.173.236.238,sc2-hs2-nsbu-pune-02-238.eng.vmware.com.,Linux,sc2-hs2-nsbu-pune-02-238,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:53 up 62 days,  4:55,  0 users,  load average: 0.00, 0.00, 0.00
+10.173.70.32,sc2-hs2b-dhcp-70-32.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",zhengy   pts/0        10.173.70.20     Fri Nov 11 07:56 - 22:49 (6+14:52), 17:17:54 up 91 days,  2:47,  0 users,  load average: 0.03, 0.01, 0.00
+10.173.71.78,sc2-hs2b-dhcp-71-78.eng.vmware.com.,Linux,sc2-hs2b-dhcp-71-78.eng.vmware.com,"Ubuntu 14.04.1 LTS",reboot   system boot  3.13.0-36-generi Tue Nov  1 14:29 - 17:17 (91+02:48)  , 17:17:55 up 91 days,  2:48,  0 users,  load average: 0.00, 0.01, 0.05
+10.174.138.201,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",kbhalgat pts/0        10.104.52.158    Thu Oct  6 05:10 - 05:32  (00:22), 17:17:56 up 120 days,  8:58,  1 user,  load average: 0.00, 0.00, 0.00
+10.174.26.115,NO DNS Record,Linux,10.174.26.115,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:17:59 up 51 days, 10:03,  0 users,  load average: 0.33, 0.10, 0.02
+10.174.26.118,NO DNS Record,Linux,10.174.26.118,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:18:03 up 51 days, 10:03,  0 users,  load average: 0.00, 0.02, 0.00
+10.174.27.145,NO DNS Record,Linux,10.174.27.145,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:18:06 up 162 days,  9:11,  0 users,  load average: 0.00, 0.00, 0.00
+10.174.27.148,NO DNS Record,Linux,10.174.27.148,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:18:07 up 137 days, 13:27,  1 user,  load average: 0.00, 0.00, 0.00
+10.174.27.179,NO DNS Record,Linux,10.174.27.179,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:18:14 up 158 days, 16 min,  1 user,  load average: 0.00, 0.00, 0.00
+10.174.27.181,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",kajjarap pts/2        :pts/4:S.0       Wed Oct 19 13:10 - 13:10  (00:00), 17:18:14 up 225 days, 12:48,  0 users,  load average: 0.09, 0.18, 0.18
+10.174.27.211,NO DNS Record,Linux,TrffFOwIdwfKf,"Ubuntu 18.04.4 LTS",NO HISTORY, 17:18:18 up 161 days,  5:24,  0 users,  load average: 0.24, 0.05, 0.02
+10.174.27.212,NO DNS Record,Linux,s8M6ACWevuiPN,"Ubuntu 18.04.4 LTS",NO HISTORY, 17:18:21 up 161 days,  5:24,  0 users,  load average: 0.00, 0.00, 0.00
+10.174.27.214,NO DNS Record,Linux,V3M629s8UUSL0,"Ubuntu 18.04.4 LTS",NO HISTORY, 17:18:25 up 134 days,  7:10,  0 users,  load average: 0.00, 0.00, 0.00
+10.174.27.56,NO DNS Record,Linux,10.174.27.56,"Ubuntu 18.04.2 LTS",NO HISTORY, 17:18:29 up 134 days,  7:10,  0 users,  load average: 0.24, 0.05, 0.02
+10.176.108.246,sc2-hs3-nsbu-rd-vm03-108-246.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",root     tty1                          Mon Oct 17 12:26   still logged in, 17:18:29 up 238 days,  8:48,  1 user,  load average: 0.00, 0.00, 0.00
+10.176.109.159,sc2-hs3-nsbu-rd-vm03-109-159.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",swp      pts/1        :pts/0:S.0       Wed Jul 20 19:46 - 20:15  (00:28), 17:18:30 up 202 days, 21:53,  0 users,  load average: 0.00, 0.00, 0.00
+10.176.109.235,sc2-hs3-nsbu-rd-vm03-109-235.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",swp      pts/0        10.104.71.12     Wed Sep  7 20:08 - 20:45  (00:37), 17:18:31 up 218 days,  7:54,  0 users,  load average: 0.42, 0.31, 0.28
+10.176.134.122,scdc2-vm-dhcp-134-122.eng.vmware.com.,Linux,scdc2-vm-dhcp-134-122.eng.vmware.com,"Ubuntu 20.04.2 LTS",root     pts/0        10.104.86.229    Wed Nov 23 05:26 - 05:28  (00:01), 17:18:32 up 206 days,  4:43,  0 users,  load average: 0.00, 0.00, 0.00
+10.176.183.128,stut-sc2-183-128.vmware.com.,DEAD
+10.176.210.1,sc2-hs3-nsbu-ncp-dhcp--10-176-210-1.eng.vmware.com.,Linux,no,"Ubuntu 20.04.2 LTS",zhengshe pts/0        10.117.234.198   Tue Dec 13 10:49 - 11:51  (01:01), 17:18:38 up 209 days,  9:27,  0 users,  load average: 0.45, 0.38, 0.37
+10.176.211.78,sc2-hs3-nsbu-ncp-dhcp--10-176-211-78.eng.vmware.com.,Linux,sc2-hs3-nsbu-ncp-dhcp--10-176-211-78,"Ubuntu 16.04.3 LTS",NO HISTORY, 09:18:40 up 358 days, 13:56,  1 user,  load average: 0.00, 0.00, 0.00
+10.176.25.159,sc2-hs3-nsbu-ncp-dhcp--25-159.eng.vmware.com.,Linux,sc2-hs3-nsbu-ncp-dhcp--25-159,"Ubuntu 20.04.1 LTS",root     pts/0        10.4.141.190     Tue Jun 29 10:29 - 10:31  (00:02), 17:18:42 up 606 days, 13:14,  0 users,  load average: 0.08, 0.02, 0.01
+10.176.25.53,sc2-hs3-nsbu-ncp-dhcp--25-53.eng.vmware.com.,Linux,sc2-hs3-nsbu-ncp-dhcp--25-53,"Ubuntu 16.04.3 LTS",NO HISTORY, 08:52:39 up 707 days,  9:54,  0 users,  load average: 0.29, 0.12, 0.03
+10.196.112.53,w1-vvd-dhcp-53.eng.vmware.com.,Linux,guestos,,reboot   system boot  2.6.32-279.el6.x Fri Feb 26 03:41 - 09:17 (704+05:36) , 09:17:53 up 704 days,  4:35,  0 users,  load average: 0.00, 0.00, 0.00
+10.196.159.65,wdc-vsanqe-vlan1081-dhcp320.eng.vmware.com.,Linux,vsanperf-worker,"Ubuntu 18.04 LTS",root     pts/0        10.104.42.150    Wed Jul 13 11:10 - 11:18  (00:07), 09:18:51 up 624 days,  6:46,  1 user,  load average: 1.00, 1.00, 1.00
+10.196.162.185,NO DNS Record,Linux,bharat-jenkins-slave1.vcpdpwdc.com,,root     pts/3        ravi-jenkins-sla Thu May 30 06:40 - 06:40  (00:00)    , 11:59:15 up 1345 days,  5:09,  3 users,  load average: 0.00, 0.00, 0.00
+10.196.62.1,stsds-wd3.eng.vmware.com.,Linux,stsds-wd3,"CentOS Linux 7 (Core)",root     pts/0        10.200.194.83    Sat Jan 28 00:15 - 00:15  (00:00)    , 17:18:58 up 804 days, 14:24,  0 users,  load average: 0.02, 0.10, 0.09
+10.196.93.91,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",reboot   system boot  5.4.0-73-generic Tue Nov 15 11:02   still running, 17:19:01 up 77 days,  6:16,  0 users,  load average: 0.00, 0.00, 0.00
+10.197.99.21,NO DNS Record,Linux,kube-3,"Ubuntu 18.04 LTS",root     tty1                          Sun Jan 29 22:12   still logged in, 09:19:04 up 1 day, 11:07,  1 user,  load average: 0.00, 0.03, 0.02
+10.197.99.23,NO DNS Record,Linux,kube-2,"Ubuntu 18.04 LTS",root     tty1                          Sun Jan 29 22:09 - 22:09  (00:00), 09:19:11 up 1 day, 11:10,  0 users,  load average: 0.14, 0.16, 0.09
+10.199.8.197,NO DNS Record,Linux,w2-stvsandpqe-dhcp199,"Ubuntu 14.04.6 LTS",reboot   system boot  3.16.0-30-generi Sun Dec  4 21:30 - 09:12 (57+11:41)  , 09:12:17 up 56 days, 20:55,  0 users,  load average: 0.00, 0.01, 0.05
+10.20.108.189,promc-2s-dhcp189.eng.vmware.com.,Linux,promc-2s-109-dhcp174,"Ubuntu precise (12.04.5 LTS)",root     pts/1        puppetmaster.vmw Mon Jan 30 12:41 - 12:41  (00:00)    , 09:19:28 up 26 days, 11:18,  0 users,  load average: 0.00, 0.01, 0.05
+10.20.109.71,promc-2s-109-dhcp71.eng.vmware.com.,Linux,promc-2s-109-dhcp174,"Ubuntu precise (12.04.4 LTS)",root     pts/0        puppetmaster.vmw Mon Jan 30 12:40 - 12:40  (00:00)    , 09:18:54 up 336 days, 20:27,  0 users,  load average: 0.00, 0.01, 0.05
+10.20.118.34,NO DNS Record,Linux,dev,"Ubuntu 18.04.6 LTS",NO HISTORY, 09:19:40 up 307 days, 20:22,  0 users,  load average: 0.01, 0.01, 0.00
+10.202.211.245,tmc-568-211-245.eng.vmware.com.,Linux,tmc-568-244.eng.vmware.com,"Ubuntu 14.04.1 LTS",NO HISTORY, 17:19:43 up 575 days, 21:42,  0 users,  load average: 0.00, 0.01, 0.05
+10.202.213.228,edgel2l3-213-228.eng.vmware.com.,Linux,ubuntu,"Ubuntu 16.04.4 LTS",NO HISTORY, 22:49:46 up 526 days,  5:13,  0 users,  load average: 0.00, 0.00, 0.00
+10.202.231.59,mapbu-infra-231-59.eng.vmware.com.,Linux,vmfork-child-20220223194257530816992,"Ubuntu 18.04.4 LTS",root     pts/0        10.129.216.40    Tue Mar  1 13:10 - 14:50  (01:39), 09:19:50 up 341 days, 15:34,  0 users,  load average: 0.00, 0.00, 0.00
+10.202.231.90,mapbu-infra-231-90.eng.vmware.com.,Linux,natserver-virtual-machine,"Ubuntu 18.04.4 LTS",NO HISTORY, 09:19:54 up 329 days, 15:18,  1 user,  load average: 0.01, 0.01, 0.00
+10.202.242.100,cmbu-dhcp-hs8-100.eng.vmware.com.,Linux,oZJZ4cSp0njRI,"Ubuntu 20.04.3 LTS",root     pts/0        10.30.104.110    Sun Feb 20 13:43 - 13:44  (00:00), 17:19:58 up 346 days, 16:53,  0 users,  load average: 0.21, 0.16, 0.10
+10.203.65.40,NO DNS Record,Linux,spk-runner,"Ubuntu 18.04.2 LTS",NO HISTORY, 09:20:03 up 671 days,  9:09,  1 user,  load average: 0.08, 0.02, 0.01
+10.208.143.48,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",zyaqian  pts/1        10.117.234.253   Tue Aug 23 02:16 - 05:28  (03:12), 17:20:12 up 161 days, 22:01,  0 users,  load average: 0.20, 0.05, 0.01
+10.208.143.61,NO DNS Record,Linux,no,"Ubuntu 20.04.2 LTS",wjinghua pts/0        10.117.180.99    Mon Sep 19 07:42 - 07:42  (00:00), 17:20:16 up 137 days, 14:30,  0 users,  load average: 0.00, 0.00, 0.00
+10.208.32.250,sherpa-portal.eng.vmware.com.,Linux,sherpa-portal.eng.vmware.com,"Ubuntu 18.04 LTS",root     pts/0        10.104.44.12     Thu Mar 11 00:47 - 00:52  (00:04), 09:20:16 up 814 days,  5:57,  0 users,  load average: 0.09, 0.04, 0.01
+10.221.133.18,w4-vcd-static-133-18.eng.vmware.com.,Linux,postgres,"CentOS Linux 7 (Core)",reboot   system boot  3.10.0-514.10.2. Fri Sep  2 18:21 - 17:20 (150+22:58) , 17:20:19 up 150 days, 22:58,  0 users,  load average: 0.00, 0.01, 0.05
+10.221.45.180,NO DNS Record,Linux,nimbus-iscsitemplate,"Ubuntu precise (12.04.5 LTS)",root     pts/0        puppetmaster.vmw Mon Jan 30 13:46 - 13:47  (00:00)    , 09:21:35 up 87 days,  9:04,  0 users,  load average: 0.00, 0.01, 0.05
+10.26.236.94,sof2-vchs-dhcp-236-94.eng.vmware.com.,Linux,sof2-vchs-dhcp-236-94.eng.vmware.com,"CentOS Linux 8 (Core)",reboot   system boot  4.18.0-80.el8.x8 Tue Jan 10 08:07   still running, 12:21:49 up 21 days,  4:14,  0 users,  load average: 0.00, 0.00, 0.00
+10.28.221.107,prme-vsan-hol-vm-dhcp-221-107.eng.vmware.com.,Linux,RackStation,,NO HISTORY, 09:21:52 up 2116 days,  2:45, load average: 1.10, 1.15, 1.13
+10.28.222.188,prme-vsan-hol-vm-dhcp-222-188.eng.vmware.com.,Linux,localhost,,root     pts/0        puppetmaster.vmw Mon Jan 30 12:40 - 12:40  (00:00)    , 09:19:54 up 383 days,  8:33,  0 users,  load average: 0.00, 0.01, 0.05
+10.28.240.61,prme-stsao-nas-1.eng.vmware.com.,Linux,RackStation,,NO HISTORY, 09:21:57 up 2116 days,  2:45, load average: 1.09, 1.15, 1.13
+10.28.9.223,NO DNS Record,Linux,helper-elba-d0212,"Ubuntu 20.04.2 LTS",root     pts/0        10.117.181.5     Thu Mar 10 02:39 - 02:39  (00:00), 17:21:59 up 409 days, 14:26,  0 users,  load average: 0.08, 0.02, 0.01
+10.40.50.211,opvcstqe-50-211.eng.vmware.com.,Linux,vmware-uwsim2,"Ubuntu 16.04.1 LTS",NO HISTORY, 22:52:01 up 573 days, 23:16,  0 users,  load average: 0.00, 0.00, 0.00
+10.40.90.12,hwe-cim-2.eng.vmware.com.,Linux,hwe-cim-2.eng.vmware.com,,NO HISTORY, 12:41:13 up 358 days, 17:33,  0 users,  load average: 0.00, 0.00, 0.00
+10.50.5.93,NO DNS Record,Linux,W2-VCF-R10-LinJump1,"CentOS Linux 7 (Core)",root     pts/0        10.50.5.92       Thu Jan 19 09:02 - 09:02  (00:00)    , 17:22:05 up 18 days,  5:52,  0 users,  load average: 0.00, 0.00, 0.00
+10.71.216.164,s2-vcav-216-164.eng.vmware.com.,Linux,vcda-st-ftp-kms-srv,"CentOS Linux 7 (Core)",root     pts/0        puppetmaster.vmw Mon Jan 30 15:45 - 15:45  (00:00)    , 12:25:49 up 322 days,  3:03,  1 user,  load average: 0.04, 0.03, 0.05
+10.71.217.103,s2-vcav-217-103.eng.vmware.com.,Linux,s2-vcav-217-103.eng.vmware.com,"CentOS Linux 7 (Core)",root     pts/0        s2-vcav-v1248-24 Mon Jul 25 06:31 - 10:54  (04:23)    , 17:26:03 up 902 days,  8:41,  0 users,  load average: 0.01, 0.07, 0.06
+10.71.221.120,s2-vcav-221-120.eng.vmware.com.,Linux,s2-vcav-221-120.eng.vmware.com,"CentOS Linux 7 (Core)",root     pts/0        puppetmaster.vmw Mon Jan 30 21:45 - 21:45  (00:00)    , 17:26:16 up 5 days,  4:11,  0 users,  load average: 0.00, 0.01, 0.05
+10.71.223.228,NO DNS Record,Linux,localhost.localdomains2-vcav-223-228s2-vcav-223-228.eng.vmware.c,"CentOS Linux 7 (Core)",root     pts/0        10.93.40.23      Mon Oct 18 08:59 - 09:05  (00:06)    , 17:26:31 up 1070 days, 22:54,  0 users,  load average: 1.04, 0.95, 0.93
+10.78.31.69,NO DNS Record,Linux,rocky-dev-vm,"Ubuntu 16.04.7 LTS",root     pts/21       10.113.60.223    Mon Jan 30 12:42 - 12:42  (00:00), 09:26:33 up 313 days,  6:55,  1 user,  load average: 0.64, 0.57, 0.56
